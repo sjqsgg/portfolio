@@ -30,7 +30,7 @@ export default function MainPhotos() {
         <img src="/photos/4071744705063_.pic.jpg" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
-      <a href="/photos/A060541-R1-13-13A.jpg" data-pswp-width="1200" data-pswp-height="1800">
+      <a href="/photos/A060541-R1-13-13A.jpg" data-pswp-width="1164" data-pswp-height="1164">
         <img src="/photos/A060541-R1-13-13A.jpg" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
