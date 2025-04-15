@@ -26,8 +26,8 @@ export default function MainPhotos() {
       className="max-w-5xl mx-auto px-4 mt-32 space-y-16"
     >
     <div id="gallery" className="columns-2 md:columns-3 gap-4 px-4 [&>a]:mb-4">
-      <a href="/photos/A060745-R1-06-6A.JPG" data-pswp-width="2433" data-pswp-height="3637">
-        <img src="/photos/A060745-R1-06-6A.JPG" alt="Example" className="w-full mb-4 shadow" />
+      <a href="/photos/4071744705063_.pic.jpg" data-pswp-width="2433" data-pswp-height="3637">
+        <img src="/photos/4071744705063_.pic.jpg" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
       <a href="/photos/A060541-R1-13-13A.jpg" data-pswp-width="1200" data-pswp-height="1800">
@@ -38,24 +38,24 @@ export default function MainPhotos() {
         <img src="/photos/A060541-R1-25-25A.JPG" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
-      <a href="/photos/A060745-R1-05-5A.JPG" data-pswp-width="2433" data-pswp-height="3637">
-        <img src="/photos/A060745-R1-05-5A.JPG" alt="Example" className="w-full mb-4 shadow" />
+      <a href="/photos/4041744705063_.pic.jpg" data-pswp-width="2433" data-pswp-height="3637">
+        <img src="/photos/4041744705063_.pic.jpg" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
-      <a href="/photos/A060745-R1-15-15A.JPG" data-pswp-width="2433" data-pswp-height="3637">
-        <img src="/photos/A060745-R1-15-15A.JPG" alt="Example" className="w-full mb-4 shadow" />
+      <a href="/photos/4061744705063_.pic.jpg" data-pswp-width="2433" data-pswp-height="3637">
+        <img src="/photos/4061744705063_.pic.jpg" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
-      <a href="/photos/A060745-R1-21-21A.jpg" data-pswp-width="2433" data-pswp-height="3637">
-        <img src="/photos/A060745-R1-21-21A.jpg" alt="Example" className="w-full mb-4 shadow" />
+      <a href="/photos/4051744705063_.pic.jpg" data-pswp-width="2433" data-pswp-height="3637">
+        <img src="/photos/4051744705063_.pic.jpg" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
       <a href="/photos/A060541-R1-24-24A.JPG" data-pswp-width="1818" data-pswp-height="1228">
         <img src="/photos/A060541-R1-24-24A.JPG" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
-      <a href="/photos/IMG_3800.jpg" data-pswp-width="2361" data-pswp-height="2361">
-        <img src="/photos/IMG_3800.jpg" alt="Example" className="w-full mb-4 shadow" />
+      <a href="/photos/4001744704883_.pic.jpg" data-pswp-width="2361" data-pswp-height="2361">
+        <img src="/photos/4001744704883_.pic.jpg" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
       <a href="/photos/b479ae331017cd34f3a9815183419bd7.JPG" data-pswp-width="2433" data-pswp-height="3637">
@@ -66,28 +66,28 @@ export default function MainPhotos() {
         <img src="/photos/IMG_4622.JPG" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
-      <a href="/photos/IMG_5144.JPG" data-pswp-width="2433" data-pswp-height="3637">
-        <img src="/photos/IMG_5144.JPG" alt="Example" className="w-full mb-4 shadow" />
+      <a href="/photos/4121744705200_.pic.jpg" data-pswp-width="2433" data-pswp-height="3637">
+        <img src="/photos/4121744705200_.pic.jpg" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
       <a href="/photos/b1b6c60d3ff45dfec850b281454ea903.JPG" data-pswp-width="2304" data-pswp-height="3072">
         <img src="/photos/b1b6c60d3ff45dfec850b281454ea903.JPG" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
-      <a href="/photos/j3 2.jpg" data-pswp-width="2950" data-pswp-height="4185">
-        <img src="/photos/j3 2.jpg" alt="Example" className="w-full mb-4 shadow" />
+      <a href="/photos/4091744705200_.pic.jpg" data-pswp-width="2950" data-pswp-height="4185">
+        <img src="/photos/4091744705200_.pic.jpg" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
-      <a href="/photos/IMG_5250.JPG" data-pswp-width="2433" data-pswp-height="3637">
-        <img src="/photos/IMG_5250.JPG" alt="Example" className="w-full mb-4 shadow" />
+      <a href="/photos/4111744705200_.pic.jpg" data-pswp-width="2433" data-pswp-height="3637">
+        <img src="/photos/4111744705200_.pic.jpg" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
-      <a href="/photos/IMG_5259.jpg" data-pswp-width="2433" data-pswp-height="3637">
-        <img src="/photos/IMG_5259.jpg" alt="Example" className="w-full mb-4 shadow" />
+      <a href="/photos/4101744705200_.pic.jpg" data-pswp-width="2433" data-pswp-height="3637">
+        <img src="/photos/4101744705200_.pic.jpg" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
-      <a href="/photos/j1.jpg" data-pswp-width="3456" data-pswp-height="4608">
-        <img src="/photos/j1.jpg" alt="Example" className="w-full mb-4 shadow" />
+      <a href="/photos/3991744704883_.pic.jpg" data-pswp-width="3456" data-pswp-height="4608">
+        <img src="/photos/3991744704883_.pic.jpg" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
       <a href="/photos/P1011157.jpg" data-pswp-width="3456" data-pswp-height="4608">
