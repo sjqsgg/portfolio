@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom'
+
 
 export default function About() {
   const ref1= useRef();
@@ -91,11 +93,11 @@ export default function About() {
         </div>
         
         <div className="text-center mt-32">
-          <a href="/contact">
+        <Link to="/contact" className="text-center mt-12 block">
             <button className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition">
               Write your Story
             </button>
-          </a>
+          </Link>
       </div>
 
       </motion.div>

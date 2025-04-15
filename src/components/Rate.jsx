@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom'
 
 export default function Rate() {
   return (
@@ -45,11 +46,11 @@ export default function Rate() {
       </div>
 
       <div className="text-center mt-12">
-        <a href="/contact">
+      <Link to="/contact" className="text-center mt-12 block">
           <button className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition">
             Get in Touch
           </button>
-        </a>
+        </Link>
       </div>
     </motion.div>
   );
