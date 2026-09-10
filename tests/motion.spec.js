@@ -14,6 +14,7 @@ test('full curved transition keeps its duration and Contact has its own layout',
   const effects = await page.evaluate(() => document.getAnimations().map(animation => ({ name: animation.animationName, duration: animation.effect.getTiming().duration, delay: animation.effect.getTiming().delay })))
   expect(effects).toContainEqual({ name:'route-curve', duration:1950, delay:0 })
   expect(effects).toContainEqual({ name:'route-finish', duration:180, delay:1770 })
+  expect(effects).toContainEqual({ name:'route-page-arrive', duration:650, delay:1300 })
   await page.screenshot({ path:'docs/qa/motion/transition-0750.png' })
   await settled(page)
   await expect(page.locator('.reference-about')).toHaveCount(0)

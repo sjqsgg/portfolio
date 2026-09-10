@@ -39,12 +39,12 @@ export default function useRouteMotion(incoming, reduced) {
     }
     style.setProperty('--route-mask-start', mask(100, 100))
     style.setProperty('--route-mask-bend', mask(60, 100))
+    style.setProperty('--route-mask-sides', mask(0, 100))
     style.setProperty('--route-mask-end', mask(0, 0))
     document.documentElement.dataset.routeMotion = kind
     document.documentElement.dataset.routeEntering = 'true'
     const root = document.getElementById('root')
     let cancelled = false
-    let arrival
     const update = () => {
       if (cancelled) return
       flushSync(() => setDisplayed(incoming))
@@ -56,11 +56,9 @@ export default function useRouteMotion(incoming, reduced) {
     }
     const finish = () => {
       if (cancelled) return
-      // The snapshot lifts onto white first. Reveal the live destination only now,
-      // so its paused text and photographs animate where the visitor can see them.
-      if (kind === 'page' && !reduced) {
-        arrival = root.animate([{ opacity:0 }, { opacity:1 }], { duration:5, easing:'ease-out' })
-      }
+      // Page entries are already complete in the destination snapshot. Keep their
+      // live counterparts settled so the CSS entrance does not replay afterwards.
+      if (kind === 'page' && !reduced) document.querySelectorAll('.reveal-line,.text-arrival,.gallery-photo').forEach(el => { el.style.animation = 'none' })
       delete document.documentElement.dataset.routeMotion
       delete document.documentElement.dataset.routeEntering
       delete root.dataset.transitioning
@@ -87,7 +85,6 @@ export default function useRouteMotion(incoming, reduced) {
     return () => {
       cancelled = true
       clearTimeout(fallbackTimer)
-      arrival?.cancel()
       active.current?.skipTransition?.()
       root.inert = false
       delete root.dataset.transitioning
