@@ -45,23 +45,61 @@ html:has(.reference-contact) .canvas-nav a.active,html:has(.reference-contact) .
  .contact-links a { min-height:30px;font-size:max(18px,min(5.6vw,16.9px + 1.96vw));line-height:1.08; }
 }
 
-/* The old page darkens and lifts onto white. At 1.3 seconds its two lower
-   corners reach the top; the destination then rises and fades in during the
-   remaining .65 seconds, finishing with the curve at 1.95 seconds. */
+/* Hiroto's curve uses two continuous 1.3s motions: the edge rises first and
+   the center control follows .65s later. They share one uninterrupted ease. */
 ::view-transition { pointer-events:none; }
 ::view-transition-group(root) { animation:none; }
 ::view-transition-image-pair(root) { isolation:isolate; }
 ::view-transition-new(root) { animation:none;mix-blend-mode:normal; }
 html[data-route-motion="page"]::view-transition-image-pair(root) { background:#fff; }
 html[data-route-motion="page"]::view-transition-new(root) { animation:route-page-arrive .65s 1.3s cubic-bezier(.22,1,.36,1) both; }
-::view-transition-old(root) { z-index:2;mix-blend-mode:normal;animation:route-curve 1.95s cubic-bezier(.22,.28,.28,1) both,route-darken .5s ease-in-out both,route-finish .18s 1.77s both; }
-@keyframes route-darken { to { filter:brightness(.32); } }
+::view-transition-old(root) { z-index:2;mix-blend-mode:normal;will-change:clip-path,filter;clip-path:var(--route-mask-start);animation:route-curve-fallback 1.95s cubic-bezier(.22,.28,.28,1) both,route-darken .5s ease-in-out both,route-finish .18s 1.97s both; }
+html[data-route-mask="shape"]::view-transition-old(root) { animation:route-curve-shape 1.95s linear both,route-darken .5s ease-in-out both,route-finish .18s 1.97s both; }
+@keyframes route-darken {
+ from { filter:brightness(1) drop-shadow(0 -28px 64px rgb(7 7 7 / .18)); }
+ to { filter:brightness(.32) drop-shadow(0 -28px 64px rgb(7 7 7 / .18)); }
+}
 @keyframes route-finish { to { opacity:0; } }
-@keyframes route-curve {
+@keyframes route-curve-fallback {
  0% { clip-path:var(--route-mask-start); }
  33.333% { clip-path:var(--route-mask-bend); }
- 66.667% { clip-path:var(--route-mask-sides); }
  100% { clip-path:var(--route-mask-end); }
+}
+/* Sampled every 65ms from the reference CustomEase. The complete path is
+   interpolated as one value so the edge/control tracks cannot fight in the
+   view-transition pseudo-element cascade. */
+@keyframes route-curve-shape {
+ 0% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 100%,curve to 0% 100% with 50% 100%,close); }
+ 3.333% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 92.52%,curve to 0% 92.52% with 50% 100%,close); }
+ 6.667% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 82.9667%,curve to 0% 82.9667% with 50% 100%,close); }
+ 10% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 72.0733%,curve to 0% 72.0733% with 50% 100%,close); }
+ 13.333% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 60.9869%,curve to 0% 60.9869% with 50% 100%,close); }
+ 16.667% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 50.666%,curve to 0% 50.666% with 50% 100%,close); }
+ 20% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 41.569%,curve to 0% 41.569% with 50% 100%,close); }
+ 23.333% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 33.7717%,curve to 0% 33.7717% with 50% 100%,close); }
+ 26.667% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 27.1747%,curve to 0% 27.1747% with 50% 100%,close); }
+ 30% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 21.6274%,curve to 0% 21.6274% with 50% 100%,close); }
+ 33.333% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 16.9816%,curve to 0% 16.9816% with 50% 100%,close); }
+ 36.667% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 13.1074%,curve to 0% 13.1074% with 50% 92.52%,close); }
+ 40% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 9.8961%,curve to 0% 9.8961% with 50% 82.9667%,close); }
+ 43.333% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 7.2582%,curve to 0% 7.2582% with 50% 72.0733%,close); }
+ 46.667% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 5.1202%,curve to 0% 5.1202% with 50% 60.9869%,close); }
+ 50% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 3.4213%,curve to 0% 3.4213% with 50% 50.666%,close); }
+ 53.333% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 2.1108%,curve to 0% 2.1108% with 50% 41.569%,close); }
+ 56.667% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 1.1466%,curve to 0% 1.1466% with 50% 33.7717%,close); }
+ 60% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% .4929%,curve to 0% .4929% with 50% 27.1747%,close); }
+ 63.333% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% .1193%,curve to 0% .1193% with 50% 21.6274%,close); }
+ 66.667% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 0%,curve to 0% 0% with 50% 16.9816%,close); }
+ 70% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 0%,curve to 0% 0% with 50% 13.1074%,close); }
+ 73.333% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 0%,curve to 0% 0% with 50% 9.8961%,close); }
+ 76.667% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 0%,curve to 0% 0% with 50% 7.2582%,close); }
+ 80% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 0%,curve to 0% 0% with 50% 5.1202%,close); }
+ 83.333% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 0%,curve to 0% 0% with 50% 3.4213%,close); }
+ 86.667% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 0%,curve to 0% 0% with 50% 2.1108%,close); }
+ 90% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 0%,curve to 0% 0% with 50% 1.1466%,close); }
+ 93.333% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 0%,curve to 0% 0% with 50% .4929%,close); }
+ 96.667% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 0%,curve to 0% 0% with 50% .1193%,close); }
+ 100% { clip-path:shape(from 0% 0%,line to 100% 0%,line to 100% 0%,curve to 0% 0% with 50% 0%,close); }
 }
 @keyframes route-page-arrive {
  from { opacity:0;transform:translateY(16px); }

@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test'
 test('destination enters from corner contact until the curve fully exits', async ({ page }) => {
   await page.goto('/about')
   await page.getByRole('navigation').getByRole('link', { name:'Contact', exact:true }).click()
-  await page.waitForFunction(() => document.getAnimations().some(a => a.animationName === 'route-curve'))
+  await page.waitForFunction(() => document.getAnimations().some(a => ['route-curve-shape','route-curve-fallback'].includes(a.animationName)))
   const seek = time => page.evaluate(time => {
     document.getAnimations().filter(a => a.effect?.pseudoElement?.includes('view-transition')).forEach(a => { a.pause(); a.currentTime = time })
   }, time)
@@ -20,9 +20,27 @@ test('destination enters from corner contact until the curve fully exits', async
   }, { url:`data:image/png;base64,${screenshot.toString('base64')}`, top })
   // The exposed lower half contains neither the destination navigation nor its links.
   expect(await pixels(partial, .55)).toBe(0)
-  // The transition ends with the curve itself; the destination occupies its final .65s.
-  const ends = await page.evaluate(() => document.getAnimations().filter(a => a.effect?.pseudoElement?.includes('view-transition')).map(a => a.effect.getComputedTiming().endTime))
-  expect(Math.max(...ends)).toBeCloseTo(1950, 5)
+  const timeline = await page.evaluate(() => document.getAnimations().filter(a => a.effect?.pseudoElement?.includes('view-transition')).map(a => ({name:a.animationName,end:a.effect.getComputedTiming().endTime})))
+  expect(timeline.find(item => item.name === 'route-curve-shape').end).toBeCloseTo(1950, 5)
+  expect(timeline.find(item => item.name === 'route-page-arrive').end).toBeCloseTo(1950, 5)
+  const curveSamples = await page.evaluate(() => {
+    const animations = document.getAnimations().filter(a => a.effect?.pseudoElement?.includes('view-transition'))
+    return Array.from({ length:31 }, (_, index) => {
+      animations.forEach(animation => { animation.currentTime = index * 65 })
+      const clipPath = getComputedStyle(document.documentElement, '::view-transition-old(root)').clipPath
+      const match = clipPath.match(/line to 100% ([-+\de.]+)%, curve to 0% [-+\de.]+% with 50% ([-+\de.]+)%/)
+      return match ? { edge:Number(match[1]), control:Number(match[2]) } : null
+    })
+  })
+  expect(curveSamples.every(Boolean)).toBe(true)
+  curveSamples.slice(1).forEach((sample, index) => {
+    expect(sample.edge).toBeLessThanOrEqual(curveSamples[index].edge + .01)
+    expect(sample.control).toBeLessThanOrEqual(curveSamples[index].control + .01)
+    expect(curveSamples[index].edge - sample.edge).toBeLessThan(12)
+    expect(curveSamples[index].control - sample.control).toBeLessThan(12)
+  })
+  expect(curveSamples[20].edge).toBeCloseTo(0, 2)
+  expect(curveSamples[20].control).toBeGreaterThan(16)
   await seek(1300)
   const cornerContact = await page.screenshot({ path:'docs/qa/motion/white-handoff.png' })
   expect(await pixels(cornerContact, .55)).toBe(0)

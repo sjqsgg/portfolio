@@ -37,11 +37,12 @@ export default function useRouteMotion(incoming, reduced) {
       })
       return `polygon(0% 0%,100% 0%,${curve.join(',')})`
     }
+    const supportsShape = CSS.supports('clip-path', mask(100, 100))
     style.setProperty('--route-mask-start', mask(100, 100))
     style.setProperty('--route-mask-bend', mask(60, 100))
-    style.setProperty('--route-mask-sides', mask(0, 100))
     style.setProperty('--route-mask-end', mask(0, 0))
     document.documentElement.dataset.routeMotion = kind
+    document.documentElement.dataset.routeMask = supportsShape ? 'shape' : 'polygon'
     document.documentElement.dataset.routeEntering = 'true'
     const root = document.getElementById('root')
     let cancelled = false
@@ -60,6 +61,7 @@ export default function useRouteMotion(incoming, reduced) {
       // live counterparts settled so the CSS entrance does not replay afterwards.
       if (kind === 'page' && !reduced) document.querySelectorAll('.reveal-line,.text-arrival,.gallery-photo').forEach(el => { el.style.animation = 'none' })
       delete document.documentElement.dataset.routeMotion
+      delete document.documentElement.dataset.routeMask
       delete document.documentElement.dataset.routeEntering
       delete root.dataset.transitioning
       root.inert = false
@@ -80,7 +82,7 @@ export default function useRouteMotion(incoming, reduced) {
     } else {
       update()
       root.dataset.transitioning = 'fallback'
-      fallbackTimer = setTimeout(finish, kind === 'page' ? 1950 : 920)
+      fallbackTimer = setTimeout(finish, kind === 'page' ? 2150 : 920)
     }
     return () => {
       cancelled = true
@@ -89,6 +91,7 @@ export default function useRouteMotion(incoming, reduced) {
       root.inert = false
       delete root.dataset.transitioning
       delete document.documentElement.dataset.routeMotion
+      delete document.documentElement.dataset.routeMask
       delete document.documentElement.dataset.routeEntering
       document.querySelectorAll('[style*="view-transition-name"]').forEach(el => el.style.removeProperty('view-transition-name'))
     }
