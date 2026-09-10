@@ -59,7 +59,7 @@ export default function useRouteMotion(incoming, reduced) {
       // The snapshot lifts onto white first. Reveal the live destination only now,
       // so its paused text and photographs animate where the visitor can see them.
       if (kind === 'page' && !reduced) {
-        arrival = root.animate([{ opacity:0 }, { opacity:1 }], { duration:300, easing:'ease-out' })
+        arrival = root.animate([{ opacity:0 }, { opacity:1 }], { duration:250, easing:'ease-out' })
       }
       delete document.documentElement.dataset.routeMotion
       delete document.documentElement.dataset.routeEntering
