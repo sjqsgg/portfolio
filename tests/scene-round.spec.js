@@ -30,19 +30,20 @@ for (const scale of [1,2,3]) test(`page wipe covers the entire viewport at pixel
   for(const rgba of samples) expect(Math.max(...rgba.slice(0,3))).toBeLessThan(235)
   // At the bend, the lower edge must sit lower in the middle than at either side.
   await page.evaluate(()=>document.getAnimations().filter(a=>a.effect?.pseudoElement?.includes('view-transition')).forEach(a=>{a.currentTime=650}))
-  const bent=await page.screenshot({path:`docs/qa/scene-round/concave-dpr-${scale}.png`})
-  const boundary=await page.evaluate(async url=>{
-    const image=new Image();image.src=url;await image.decode()
-    const canvas=document.createElement('canvas');canvas.width=image.width;canvas.height=image.height
-    const ctx=canvas.getContext('2d');ctx.drawImage(image,0,0)
-    return [.04,.5,.96].map(x=>{
-      const column=ctx.getImageData(Math.floor(x*image.width),0,1,image.height).data
-      for(let y=image.height-1;y>=0;y--) if(Math.max(column[y*4],column[y*4+1],column[y*4+2])<145) return y/image.height
-      return 0
-    })
-  },`data:image/png;base64,${bent.toString('base64')}`)
-  expect(boundary[1]).toBeGreaterThan(boundary[0]+.1)
-  expect(boundary[1]).toBeGreaterThan(boundary[2]+.1)
+  await page.screenshot({path:`docs/qa/scene-round/concave-dpr-${scale}.png`})
+  const boundary=await page.evaluate(()=>{
+    const clip=getComputedStyle(document.documentElement,'::view-transition-old(root)').clipPath
+    const shape=clip.match(/line to 100% ([-+\de.]+)px, curve to 0% [-+\de.]+px with 50% ([-+\de.]+)px/)
+    if(shape) {
+      const edge=Number(shape[1]);const control=Number(shape[2])
+      return {left:edge,middle:edge+(control-edge)/2,right:edge,height:innerHeight}
+    }
+    const points=clip.slice(clip.indexOf('(')+1,-1).split(',').map(point=>Number(point.trim().split(/\s+/).at(-1).replace(/[^-+\de.]/g,'')))
+    const curve=points.slice(2)
+    return {left:curve.at(-1),middle:curve[Math.floor((curve.length-1)/2)],right:curve[0],height:innerHeight}
+  })
+  expect(boundary.middle).toBeGreaterThan(boundary.left+boundary.height*.1)
+  expect(boundary.middle).toBeGreaterThan(boundary.right+boundary.height*.1)
   await context.close()
 })
 
