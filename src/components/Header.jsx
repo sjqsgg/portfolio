@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion as Motion } from 'motion/react'
 
 export default function Header() {
     return (
-        <motion.header
+        <Motion.header
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: -50, opacity: 0 }}
@@ -21,7 +21,7 @@ export default function Header() {
                         <li className="nav-item"><Link to="/rate"> Rates </Link></li>
                         <li className="nav-item"><Link to="/blog"> Blog </Link></li>
                     </ul>
-            </motion.header>
+            </Motion.header>
     )
 }
 

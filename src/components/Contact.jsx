@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import emailjs from '@emailjs/browser';
 import { useState } from 'react';
 
@@ -12,14 +11,14 @@ export default function Contact() {
 
         emailjs
             .sendForm("service_wfvrem4", "template_3co7tzp", event.target, "-OH5OXnhuk83KlVG8").then(
-                (result) => {
+                () => {
                     setStateMessage('Message sent!');
                     setIsSubmitting(false);
                     setTimeout(() => {
                       setStateMessage(null);
                     }, 5000); // hide message after 5 seconds
                   },
-                (error) => {
+                () => {
                     setStateMessage('Something went wrong, please try again later');
                     setIsSubmitting(false);
                     setTimeout(() => {

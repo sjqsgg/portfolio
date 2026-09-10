@@ -1,0 +1,403 @@
+{
+  "url": "https://www.hirotos.com/models/model.glb",
+  "status": 200,
+  "byteLength": 862124,
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensions": [
+    "KHR_materials_clearcoat"
+  ],
+  "cameras": [
+    {
+      "name": "Camera",
+      "perspective": {
+        "aspectRatio": 1.7777777777777777,
+        "yfov": 0.16835126306094314,
+        "zfar": 1000,
+        "znear": 0.10000000149011612
+      },
+      "type": "perspective"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Material.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          0.9161310195922852,
+          0.004391575697809458,
+          1
+        ],
+        "metallicFactor": 0.09194845706224442,
+        "roughnessFactor": 0.1251314878463745
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "light1",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.004285906441509724,
+          0.004285906441509724,
+          0.004285906441509724,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.04936710000038147
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Metallic",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "light2",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.004285906441509724,
+          0.004285906441509724,
+          0.004285906441509724,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.04936710000038147
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "light3",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.04936710000038147
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Metallic.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1
+        ],
+        "roughnessFactor": 0.17158177495002747
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_clearcoat": {
+          "clearcoatFactor": 1,
+          "clearcoatRoughnessFactor": 0
+        }
+      },
+      "name": "Material",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          0.9380600452423096,
+          0.9113287925720215,
+          1
+        ],
+        "metallicFactor": 0.1658986210823059,
+        "roughnessFactor": 0.29723501205444336
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "hiroto-profile",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          0.932183027267456,
+          0.1630551517009735,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.20000000298023224
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "to_contact",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "roughnessFactor": 0.20000000298023224
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_clearcoat": {
+          "clearcoatRoughnessFactor": 0
+        }
+      },
+      "name": "to_projects",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.12018120288848877,
+          0.28490403294563293,
+          1,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.20000000298023224
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_clearcoat": {
+          "clearcoatFactor": 1
+        }
+      },
+      "name": "hirotos_showreel",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "roughnessFactor": 0.03863636404275894
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Cube.010",
+      "mesh": 0
+    },
+    {
+      "name": "Text",
+      "mesh": 1
+    },
+    {
+      "name": "Cylinder",
+      "mesh": 2
+    },
+    {
+      "name": "signal_pole",
+      "mesh": 3
+    },
+    {
+      "name": "BézierCurve",
+      "mesh": 4
+    },
+    {
+      "name": "Cube",
+      "mesh": 5
+    },
+    {
+      "name": "Cylinder.032",
+      "mesh": 6
+    },
+    {
+      "name": "Cube.009",
+      "mesh": 7
+    },
+    {
+      "name": "Cylinder.028",
+      "mesh": 8
+    },
+    {
+      "name": "Cylinder.029",
+      "mesh": 9
+    },
+    {
+      "name": "Cylinder.030",
+      "mesh": 10
+    },
+    {
+      "name": "Cylinder.031",
+      "mesh": 11
+    },
+    {
+      "name": "Cylinder.033",
+      "mesh": 12
+    },
+    {
+      "name": "Cylinder.034",
+      "mesh": 13
+    },
+    {
+      "name": "Cylinder.035",
+      "mesh": 14
+    },
+    {
+      "name": "Cylinder.036",
+      "mesh": 15
+    },
+    {
+      "name": "Cylinder.037",
+      "mesh": 16
+    },
+    {
+      "name": "Cylinder.038",
+      "mesh": 17
+    },
+    {
+      "name": "Cylinder.039",
+      "mesh": 18
+    },
+    {
+      "name": "Cylinder.041",
+      "mesh": 19
+    },
+    {
+      "name": "Cylinder.042",
+      "mesh": 20
+    },
+    {
+      "name": "Cylinder.043",
+      "mesh": 21
+    },
+    {
+      "name": "Cube.004",
+      "mesh": 22
+    },
+    {
+      "name": "Cube.003",
+      "mesh": 23
+    },
+    {
+      "name": "Cylinder.001",
+      "mesh": 24
+    },
+    {
+      "name": "Cylinder.008",
+      "mesh": 25
+    },
+    {
+      "name": "Cube.002",
+      "mesh": 26
+    },
+    {
+      "name": "Cube.008",
+      "mesh": 27
+    },
+    {
+      "name": "Cylinder.004",
+      "mesh": 28
+    },
+    {
+      "name": "Cylinder.005",
+      "mesh": 29
+    },
+    {
+      "name": "Cylinder.006",
+      "mesh": 30
+    },
+    {
+      "name": "Cylinder.007",
+      "mesh": 31
+    },
+    {
+      "name": "Cylinder.009",
+      "mesh": 32
+    },
+    {
+      "name": "Cylinder.010",
+      "mesh": 33
+    },
+    {
+      "name": "Cylinder.025",
+      "mesh": 34
+    },
+    {
+      "name": "Cylinder.026",
+      "mesh": 35
+    },
+    {
+      "name": "Cylinder.027",
+      "mesh": 36
+    },
+    {
+      "name": "Cube.005",
+      "mesh": 37
+    },
+    {
+      "name": "Cube.001",
+      "mesh": 38
+    },
+    {
+      "name": "BézierCircle",
+      "translation": [
+        0,
+        -1.9236130714416504,
+        0
+      ]
+    },
+    {
+      "name": "Camera",
+      "camera": 0,
+      "translation": [
+        0,
+        -1.950289249420166,
+        2.8693735599517822
+      ],
+      "rotation": [
+        0.2940705120563507,
+        0,
+        0,
+        0.9557837843894958
+      ]
+    },
+    {
+      "name": "Empty",
+      "translation": [
+        0,
+        0.09693682193756104,
+        0
+      ],
+      "children": [
+        39,
+        40
+      ]
+    }
+  ],
+  "animations": [
+    {
+      "name": "CameraAction",
+      "channels": [
+        {
+          "target": {
+            "node": 41,
+            "path": "rotation"
+          },
+          "sampler": 0
+        }
+      ],
+      "samplers": [
+        {
+          "interpolation": "LINEAR",
+          "inputBounds": {
+            "min": [
+              0
+            ],
+            "max": [
+              2
+            ],
+            "count": 49
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "pages": [
+    {
+      "mobile": false,
+      "viewport": {
+        "width": 1512,
+        "height": 820
+      },
+      "fonts": {
+        "fonts": [
+          {
+            "familyName": "Helvetica Neue LT Pro",
+            "postScriptName": "HelveticaNeueLTPro-Md",
+            "isCustomFont": true,
+            "glyphCount": 9
+          }
+        ]
+      },
+      "about": [
+        {
+          "class": "H1",
+          "rect": {
+            "x": 411.890625,
+            "y": 233.375,
+            "width": 688.203125,
+            "height": 140.65625,
+            "top": 233.375,
+            "right": 1100.09375,
+            "bottom": 374.03125,
+            "left": 411.890625
+          },
+          "fontSize": "73.26px",
+          "fontWeight": "500",
+          "lineHeight": "70.3296px",
+          "letterSpacing": "normal",
+          "width": "688.203px",
+          "marginTop": "0px",
+          "paddingTop": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "reference-about-body",
+          "rect": {
+            "x": 431.453125,
+            "y": 415.03125,
+            "width": 649.0625,
+            "height": 218.8125,
+            "top": 415.03125,
+            "right": 1080.515625,
+            "bottom": 633.84375,
+            "left": 431.453125
+          },
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "width": "649.062px",
+          "marginTop": "41px",
+          "paddingTop": "26px",
+          "gap": "normal"
+        },
+        {
+          "class": "P",
+          "rect": {
+            "x": 431.453125,
+            "y": 442.03125,
+            "width": 649.0625,
+            "height": 55.25,
+            "top": 442.03125,
+            "right": 1080.515625,
+            "bottom": 497.28125,
+            "left": 431.453125
+          },
+          "fontSize": "16.7504px",
+          "fontWeight": "400",
+          "lineHeight": "27.6382px",
+          "letterSpacing": "normal",
+          "width": "649.062px",
+          "marginTop": "0px",
+          "paddingTop": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "reference-about-meta",
+          "rect": {
+            "x": 431.453125,
+            "y": 538.28125,
+            "width": 649.0625,
+            "height": 95.5625,
+            "top": 538.28125,
+            "right": 1080.515625,
+            "bottom": 633.84375,
+            "left": 431.453125
+          },
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "width": "649.062px",
+          "marginTop": "41px",
+          "paddingTop": "0px",
+          "gap": "26px"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fonts": {
+        "fonts": [
+          {
+            "familyName": "Helvetica Neue LT Pro",
+            "postScriptName": "HelveticaNeueLTPro-Md",
+            "isCustomFont": true,
+            "glyphCount": 9
+          }
+        ]
+      },
+      "touch": {
+        "before": "4.9898396767832125",
+        "after": "2.626231408833269",
+        "scale": 1,
+        "url": "http://127.0.0.1:4176/",
+        "object": "none"
+      },
+      "about": [
+        {
+          "class": "H1",
+          "rect": {
+            "x": 14,
+            "y": 236.015625,
+            "width": 362,
+            "height": 65.25,
+            "top": 236.015625,
+            "right": 376,
+            "bottom": 301.265625,
+            "left": 14
+          },
+          "fontSize": "34px",
+          "fontWeight": "500",
+          "lineHeight": "32.64px",
+          "letterSpacing": "normal",
+          "width": "362px",
+          "marginTop": "0px",
+          "paddingTop": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "reference-about-body",
+          "rect": {
+            "x": 14,
+            "y": 327.265625,
+            "width": 362,
+            "height": 344.71875,
+            "top": 327.265625,
+            "right": 376,
+            "bottom": 671.984375,
+            "left": 14
+          },
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "width": "362px",
+          "marginTop": "26px",
+          "paddingTop": "16px",
+          "gap": "normal"
+        },
+        {
+          "class": "P",
+          "rect": {
+            "x": 14,
+            "y": 344.265625,
+            "width": 362,
+            "height": 46.1875,
+            "top": 344.265625,
+            "right": 376,
+            "bottom": 390.453125,
+            "left": 14
+          },
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "23.1px",
+          "letterSpacing": "normal",
+          "width": "362px",
+          "marginTop": "0px",
+          "paddingTop": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "reference-about-meta",
+          "rect": {
+            "x": 14,
+            "y": 432.640625,
+            "width": 362,
+            "height": 239.34375,
+            "top": 432.640625,
+            "right": 376,
+            "bottom": 671.984375,
+            "left": 14
+          },
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "width": "362px",
+          "marginTop": "42.2px",
+          "paddingTop": "0px",
+          "gap": "14px"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "pdfSHA256": "4dbab198e5c0376b637b776aa72707bcb8a3865f4db4b0cc7831baace406f098"
+}

@@ -1,0 +1,18 @@
+{
+  "source": "/Users/a77/.codex/worktrees/4618/portfolio/assets/3d/workstation-graybox/v001",
+  "units": "meters",
+  "desktop_height": 0.74,
+  "desktop_thickness": 0.028,
+  "L_angle_degrees": 90,
+  "interactive_groups": [
+    "HOTSPOT_monitor",
+    "HOTSPOT_lamp",
+    "HOTSPOT_guestbook",
+    "HOTSPOT_badge",
+    "HOTSPOT_map",
+    "HOTSPOT_camera_group",
+    "HOTSPOT_audio_controls",
+    "HOTSPOT_cv"
+  ],
+  "mesh_count": 175
+}

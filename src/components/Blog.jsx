@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "motion/react";
 
 export default function Blog() {
   const posts = [
@@ -32,7 +32,7 @@ export default function Blog() {
   ];
 
   return (
-    <motion.div
+    <Motion.div
       className="max-w-6xl mx-auto px-4 py-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -52,6 +52,6 @@ export default function Blog() {
           </div>
         ))}
       </div>
-    </motion.div>
+    </Motion.div>
   );
 }

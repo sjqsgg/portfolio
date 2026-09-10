@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'motion/react';
 
 export default function Blog1() {
   return (
-    <motion.div
+    <Motion.div
       className="max-w-3xl mx-auto px-6 py-16 space-y-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -13,6 +13,6 @@ export default function Blog1() {
       <p className="text-sm text-gray-500">April 10, 2025 · 3 min read</p>
       <img src="/photos/blog1.jpg" alt="cover" className="w-full rounded" />
       <p className="text-lg leading-relaxed text-gray-700">Coming soon...</p>
-    </motion.div>
+    </Motion.div>
   );
 }

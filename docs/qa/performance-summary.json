@@ -1,0 +1,32 @@
+{
+  "desktop": {
+    "scores": {
+      "performance": 99,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "metrics": {
+      "largest-contentful-paint": "0.5\u00a0s",
+      "total-blocking-time": "110\u00a0ms",
+      "cumulative-layout-shift": "0.004"
+    },
+    "lighthouseVersion": "12.8.2",
+    "fetchTime": "2026-09-08T22:10:43.768Z"
+  },
+  "mobile": {
+    "scores": {
+      "performance": 97,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "metrics": {
+      "largest-contentful-paint": "2.4\u00a0s",
+      "total-blocking-time": "100\u00a0ms",
+      "cumulative-layout-shift": "0"
+    },
+    "lighthouseVersion": "12.8.2",
+    "fetchTime": "2026-09-08T22:11:15.427Z"
+  }
+}

@@ -1,0 +1,363 @@
+{
+  "capturedOn": "2026-09-09",
+  "source": "https://www.hirotos.com/",
+  "units": {
+    "layout": "CSS px",
+    "textureFont": "canvas px",
+    "duration": "seconds"
+  },
+  "viewports": [
+    [
+      390,
+      844
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1512,
+      820
+    ],
+    [
+      1920,
+      1080
+    ]
+  ],
+  "dpr": 1,
+  "routes": [
+    "/",
+    "/projects/",
+    "/about/",
+    "/contact/"
+  ],
+  "fontRules": [
+    {
+      "id": "T-01",
+      "element": "导航／首页职业／页名／资料",
+      "size": "max(12px,min(.8vw,7.8px + .28vw))",
+      "weight": "400；职业500",
+      "lineHeight": "1；资料1.2–1.3",
+      "letterSpacing": ".045em；资料.018em"
+    },
+    {
+      "id": "T-02",
+      "element": "首页姓名",
+      "size": "max(24px,2.8vw)",
+      "weight": "500",
+      "lineHeight": ".98",
+      "letterSpacing": "0"
+    },
+    {
+      "id": "T-03",
+      "element": "页眉／About语言",
+      "size": "max(13px,min(1vw,9.75px + .35vw))",
+      "weight": "500",
+      "lineHeight": ".95",
+      "letterSpacing": ".035em；按钮.045em"
+    },
+    {
+      "id": "T-04",
+      "element": "Projects说明",
+      "size": "max(21.5px,min(2.3vw,22.1px + .805vw))",
+      "weight": "500",
+      "lineHeight": "1.08",
+      "letterSpacing": "0"
+    },
+    {
+      "id": "T-05",
+      "element": "About英文标题",
+      "size": "max(34px,min(5vw,46.8px + 1.75vw))",
+      "weight": "500",
+      "lineHeight": ".96",
+      "letterSpacing": "0"
+    },
+    {
+      "id": "T-06",
+      "element": "About日文标题",
+      "size": "max(30px,min(4vw,36.4px + 1.4vw))",
+      "weight": "500（字形回退另记）",
+      "lineHeight": ".96",
+      "letterSpacing": "0"
+    },
+    {
+      "id": "T-07",
+      "element": "About正文",
+      "size": "max(14px,min(1.2vw,10.4px + .42vw))",
+      "weight": "400",
+      "lineHeight": "1.65",
+      "letterSpacing": "normal"
+    },
+    {
+      "id": "T-08",
+      "element": "Contact标题",
+      "size": "max(34px,min(5.2vw,49.4px + 1.82vw))",
+      "weight": "500",
+      "lineHeight": ".96",
+      "letterSpacing": "0"
+    },
+    {
+      "id": "T-09",
+      "element": "Contact链接",
+      "size": "max(18px,min(1.8vw,15.6px + .63vw))",
+      "weight": "500",
+      "lineHeight": "1",
+      "letterSpacing": "0"
+    },
+    {
+      "id": "T-10",
+      "element": "详情标题",
+      "size": "max(36px,min(5.5vw,54.6px + 1.925vw))",
+      "weight": "500",
+      "lineHeight": ".88",
+      "letterSpacing": "0"
+    },
+    {
+      "id": "T-11",
+      "element": "详情正文",
+      "size": "max(15px,min(1.4vw,11.7px + .49vw))",
+      "weight": "400",
+      "lineHeight": "1.55",
+      "letterSpacing": "normal"
+    },
+    {
+      "id": "T-12",
+      "element": "图库悬停资料",
+      "size": "max(11px,min(.733vw,7.15px + .25655vw))",
+      "weight": "400",
+      "lineHeight": "1",
+      "letterSpacing": ".045em"
+    },
+    {
+      "id": "T-13",
+      "element": "图库悬停标题",
+      "size": "max(14px,min(.933vw,9.1px + .32655vw))",
+      "weight": "500",
+      "lineHeight": "1",
+      "letterSpacing": "0"
+    },
+    {
+      "id": "T-14",
+      "element": "Loading文字",
+      "size": "clamp(12px,1.35vw,15px)",
+      "weight": "500",
+      "lineHeight": "1",
+      "letterSpacing": ".14em"
+    },
+    {
+      "id": "T-15",
+      "element": "SVG光标标签",
+      "size": "max(10px,min(.667vw,6.5px + .23345vw))",
+      "weight": "700",
+      "lineHeight": "SVG text",
+      "letterSpacing": ".035em"
+    }
+  ],
+  "mobileFontRules": [
+    {
+      "id": "T-01a",
+      "element": "首页 dt",
+      "size": "max(10px,min(2.94vw,6.5px + 1.029vw))",
+      "weight": "400",
+      "lineHeight": "1"
+    },
+    {
+      "id": "T-01b",
+      "element": "首页 dd",
+      "size": "max(11px,min(3.235vw,7.15px + 1.13225vw))",
+      "weight": "400",
+      "lineHeight": "1.25"
+    },
+    {
+      "id": "T-04m",
+      "element": "Projects说明",
+      "size": "max(25px,min(7.6vw,21.45px + 2.66vw))",
+      "weight": "500",
+      "lineHeight": "1.08"
+    },
+    {
+      "id": "T-09m",
+      "element": "Contact链接",
+      "size": "max(18px,min(5.6vw,16.9px + 1.96vw))",
+      "weight": "500",
+      "lineHeight": "1.08"
+    },
+    {
+      "id": "T-10m",
+      "element": "详情标题",
+      "size": "max(32px,min(9.6vw,31.2px + 3.36vw))",
+      "weight": "500",
+      "lineHeight": ".96"
+    },
+    {
+      "id": "T-11m",
+      "element": "详情正文",
+      "size": "max(14px,min(4.118vw,9.1px + 1.4413vw))",
+      "weight": "400",
+      "lineHeight": "1.48"
+    },
+    {
+      "id": "T-03m",
+      "element": "详情语言按钮",
+      "size": "max(12px,min(3.529vw,7.8px + 1.23515vw))",
+      "weight": "继承400",
+      "lineHeight": "1"
+    }
+  ],
+  "projects": [
+    {
+      "index": 1,
+      "title": "d.brain",
+      "image": "https://www.hirotos.com/projects/dbrain.png",
+      "declaredAspectDimensions": [
+        844,
+        594
+      ],
+      "category": "Web site",
+      "role": "DESIGN / FRONT-END DEVELOPMENT",
+      "href": "https://www.dbrain1991.co.jp"
+    },
+    {
+      "index": 2,
+      "title": "WIRED",
+      "image": "https://www.hirotos.com/projects/wired.png",
+      "declaredAspectDimensions": [
+        2400,
+        1794
+      ],
+      "category": "Web site",
+      "role": "DESIGN / FRONT-END DEVELOPMENT / 3D MODELING",
+      "href": "https://wired.jp/article/wired-innovation-award-2025/"
+    },
+    {
+      "index": 3,
+      "title": "PROTO 2026",
+      "image": "https://www.hirotos.com/projects/prtfolio_proto_2026.png",
+      "declaredAspectDimensions": [
+        2538,
+        1584
+      ],
+      "category": "Web site",
+      "role": "DESIGN / FRONT-END DEVELOPMENT / 3D MODELING",
+      "href": "https://archive-proto-2026.hirotos.com"
+    },
+    {
+      "index": 4,
+      "title": "Noodle",
+      "image": "https://www.hirotos.com/projects/demo01.png",
+      "declaredAspectDimensions": [
+        3226,
+        1716
+      ],
+      "category": "Demo site",
+      "role": "DESIGN / FRONT-END DEVELOPMENT / 3D MODELING",
+      "href": "https://demo-01-3d-motion.hirotos.com"
+    },
+    {
+      "index": 5,
+      "title": "TRACK",
+      "image": "https://www.hirotos.com/projects/track.png",
+      "declaredAspectDimensions": [
+        1371,
+        976
+      ],
+      "category": "Demo site",
+      "role": "DESIGN / FRONT-END DEVELOPMENT / 3D MODELING",
+      "href": "https://demo-03-track.hirotos.com"
+    },
+    {
+      "index": 6,
+      "title": "PORTFOLIO 2022",
+      "image": "https://www.hirotos.com/projects/portfolio2022.png",
+      "declaredAspectDimensions": [
+        1500,
+        1440
+      ],
+      "category": "Web site",
+      "role": "DESIGN / FRONT-END DEVELOPMENT",
+      "href": "https://archive.hirotos.com/portfolio2022/"
+    },
+    {
+      "index": 7,
+      "title": "SHOWREEL 2025",
+      "image": "https://www.hirotos.com/projects/showreel.png",
+      "declaredAspectDimensions": [
+        2258,
+        1470
+      ],
+      "category": "Showreel",
+      "role": "3D MODELING / MOTION",
+      "href": "https://reel.hirotos.com"
+    },
+    {
+      "index": 8,
+      "title": "Tap to meet you",
+      "image": "https://www.hirotos.com/projects/tap_to_meet_you.png",
+      "declaredAspectDimensions": [
+        1465,
+        879
+      ],
+      "category": "Demo site",
+      "role": "DESIGN / FRONT-END DEVELOPMENT / 3D MODELING",
+      "href": "https://demo-02-tap-to-meet-you.hirotos.com/"
+    }
+  ],
+  "motion": {
+    "sourceLevel": true,
+    "navigation": {
+      "duration": 2.15,
+      "waveDuration": 1.95,
+      "brightness": [
+        1,
+        0.32
+      ],
+      "brightnessDuration": 0.5,
+      "blur": 0
+    },
+    "textReveal": {
+      "y": 16,
+      "duration": 1.02,
+      "stagger": 0.075,
+      "ease": "power2.out",
+      "initialDelay": 0.14,
+      "routeDelay": 0.84
+    },
+    "gallery": {
+      "speedPxPerSecond": 48,
+      "hoverStopDuration": 0.58,
+      "resumeDuration": 0.86,
+      "entry": {
+        "y": 84,
+        "scale": 0.985,
+        "duration": 1.28,
+        "stagger": 0.085,
+        "ease": "expo.out"
+      }
+    },
+    "detail": {
+      "desktopOpen": 0.92,
+      "desktopClose": 0.78,
+      "ease": "expo.inOut",
+      "mobileFade": 0.28,
+      "mobileContent": 0.48
+    },
+    "signScramble": {
+      "cycle": 3.65,
+      "scramble": 1.25
+    },
+    "trafficLightCycle": 3.6,
+    "rgbImpact": {
+      "hold": 0.05,
+      "decay": 0.24,
+      "maximumFrameDelta": 0.03333333333333333
+    }
+  },
+  "observedLimitations": {
+    "escapeDoesNotCloseDetail": true,
+    "galleryMovesWithReducedMotion": true,
+    "darkPreferenceRemainsWhite": true,
+    "noWebGLFallback": "untested",
+    "physicalMobileDevices": "untested",
+    "mobileDetailCoverage": "representative WIRED EN/JA"
+  }
+}

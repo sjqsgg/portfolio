@@ -1,0 +1,16 @@
+[
+  "sticker-01.png",
+  "sticker-02.png",
+  "sticker-03.png",
+  "sticker-04.png",
+  {
+    "filename": "certificate-hiroto-sato-sotd.png",
+    "scale": 1.8,
+    "maxRotation": 5
+  },
+  {
+    "filename": "developer_certificate.png",
+    "scale": 1.8,
+    "maxRotation": 5
+  }
+]

@@ -7,20 +7,26 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:e2e": "npm run build && playwright test",
+    "test": "node --test tests/data.test.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
     "@tailwindcss/vite": "^4.1.4",
     "motion": "^12.7.2",
     "photoswipe": "^5.4.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.0",
-    "tailwindcss": "^4.1.4"
+    "tailwindcss": "^4.1.4",
+    "three": "^0.185.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@eslint/js": "^9.21.0",
+    "@playwright/test": "^1.63.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",

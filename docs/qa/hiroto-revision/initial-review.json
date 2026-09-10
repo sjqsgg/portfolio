@@ -1,0 +1,778 @@
+[
+  {
+    "route": "/",
+    "viewport": {
+      "width": 1512,
+      "height": 820
+    },
+    "errors": [],
+    "metrics": {
+      "pageWidth": 1512,
+      "pageHeight": 820,
+      "body": "rgba(0, 0, 0, 0)",
+      "root": "rgb(255, 255, 255)",
+      "elements": [
+        {
+          "class": "meta muted",
+          "rect": {
+            "x": 39.296875,
+            "y": 40,
+            "width": 263.0625,
+            "height": 12.03125,
+            "top": 40,
+            "right": 302.359375,
+            "bottom": 52.03125,
+            "left": 39.296875
+          },
+          "font": "500 12.0336px / 12.0336px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "12.0336px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "identity-name",
+          "rect": {
+            "x": 39.296875,
+            "y": 62.03125,
+            "width": 263.0625,
+            "height": 41.484375,
+            "top": 62.03125,
+            "right": 302.359375,
+            "bottom": 103.515625,
+            "left": 39.296875
+          },
+          "font": "500 42.336px / 41.4893px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "42.336px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "canvas-nav",
+          "rect": {
+            "x": 1375.625,
+            "y": 40,
+            "width": 97.078125,
+            "height": 117.15625,
+            "top": 40,
+            "right": 1472.703125,
+            "bottom": 157.15625,
+            "left": 1375.625
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "8px"
+        },
+        {
+          "class": "canvas-base",
+          "rect": {
+            "x": 39.296875,
+            "y": 731.9375,
+            "width": 222.25,
+            "height": 48.0625,
+            "top": 731.9375,
+            "right": 261.546875,
+            "bottom": 780,
+            "left": 39.296875
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "7px"
+        }
+      ]
+    }
+  },
+  {
+    "route": "/photography",
+    "viewport": {
+      "width": 1512,
+      "height": 820
+    },
+    "errors": [],
+    "metrics": {
+      "pageWidth": 1512,
+      "pageHeight": 1087,
+      "body": "rgba(0, 0, 0, 0)",
+      "root": "rgb(255, 255, 255)",
+      "elements": [
+        {
+          "class": "canvas-nav",
+          "rect": {
+            "x": 1375.625,
+            "y": 40,
+            "width": 97.078125,
+            "height": 117.15625,
+            "top": 40,
+            "right": 1472.703125,
+            "bottom": 157.15625,
+            "left": 1375.625
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "8px"
+        },
+        {
+          "class": "gallery-row-heading",
+          "rect": {
+            "x": 39.296875,
+            "y": 252.21875,
+            "width": 1433.40625,
+            "height": 38,
+            "top": 252.21875,
+            "right": 1472.703125,
+            "bottom": 290.21875,
+            "left": 39.296875
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "24px"
+        },
+        {
+          "class": "gallery-photo size-0",
+          "rect": {
+            "x": -24.16499900817871,
+            "y": 327.15625,
+            "width": 317.515625,
+            "height": 225.28125,
+            "top": 327.15625,
+            "right": 293.3506259918213,
+            "bottom": 552.4375,
+            "left": -24.16499900817871
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-1",
+          "rect": {
+            "x": 325.1006164550781,
+            "y": 302.21875,
+            "width": 208.64065551757812,
+            "height": 275.171875,
+            "top": 302.21875,
+            "right": 533.7412719726562,
+            "bottom": 577.390625,
+            "left": 325.1006164550781
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-2",
+          "rect": {
+            "x": 565.4912719726562,
+            "y": 333.96875,
+            "width": 362.875,
+            "height": 211.671875,
+            "top": 333.96875,
+            "right": 928.3662719726562,
+            "bottom": 545.640625,
+            "left": 565.4912719726562
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-3",
+          "rect": {
+            "x": 960.1162719726562,
+            "y": 302.21875,
+            "width": 208.64056396484375,
+            "height": 275.171875,
+            "top": 302.21875,
+            "right": 1168.7568359375,
+            "bottom": 577.390625,
+            "left": 960.1162719726562
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-0",
+          "rect": {
+            "x": 1200.5068359375,
+            "y": 327.15625,
+            "width": 317.515625,
+            "height": 225.28125,
+            "top": 327.15625,
+            "right": 1518.0224609375,
+            "bottom": 552.4375,
+            "left": 1200.5068359375
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-1",
+          "rect": {
+            "x": 1549.7724609375,
+            "y": 302.21875,
+            "width": 208.640625,
+            "height": 275.171875,
+            "top": 302.21875,
+            "right": 1758.4130859375,
+            "bottom": 577.390625,
+            "left": 1549.7724609375
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-2",
+          "rect": {
+            "x": 1790.1630859375,
+            "y": 333.96875,
+            "width": 362.875,
+            "height": 211.671875,
+            "top": 333.96875,
+            "right": 2153.0380859375,
+            "bottom": 545.640625,
+            "left": 1790.1630859375
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-3",
+          "rect": {
+            "x": 2184.7880859375,
+            "y": 302.21875,
+            "width": 208.640625,
+            "height": 275.171875,
+            "top": 302.21875,
+            "right": 2393.4287109375,
+            "bottom": 577.390625,
+            "left": 2184.7880859375
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-0",
+          "rect": {
+            "x": 2425.1787109375,
+            "y": 327.15625,
+            "width": 317.515625,
+            "height": 225.28125,
+            "top": 327.15625,
+            "right": 2742.6943359375,
+            "bottom": 552.4375,
+            "left": 2425.1787109375
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-1",
+          "rect": {
+            "x": 2774.4443359375,
+            "y": 302.21875,
+            "width": 208.640625,
+            "height": 275.171875,
+            "top": 302.21875,
+            "right": 2983.0849609375,
+            "bottom": 577.390625,
+            "left": 2774.4443359375
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        }
+      ]
+    }
+  },
+  {
+    "route": "/about",
+    "viewport": {
+      "width": 1512,
+      "height": 820
+    },
+    "errors": [],
+    "metrics": {
+      "pageWidth": 1512,
+      "pageHeight": 820,
+      "body": "rgba(0, 0, 0, 0)",
+      "root": "rgb(255, 255, 255)",
+      "elements": [
+        {
+          "class": "canvas-nav",
+          "rect": {
+            "x": 1375.625,
+            "y": 40,
+            "width": 97.078125,
+            "height": 117.15625,
+            "top": 40,
+            "right": 1472.703125,
+            "bottom": 157.15625,
+            "left": 1375.625
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "8px"
+        },
+        {
+          "class": "reference-about-content",
+          "rect": {
+            "x": 371.40625,
+            "y": 199.34375,
+            "width": 769.171875,
+            "height": 434.5,
+            "top": 199.34375,
+            "right": 1140.578125,
+            "bottom": 633.84375,
+            "left": 371.40625
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "",
+          "rect": {
+            "x": 411.890625,
+            "y": 233.375,
+            "width": 688.203125,
+            "height": 140.65625,
+            "top": 233.375,
+            "right": 1100.09375,
+            "bottom": 374.03125,
+            "left": 411.890625
+          },
+          "font": "500 73.26px / 70.3296px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "73.26px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "reference-about-body",
+          "rect": {
+            "x": 431.453125,
+            "y": 415.03125,
+            "width": 649.0625,
+            "height": 218.8125,
+            "top": 415.03125,
+            "right": 1080.515625,
+            "bottom": 633.84375,
+            "left": 431.453125
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        }
+      ]
+    }
+  },
+  {
+    "route": "/",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "metrics": {
+      "pageWidth": 390,
+      "pageHeight": 844,
+      "body": "rgba(0, 0, 0, 0)",
+      "root": "rgb(255, 255, 255)",
+      "elements": [
+        {
+          "class": "meta muted",
+          "rect": {
+            "x": 14,
+            "y": 18,
+            "width": 242,
+            "height": 26.375,
+            "top": 18,
+            "right": 256,
+            "bottom": 44.375,
+            "left": 14
+          },
+          "font": "500 12px / 13.2px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "12px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "identity-name",
+          "rect": {
+            "x": 14,
+            "y": 54.375,
+            "width": 242,
+            "height": 23.515625,
+            "top": 54.375,
+            "right": 256,
+            "bottom": 77.890625,
+            "left": 14
+          },
+          "font": "500 24px / 23.52px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "24px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "canvas-nav",
+          "rect": {
+            "x": 279.171875,
+            "y": 18,
+            "width": 96.828125,
+            "height": 117,
+            "top": 18,
+            "right": 376,
+            "bottom": 135,
+            "left": 279.171875
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "8px"
+        },
+        {
+          "class": "canvas-base",
+          "rect": {
+            "x": 14,
+            "y": 794.03125,
+            "width": 280,
+            "height": 31.96875,
+            "top": 794.03125,
+            "right": 294,
+            "bottom": 826,
+            "left": 14
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "7px"
+        }
+      ]
+    }
+  },
+  {
+    "route": "/photography",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "metrics": {
+      "pageWidth": 390,
+      "pageHeight": 904,
+      "body": "rgba(0, 0, 0, 0)",
+      "root": "rgb(255, 255, 255)",
+      "elements": [
+        {
+          "class": "canvas-nav",
+          "rect": {
+            "x": 279.171875,
+            "y": 18,
+            "width": 96.828125,
+            "height": 117,
+            "top": 18,
+            "right": 376,
+            "bottom": 135,
+            "left": 279.171875
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "8px"
+        },
+        {
+          "class": "gallery-row-heading",
+          "rect": {
+            "x": 14,
+            "y": 268.625,
+            "width": 362,
+            "height": 35.796875,
+            "top": 268.625,
+            "right": 376,
+            "bottom": 304.421875,
+            "left": 14
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "16px"
+        },
+        {
+          "class": "gallery-photo size-0",
+          "rect": {
+            "x": -22.707500457763672,
+            "y": 335.421875,
+            "width": 220,
+            "height": 154,
+            "top": 335.421875,
+            "right": 197.29249954223633,
+            "bottom": 489.421875,
+            "left": -22.707500457763672
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-1",
+          "rect": {
+            "x": 211.29249572753906,
+            "y": 314.421875,
+            "width": 154.00001525878906,
+            "height": 196,
+            "top": 314.421875,
+            "right": 365.2925109863281,
+            "bottom": 510.421875,
+            "left": 211.29249572753906
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-2",
+          "rect": {
+            "x": 379.2925109863281,
+            "y": 337.421875,
+            "width": 253.99996948242188,
+            "height": 150,
+            "top": 337.421875,
+            "right": 633.29248046875,
+            "bottom": 487.421875,
+            "left": 379.2925109863281
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-3",
+          "rect": {
+            "x": 647.29248046875,
+            "y": 314.421875,
+            "width": 154,
+            "height": 196,
+            "top": 314.421875,
+            "right": 801.29248046875,
+            "bottom": 510.421875,
+            "left": 647.29248046875
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-0",
+          "rect": {
+            "x": 815.29248046875,
+            "y": 335.421875,
+            "width": 220,
+            "height": 154,
+            "top": 335.421875,
+            "right": 1035.29248046875,
+            "bottom": 489.421875,
+            "left": 815.29248046875
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-1",
+          "rect": {
+            "x": 1049.29248046875,
+            "y": 314.421875,
+            "width": 154,
+            "height": 196,
+            "top": 314.421875,
+            "right": 1203.29248046875,
+            "bottom": 510.421875,
+            "left": 1049.29248046875
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-2",
+          "rect": {
+            "x": 1217.29248046875,
+            "y": 337.421875,
+            "width": 254,
+            "height": 150,
+            "top": 337.421875,
+            "right": 1471.29248046875,
+            "bottom": 487.421875,
+            "left": 1217.29248046875
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-3",
+          "rect": {
+            "x": 1485.29248046875,
+            "y": 314.421875,
+            "width": 154,
+            "height": 196,
+            "top": 314.421875,
+            "right": 1639.29248046875,
+            "bottom": 510.421875,
+            "left": 1485.29248046875
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-0",
+          "rect": {
+            "x": 1653.29248046875,
+            "y": 335.421875,
+            "width": 220,
+            "height": 154,
+            "top": 335.421875,
+            "right": 1873.29248046875,
+            "bottom": 489.421875,
+            "left": 1653.29248046875
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "gallery-photo size-1",
+          "rect": {
+            "x": 1887.29248046875,
+            "y": 314.421875,
+            "width": 154,
+            "height": 196,
+            "top": 314.421875,
+            "right": 2041.29248046875,
+            "bottom": 510.421875,
+            "left": 1887.29248046875
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        }
+      ]
+    }
+  },
+  {
+    "route": "/about",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "metrics": {
+      "pageWidth": 390,
+      "pageHeight": 844,
+      "body": "rgba(0, 0, 0, 0)",
+      "root": "rgb(255, 255, 255)",
+      "elements": [
+        {
+          "class": "canvas-nav",
+          "rect": {
+            "x": 279.171875,
+            "y": 18,
+            "width": 96.828125,
+            "height": 117,
+            "top": 18,
+            "right": 376,
+            "bottom": 135,
+            "left": 279.171875
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "8px"
+        },
+        {
+          "class": "reference-about-content",
+          "rect": {
+            "x": 14,
+            "y": 210.015625,
+            "width": 362,
+            "height": 461.96875,
+            "top": 210.015625,
+            "right": 376,
+            "bottom": 671.984375,
+            "left": 14
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "",
+          "rect": {
+            "x": 14,
+            "y": 236.015625,
+            "width": 362,
+            "height": 65.25,
+            "top": 236.015625,
+            "right": 376,
+            "bottom": 301.265625,
+            "left": 14
+          },
+          "font": "500 34px / 32.64px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "34px",
+          "border": "0px",
+          "gap": "normal"
+        },
+        {
+          "class": "reference-about-body",
+          "rect": {
+            "x": 14,
+            "y": 327.265625,
+            "width": 362,
+            "height": 344.71875,
+            "top": 327.265625,
+            "right": 376,
+            "bottom": 671.984375,
+            "left": 14
+          },
+          "font": "16px / 24px helvetica-neue-lt-pro, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+          "fontSize": "16px",
+          "border": "0px",
+          "gap": "normal"
+        }
+      ]
+    }
+  }
+]

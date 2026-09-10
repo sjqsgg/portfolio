@@ -1,0 +1,320 @@
+[
+  {
+    "targetMs": 100,
+    "actualMs": 124,
+    "state": {
+      "route": "projects",
+      "transitioning": "true",
+      "elements": [
+        {
+          "tag": "DIV",
+          "class": "page-transition",
+          "d": null,
+          "style": "pointer-events: auto; opacity: 1; visibility: inherit;"
+        },
+        {
+          "tag": "svg",
+          "class": "page-transition__clip-defs",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "path",
+          "class": null,
+          "d": "M 0 0 H 1512 V 1512 H 0 z M 0 1512 V 1431.2615435999999 Q 756 1512 1512 1431.2615435999999 V 1512 z",
+          "style": null
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__next",
+          "d": null,
+          "style": "clip-path: url(\"#experience-route-transition-next-clip\");"
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__next-content",
+          "d": null,
+          "style": "--transition-content-brightness: 0.985171; --transition-content-blur: 0px;"
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__source-snapshot",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__source-frame",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "MAIN",
+          "class": "experience-page experience-page--about page-transition__source-clone",
+          "d": null,
+          "style": null
+        }
+      ]
+    }
+  },
+  {
+    "targetMs": 400,
+    "actualMs": 403,
+    "state": {
+      "route": "projects",
+      "transitioning": "true",
+      "elements": [
+        {
+          "tag": "DIV",
+          "class": "page-transition",
+          "d": null,
+          "style": "pointer-events: auto; opacity: 1; visibility: inherit;"
+        },
+        {
+          "tag": "svg",
+          "class": "page-transition__clip-defs",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "path",
+          "class": null,
+          "d": "M 0 0 H 1512 V 1512 H 0 z M 0 1512 V 1089.45477144 Q 756 1512 1512 1089.45477144 V 1512 z",
+          "style": null
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__next",
+          "d": null,
+          "style": "clip-path: url(\"#experience-route-transition-next-clip\");"
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__next-content",
+          "d": null,
+          "style": "--transition-content-brightness: 0.366712; --transition-content-blur: 0px;"
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__source-snapshot",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__source-frame",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "MAIN",
+          "class": "experience-page experience-page--about page-transition__source-clone",
+          "d": null,
+          "style": null
+        }
+      ]
+    }
+  },
+  {
+    "targetMs": 800,
+    "actualMs": 805,
+    "state": {
+      "route": "projects",
+      "transitioning": "true",
+      "elements": [
+        {
+          "tag": "DIV",
+          "class": "page-transition",
+          "d": null,
+          "style": "pointer-events: auto; opacity: 1; visibility: inherit;"
+        },
+        {
+          "tag": "svg",
+          "class": "page-transition__clip-defs",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "path",
+          "class": null,
+          "d": "M 0 0 H 1512 V 1512 H 0 z M 0 1512 V 502.77506328 Q 756 861.3948671999999 1512 502.77506328 V 1512 z",
+          "style": null
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__next",
+          "d": null,
+          "style": "clip-path: url(\"#experience-route-transition-next-clip\");"
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__next-content",
+          "d": null,
+          "style": "--transition-content-brightness: 0.32; --transition-content-blur: 0px;"
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__source-snapshot",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__source-frame",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "MAIN",
+          "class": "experience-page experience-page--about page-transition__source-clone",
+          "d": null,
+          "style": null
+        }
+      ]
+    }
+  },
+  {
+    "targetMs": 1200,
+    "actualMs": 1205,
+    "state": {
+      "route": "projects",
+      "transitioning": "true",
+      "elements": [
+        {
+          "tag": "DIV",
+          "class": "page-transition",
+          "d": null,
+          "style": "pointer-events: auto; opacity: 1; visibility: inherit;"
+        },
+        {
+          "tag": "svg",
+          "class": "page-transition__clip-defs",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "path",
+          "class": null,
+          "d": "M 0 0 H 1512 V 1512 H 0 z M 0 1512 V 47.96249976 Q 756 82.17322344 1512 47.96249976 V 1512 z",
+          "style": null
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__next",
+          "d": null,
+          "style": "clip-path: url(\"#experience-route-transition-next-clip\");"
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__next-content",
+          "d": null,
+          "style": "--transition-content-brightness: 0.32; --transition-content-blur: 0px;"
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__source-snapshot",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__source-frame",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "MAIN",
+          "class": "experience-page experience-page--about page-transition__source-clone",
+          "d": null,
+          "style": null
+        }
+      ]
+    }
+  },
+  {
+    "targetMs": 1700,
+    "actualMs": 1702,
+    "state": {
+      "route": "projects",
+      "transitioning": "true",
+      "elements": [
+        {
+          "tag": "DIV",
+          "class": "page-transition",
+          "d": null,
+          "style": "pointer-events: auto; opacity: 1; visibility: inherit;"
+        },
+        {
+          "tag": "svg",
+          "class": "page-transition__clip-defs",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "path",
+          "class": null,
+          "d": "M 0 0 H 1512 V 1512 H 0 z M 0 1512 V 1.26809928 Q 756 2.17260792 1512 1.26809928 V 1512 z",
+          "style": null
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__next",
+          "d": null,
+          "style": "clip-path: url(\"#experience-route-transition-next-clip\");"
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__next-content",
+          "d": null,
+          "style": "--transition-content-brightness: 0.32; --transition-content-blur: 0px;"
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__source-snapshot",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "DIV",
+          "class": "page-transition__source-frame",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "MAIN",
+          "class": "experience-page experience-page--about page-transition__source-clone",
+          "d": null,
+          "style": null
+        }
+      ]
+    }
+  },
+  {
+    "targetMs": 2300,
+    "actualMs": 2304,
+    "state": {
+      "route": "projects",
+      "transitioning": "false",
+      "elements": [
+        {
+          "tag": "DIV",
+          "class": "page-transition",
+          "d": null,
+          "style": "pointer-events: none; opacity: 0; visibility: hidden;"
+        },
+        {
+          "tag": "svg",
+          "class": "page-transition__clip-defs",
+          "d": null,
+          "style": null
+        },
+        {
+          "tag": "path",
+          "class": null,
+          "d": "M 0 1512 V 1512 Q 756 1512 1512 1512 V 1512 z",
+          "style": null
+        }
+      ]
+    }
+  }
+]

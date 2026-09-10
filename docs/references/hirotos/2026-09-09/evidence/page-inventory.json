@@ -1,0 +1,4449 @@
+[
+  {
+    "name": "home",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/",
+    "links": [
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [],
+    "body": "CREATIVE DEVELOPER\n\nHIROTO SATO\nBASE\nTOKYO, JAPAN\nFOCUS\nCREATIVE DEVELOPMENT / MOTION / 3D MODELING\nINDEX\nPORTFOLIO 2026\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 11
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".home-profile p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 18
+        }
+      ]
+    }
+  },
+  {
+    "name": "home-pointer-right",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/",
+    "links": [
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [],
+    "body": "CREATIVE DEVELOPER\n\nHIROTO SATO\nBASE\nTOKYO, JAPAN\nFOCUS\nCREATIVE DEVELOPMENT / MOTION / 3D MODELING\nINDEX\nPORTFOLIO 2026\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 11
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".home-profile p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 18
+        }
+      ]
+    }
+  },
+  {
+    "name": "home-wheel-down",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/",
+    "links": [
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [],
+    "body": "CREATIVE DEVELOPER\n\nHIROTO SATO\nBASE\nTOKYO, JAPAN\nFOCUS\nCREATIVE DEVELOPMENT / MOTION / 3D MODELING\nINDEX\nPORTFOLIO 2026\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 11
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".home-profile p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 18
+        }
+      ]
+    }
+  },
+  {
+    "name": "nav-hover",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/",
+    "links": [
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [],
+    "body": "CREATIVE DEVELOPER\n\nHIROTO SATO\nBASE\nTOKYO, JAPAN\nFOCUS\nCREATIVE DEVELOPMENT / MOTION / 3D MODELING\nINDEX\nPORTFOLIO 2026\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 11
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".home-profile p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 18
+        }
+      ]
+    }
+  },
+  {
+    "name": "projects",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    }
+  },
+  {
+    "name": "projects-hover",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nWEB SITE / DESIGN / FRONT-END DEVELOPMENT / 3D MODELING\nWIRED\nHOME\nPROJECTS\nABOUT\nCONTACT\nVIEW PROJECT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    }
+  },
+  {
+    "name": "project-detail",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "VIEW SITE",
+        "href": "https://wired.jp/article/wired-innovation-award-2025/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": "Back to projects",
+        "class": "back-circle-control projects-zoom__back"
+      },
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: d.brain",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: WIRED",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PROTO 2026",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Noodle",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: TRACK",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PORTFOLIO 2022",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: SHOWREEL 2025",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Tap to meet you",
+        "class": ""
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nEN\nJA\n02\nWIRED\n\nWeb experience for WIRED Innovation Award 2025.\n\nCATEGORY\nWEB SITE\nROLE\nDESIGN / FRONT-END DEVELOPMENT / 3D MODELING\nVIEW SITE\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      "h2": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 5
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".projects-zoom__content p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 47
+        }
+      ]
+    }
+  },
+  {
+    "name": "project-detail-01",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "VIEW SITE",
+        "href": "https://www.dbrain1991.co.jp/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": "Back to projects",
+        "class": "back-circle-control projects-zoom__back"
+      },
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: d.brain",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: WIRED",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PROTO 2026",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Noodle",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: TRACK",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PORTFOLIO 2022",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: SHOWREEL 2025",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Tap to meet you",
+        "class": ""
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nEN\nJA\n01\nd.brain\n\nCorporate site design and frontend implementation for d.brain.\n\nCATEGORY\nWEB SITE\nROLE\nDESIGN / FRONT-END DEVELOPMENT\nVIEW SITE\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      "h2": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 7
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".projects-zoom__content p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 61
+        }
+      ]
+    }
+  },
+  {
+    "name": "project-detail-02",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "VIEW SITE",
+        "href": "https://wired.jp/article/wired-innovation-award-2025/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": "Back to projects",
+        "class": "back-circle-control projects-zoom__back"
+      },
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: d.brain",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: WIRED",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PROTO 2026",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Noodle",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: TRACK",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PORTFOLIO 2022",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: SHOWREEL 2025",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Tap to meet you",
+        "class": ""
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nEN\nJA\n02\nWIRED\n\nWeb experience for WIRED Innovation Award 2025.\n\nCATEGORY\nWEB SITE\nROLE\nDESIGN / FRONT-END DEVELOPMENT / 3D MODELING\nVIEW SITE\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      "h2": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 5
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".projects-zoom__content p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 47
+        }
+      ]
+    }
+  },
+  {
+    "name": "project-detail-03",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "VIEW SITE",
+        "href": "https://archive-proto-2026.hirotos.com/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": "Back to projects",
+        "class": "back-circle-control projects-zoom__back"
+      },
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: d.brain",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: WIRED",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PROTO 2026",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Noodle",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: TRACK",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PORTFOLIO 2022",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: SHOWREEL 2025",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Tap to meet you",
+        "class": ""
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nEN\nJA\n03\nPROTO 2026\n\nPrototype portfolio site exploring interactive 3D presentation and frontend motion.\n\nCATEGORY\nWEB SITE\nROLE\nDESIGN / FRONT-END DEVELOPMENT / 3D MODELING\nVIEW SITE\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      "h2": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 9
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".projects-zoom__content p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 82
+        }
+      ]
+    }
+  },
+  {
+    "name": "project-detail-04",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "VIEW SITE",
+        "href": "https://demo-01-3d-motion.hirotos.com/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": "Back to projects",
+        "class": "back-circle-control projects-zoom__back"
+      },
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: d.brain",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: WIRED",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PROTO 2026",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Noodle",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: TRACK",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PORTFOLIO 2022",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: SHOWREEL 2025",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Tap to meet you",
+        "class": ""
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nEN\nJA\n04\nNoodle\n\n3D motion demo focused on spatial composition and interaction.\n\nCATEGORY\nDEMO SITE\nROLE\nDESIGN / FRONT-END DEVELOPMENT / 3D MODELING\nVIEW SITE\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      "h2": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 6
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".projects-zoom__content p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 61
+        }
+      ]
+    }
+  },
+  {
+    "name": "project-detail-05",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "VIEW SITE",
+        "href": "https://demo-03-track.hirotos.com/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": "Back to projects",
+        "class": "back-circle-control projects-zoom__back"
+      },
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: d.brain",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: WIRED",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PROTO 2026",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Noodle",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: TRACK",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PORTFOLIO 2022",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: SHOWREEL 2025",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Tap to meet you",
+        "class": ""
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nEN\nJA\n05\nTRACK\n\nDemo site exploring project browsing and motion-driven interaction.\n\nCATEGORY\nDEMO SITE\nROLE\nDESIGN / FRONT-END DEVELOPMENT / 3D MODELING\nVIEW SITE\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      "h2": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 5
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".projects-zoom__content p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 67
+        }
+      ]
+    }
+  },
+  {
+    "name": "project-detail-06",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "VIEW SITE",
+        "href": "https://archive.hirotos.com/portfolio2022/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": "Back to projects",
+        "class": "back-circle-control projects-zoom__back"
+      },
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: d.brain",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: WIRED",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PROTO 2026",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Noodle",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: TRACK",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PORTFOLIO 2022",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: SHOWREEL 2025",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Tap to meet you",
+        "class": ""
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nEN\nJA\n06\nPORTFOLIO 2022\n\nPortfolio site from 2022.\n\nCATEGORY\nWEB SITE\nROLE\nDESIGN / FRONT-END DEVELOPMENT\nVIEW SITE\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      "h2": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 13
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".projects-zoom__content p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 25
+        }
+      ]
+    }
+  },
+  {
+    "name": "project-detail-07",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "VIEW SITE",
+        "href": "https://reel.hirotos.com/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": "Back to projects",
+        "class": "back-circle-control projects-zoom__back"
+      },
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: d.brain",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: WIRED",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PROTO 2026",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Noodle",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: TRACK",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PORTFOLIO 2022",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: SHOWREEL 2025",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Tap to meet you",
+        "class": ""
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nEN\nJA\n07\nSHOWREEL 2025\n\nShowreel presenting motion, WebGL, and frontend experiments.\n\nCATEGORY\nSHOWREEL\nROLE\n3D MODELING / MOTION\nVIEW SITE\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      "h2": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 12
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".projects-zoom__content p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 59
+        }
+      ]
+    }
+  },
+  {
+    "name": "project-detail-08",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "VIEW SITE",
+        "href": "https://demo-02-tap-to-meet-you.hirotos.com/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": "Back to projects",
+        "class": "back-circle-control projects-zoom__back"
+      },
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: d.brain",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: WIRED",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PROTO 2026",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Noodle",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: TRACK",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PORTFOLIO 2022",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: SHOWREEL 2025",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Tap to meet you",
+        "class": ""
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nEN\nJA\n08\nTap to meet you\n\nDemo site with a compact tap interaction and direct visual feedback.\n\nCATEGORY\nDEMO SITE\nROLE\nDESIGN / FRONT-END DEVELOPMENT / 3D MODELING\nVIEW SITE\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      "h2": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 14
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".projects-zoom__content p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 67
+        }
+      ]
+    }
+  },
+  {
+    "name": "project-detail-ja",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "サイトを見る",
+        "href": "https://demo-02-tap-to-meet-you.hirotos.com/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": "Back to projects",
+        "class": "back-circle-control projects-zoom__back"
+      },
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: d.brain",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: WIRED",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: PROTO 2026",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: Noodle",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: TRACK",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: PORTFOLIO 2022",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: SHOWREEL 2025",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: Tap to meet you",
+        "class": ""
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nEN\nJA\n08\nTap to meet you\n\nタップ操作と視覚的なフィードバックを軸にしたデモサイト。\n\nカテゴリー\nデモサイト\n担当\nデザイン / フロントエンド開発 / 3Dモデリング\nサイトを見る\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      "h2": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 14
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".projects-zoom__content p": [
+        {
+          "familyName": "PingFang SC",
+          "postScriptName": "PingFangSC-Regular",
+          "isCustomFont": false,
+          "glyphCount": 28
+        }
+      ]
+    }
+  },
+  {
+    "name": "projects-return",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    }
+  },
+  {
+    "name": "about",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/about/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "HELLO@HIROTOS.COM",
+        "href": "mailto:hello@hirotos.com"
+      },
+      {
+        "text": "LINKEDIN",
+        "href": "https://www.linkedin.com/in/hiroto-sato-2414b23b7"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      }
+    ],
+    "body": "EN\nJA\n\nABOUT\n\nCreative developer building interactive web experiences.\n\nI design and implement digital experiences that naturally connect motion, WebGL, 3D modeling, and interface behavior. I specialize in interactive front-end development that brings visual expression and a tactile sense of interaction together.\n\nNAME\nHIROTO SATO\nROLE\nCREATIVE DEVELOPER\nCONTACT\nHELLO@HIROTOS.COM\nLINKEDIN\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 54
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".about-page__body p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 240
+        }
+      ]
+    }
+  },
+  {
+    "name": "about-ja",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/about/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "HELLO@HIROTOS.COM",
+        "href": "mailto:hello@hirotos.com"
+      },
+      {
+        "text": "LINKEDIN",
+        "href": "https://www.linkedin.com/in/hiroto-sato-2414b23b7"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      }
+    ],
+    "body": "EN\nJA\n\nABOUT\n\nインタラクティブなWeb体験をつくるクリエイティブデベロッパー。\n\nモーション、WebGL、3Dモデリング、インターフェースを組み合わせ、自然に連動するデジタル体験を設計・実装しています。視覚表現と操作感をつなぐ、インタラクティブなフロントエンド制作を得意としています。\n\n名前\n佐藤ヒロト\n職業\nクリエイティブデベロッパー\nコンタクト\nHELLO@HIROTOS.COM\nLINKEDIN\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Hiragino Kaku Gothic ProN",
+          "postScriptName": "HiraKakuProN-W3",
+          "isCustomFont": false,
+          "glyphCount": 29
+        },
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 3
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".about-page__body p": [
+        {
+          "familyName": "Hiragino Kaku Gothic ProN",
+          "postScriptName": "HiraKakuProN-W3",
+          "isCustomFont": false,
+          "glyphCount": 94
+        },
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 7
+        }
+      ]
+    }
+  },
+  {
+    "name": "contact",
+    "mode": "desktop",
+    "url": "https://www.hirotos.com/contact/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "hello@hirotos.com",
+        "href": "mailto:hello@hirotos.com"
+      },
+      {
+        "text": "LinkedIn",
+        "href": "https://www.linkedin.com/in/hiroto-sato-2414b23b7"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [],
+    "body": "CONTACT\n\nGet in touch.\nhello@hirotos.com\nLinkedIn\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 13
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    }
+  },
+  {
+    "name": "home",
+    "mode": "mobile",
+    "url": "https://www.hirotos.com/",
+    "links": [
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [],
+    "body": "CREATIVE DEVELOPER\n\nHIROTO SATO\nBASE\nTOKYO, JAPAN\nFOCUS\nCREATIVE DEVELOPMENT / MOTION / 3D MODELING\nINDEX\nPORTFOLIO 2026\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 11
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".home-profile p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 18
+        }
+      ]
+    }
+  },
+  {
+    "name": "projects",
+    "mode": "mobile",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    }
+  },
+  {
+    "name": "project-detail",
+    "mode": "mobile",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "VIEW SITE",
+        "href": "https://wired.jp/article/wired-innovation-award-2025/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": "Back to projects",
+        "class": "back-circle-control projects-zoom__back"
+      },
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: d.brain",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: WIRED",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PROTO 2026",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Noodle",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: TRACK",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: PORTFOLIO 2022",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: SHOWREEL 2025",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "View site: Tap to meet you",
+        "class": ""
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nEN\nJA\n02\nWIRED\n\nWeb experience for WIRED Innovation Award 2025.\n\nCATEGORY\nWEB SITE\nROLE\nDESIGN / FRONT-END DEVELOPMENT / 3D MODELING\nVIEW SITE\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      "h2": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 5
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".projects-zoom__content p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 47
+        }
+      ]
+    }
+  },
+  {
+    "name": "project-detail-ja",
+    "mode": "mobile",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "サイトを見る",
+        "href": "https://wired.jp/article/wired-innovation-award-2025/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": "Back to projects",
+        "class": "back-circle-control projects-zoom__back"
+      },
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: d.brain",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: WIRED",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: PROTO 2026",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: Noodle",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: TRACK",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: PORTFOLIO 2022",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: SHOWREEL 2025",
+        "class": ""
+      },
+      {
+        "text": "",
+        "label": "サイトを見る: Tap to meet you",
+        "class": ""
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nEN\nJA\n02\nWIRED\n\nWIRED Innovation Award 2025 のWebサイト実装。\n\nカテゴリー\nWEBサイト\n担当\nデザイン / フロントエンド開発 / 3Dモデリング\nサイトを見る\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      "h2": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 5
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".projects-zoom__content p": [
+        {
+          "familyName": "PingFang SC",
+          "postScriptName": "PingFangSC-Regular",
+          "isCustomFont": false,
+          "glyphCount": 7
+        },
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 31
+        }
+      ]
+    }
+  },
+  {
+    "name": "projects-return",
+    "mode": "mobile",
+    "url": "https://www.hirotos.com/projects/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      },
+      {
+        "text": "",
+        "label": null,
+        "class": "projects-marquee__item"
+      }
+    ],
+    "body": "PROJECTS\n\nProjects that explore\ndesign, motion, 3D, and\ninteractive front-end\ndevelopment.\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 77
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    }
+  },
+  {
+    "name": "about",
+    "mode": "mobile",
+    "url": "https://www.hirotos.com/about/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "HELLO@HIROTOS.COM",
+        "href": "mailto:hello@hirotos.com"
+      },
+      {
+        "text": "LINKEDIN",
+        "href": "https://www.linkedin.com/in/hiroto-sato-2414b23b7"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      }
+    ],
+    "body": "EN\nJA\n\nABOUT\n\nCreative developer building interactive web experiences.\n\nI design and implement digital experiences that naturally connect motion, WebGL, 3D modeling, and interface behavior. I specialize in interactive front-end development that brings visual expression and a tactile sense of interaction together.\n\nNAME\nHIROTO SATO\nROLE\nCREATIVE DEVELOPER\nCONTACT\nHELLO@HIROTOS.COM\nLINKEDIN\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 54
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".about-page__body p": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 238
+        }
+      ]
+    }
+  },
+  {
+    "name": "about-ja",
+    "mode": "mobile",
+    "url": "https://www.hirotos.com/about/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "HELLO@HIROTOS.COM",
+        "href": "mailto:hello@hirotos.com"
+      },
+      {
+        "text": "LINKEDIN",
+        "href": "https://www.linkedin.com/in/hiroto-sato-2414b23b7"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "EN",
+        "label": null,
+        "class": ""
+      },
+      {
+        "text": "JA",
+        "label": null,
+        "class": ""
+      }
+    ],
+    "body": "EN\nJA\n\nABOUT\n\nインタラクティブなWeb体験をつくるクリエイティブデベロッパー。\n\nモーション、WebGL、3Dモデリング、インターフェースを組み合わせ、自然に連動するデジタル体験を設計・実装しています。視覚表現と操作感をつなぐ、インタラクティブなフロントエンド制作を得意としています。\n\n名前\n佐藤ヒロト\n職業\nクリエイティブデベロッパー\nコンタクト\nHELLO@HIROTOS.COM\nLINKEDIN\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Hiragino Kaku Gothic ProN",
+          "postScriptName": "HiraKakuProN-W3",
+          "isCustomFont": false,
+          "glyphCount": 29
+        },
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 3
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      ".about-page__body p": [
+        {
+          "familyName": "Hiragino Kaku Gothic ProN",
+          "postScriptName": "HiraKakuProN-W3",
+          "isCustomFont": false,
+          "glyphCount": 94
+        },
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 7
+        }
+      ]
+    }
+  },
+  {
+    "name": "contact",
+    "mode": "mobile",
+    "url": "https://www.hirotos.com/contact/",
+    "links": [
+      {
+        "text": "",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "hello@hirotos.com",
+        "href": "mailto:hello@hirotos.com"
+      },
+      {
+        "text": "LinkedIn",
+        "href": "https://www.linkedin.com/in/hiroto-sato-2414b23b7"
+      },
+      {
+        "text": "HOME",
+        "href": "https://www.hirotos.com/"
+      },
+      {
+        "text": "PROJECTS",
+        "href": "https://www.hirotos.com/projects"
+      },
+      {
+        "text": "ABOUT",
+        "href": "https://www.hirotos.com/about"
+      },
+      {
+        "text": "CONTACT",
+        "href": "https://www.hirotos.com/contact"
+      }
+    ],
+    "buttons": [],
+    "body": "CONTACT\n\nGet in touch.\nhello@hirotos.com\nLinkedIn\nHOME\nPROJECTS\nABOUT\nCONTACT",
+    "fonts": {
+      "h1": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Md",
+          "isCustomFont": true,
+          "glyphCount": 13
+        }
+      ],
+      ".site-nav a": [
+        {
+          "familyName": "Helvetica Neue LT Pro",
+          "postScriptName": "HelveticaNeueLTPro-Roman",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    }
+  }
+]

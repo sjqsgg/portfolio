@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
-import { motion } from 'framer-motion'
+import { motion as Motion } from 'motion/react'
 
 export default function MainPhotos() {
   useEffect(() => {
@@ -17,8 +17,8 @@ export default function MainPhotos() {
     };
   }, []);
 
-  return (    
-    <motion.div
+  return (
+    <Motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -50 }}
@@ -102,9 +102,9 @@ export default function MainPhotos() {
         <img src="/photos/IMG_4352.JPG" alt="Example" className="w-full mb-4 shadow" />
       </a>
 
- 
+
     </div>
-    </motion.div>
+    </Motion.div>
   );
 }
 

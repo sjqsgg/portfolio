@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion as Motion } from 'motion/react';
+import { useInView } from 'motion/react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom'
 
@@ -15,7 +15,7 @@ export default function About() {
   const isVisible3 = useInView(ref3, {margin: "0px"})
 
   return (
-    <motion.div
+    <Motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -50 }}
@@ -23,7 +23,7 @@ export default function About() {
       className="max-w-5xl mx-auto px-4 mt-32 space-y-16"
     >
 
-<motion.div 
+<Motion.div
   ref={ref1}
   initial={{ opacity: 0.3, y: 50, filter: "blur(28px)" }}
   animate={isVisible1
@@ -35,14 +35,14 @@ export default function About() {
 >
         <h1 className="text-6xl md:text-8xl  font-light tracking-wide">JIAQI SHI</h1>
         <h2 className="text-6xl md:text-8xl  mt-2 font-thin">PHOTOGRAPHER & PROGRAMMER</h2>
-      </motion.div>
+      </Motion.div>
 
 
-      <motion.div 
+      <Motion.div
         ref={ref2}
         initial={{ opacity: 0, y: 50, filter: "blur(28px)" }}
-        animate={isVisible2 
-          ? { opacity: 1, y: 0, filter: "blur(0px)" } 
+        animate={isVisible2
+          ? { opacity: 1, y: 0, filter: "blur(0px)" }
           : { opacity: 0.3, y:0, filter:"blur(28px)"}
         }
         transition={{ duration: 0.8 }}
@@ -65,14 +65,14 @@ export default function About() {
             </p>
           </div>
           <img className="w-100" src="/photos/IMG_5427.jpg" alt='jiaqi'/>
-        </div>  
-      </motion.div>
+        </div>
+      </Motion.div>
 
-    <motion.div 
+    <Motion.div
         ref={ref3}
         initial={{ opacity: 0, y: 50, filter: "blur(28px)" }}
-        animate={isVisible3 
-          ? { opacity: 1, y: 0, filter: "blur(0px)" } 
+        animate={isVisible3
+          ? { opacity: 1, y: 0, filter: "blur(0px)" }
           : { opacity: 0.3, y:0, filter:"blur(28px)"}
         }
         transition={{ duration: 0.8 }}
@@ -91,7 +91,7 @@ export default function About() {
           </div>
           <img className="w-130 h-auto" src="/photos/IMG_5429.JPG" alt='your-story'/>
         </div>
-        
+
         <div className="text-center mt-32">
         <Link to="/contact" className="text-center mt-12 block">
             <button className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition">
@@ -100,19 +100,19 @@ export default function About() {
           </Link>
       </div>
 
-      </motion.div>
+      </Motion.div>
 
       <div className="border-gray-700 border-t pt-6 text-lg leading-relaxed space-y-2">
         <h3 className="text-xl font-bold uppercase tracking-wider">This Website</h3>
-    
+
         <p>I'm a Bachelor's student in Computer Science at VU Amsterdam, actively seeking internship opportunities. </p>
         <p>I built this Website using React and Tailwind CSS, with animations powered by Framer Motion.</p>
         I'm available for onsite internships five days a week, and currently based in Amsterdam — though I'm happy to commute further if needed. If you're hiring, let's connect!
-        
+
         <p>
           📮 <a href="mailto:jiaqii7@outlook.com" className="underline">jiaqii7@outlook.com</a>
         </p>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 }

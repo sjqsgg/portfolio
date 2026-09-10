@@ -1,0 +1,217 @@
+{
+  "url": "https://www.hirotos.com/",
+  "viewport": {
+    "width": 1512,
+    "height": 820,
+    "dpr": 1
+  },
+  "title": "Hiroto Sato",
+  "bodyText": "",
+  "elements": [
+    {
+      "index": 0,
+      "tag": "BODY",
+      "class": "",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 820
+      },
+      "visible": true,
+      "styles": {
+        "fontFamily": "helvetica-neue-lt-pro, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "lineHeight": "normal",
+        "letterSpacing": "normal",
+        "textTransform": "none",
+        "textAlign": "start",
+        "color": "rgb(16, 16, 15)",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "backgroundImage": "none",
+        "opacity": "1",
+        "display": "block",
+        "position": "static",
+        "zIndex": "auto",
+        "width": "1512px",
+        "height": "820px",
+        "maxWidth": "none",
+        "minWidth": "0px",
+        "maxHeight": "none",
+        "minHeight": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "gap": "normal",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "alignItems": "normal",
+        "justifyContent": "normal",
+        "border": "0px none rgb(16, 16, 15)",
+        "borderTop": "0px none rgb(16, 16, 15)",
+        "borderRadius": "0px",
+        "boxShadow": "none",
+        "filter": "none",
+        "backdropFilter": "none",
+        "overflow": "hidden",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "transformOrigin": "756px 410px",
+        "transition": "all",
+        "animation": "none",
+        "cursor": "auto",
+        "pointerEvents": "auto",
+        "touchAction": "auto",
+        "clipPath": "none"
+      },
+      "attributes": {},
+      "pseudo": {
+        "before": {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "none"
+        },
+        "after": {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "none"
+        }
+      }
+    },
+    {
+      "index": 1,
+      "tag": "DIV",
+      "class": "route-current",
+      "text": "",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 820
+      },
+      "visible": true,
+      "styles": {
+        "fontFamily": "helvetica-neue-lt-pro, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "lineHeight": "normal",
+        "letterSpacing": "normal",
+        "textTransform": "none",
+        "textAlign": "start",
+        "color": "rgb(16, 16, 15)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "opacity": "1",
+        "display": "block",
+        "position": "relative",
+        "zIndex": "3",
+        "width": "1512px",
+        "height": "820px",
+        "maxWidth": "none",
+        "minWidth": "0px",
+        "maxHeight": "none",
+        "minHeight": "820px",
+        "padding": "0px",
+        "margin": "0px",
+        "gap": "normal",
+        "rowGap": "normal",
+        "columnGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "alignItems": "normal",
+        "justifyContent": "normal",
+        "border": "0px none rgb(16, 16, 15)",
+        "borderTop": "0px none rgb(16, 16, 15)",
+        "borderRadius": "0px",
+        "boxShadow": "none",
+        "filter": "none",
+        "backdropFilter": "none",
+        "overflow": "visible",
+        "overflowX": "visible",
+        "overflowY": "visible",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "transformOrigin": "756px 0px",
+        "transition": "all",
+        "animation": "none",
+        "cursor": "auto",
+        "pointerEvents": "none",
+        "touchAction": "auto",
+        "clipPath": "none"
+      },
+      "attributes": {},
+      "pseudo": {
+        "before": {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "none"
+        },
+        "after": {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "none"
+        }
+      }
+    }
+  ],
+  "fonts": [
+    {
+      "family": "gazzetta-variable",
+      "weight": "100 900",
+      "status": "unloaded"
+    },
+    {
+      "family": "gazzetta-variable",
+      "weight": "100 900",
+      "status": "unloaded"
+    },
+    {
+      "family": "helvetica-neue-lt-pro-cond",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "helvetica-neue-lt-pro",
+      "weight": "300",
+      "status": "unloaded"
+    },
+    {
+      "family": "helvetica-neue-lt-pro",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "helvetica-neue-lt-pro",
+      "weight": "400",
+      "status": "unloaded"
+    },
+    {
+      "family": "helvetica-neue-lt-pro",
+      "weight": "700",
+      "status": "unloaded"
+    }
+  ],
+  "animations": [],
+  "pageScroll": {
+    "x": 0,
+    "y": 0,
+    "width": 1512,
+    "height": 820
+  },
+  "media": {
+    "reduced": false,
+    "coarse": false
+  },
+  "links": [],
+  "buttons": [],
+  "platformFonts": {}
+}

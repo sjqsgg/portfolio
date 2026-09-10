@@ -1,0 +1,94 @@
+/* Motion round: archive timing, with independent gallery and scene controls. */
+.canvas-identity.photography-navigation { position:absolute; }
+.close-cross { display:block;font-family:Arial,sans-serif;font-size:27px;font-weight:400;line-height:1;transform:translateY(-1px); }
+.photography-page { min-height:100svh; }
+.gallery-rows { justify-content:center;gap:24px; }
+.gallery-viewport:focus-visible { outline-offset:-3px; }
+.series-page .series-opening { padding-top:0; }
+
+.reveal-line { display:block; }
+@media (prefers-reduced-motion:no-preference) {
+ .reveal-line,.text-arrival { animation:text-arrive 1.02s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(.14s + var(--line,0) * .075s); }
+ html[data-route-entering] .reveal-line,html[data-route-entering] .text-arrival { animation-delay:calc(.84s + var(--line,0) * .075s); }
+ html[data-route-motion="page"][data-route-entering] :is(.reveal-line,.text-arrival) { animation-delay:calc(.14s + var(--line,0) * .075s);animation-play-state:paused; }
+ html[data-route-motion="page"][data-route-entering] .gallery-photo { animation-play-state:paused; }
+ .gallery-photo { animation:photo-arrive 1.28s cubic-bezier(.16,1,.3,1) both; }
+ .gallery-photo:nth-child(4n + 2) { animation-delay:.085s; }
+ .gallery-photo:nth-child(4n + 3) { animation-delay:.17s; }
+ .gallery-photo:nth-child(4n + 4) { animation-delay:.255s; }
+ /* Do not move the destination underneath an image that is returning to its thumbnail. */
+ .gallery-rows.is-returning .gallery-photo { animation:none; }
+}
+@keyframes text-arrive { from { opacity:0;transform:translateY(16px); } to { opacity:1;transform:translateY(0); } }
+@keyframes photo-arrive { from { translate:0 84px;scale:.985; } to { translate:0 0;scale:1; } }
+
+.follow-cursor { position:fixed;left:0;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 17px;min-width:78px;max-width:280px;height:34px;background:#0b0b0a;color:white;border-radius:999px;font-size:12px;line-height:1;pointer-events:none;opacity:0;scale:.6;rotate:-16deg;transition:opacity .18s,scale .48s cubic-bezier(.16,1,.3,1),rotate .36s cubic-bezier(.34,1.56,.64,1);view-transition-name:none; }
+.follow-cursor[data-visible] { opacity:1;scale:1;rotate:0deg; }
+.follow-cursor span:first-child { overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+@media (hover:none),(pointer:coarse),(prefers-reduced-motion:reduce) { .follow-cursor { display:none; } }
+
+.reference-contact { color:#0b0b0a;background:#fff;min-height:100svh;padding:var(--edge-y) var(--gutter);display:grid;grid-template-rows:auto minmax(0,1fr); }
+.reference-contact-content { place-self:center;width:min(max(700px,455px + 16.7632vw),100%);margin-top:clamp(-48px,-4vh,-18px); }
+.reference-contact-intro { text-align:center;width:min(max(680px,442px + 16.2842vw),100%);margin:0 auto; }
+.reference-contact-intro .contact-kicker { font-size:var(--reference-small);font-weight:400;line-height:1;letter-spacing:.045em;color:#686862;margin:0 0 clamp(14px,2vw,22px); }
+.reference-contact h1 { font-size:max(34px,min(5.2vw,49.4px + 1.82vw));line-height:.96;font-weight:500;letter-spacing:0; }
+.reference-contact-body { width:min(max(560px,364px + 14.7vw),100%);margin:clamp(28px,5vh,48px) auto 0; }
+.contact-links { display:grid;grid-template-columns:1fr;justify-items:center;gap:clamp(2px,.45vw,6px);padding-top:clamp(12px,1.6vw,18px);border-top:1px solid rgb(11 11 10 / .16); }
+.contact-links a { position:relative;display:inline-flex;justify-content:center;align-items:center;width:fit-content;max-width:calc(100% - clamp(28px,3vw,38px));min-height:clamp(32px,3.6vw,40px);text-align:center;overflow-wrap:anywhere;font-size:max(18px,min(1.8vw,15.6px + .63vw));font-weight:500;line-height:1;letter-spacing:0;transition:opacity .18s,transform .18s; }
+.contact-links a>span { position:absolute;top:50%;left:calc(100% + clamp(8px,.9vw,12px));transform:translateY(-50%);font-size:clamp(20px,1.95vw,26px); }
+.contact-links a:hover { opacity:.65;transform:translateY(-1px); }
+html:has(.reference-contact) .canvas-nav a { color:rgb(11 11 10 / .46); }
+html:has(.reference-contact) .canvas-nav a.active,html:has(.reference-contact) .canvas-nav a:hover { color:#0b0b0a; }
+@media (max-width:620px) {
+ .reference-contact-content { margin-top:0; }
+ .reference-contact-body { margin-top:clamp(18px,3.4vh,26px); }
+ .contact-links { gap:10px;padding-top:clamp(14px,4vw,20px); }
+ .contact-links a { min-height:30px;font-size:max(18px,min(5.6vw,16.9px + 1.96vw));line-height:1.08; }
+}
+
+/* The old page darkens and lifts onto white. The live destination starts its
+   entrance as soon as the curve finishes at 1.95 seconds, with no extra hold. */
+::view-transition { pointer-events:none; }
+::view-transition-group(root) { animation:none; }
+::view-transition-image-pair(root) { isolation:isolate; }
+::view-transition-new(root) { animation:none;mix-blend-mode:normal; }
+html[data-route-motion="page"]::view-transition-image-pair(root) { background:#fff; }
+html[data-route-motion="page"]::view-transition-new(root) { opacity:0; }
+::view-transition-old(root) { z-index:2;mix-blend-mode:normal;animation:route-curve 1.95s cubic-bezier(.22,.28,.28,1) both,route-darken .5s ease-in-out both,route-finish .18s 1.77s both; }
+@keyframes route-darken { to { filter:brightness(.32); } }
+@keyframes route-finish { to { opacity:0; } }
+@keyframes route-curve {
+ 0% { clip-path:var(--route-mask-start); }
+ 33.333% { clip-path:var(--route-mask-bend); }
+ 100% { clip-path:var(--route-mask-end); }
+}
+html[data-route-motion^="photo-"]::view-transition-old(root) { animation:photo-old .72s ease both; }
+html[data-route-motion^="photo-"]::view-transition-new(root) { animation:photo-new .72s ease both; }
+::view-transition-group(selected-photo) { z-index:3;animation-duration:.92s;animation-timing-function:cubic-bezier(.87,0,.13,1); }
+html[data-route-motion="photo-close"]::view-transition-group(selected-photo) { animation-duration:.78s; }
+::view-transition-old(selected-photo),::view-transition-new(selected-photo) { height:100%;mix-blend-mode:normal;object-fit:fill;animation-duration:.72s; }
+@keyframes photo-old { to { opacity:0; } }
+@keyframes photo-new { from { opacity:0; } to { opacity:1; } }
+/* Browsers without snapshot transitions retain an animated destination and usable navigation. */
+#root[data-transitioning="fallback"] main { animation:photo-new .92s ease both; }
+html[data-route-motion="page"] #root[data-transitioning="fallback"] { opacity:0; }
+@media (prefers-reduced-motion:reduce) {
+ ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*) { animation:none !important; }
+}
+
+/* Scene interaction is carried by the objects, with keyboard-only focus outlines. */
+.scene-hotspots { position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden; }
+.scene-hotspot { position:absolute;left:var(--anchor-x,50%);top:var(--anchor-y,50%);width:var(--anchor-width,60px);height:var(--anchor-height,60px);transform:translate(-50%,-50%);border:0;background:none;pointer-events:none; }
+.scene-hotspot:focus-visible { outline:2px solid var(--accent);outline-offset:4px;border-radius:3px; }
+.fallback-labels .scene-hotspot { pointer-events:auto; }
+.pegboard-lightbox { border:0;padding:0;overflow:visible;margin:auto;width:min(1280px,90vw);height:min(840px,84svh);max-width:none;max-height:none;background:transparent;color:#0b0b0a; }
+.pegboard-lightbox::backdrop { background:rgb(0 0 0 / .62);backdrop-filter:blur(3px); }
+.pegboard-panel { width:100%;height:100%;position:relative;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible; }
+.pegboard-canvas { width:100%;height:100%; }
+.pegboard-canvas canvas { display:block;width:100%;height:100%; }
+.pegboard-close { position:absolute;right:14px;top:14px;z-index:1; }
+.pegboard-error { padding:80px 32px;text-align:center;color:white; }
+.pegboard-error button { text-decoration:underline; }
+@media (prefers-reduced-motion:no-preference) { .pegboard-lightbox[open] { animation:board-arrive .8s cubic-bezier(.22,1,.36,1) both; } }
+@keyframes board-arrive { from { opacity:0;transform:translateY(24px) scale(.95); } to { opacity:1;transform:none; } }
+@media (max-width:620px) { .pegboard-lightbox { width:92vw;height:min(560px,70svh,calc(92vw * .78)); }.pegboard-close { right:10px;top:10px; } }

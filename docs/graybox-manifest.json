@@ -1,0 +1,1291 @@
+{
+  "asset": "jessie-workstation-graybox-v001",
+  "blender_version": "4.1.1",
+  "units": "meters",
+  "coordinates": {
+    "blend": "X right, Y rearward, Z up; fronts face -Y",
+    "glb": "X right, Y up, Z forward (Blender x,y,z -> glTF x,z,-y)"
+  },
+  "dimensions_m": {
+    "rear_width": 2.05,
+    "rear_depth": 0.46,
+    "desk_return_length": 1.62,
+    "desk_return_width": 0.72,
+    "worktop_height": 0.74,
+    "desktop_thickness": 0.028,
+    "shelving_height": 1.82,
+    "frame_diameter": 0.022
+  },
+  "bounds_blender": {
+    "min": [
+      -1.0280001163482666,
+      -1.186531662940979,
+      -3.725290298461914e-09
+    ],
+    "max": [
+      1.0280002355575562,
+      0.9423148036003113,
+      1.8200000524520874
+    ],
+    "size": [
+      2.0560003519058228,
+      2.1288464665412903,
+      1.8200000561773777
+    ]
+  },
+  "root": "WORKSTATION_ROOT",
+  "root_world_blender": [
+    0,
+    0,
+    0
+  ],
+  "recommended_camera_look_target_blender": [
+    0,
+    -0.05,
+    0.85
+  ],
+  "hotspots": [
+    {
+      "name": "HOTSPOT_monitor",
+      "label": "Software portfolio",
+      "camera": "SOFTWARE_VIEW"
+    },
+    {
+      "name": "HOTSPOT_camera_group",
+      "label": "Photography portfolio",
+      "camera": "PHOTOGRAPHY_VIEW"
+    },
+    {
+      "name": "HOTSPOT_badge",
+      "label": "About Jessie / CV",
+      "camera": "CV_VIEW"
+    },
+    {
+      "name": "HOTSPOT_map",
+      "label": "Places and photography",
+      "camera": "PHOTOGRAPHY_VIEW"
+    },
+    {
+      "name": "HOTSPOT_guestbook",
+      "label": "Guestbook",
+      "camera": "CV_VIEW"
+    },
+    {
+      "name": "HOTSPOT_audio_controls",
+      "label": "Audio and records",
+      "camera": "AUDIO_VIEW"
+    },
+    {
+      "name": "HOTSPOT_lamp",
+      "label": "Shared workspace",
+      "camera": "CV_VIEW"
+    }
+  ],
+  "cameras": {
+    "DEFAULT_HERO": {
+      "position": [
+        3.3,
+        -6.0,
+        3.15
+      ],
+      "target": [
+        -0.01,
+        -0.09,
+        0.92
+      ],
+      "ortho": 3.25
+    },
+    "SOFTWARE_VIEW": {
+      "position": [
+        1.8,
+        -2.5,
+        2.15
+      ],
+      "target": [
+        -0.65,
+        -0.35,
+        0.95
+      ],
+      "lens": 58
+    },
+    "PHOTOGRAPHY_VIEW": {
+      "position": [
+        1.65,
+        -1.7,
+        1.7
+      ],
+      "target": [
+        0.42,
+        0.68,
+        0.89
+      ],
+      "lens": 62
+    },
+    "CV_VIEW": {
+      "position": [
+        0.25,
+        -1.55,
+        1.64
+      ],
+      "target": [
+        -0.53,
+        0.75,
+        1.11
+      ],
+      "lens": 62
+    },
+    "AUDIO_VIEW": {
+      "position": [
+        1.65,
+        -2.5,
+        1.25
+      ],
+      "target": [
+        0.39,
+        0.66,
+        0.38
+      ],
+      "lens": 65
+    }
+  },
+  "camera_export_aspect_ratio": 1.1428571428571428,
+  "mesh_count": 188,
+  "triangle_count": 25846,
+  "source_topology": [
+    {
+      "name": "Rear_Counter_28mm",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Return_Desktop_28mm",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Rear_Tube_Frame_22mm",
+      "triangles": 1224,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Return_Tube_Frame_22mm",
+      "triangles": 288,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Corner_Undercounter_Cabinet",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Corner_Undercounter_Door",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Rear_Right_End_Panel",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Base_Support_Corner",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Base_Support_Speaker_Left",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Base_Support_Audio_Center",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Base_Support_Speaker_Right",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Tube_Frame_22mm",
+      "triangles": 720,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Shelf",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Top",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Back",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Divider_01",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Divider_02",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Divider_03",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Divider_04",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Cabinet_Door_Left",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Door_Handle_Left",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Handle_Mount_Left_1",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Handle_Mount_Left_2",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Cabinet_Door_Right",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Door_Handle_Right",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Handle_Mount_Right_1",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Handle_Mount_Right_2",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Rear_Right_Backing",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pegboard_Perforated_21x14",
+      "triangles": 14392,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pegboard_Fastener_1_1",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pegboard_Fastener_1_2",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pegboard_Fastener_2_1",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pegboard_Fastener_2_2",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HOTSPOT_monitor",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Monitor_Screen",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Monitor_Stand_Base",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Monitor_Stand_Stem",
+      "triangles": 44,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Keyboard",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Keyboard_Key_Strips",
+      "triangles": 60,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Mouse",
+      "triangles": 118,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Small_Notebook",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Notebook_Pen",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "External_Drive",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HOTSPOT_lamp",
+      "triangles": 92,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lamp_Stem",
+      "triangles": 44,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lamp_Arm",
+      "triangles": 44,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lamp_Shade",
+      "triangles": 92,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lamp_Diffuser",
+      "triangles": 92,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HOTSPOT_guestbook",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Guestbook_Blank_Page_1",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Guestbook_Blank_Page_2",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Guestbook_Stand_Foot",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Guestbook_Lower_Cradle",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Guestbook_Rear_Support_Left",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Guestbook_Stand_Leg_Left",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Guestbook_Rear_Support_Right",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Guestbook_Stand_Leg_Right",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Ceramic_Mug_Base",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Ceramic_Mug_Wall",
+      "triangles": 160,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Ceramic_Mug_Handle",
+      "triangles": 128,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HOTSPOT_badge",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Badge_Blank_Inset",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Badge_Hanger",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Badge_Peg",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HOTSPOT_map",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Map_Fold_Strip",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Map_Clip",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Map_Peg",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Headphone_Headband",
+      "triangles": 336,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Headphone_Earcup_Left",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Headphone_Earcup_Right",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Headphone_Hook",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HOTSPOT_camera_group",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Mirrorless_Body",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Mirrorless_Lens_Barrel",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Mirrorless_Lens_Glass",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Mirrorless_Viewfinder",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Mirrorless_Grip",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Film_Body",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Film_Lens_Barrel",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Film_Lens_Glass",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Film_Top_Plate",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Film_Wind_Dial",
+      "triangles": 44,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Instant_Body",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Instant_Lens_Barrel",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Instant_Lens_Glass",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Instant_Print_Slot",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Instant_Flash_Window",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "CCD_Body",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "CCD_Lens_Barrel",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "CCD_Lens_Glass",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "CCD_Flash_Window",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lens_01_Barrel",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lens_01_Focus_Ring",
+      "triangles": 160,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lens_01_Cap",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lens_02_Barrel",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lens_02_Focus_Ring",
+      "triangles": 160,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lens_02_Cap",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lens_03_Barrel",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lens_03_Focus_Ring",
+      "triangles": 160,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lens_03_Cap",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Flash_Foot",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Flash_Body",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Flash_Head",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Flash_Diffuser",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Camera_Charger",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Charger_Battery",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Left_Cabinet",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Left_Baffle",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Left_Woofer_Rim",
+      "triangles": 256,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Left_Woofer_Cone",
+      "triangles": 124,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Left_Woofer_Dustcap",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Left_Mid_Driver_Rim",
+      "triangles": 160,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Left_Mid_Driver_Cone",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Left_Mid_Driver_Dustcap",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Left_Tweeter_Rim",
+      "triangles": 160,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Left_Tweeter_Cone",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Left_Tweeter_Dustcap",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Right_Cabinet",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Right_Baffle",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Right_Woofer_Rim",
+      "triangles": 256,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Right_Woofer_Cone",
+      "triangles": 124,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Right_Woofer_Dustcap",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Right_Mid_Driver_Rim",
+      "triangles": 160,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Right_Mid_Driver_Cone",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Right_Mid_Driver_Dustcap",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Right_Tweeter_Rim",
+      "triangles": 160,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Right_Tweeter_Cone",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Speaker_Right_Tweeter_Dustcap",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Audio_Drawer_Box",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Audio_Drawer_Front",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Audio_Drawer_Handle",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Audio_Shelf_1",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Audio_Shelf_Front_Rail_1",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Audio_Shelf_2",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Audio_Shelf_Front_Rail_2",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Receiver_Body",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Receiver_Foot_1_1",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Receiver_Foot_1_2",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Receiver_Foot_2_1",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Receiver_Foot_2_2",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "HOTSPOT_audio_controls",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Receiver_Tuning_Window",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Receiver_Control_01",
+      "triangles": 44,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Receiver_Control_02",
+      "triangles": 44,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Receiver_Control_03",
+      "triangles": 44,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Receiver_Control_04",
+      "triangles": 44,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Receiver_Control_05",
+      "triangles": 44,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Receiver_Volume",
+      "triangles": 60,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Turntable_Foot_1_1",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Turntable_Foot_1_2",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Turntable_Foot_2_1",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Turntable_Foot_2_2",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Turntable_Platform",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Turntable_Platter",
+      "triangles": 124,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Turntable_Record",
+      "triangles": 124,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Turntable_Record_Label",
+      "triangles": 76,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Turntable_Tonearm_Pivot",
+      "triangles": 44,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Turntable_Tonearm",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Turntable_Headshell",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Books_Left_Shelf",
+      "triangles": 72,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Record_Sleeves_Upper",
+      "triangles": 180,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Folded_Map_Block_1",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Folded_Map_Block_2",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Folded_Map_Block_3",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Storage_Box_1",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Storage_Box_Label_1",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Storage_Box_2",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Storage_Box_Label_2",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Seat",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Back",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Metal_Frame",
+      "triangles": 472,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Arm_Pad_Left",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Arm_Pad_Right",
+      "triangles": 12,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Caster_Stem_1",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Caster_1",
+      "triangles": 60,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Caster_Stem_2",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Caster_2",
+      "triangles": 60,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Caster_Stem_3",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Caster_3",
+      "triangles": 60,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Caster_Stem_4",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Caster_4",
+      "triangles": 60,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Caster_Stem_5",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Chair_Caster_5",
+      "triangles": 60,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Umbrella_Folded_Canopy",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Umbrella_Shaft",
+      "triangles": 36,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Umbrella_Curved_Handle",
+      "triangles": 280,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Umbrella_Hanger",
+      "triangles": 28,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    }
+  ],
+  "known_simplifications": [
+    "Primitive electronics, no ports, cables, logos or readable text.",
+    "Simple vintage speakers without wood grain or speaker grille fabrics.",
+    "One solid-color screen and placeholder pages/map, no texture images.",
+    "No motion or custom web interaction implementation; metadata only.",
+    "Studio floor and lights are preview-only; GLB contains asset and camera rig."
+  ]
+}

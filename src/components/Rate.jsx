@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'motion/react';
 import { Link } from 'react-router-dom'
 
 export default function Rate() {
   return (
-    <motion.div
+    <Motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -50 }}
@@ -19,7 +19,7 @@ export default function Rate() {
           <h2 className="text-xl font-semibold mb-4">Portrait</h2>
           <p className="text-base text-gray-700 mb-4">
             Ideal for those looking for timeless, Korean-Japanese vintage inspired portrait styles.
-            Sessions start from <span className="font-semibold">2 hours</span>, with a base rate of 
+            Sessions start from <span className="font-semibold">2 hours</span>, with a base rate of
             <span className="font-semibold"> €40/hour</span>.
           </p>
           <p className="text-base text-gray-700 mb-4">
@@ -52,6 +52,6 @@ export default function Rate() {
           </button>
         </Link>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 }
