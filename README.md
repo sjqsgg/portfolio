@@ -37,6 +37,8 @@ The end-to-end suite starts a production preview on port 4175. It covers actual 
 
 ## Edit content
 
+Confirmed English project-viewer content rules: [docs/PROJECT-CONTENT.md](docs/PROJECT-CONTENT.md). This supersedes earlier proposals for fixed Problem / Approach / What I learned sections.
+
 - `src/data/photographs.js`: existing photo metadata and responsive image sources.
 - `src/data/series.js`: series names, descriptions, photo membership and order.
 - `src/data/projects.js`: project copy, images, chapters and optional live links.
@@ -82,6 +84,6 @@ Guestbook notes are local drafts. “Open in email” prepares a mailto link; th
 
 The 19 existing photographs are divided into two replaceable editorial groups. Final series selection, titles, dates and captions are still editorial work; no camera settings or precise shoot dates have been invented. Shanxi Map uses the actual Figma concept visual, explicitly labeled as a concept study. No unverified live URL, GitHub URL or project outcome is published. The supplied CV is available in a preview lightbox with an original-PDF download; About downloads it directly.
 
-Pushes to `main` deploy automatically to GitHub Pages. The workflow builds with the `/portfolio/` base path and publishes an SPA fallback while local development continues to use `/`.
+The primary website is https://jiaqii7.com/, hosted on Netlify. `netlify.toml` builds the site at `/`, publishes `dist`, and provides an SPA fallback for direct project and gallery links. GitHub Pages is no longer used. Netlify repository linkage and production branch are configured in the Netlify dashboard, not this repository.
 
 See `docs/HIROTO-REVISION-2026-09-09.md` for the current reference-layout/CV/controls revision and verification. `docs/REVISION.md` records the preceding workbench revision. `docs/IMPLEMENTATION.md` records the historical V1 implementation and measurements.
