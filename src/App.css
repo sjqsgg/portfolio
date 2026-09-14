@@ -116,6 +116,14 @@
 .project-notes summary { cursor:pointer;list-style:none;display:flex;justify-content:space-between;padding:16px 0;border-top:1px solid var(--line); }
 .project-notes summary::-webkit-details-marker { display:none; }
 .project-notes p { padding-top:12px;color:var(--muted); }
+.project-poster-dialog { border:0;padding:20px;max-width:95vw;max-height:92dvh;background:white; }
+.project-poster-dialog::backdrop { background:rgba(0,0,0,.75); }
+.project-poster-dialog>button { display:block;margin:0 0 16px auto; }
+.project-poster-dialog>div { overflow:auto;max-height:78dvh; }
+.project-poster-dialog img { width:1100px;max-width:none;height:auto; }
+.project-video-cover { position:relative;display:block;width:100%;padding:0;background:transparent;border:0; }
+.project-video-cover img,.project-viewer video { display:block;width:100%;height:auto;min-height:0;max-height:none;background:transparent; }
+.project-video-cover span { position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:14px 22px;border-radius:30px;background:#0b0b0a;color:white;white-space:nowrap; }
 .project-viewer>figure>img { width:100%;height:calc(100dvh - 265px);min-height:430px;max-height:850px;object-fit:contain;background:var(--surface); }
 .project-viewer figcaption { margin-top:16px;font-size:13px;color:var(--muted); }
 .chapter-controls { display:flex;gap:24px;align-items:center;justify-content:flex-end;margin-top:28px; }

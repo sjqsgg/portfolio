@@ -22,6 +22,10 @@ The primary site is https://jiaqii7.com/. Its HTTP response confirms Netlify hos
 
 ## Documentation status
 
+Publication update: the user approved releasing WikiHowTutor on 14 September 2026. The demo and poster are included in this release. The video and cover follow their intrinsic aspect ratio without a fixed black background; earlier statements below about these additions remaining unpublished describe the preparation stage.
+
+WikiHowTutor is added locally with the approved tutorial screening, formatting and pairing contribution. Year 2026 and independent full-stack development, study design and data analysis are user-confirmed. Technology is checked against Test-Claude (Next.js/TypeScript, FastAPI, Supabase), not the unrelated current OpenMAIC contents of Jiaqi-Thesis. The original final poster has an image preview, an enlarged scrollable modal and an explicit PDF download. The user-supplied WikihowTutorDemo.mov is converted from about 36 MB to a 1280-pixel-wide H.264/AAC MP4 of about 2.8 MB. A 68 KB cover frame is shown before play; the video element and source are only mounted after a click. Switching to the poster unmounts the video. These additions are not yet published.
+
 Baseline: main commit 8fe8098, 10 September 2026. Documentation has no single global version number.
 
 - README.md: repository entry point and content-editing locations.
