@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "lookdev": "vite --open '/?lookdev=1'",
+    "lookdev:validate": "node scripts/validate-lookdev-checkpoint.mjs",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",

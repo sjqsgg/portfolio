@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import { sceneViews, hotspotNodes } from './sceneViews'
 import { assetPath } from '../data/assetPath'
 
-export default function Workbench({ theme, toggleTheme, openCamera, onStatus, home, view, object, onView, onInspect, onBoard, resetKey }) {
+export default function Workbench({ theme, toggleTheme, openCamera, onStatus, home, view, object, onView, onInspect, onBoard, resetKey, lookdev = false, onLookdevReady }) {
   const host = useRef(null), controller = useRef(null)
   const navigate = useNavigate()
   const latest = useRef({})
-  latest.current = { theme, view, object, toggleTheme, openCamera, onView, onInspect, onBoard }
+  latest.current = { theme, view, object, toggleTheme, openCamera, onView, onInspect, onBoard, onLookdevReady }
   useEffect(() => { controller.current?.setTheme(theme) }, [theme])
   useEffect(() => { controller.current?.compose(view, object) }, [view, object, resetKey])
   useEffect(() => {
@@ -216,11 +216,138 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           floor.material.opacity = night ? .35 : .16
           render()
         }
-        controller.current = { setTheme, compose }
+        const lookdevParts = [
+          ['workstation', 'Whole workstation', 'WORKSTATION_ROOT'],
+          ['return', 'Main desk', 'Desk_Return'],
+          ['desktop', 'Main desktop', 'Return_Desktop_28mm'],
+          ['return-frame', 'Main frame / overall', 'Return_Tube_Frame_22mm', true],
+          ['rear', 'Rear unit', 'Rear_Unit'],
+          ['counter', 'Rear counter', 'Rear_Counter_28mm'],
+          ['rear-frame', 'Rear frame / overall', 'Rear_Tube_Frame_22mm', true],
+          ['storage', 'Upper storage', 'UPPER_STORAGE'],
+          ['chair', 'Chair', 'Office_Chair'],
+          ['board', 'Wall board', 'Pegboard_Perforated_21x14'],
+          ['left-speaker', 'Left speaker', 'Speaker_Left'],
+          ['right-speaker', 'Right speaker', 'Speaker_Right'],
+          ['audio', 'Audio module', 'Central_Audio_Module'],
+          ['cameras', 'Camera equipment', 'Camera_Equipment'],
+        ].map(([id, label, name, supportsThickness = false]) => ({ id, label, name, supportsThickness, node: model.getObjectByName(name) })).filter(part => part.node)
+        function centerInParent(node) {
+          node.updateWorldMatrix(true, true)
+          const center = new THREE.Box3().setFromObject(node).getCenter(new THREE.Vector3())
+          return node.parent ? node.parent.worldToLocal(center) : center
+        }
+        const partBaselines = new Map(lookdevParts.map(part => [part.id, {
+          position: part.node.position.clone(), scale: part.node.scale.clone(), quaternion: part.node.quaternion.clone(), center: centerInParent(part.node),
+        }]))
+        const tubeBaselines = new Map(lookdevParts.filter(part => part.supportsThickness).map(part => {
+          const rods = []
+          part.node.traverse(node => {
+            if (!node.isMesh || !node.geometry) return
+            node.geometry.computeBoundingBox()
+            const size = node.geometry.boundingBox.getSize(new THREE.Vector3())
+            const dimensions = [size.x * Math.abs(node.scale.x), size.y * Math.abs(node.scale.y), size.z * Math.abs(node.scale.z)]
+            rods.push({ node, scale: node.scale.clone(), longAxis: dimensions.indexOf(Math.max(...dimensions)) })
+          })
+          return [part.id, rods]
+        }))
+        const materialsByName = new Map()
+        model.traverse(node => {
+          if (!node.isMesh) return
+          for (const material of Array.isArray(node.material) ? node.material : [node.material]) {
+            if (!material?.name) continue
+            if (!materialsByName.has(material.name)) materialsByName.set(material.name, new Set())
+            materialsByName.get(material.name).add(material)
+          }
+        })
+        const materialBaselines = new Map([...materialsByName].map(([name, materialSet]) => {
+          const material = materialSet.values().next().value
+          return [name, {
+          color: material.color?.getHexString?.() || 'ffffff',
+          roughness: material.roughness ?? .5,
+          metalness: material.metalness ?? 0,
+          clearcoat: material.clearcoat ?? 0,
+          }]
+        }))
+        const lightingBaseline = { exposure: .98, ambient: .85, key: 3, fill: .65, practical: 0 }
+        function applyPart(id, values) {
+          const part = lookdevParts.find(item => item.id === id), baseline = partBaselines.get(id)
+          if (!part || !baseline) return
+          part.node.scale.set(
+            baseline.scale.x * values.scaleX,
+            baseline.scale.y * values.scaleY,
+            baseline.scale.z * values.scaleZ,
+          )
+          part.node.position.set(
+            baseline.position.x + values.positionX,
+            baseline.position.y + values.positionY,
+            baseline.position.z + values.positionZ,
+          )
+          const rotation = new THREE.Quaternion().setFromEuler(new THREE.Euler(
+            THREE.MathUtils.degToRad(values.rotationX),
+            THREE.MathUtils.degToRad(values.rotationY),
+            THREE.MathUtils.degToRad(values.rotationZ),
+          ))
+          part.node.quaternion.copy(baseline.quaternion).multiply(rotation)
+          for (const rod of tubeBaselines.get(id) || []) {
+            rod.node.scale.copy(rod.scale)
+            for (let axis = 0; axis < 3; axis += 1) if (axis !== rod.longAxis) rod.node.scale.setComponent(axis, rod.scale.getComponent(axis) * values.thickness)
+          }
+          part.node.updateMatrixWorld(true)
+          if (values.lockPosition) {
+            const desiredCenter = baseline.center.clone().add(new THREE.Vector3(values.positionX, values.positionY, values.positionZ))
+            part.node.position.add(desiredCenter.sub(centerInParent(part.node)))
+            part.node.updateMatrixWorld(true)
+          }
+          render()
+        }
+        function applyMaterial(name, values) {
+          const materialSet = materialsByName.get(name)
+          if (!materialSet) return
+          for (const material of materialSet) {
+            if (material.color && values.color) material.color.set(`#${values.color.replace('#', '')}`)
+            if ('roughness' in material) material.roughness = values.roughness
+            if ('metalness' in material) material.metalness = values.metalness
+            if ('clearcoat' in material) material.clearcoat = values.clearcoat
+            material.needsUpdate = true
+          }
+          render()
+        }
+        function applyLighting(values) {
+          renderer.toneMappingExposure = values.exposure
+          ambient.intensity = values.ambient; key.intensity = values.key
+          fill.intensity = values.fill; practical.intensity = values.practical
+          render()
+        }
+        function resetPart(id) {
+          const part = lookdevParts.find(item => item.id === id), baseline = partBaselines.get(id)
+          if (!part || !baseline) return
+          part.node.position.copy(baseline.position); part.node.scale.copy(baseline.scale); part.node.quaternion.copy(baseline.quaternion)
+          for (const rod of tubeBaselines.get(id) || []) rod.node.scale.copy(rod.scale)
+          part.node.updateMatrixWorld(true); render()
+        }
+        function resetMaterial(name) {
+          const baseline = materialBaselines.get(name)
+          if (baseline) applyMaterial(name, baseline)
+        }
+        function resetLighting() { applyLighting(lightingBaseline) }
+        function resetLookdev() {
+          for (const part of lookdevParts) resetPart(part.id)
+          for (const name of materialBaselines.keys()) resetMaterial(name)
+          resetLighting(); model.updateMatrixWorld(true); render()
+        }
+        const lookdevApi = {
+          parts: lookdevParts.map(({ id, label, supportsThickness }) => ({ id, label, supportsThickness })),
+          materials: [...materialBaselines].map(([name, values]) => ({ name, ...values })),
+          lighting: lightingBaseline,
+          applyPart, applyMaterial, applyLighting, resetPart, resetMaterial, resetLighting, reset: resetLookdev,
+        }
+        controller.current = { setTheme, compose, lookdev: lookdevApi }
         setTheme(latest.current.theme); fit()
         await renderer.compileAsync(scene, camera)
         if (disposed || abort.signal.aborted) return
         prepared = true; controls.addEventListener('change', render)
+        if (lookdev) latest.current.onLookdevReady?.(lookdevApi)
         const raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2()
         function pick(event) {
           const rect = renderer.domElement.getBoundingClientRect()
@@ -278,9 +405,10 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
     return () => {
       disposed = true; abort.abort(); clearTimeout(timer); cancelAnimationFrame(frame)
       observer?.disconnect(); controls?.dispose(); cleanups.forEach(fn => fn()); controller.current = null
+      if (lookdev) latest.current.onLookdevReady?.(null)
       disposeObject(scene || model); environment?.dispose()
       if (renderer) { renderer.dispose(); renderer.forceContextLoss(); renderer.domElement.remove() }
     }
-  }, [navigate, onStatus, home])
+  }, [navigate, onStatus, home, lookdev])
   return <div ref={host} className="workbench-canvas" data-state="loading" />
 }

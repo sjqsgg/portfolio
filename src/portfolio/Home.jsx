@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useReducedMotion } from 'motion/react'
 import CVLightbox from './CVLightbox'
 import PegboardLightbox from './PegboardLightbox'
+import LookdevPanel from './LookdevPanel'
 import { assetPath } from '../data/assetPath'
 
 const Workbench = lazy(() => import('./Workbench'))
@@ -44,9 +45,11 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey }) {
   const [object, setObject] = useState(null)
   const [boardOpen, setBoardOpen] = useState(false)
   const [documentOpen, setDocumentOpen] = useState(false)
+  const [lookdevApi, setLookdevApi] = useState(null)
   const home = useRef(null)
   const lastTrigger = useRef(null)
-  const useStatic = reduced || navigator.connection?.saveData
+  const lookdev = import.meta.env.DEV && new URLSearchParams(window.location.search).get('lookdev') === '1'
+  const useStatic = !lookdev && (reduced || navigator.connection?.saveData)
   useEffect(() => { setObject(null); setDocumentOpen(false); setBoardOpen(false); setView('overview') }, [resetKey])
   useEffect(() => {
     if (!object) { setDocumentOpen(false); return }
@@ -82,7 +85,7 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey }) {
     <h1 className="sr-only">Jiaqi Shi, software engineer & photographer</h1>
     <div className="workbench-stage">
       {(useStatic || status !== 'ready') && <picture className="workbench-poster"><source media="(max-width: 767px)" srcSet={assetPath(`/images/workstation/${view}-mobile.webp`)} /><img src={assetPath(`/images/workstation/${view}-day.webp`)} width="1440" height="1000" fetchPriority="high" alt="An L-shaped workstation with a monitor, cameras, a green desk lamp, shelves and speakers." /></picture>}
-      {!useStatic && <Suspense fallback={null}><Workbench theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} onStatus={setStatus} home={home} view={view} object={object} onView={selectView} onInspect={inspect} onBoard={showBoard} resetKey={resetKey} /></Suspense>}
+      {!useStatic && <Suspense fallback={null}><Workbench theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} onStatus={setStatus} home={home} view={view} object={object} onView={selectView} onInspect={inspect} onBoard={showBoard} resetKey={resetKey} lookdev={lookdev} onLookdevReady={setLookdevApi} /></Suspense>}
     </div>
     <div className={`scene-hotspots ${useStatic || status !== 'ready' ? 'fallback-labels' : ''}`} aria-label="Objects on the desk">
       {hotspots.map(([id, label, action]) => typeof action === 'string'
@@ -92,5 +95,6 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey }) {
     {status === 'loading' && !useStatic && <p className="sr-only" role="status">Opening the workbench…</p>}
     {boardOpen && <PegboardLightbox onClose={() => setBoardOpen(false)} />}
     {documentOpen && object && (object === 'cv' ? <CVLightbox onClose={putBack} /> : <DeskDocument kind={object} onClose={putBack} />)}
+    {lookdev && <LookdevPanel api={lookdevApi} />}
   </section>
 }

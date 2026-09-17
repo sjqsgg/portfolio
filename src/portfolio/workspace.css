@@ -82,3 +82,43 @@ main>.page,main>section.page { padding-top:228px;padding-bottom:130px; }
 
 .immersive-home .workbench-poster { display:block; }
 .immersive-home .workbench-poster img { width:100%;height:100%;object-fit:cover; }
+
+/* Developer-only workstation inspector, enabled with ?lookdev=1 in Vite dev mode. */
+.lookdev-panel { position:fixed;z-index:18;right:18px;top:290px;width:min(326px,calc(100vw - 36px));max-height:calc(100dvh - 308px);display:flex;flex-direction:column;background:#121513f2;color:#edf0e9;border:1px solid #5c655e;box-shadow:0 18px 70px #07100b4d;font:11px/1.35 "IBM Plex Mono",ui-monospace,monospace;backdrop-filter:blur(12px); }
+.lookdev-panel button,.lookdev-panel input,.lookdev-panel select { font:inherit;color:inherit; }
+.lookdev-panel button:focus-visible,.lookdev-panel input:focus-visible,.lookdev-panel select:focus-visible { outline:2px solid #f1cf49;outline-offset:2px; }
+.lookdev-panel.is-loading { padding:16px;flex-direction:row;justify-content:space-between;color:#b7c0b9; }
+.lookdev-panel.is-collapsed { width:270px; }
+.lookdev-header { min-height:58px;display:flex;align-items:center;justify-content:space-between;padding:11px 13px;border-bottom:1px solid #414842; }
+.lookdev-header>div { display:flex;flex-direction:column;gap:4px; }
+.lookdev-header strong { font:500 12px/1.3 "Helvetica Neue",Arial,sans-serif;letter-spacing:.01em; }
+.lookdev-kicker { color:#9ca69e;font-size:9px;letter-spacing:.08em; }
+.lookdev-header>button { width:36px;height:36px;border:1px solid #59615b;background:transparent; }
+.lookdev-tabs { display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid #414842; }
+.lookdev-tabs button { min-height:36px;text-transform:uppercase;font-size:9px;letter-spacing:.06em;color:#929b94;border-right:1px solid #414842; }
+.lookdev-tabs button:last-child { border:0; }
+.lookdev-tabs button[aria-pressed="true"] { color:#f2d755;background:#262c27; }
+.lookdev-body { padding:14px 13px 18px;overflow:auto; }
+.lookdev-select { display:grid;grid-template-columns:70px 1fr;align-items:center;gap:10px;margin-bottom:13px;color:#aeb7b0; }
+.lookdev-select select { width:100%;height:34px;padding:0 8px;background:#202521;border:1px solid #59615b;border-radius:0; }
+.lookdev-reset-current { width:100%;min-height:34px;margin:-3px 0 13px;border:1px solid #747d76;background:#252b26;text-align:left;padding:0 10px; }
+.lookdev-reset-current:hover { border-color:#e3c946;color:#f2d755; }
+.lookdev-lock { min-height:34px;margin:0 0 12px;display:flex;align-items:center;gap:9px;color:#c3cac4; }
+.lookdev-lock input { width:15px;height:15px;accent-color:#e6ca49; }
+.lookdev-note { margin:0 0 13px;padding-left:10px;border-left:2px solid #e5c947;color:#9ea8a0;font-size:9px; }
+.lookdev-presets { display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:16px; }
+.lookdev-presets button { min-height:32px;padding:5px;border:1px solid #4b534d;background:#1b1f1c;font-size:9px; }
+.lookdev-presets button:hover { border-color:#d9bd3f;color:#f2d755; }
+.lookdev-panel fieldset { border:0;border-top:1px solid #414842;padding:13px 0 0;margin:0 0 15px; }
+.lookdev-panel legend { padding:0 8px 0 0;color:#8f9991;font-size:9px;text-transform:uppercase;letter-spacing:.08em; }
+.lookdev-control { display:grid;grid-template-columns:78px 1fr 51px;align-items:center;gap:7px;min-height:32px;color:#b5bdb7; }
+.lookdev-control input[type="range"] { width:100%;height:2px;accent-color:#ebcf49; }
+.lookdev-control input[type="number"] { width:51px;height:27px;padding:3px 4px;text-align:right;background:#202521;border:1px solid #505751;border-radius:0; }
+.lookdev-color { display:grid;grid-template-columns:78px 42px 1fr;align-items:center;gap:8px;min-height:40px;margin-bottom:6px;color:#b5bdb7; }
+.lookdev-color input { width:38px;height:28px;padding:0;border:1px solid #59615b;background:transparent; }
+.lookdev-color code { color:#8f9991; }
+.lookdev-footer { min-height:49px;padding:7px 9px;display:flex;align-items:center;gap:5px;border-top:1px solid #414842; }
+.lookdev-footer button { min-height:32px;padding:0 8px;border:1px solid #505751;background:transparent; }
+.lookdev-footer span { flex:1;text-align:center;color:#aab3ac;font-size:9px; }
+.lookdev-footer .lookdev-save { background:#e6ca49;color:#121513;border-color:#e6ca49;font-weight:600; }
+@media (max-width:767px) { .lookdev-panel { top:auto;bottom:12px;right:12px;max-height:min(60dvh,520px);width:min(326px,calc(100vw - 24px)); }.lookdev-panel.is-collapsed { width:250px; } }

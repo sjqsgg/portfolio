@@ -37,6 +37,8 @@ The end-to-end suite starts a production preview on port 4175. It covers actual 
 
 ## Edit content
 
+Documentation entry point: [docs/README.md](docs/README.md). Workstation iterations follow the [round harness](docs/WORKSTATION-HARNESS.md); start the inspector with `npm run lookdev` and validate a saved checkpoint with `npm run lookdev:validate -- docs/<checkpoint>.json`.
+
 Confirmed English project-viewer content rules: [docs/PROJECT-CONTENT.md](docs/PROJECT-CONTENT.md). This supersedes earlier proposals for fixed Problem / Approach / What I learned sections.
 
 - `src/data/photographs.js`: existing photo metadata and responsive image sources.

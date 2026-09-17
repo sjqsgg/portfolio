@@ -124,8 +124,8 @@ test('gallery moves in opposite directions, pauses, drags, and opens the complet
 
 test('project chapters, project notes, contact links and unknown routes work', async ({ page }) => {
   await page.goto('/projects')
-  await expect(page.locator('.project-row')).toHaveCount(2)
-  await page.locator('.project-row').nth(1).click()
+  await expect(page.locator('.project-row')).toHaveCount(4)
+  await page.getByRole('link', { name: /A shared workbench/ }).click()
   await expect(page.locator('h1')).toHaveText('A shared workbench')
   await page.getByRole('button', { name: 'Next image' }).click()
   await expect(page.locator('.project-viewer figure img')).toHaveAttribute('src', /material-study/)
