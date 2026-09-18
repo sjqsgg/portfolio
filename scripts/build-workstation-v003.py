@@ -41,6 +41,96 @@ tex=SOURCE/'pale-ash-basecolor-1k.png'
 image=bpy.data.images.load(str(tex)); image.pack()
 n=wood.node_tree.nodes.new('ShaderNodeTexImage');n.image=image
 wood.node_tree.links.new(n.outputs['Color'],wood.node_tree.nodes['Principled BSDF'].inputs['Base Color'])
+
+# Round 03: rebuild only the two loudspeakers.  The accepted Round 02 group
+# transforms remain untouched, so this is a geometry swap inside the same
+# 398 x 636 x 413 mm envelope rather than a layout change.
+def speaker_object(name, mesh, parent, mat):
+    ob=bpy.data.objects.new(name,mesh);asset.objects.link(ob);ob.parent=parent
+    mesh.materials.append(mat)
+    return ob
+
+def prism_xy(name, outline, z0, z1, parent, mat):
+    verts=[(x,y,z) for z in (z0,z1) for x,y in outline]
+    count=len(outline)
+    faces=[tuple(range(count-1,-1,-1)),tuple(range(count,count*2))]
+    faces += [(i,(i+1)%count,(i+1)%count+count,i+count) for i in range(count)]
+    mesh=bpy.data.meshes.new(name+'_Mesh');mesh.from_pydata(verts,[],faces);mesh.update()
+    return speaker_object(name,mesh,parent,mat)
+
+def prism_xz(name, outline, y0, y1, parent, mat):
+    verts=[(x,y,z) for y in (y0,y1) for x,z in outline]
+    count=len(outline)
+    faces=[tuple(range(count-1,-1,-1)),tuple(range(count,count*2))]
+    faces += [(i,(i+1)%count,(i+1)%count+count,i+count) for i in range(count)]
+    mesh=bpy.data.meshes.new(name+'_Mesh');mesh.from_pydata(verts,[],faces);mesh.update()
+    return speaker_object(name,mesh,parent,mat)
+
+def local_cylinder(name, parent, radius, depth, location, mat, vertices=48):
+    bpy.ops.mesh.primitive_cylinder_add(vertices=vertices,radius=radius,depth=depth,
+        location=(0,0,0),rotation=(math.pi/2,0,0))
+    ob=bpy.context.view_layer.objects.active;ob.name=name;ob.parent=parent;ob.location=location
+    for collection in list(ob.users_collection):collection.objects.unlink(ob)
+    asset.objects.link(ob);ob.data.materials.append(mat)
+    bevel=ob.modifiers.new('Machined_edge','BEVEL');bevel.width=.0012;bevel.segments=2
+    return ob
+
+def local_torus(name, parent, outer, inner, y, z, mat):
+    bpy.ops.mesh.primitive_torus_add(major_radius=(outer+inner)/2,
+        minor_radius=(outer-inner)/2,major_segments=64,minor_segments=10,
+        location=(0,0,0),rotation=(math.pi/2,0,0))
+    ob=bpy.context.view_layer.objects.active;ob.name=name;ob.parent=parent;ob.location=(0,y,z)
+    for collection in list(ob.users_collection):collection.objects.unlink(ob)
+    asset.objects.link(ob);ob.data.materials.append(mat)
+    return ob
+
+def capsule_outline(width,height,segments=12):
+    radius=width/2; half=height/2
+    top=[(radius*math.cos(i*math.pi/segments),half-radius+radius*math.sin(i*math.pi/segments)) for i in range(segments+1)]
+    bottom=[(radius*math.cos(math.pi+i*math.pi/segments),-half+radius+radius*math.sin(math.pi+i*math.pi/segments)) for i in range(segments+1)]
+    return top+bottom[1:-1]
+
+def rebuild_speaker(group_name):
+    group=bpy.data.objects[group_name]
+    for child in list(group.children_recursive):bpy.data.objects.remove(child,do_unlink=True)
+
+    # Six-sided cabinet cross-section: a broad front plane, then one shallow
+    # inset/chamfer face on each side before the true side walls turn rearward.
+    cabinet_outline=[(-.164,-.191),(.164,-.191),(.199,-.164),(.199,.191),(-.199,.191),(-.199,-.164)]
+    cabinet=prism_xy(group_name+'_Cabinet',cabinet_outline,0,.636,group,walnut)
+    bevel=cabinet.modifiers.new('Cabinet_edge_radius','BEVEL');bevel.width=.004;bevel.segments=3
+    bevel.limit_method='ANGLE';bevel.harden_normals=True
+
+    # The inset baffle preserves a readable reveal of both transition faces.
+    baffle_outline=[(-.160,.014),(.160,.014),(.166,.020),(.166,.616),(.160,.622),(-.160,.622),(-.166,.616),(-.166,.020)]
+    baffle=prism_xz(group_name+'_Baffle',baffle_outline,-.198,-.191,group,cloth)
+    bevel=baffle.modifiers.new('Baffle_edge_radius','BEVEL');bevel.width=.003;bevel.segments=3
+
+    # One upper capsule holds the tweeter and mid driver; it belongs to the
+    # speaker face and is deliberately distinct from the central audio unit.
+    capsule_shape=[(x,z+.493) for x,z in capsule_outline(.154,.226)]
+    capsule=prism_xz(group_name+'_Upper_Capsule',capsule_shape,-.207,-.198,group,chrome)
+    bevel=capsule.modifiers.new('Capsule_edge_radius','BEVEL');bevel.width=.0015;bevel.segments=2
+
+    # Three-way hierarchy follows the photographed Philips speaker: dominant
+    # woofer, compact mid, then a small tweeter, all centered on one axis.
+    drivers=[
+        ('Woofer',.137,.104,.043,.194),
+        ('Mid_Driver',.063,.048,.020,.441),
+        ('Tweeter',.032,.023,.010,.552),
+    ]
+    for label,outer,cone,dust,z in drivers:
+        local_torus(group_name+'_'+label+'_Rim',group,outer,outer*.84,-.208,z,chrome)
+        local_cylinder(group_name+'_'+label+'_Cone',group,cone,.010,(0,-.210,z),cloth)
+        local_cylinder(group_name+'_'+label+'_Dustcap',group,dust,.006,(0,-.219,z),chrome)
+
+    # Four restrained fasteners are part of the real cabinet language without
+    # turning the speaker into a photoreal prop.
+    for index,(x,z) in enumerate(((-.145,.055),(.145,.055),(-.145,.581),(.145,.581)),1):
+        local_cylinder(f'{group_name}_Fastener_{index:02d}',group,.006,.004,(x,-.202,z),chrome,24)
+
+for speaker_group in ('Speaker_Left','Speaker_Right'):
+    rebuild_speaker(speaker_group)
 # Remove redundant display gear to give the guestbook an actual place on the photo counter.
 for name in ['Camera_Instant','Camera_CCD','Flash_Unit','Camera_Charger','Lens_Standalone_03']:
     ob=bpy.data.objects.get(name)
@@ -95,7 +185,7 @@ for ob in list(asset.objects):
 
 def cube(name,pos,size,m,parent=root):
     bpy.ops.mesh.primitive_cube_add(size=1,location=pos)
-    ob=bpy.context.object;ob.name=name;ob.dimensions=size
+    ob=bpy.context.view_layer.objects.active;ob.name=name;ob.dimensions=size
     bpy.ops.object.transform_apply(location=False,rotation=False,scale=True)
     bpy.context.view_layer.update();world=ob.matrix_world.copy();ob.parent=parent;ob.matrix_world=world
     for c in list(ob.users_collection):c.objects.unlink(ob)
@@ -111,9 +201,14 @@ def text(name,body,pos,size,parent,rotation=(math.pi/2,0,0),mat=ink):
     data=bpy.data.curves.new(name,'FONT');data.body=body;data.size=size;data.extrude=0;data.align_x='LEFT'
     ob=bpy.data.objects.new(name,data);asset.objects.link(ob);ob.location=pos;ob.rotation_euler=rotation
     bpy.context.view_layer.update();world=ob.matrix_world.copy();ob.parent=parent;ob.matrix_world=world;data.materials.append(mat)
-    bpy.context.view_layer.objects.active=ob;ob.select_set(True)
-    bpy.ops.object.convert(target='MESH');ob.select_set(False)
-    return ob
+    # Data API conversion is reliable both in GUI and background-style runs;
+    # bpy.ops.object.convert depends on the current editor context.
+    bpy.context.view_layer.update();evaluated=ob.evaluated_get(bpy.context.evaluated_depsgraph_get())
+    mesh=bpy.data.meshes.new_from_object(evaluated);ob.name=name+'_CurveSource'
+    mesh_ob=bpy.data.objects.new(name,mesh);asset.objects.link(mesh_ob)
+    mesh_ob.parent=parent;mesh_ob.matrix_world=ob.matrix_world.copy()
+    bpy.data.objects.remove(ob,do_unlink=True)
+    return mesh_ob
 bpy.ops.object.select_all(action='DESELECT')
 text('CV_Print','JIAQI SHI\n\nSOFTWARE ENGINEER\n& PHOTOGRAPHER\n\nTHE NETHERLANDS\n\nSELECTED WORK / 01',(-.997,.884,1.24),.010,cv)
 badge=bpy.data.objects['HOTSPOT_badge']
@@ -130,7 +225,18 @@ bpy.context.view_layer.update()
 bpy.ops.object.select_all(action='DESELECT')
 for ob in asset.objects:ob.select_set(True)
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'jiaqi-workstation-v003.blend'))
-bpy.ops.export_scene.gltf(filepath=str(ROOT/'public/models/workstation-v003.glb'),export_format='GLB',use_selection=True,export_yup=True,export_apply=True,export_cameras=False,export_lights=False,export_extras=True)
-report={'source':str(SOURCE),'units':'meters','desktop_height':.74,'desktop_thickness':.028,'L_angle_degrees':90,'interactive_groups':[o.name for o in asset.objects if o.name.startswith('HOTSPOT_')],'mesh_count':sum(o.type=='MESH' for o in asset.objects)}
+def export_glb():
+    bpy.ops.export_scene.gltf(filepath=str(ROOT/'public/models/workstation-v003.glb'),export_format='GLB',use_selection=True,export_yup=True,export_apply=True,export_cameras=False,export_lights=False,export_extras=True)
+    print('V003_GLB_EXPORTED')
+    return None
+
+# Blender can execute --python before the macOS window has finished creating
+# its active-object context.  Defer only the export in that case; the .blend
+# has already been saved and the timer runs as soon as the UI is ready.
+if hasattr(bpy.context,'active_object'):
+    export_glb()
+else:
+    bpy.app.timers.register(export_glb,first_interval=.75)
+report={'source':'assets/3d/workstation-v003/sources','units':'meters','desktop_height':.74,'desktop_thickness':.028,'L_angle_degrees':90,'interactive_groups':[o.name for o in asset.objects if o.name.startswith('HOTSPOT_')],'mesh_count':sum(o.type=='MESH' for o in asset.objects)}
 (OUT/'manifest.json').write_text(json.dumps(report,indent=2))
 print('V003_COMPLETE',report)

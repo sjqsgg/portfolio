@@ -2,7 +2,7 @@
 
 Prepared: 2026-09-18
 
-Status: ready after accepted Round 02
+Status: Candidate B generated; awaiting visual decision
 
 Baseline: the accepted Round 02 checkpoint; checkpoint 01 speaker mass and spacing remain the starting envelope.
 
@@ -76,3 +76,46 @@ Candidate C is not automatically preferable: the comparison must determine how m
 - Parametric Blender geometry rather than permanent browser-only non-uniform scaling.
 - A Round 03 checkpoint JSON and decision record.
 - Model, checkpoint, lint, unit, build and browser visual gates from the workstation Harness.
+
+## Candidate B implementation — 2026-09-18
+
+Candidate B is now generated in the Blender source derivative and exported GLB. Only descendants of `Speaker_Left` and `Speaker_Right` were replaced; their parent transforms and the accepted Round 02 runtime scales remain unchanged. `AUDIO_ZONE` and the central audio module were not edited.
+
+### Parametric geometry
+
+| Feature | Candidate B value |
+| --- | ---: |
+| Original per-speaker envelope | 398 × 636 × 413 mm |
+| Candidate B per-speaker envelope | 398 × 636 × 413 mm |
+| Broad front-plane width | 328 mm |
+| Cabinet transition | paired 35 mm diagonal runs from front plane into side walls |
+| Upper capsule | 154 × 226 mm |
+| Woofer outer diameter | 274 mm |
+| Mid-driver outer diameter | 126 mm |
+| Tweeter outer diameter | 64 mm |
+| Fasteners | four restrained 12 mm caps |
+
+The front cross-section is an explicit six-sided prism, not a generic rounded box: the main face ends at ±164 mm, then the left and right transition faces turn back 27 mm before the long side walls begin. This makes the two cut faces real geometry that can catch light independently.
+
+### Automated evidence
+
+- GLB structural validator: pass.
+- Accepted Round 02 checkpoint validator: pass; 7 parts, 12 materials and lighting retained.
+- Unit tests: 2/2 pass.
+- Production build: pass.
+- Browser regression suite: 24 passed, 1 intentionally skipped.
+- Lint: 0 errors; the pre-existing `CVLightbox.jsx` Fast Refresh warning remains.
+- Exported speaker envelope comparison: exact match on both speakers.
+
+### First fixed-view review
+
+- Overview: pass for immediate speaker recognition and a dominant woofer.
+- Upper hierarchy: pass; the vertical capsule clearly groups the small tweeter and medium driver without resembling the central audio unit.
+- Storage fit and negative space: pass; the accepted cabinet occupancy is unchanged.
+- Central audio freeze: pass by scoped source edit; no central-audio geometry path is touched.
+- Transition-face readability: provisional. The facets are present and visible as narrow side reveals in the current oblique Overview, but should be judged by the user before Candidate B becomes the Round 03 baseline.
+- Chrome restraint and final colours: provisional by design; material tuning remains frozen for this geometry round.
+
+## Decision gate
+
+Candidate B is **provisional**, not yet accepted. Approval should answer only whether the speaker silhouette, paired transition faces, capsule shape and three-driver proportions are right. Colour and detailed surface response remain deferred to Round 05/07.

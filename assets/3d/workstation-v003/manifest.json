@@ -1,5 +1,5 @@
 {
-  "source": "/Users/a77/.codex/worktrees/4618/portfolio/assets/3d/workstation-graybox/v001",
+  "source": "assets/3d/workstation-v003/sources",
   "units": "meters",
   "desktop_height": 0.74,
   "desktop_thickness": 0.028,
@@ -14,5 +14,5 @@
     "HOTSPOT_audio_controls",
     "HOTSPOT_cv"
   ],
-  "mesh_count": 175
+  "mesh_count": 185
 }
