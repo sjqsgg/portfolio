@@ -1,6 +1,7 @@
 # Workstation lookdev - round 02 decision
 
-Accepted: 2026-09-18
+Accepted: 2026-09-18  
+Published as the production board baseline: 2026-09-18
 
 Checkpoint: [`workstation-lookdev-round-02.json`](./workstation-lookdev-round-02.json)
 
@@ -28,7 +29,7 @@ Round 02 is accepted from the user's exported JSON. The board remains a generic 
 
 Overview, Work and Photography fixed views were checked with the board/right-backing seam closed. The browser editor exposes `Board assembly`, `Board frame` and `Felt insert` as separate selections with per-layer reset and surface controls.
 
-The layered board is still a Lookdev-only runtime preview. The normal homepage retains its current production geometry until a board construction family is selected and rebuilt in Blender.
+The accepted layered placeholder is now also the normal homepage baseline: the perforated board is replaced at runtime by the independently sized frame and felt insert, and the accepted seam correction closes the gap against the right backing panel. This remains a deliberately generic placeholder until a board construction family is selected and rebuilt in Blender. Deferred board objects stay hidden; the future scratch card has not yet been modeled.
 
 ## Next round
 

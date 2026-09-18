@@ -63,28 +63,26 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
         }
         const texture = new THREE.DataTexture(grain, 128, 128)
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping; texture.repeat.set(12, 12); texture.needsUpdate = true
-        if (lookdev) {
-          const sourceBoard = model.getObjectByName('Pegboard_Perforated_21x14')
-          if (sourceBoard?.geometry && sourceBoard.parent) {
-            sourceBoard.geometry.computeBoundingBox()
-            const bounds = sourceBoard.geometry.boundingBox
-            const size = bounds.getSize(new THREE.Vector3()), center = bounds.getCenter(new THREE.Vector3())
-            const assembly = new THREE.Group()
-            assembly.name = 'Board_Assembly_Lookdev'
-            assembly.position.copy(sourceBoard.position); assembly.quaternion.copy(sourceBoard.quaternion); assembly.scale.copy(sourceBoard.scale)
-            const frameMaterial = new THREE.MeshPhysicalMaterial({ name:'Board_frame_preview', color:0xd8cfbb, roughness:.62, metalness:0, clearcoat:.06 })
-            const feltMaterial = new THREE.MeshPhysicalMaterial({ name:'Board_felt_preview', color:0x8fe85e, roughness:.9, metalness:0, clearcoat:0 })
-            const frame = new THREE.Mesh(new THREE.BoxGeometry(size.x, size.y, Math.max(size.z, .012)), frameMaterial)
-            frame.name = 'Board_Frame_Lookdev'; frame.position.copy(center)
-            const felt = new THREE.Mesh(new THREE.BoxGeometry(Math.max(.02, size.x - .044), Math.max(.02, size.y - .044), Math.max(size.z, .014)), feltMaterial)
-            felt.name = 'Board_Felt_Lookdev'; felt.position.copy(center); felt.position.z += .008
-            for (const node of [frame, felt]) { node.castShadow = true; node.receiveShadow = true }
-            assembly.add(frame, felt); sourceBoard.parent.add(assembly); sourceBoard.visible = false
-          }
-          for (const name of ['Pegboard_Headphones', 'HOTSPOT_badge', 'HOTSPOT_map', 'Badge_Hanger', 'Badge_Peg', 'CV_Rack', 'HOTSPOT_cv']) {
-            const deferredBoardObject = model.getObjectByName(name)
-            if (deferredBoardObject) deferredBoardObject.visible = false
-          }
+        const sourceBoard = model.getObjectByName('Pegboard_Perforated_21x14')
+        if (sourceBoard?.geometry && sourceBoard.parent) {
+          sourceBoard.geometry.computeBoundingBox()
+          const bounds = sourceBoard.geometry.boundingBox
+          const size = bounds.getSize(new THREE.Vector3()), center = bounds.getCenter(new THREE.Vector3())
+          const assembly = new THREE.Group()
+          assembly.name = 'Board_Assembly_Lookdev'
+          assembly.position.copy(sourceBoard.position); assembly.quaternion.copy(sourceBoard.quaternion); assembly.scale.copy(sourceBoard.scale)
+          const frameMaterial = new THREE.MeshPhysicalMaterial({ name:'Board_frame_preview', color:0xd8cfbb, roughness:.62, metalness:0, clearcoat:.06 })
+          const feltMaterial = new THREE.MeshPhysicalMaterial({ name:'Board_felt_preview', color:0x8fe85e, roughness:.9, metalness:0, clearcoat:0 })
+          const frame = new THREE.Mesh(new THREE.BoxGeometry(size.x, size.y, Math.max(size.z, .012)), frameMaterial)
+          frame.name = 'Board_Frame_Lookdev'; frame.position.copy(center)
+          const felt = new THREE.Mesh(new THREE.BoxGeometry(Math.max(.02, size.x - .044), Math.max(.02, size.y - .044), Math.max(size.z, .014)), feltMaterial)
+          felt.name = 'Board_Felt_Lookdev'; felt.position.copy(center); felt.position.z += .008
+          for (const node of [frame, felt]) { node.castShadow = true; node.receiveShadow = true }
+          assembly.add(frame, felt); sourceBoard.parent.add(assembly); sourceBoard.visible = false
+        }
+        for (const name of ['Pegboard_Headphones', 'HOTSPOT_badge', 'HOTSPOT_map', 'Badge_Hanger', 'Badge_Peg', 'CV_Rack', 'HOTSPOT_cv']) {
+          const deferredBoardObject = model.getObjectByName(name)
+          if (deferredBoardObject) deferredBoardObject.visible = false
         }
         model.traverse(node => {
           if (!node.isMesh) return
@@ -250,7 +248,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           ['rear-frame', 'Rear frame / overall', 'Rear_Tube_Frame_22mm', true],
           ['storage', 'Upper storage', 'UPPER_STORAGE'],
           ['chair', 'Chair', 'Office_Chair'],
-          ['board', 'Board assembly', lookdev ? 'Board_Assembly_Lookdev' : 'Pegboard_Perforated_21x14'],
+          ['board', 'Board assembly', 'Board_Assembly_Lookdev'],
           ['board-frame', 'Board frame', 'Board_Frame_Lookdev'],
           ['board-felt', 'Felt insert', 'Board_Felt_Lookdev'],
           ['left-speaker', 'Left speaker', 'Speaker_Left'],
@@ -412,7 +410,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
         }
         renderer.domElement.onpointermove = event => {
           const hit = !transition && !latest.current.object && !event.buttons ? pick(event) : null
-          const labels = { monitor: latest.current.view === 'work' ? 'Projects' : 'Work & ideas', camera: 'Photography', lamp: 'Light', cv: 'View CV', badge: 'About me', guestbook: 'Leave a note', map: 'Explore map', board: 'Pegboard', 'photo-area': latest.current.view === 'photo' ? '' : 'Photography' }
+          const labels = { monitor: latest.current.view === 'work' ? 'Projects' : 'Work & ideas', camera: 'Photography', lamp: 'Light', cv: 'View CV', badge: 'About me', guestbook: 'Leave a note', map: 'Explore map', board: 'Felt board', 'photo-area': latest.current.view === 'photo' ? '' : 'Photography' }
           renderer.domElement.dataset.cursor = labels[hit] || ''
           renderer.domElement.style.cursor = labels[hit] ? 'pointer' : 'grab'
         }

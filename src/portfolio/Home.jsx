@@ -77,7 +77,7 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey }) {
     ['mug', 'Photography desk', () => selectView('photo')],
     ['audio', 'Photography shelves', () => selectView('photo')],
     ['guestbook', view === 'photo' ? 'Leave a note' : 'Photography book', event => inspect('guestbook', event)],
-    ...(!lookdev ? [['board', 'Open pegboard', showBoard]] : []),
+    ...(!lookdev ? [['board', 'Open felt board', showBoard]] : []),
     ['lamp', `Desk lamp: switch to ${theme === 'day' ? 'night' : 'day'} mode`, toggleTheme],
     ...(view === 'work' && !lookdev ? [['cv', 'Curriculum vitae', event => inspect('cv', event)], ['badge', 'About me', event => inspect('badge', event)]] : []),
   ]
