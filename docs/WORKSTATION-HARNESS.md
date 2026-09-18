@@ -97,11 +97,12 @@ Create, without overwriting earlier rounds:
 
 ## Planned round order
 
-1. **Round 02 — remaining large-form proportions:** desktop, storage, chair, board and negative space. Freeze checkpoint 01 lighting; palette remains provisional.
-2. **Round 03 — geometry language:** tabletop/frame thickness, bevels, edge softness and tube construction. Rebuild accepted non-uniform trials in Blender.
-3. **Round 04 — material identity:** wood, metal, cloth, enamel, felt and screen response under neutral light.
-4. **Round 05 — lighting:** exposure, key/fill balance, practical lamp and shadow softness with materials frozen.
-5. **Round 06 — final palette:** balance pale yellow-green, cream, metal and the darker anchors; integrate Isabelle's yellow/white/pink without making her visually abrupt.
+1. **Round 02 — remaining large-form proportions:** desktop, storage, chair, board envelope and negative space. Candidate C closes the board/right-backing seam and scaffolds separate board assembly, frame and felt-insert controls without selecting a board type.
+2. **Round 03 — speaker geometry:** modify only the left and right speakers using the user's references. Preserve the broad front face, two slightly inset transition faces before the side walls, driver hierarchy and accepted speaker envelopes. The central audio module is frozen completely.
+3. **Round 04 — shared geometry language:** tabletop/frame thickness, bevels, edge softness and tube construction. Rebuild accepted non-uniform trials in Blender.
+4. **Round 05 — material identity:** wood, metal, cloth, enamel, felt and screen response under neutral light. Final felt treatment waits for a board-family decision.
+5. **Round 06 — lighting:** exposure, key/fill balance, practical lamp and shadow softness with materials frozen.
+6. **Round 07 — final palette:** balance pale yellow-green, cream, metal and the darker anchors; integrate Isabelle's yellow/white/pink without making her visually abrupt.
 
 Object-specific modeling that has not been discussed is not pulled into these rounds automatically. It receives its own brief when activated.
 

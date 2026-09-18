@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "checkpoint": "round-02-board-envelope-and-layers",
+  "recordedAt": "2026-09-18",
+  "status": "accepted",
+  "parts": {
+    "rear-frame": { "scaleX": 1, "scaleY": 0.7, "scaleZ": 0.7, "thickness": 1.42, "positionX": 0, "positionY": 0, "positionZ": 0, "rotationX": 0, "rotationY": 0, "rotationZ": 0, "lockPosition": true },
+    "audio": { "scaleX": 0.86, "scaleY": 0.96, "scaleZ": 0.87, "thickness": 1, "positionX": 0, "positionY": 0, "positionZ": 0, "rotationX": 0, "rotationY": 0, "rotationZ": 0, "lockPosition": true },
+    "right-speaker": { "scaleX": 0.84, "scaleY": 0.87, "scaleZ": 1.07, "thickness": 1, "positionX": 0, "positionY": 0, "positionZ": 0, "rotationX": 0, "rotationY": 0, "rotationZ": 0, "lockPosition": true },
+    "left-speaker": { "scaleX": 0.84, "scaleY": 0.87, "scaleZ": 1.07, "thickness": 1, "positionX": 0, "positionY": 0, "positionZ": 0, "rotationX": 0, "rotationY": 0, "rotationZ": 0, "lockPosition": true },
+    "board": { "scaleX": 1, "scaleY": 0.92, "scaleZ": 1, "thickness": 1, "positionX": 0.03, "positionY": 0, "positionZ": 0, "rotationX": 0, "rotationY": 0, "rotationZ": 0, "lockPosition": true },
+    "board-frame": { "scaleX": 1.08, "scaleY": 1.15, "scaleZ": 1, "thickness": 1, "positionX": 0, "positionY": 0, "positionZ": 0, "rotationX": 0, "rotationY": 0, "rotationZ": 0, "lockPosition": true },
+    "board-felt": { "scaleX": 1, "scaleY": 1.05, "scaleZ": 1, "thickness": 1, "positionX": -0.02, "positionY": -0.005, "positionZ": 0, "rotationX": 0, "rotationY": 0, "rotationZ": 0, "lockPosition": true }
+  },
+  "materials": {
+    "Screen": { "color": "ffffff", "roughness": 0.32, "metalness": 0, "clearcoat": 0 },
+    "Ink": { "color": "82c0a9", "roughness": 0.9, "metalness": 0, "clearcoat": 0 },
+    "Petrol_powdercoat": { "color": "adff5c", "roughness": 0.46, "metalness": 0, "clearcoat": 0 },
+    "Speaker_walnut": { "color": "ae9b6f", "roughness": 0.53, "metalness": 0, "clearcoat": 0 },
+    "Speaker_cloth": { "color": "b0c7a3", "roughness": 0.96, "metalness": 0, "clearcoat": 0 },
+    "Rubber": { "color": "bfc478", "roughness": 0.64, "metalness": 0, "clearcoat": 0 },
+    "Pale_ash": { "color": "d8cfbb", "roughness": 0.57, "metalness": 0, "clearcoat": 0.57 },
+    "Green_enamel": { "color": "fbed5b", "roughness": 0.23, "metalness": 0, "clearcoat": 0.35 },
+    "Camera_metal": { "color": "949494", "roughness": 0.34, "metalness": 0.7, "clearcoat": 0 },
+    "Board_frame_preview": { "color": "d8cfbb", "roughness": 0.62, "metalness": 0, "clearcoat": 0.06 },
+    "Board_felt_preview": { "color": "8fe85e", "roughness": 0.9, "metalness": 0, "clearcoat": 0 },
+    "Sage_pegboard": { "color": "9bd67a", "roughness": 0.5600000023841858, "metalness": 0, "clearcoat": 0 }
+  },
+  "lighting": { "exposure": 0.98, "ambient": 0.85, "key": 3, "fill": 0.65, "practical": 0 }
+}

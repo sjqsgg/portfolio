@@ -14,7 +14,9 @@ These decisions supersede conflicting exploratory directions later in this docum
 
 - The modeled asset is the workstation itself, not a surrounding room.
 - The board direction is felt rather than a perforated pegboard. Only the scratch card is committed content for the first detailed board pass; other board objects are deferred.
+- The felt-board construction type is still open. Current references include a frameless rounded decorative board, a simple two-tone felt slab, and a framed large-format display; none is selected yet. Its outer placement may be finalized before its frame and insert design.
 - Audio equipment remains part of the workstation, but checkpoint 01 establishes a lighter, less crowded direction with a narrower audio module and smaller speakers.
+- Speaker cabinet and driver shapes remain open and will be refined from dedicated user references in Round 03; checkpoint 01 fixes only their provisional mass and spacing. Round 03 modifies only the left and right speakers. The central audio module remains unchanged. Each speaker front transitions into its sides through two shallow, slightly inset cut faces rather than a single generic bevel.
 - The earlier dark-green-heavy palette is rejected. The active palette exploration uses pale yellow-green, warm cream/ash and restrained metal; exact colours remain provisional until material and lighting passes are complete.
 - Isabelle is not humanised or resized into adult proportions. She retains her original compact Animal Crossing body and begins low in the chair, potentially with only a small amount visible.
 - The target material language is stylised commercial 3D rather than photorealism: simplified large forms, broad controlled bevels, satin surfaces, restrained reflective metal and deliberate studio lighting.

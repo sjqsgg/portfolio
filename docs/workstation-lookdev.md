@@ -10,7 +10,7 @@ Run `npm run lookdev`. The controls only load in the Vite development build and 
 
 Each tab has a reset button directly below its selector. A selected part resets all of its scale, position and rotation values; Surface resets every property of the selected material; Light resets all lighting values. The whole model is only reset when Whole workstation is selected.
 
-Save stores the current setup in this browser. Copy JSON produces the hand-off record for updating `scripts/build-workstation-v003.py`.
+Load JSON applies a recorded checkpoint to the current model without saving it. Save stores the current setup in this browser. Copy produces the hand-off record for updating `scripts/build-workstation-v003.py`.
 
 ## Recorded checkpoints
 

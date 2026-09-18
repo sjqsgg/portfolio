@@ -33,7 +33,7 @@ function DeskDocument({ kind, onClose }) {
         <dl className="document-details"><div><dt className="meta muted">BASED IN</dt><dd>The Netherlands</dd></div><div><dt className="meta muted">FOCUS</dt><dd>Useful software.<br />People, places and moments.</dd></div></dl>
         <div className="document-links"><Link to="/about">A little more about me ↗</Link><a href="mailto:jiaqii7@outlook.com">Say hello ↗</a></div>
       </>}
-      <span className="document-signature meta">JIAQI SHI — PERSONAL WORKBENCH</span>
+      <span className="document-signature meta">JIAQI SHI - PERSONAL WORKBENCH</span>
     </div>
   </dialog>
 }
@@ -77,15 +77,15 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey }) {
     ['mug', 'Photography desk', () => selectView('photo')],
     ['audio', 'Photography shelves', () => selectView('photo')],
     ['guestbook', view === 'photo' ? 'Leave a note' : 'Photography book', event => inspect('guestbook', event)],
-    ['board', 'Open pegboard', showBoard],
+    ...(!lookdev ? [['board', 'Open pegboard', showBoard]] : []),
     ['lamp', `Desk lamp: switch to ${theme === 'day' ? 'night' : 'day'} mode`, toggleTheme],
-    ...(view === 'work' ? [['cv', 'Curriculum vitae', event => inspect('cv', event)], ['badge', 'About me', event => inspect('badge', event)]] : []),
+    ...(view === 'work' && !lookdev ? [['cv', 'Curriculum vitae', event => inspect('cv', event)], ['badge', 'About me', event => inspect('badge', event)]] : []),
   ]
   return <section ref={home} className={`home immersive-home view-${view}`} aria-label="Jiaqi Shi’s workbench" data-view={view} data-object={object || 'none'}>
     <h1 className="sr-only">Jiaqi Shi, software engineer & photographer</h1>
     <div className="workbench-stage">
       {(useStatic || status !== 'ready') && <picture className="workbench-poster"><source media="(max-width: 767px)" srcSet={assetPath(`/images/workstation/${view}-mobile.webp`)} /><img src={assetPath(`/images/workstation/${view}-day.webp`)} width="1440" height="1000" fetchPriority="high" alt="An L-shaped workstation with a monitor, cameras, a green desk lamp, shelves and speakers." /></picture>}
-      {!useStatic && <Suspense fallback={null}><Workbench theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} onStatus={setStatus} home={home} view={view} object={object} onView={selectView} onInspect={inspect} onBoard={showBoard} resetKey={resetKey} lookdev={lookdev} onLookdevReady={setLookdevApi} /></Suspense>}
+      {!useStatic && <Suspense fallback={null}><Workbench theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} onStatus={setStatus} home={home} view={view} object={object} onView={selectView} onInspect={inspect} onBoard={lookdev ? () => {} : showBoard} resetKey={resetKey} lookdev={lookdev} onLookdevReady={setLookdevApi} /></Suspense>}
     </div>
     <div className={`scene-hotspots ${useStatic || status !== 'ready' ? 'fallback-labels' : ''}`} aria-label="Objects on the desk">
       {hotspots.map(([id, label, action]) => typeof action === 'string'

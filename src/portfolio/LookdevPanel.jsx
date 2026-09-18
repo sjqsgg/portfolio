@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
+import checkpoint01 from '../../docs/workstation-lookdev-round-01.json'
+import round02 from '../../docs/workstation-lookdev-round-02.json'
 
 const storageKey = 'jiaqi-workstation-lookdev-v1'
 const defaultTransform = { scaleX: 1, scaleY: 1, scaleZ: 1, thickness: 1, positionX: 0, positionY: 0, positionZ: 0, rotationX: 0, rotationY: 0, rotationZ: 0, lockPosition: true }
+const materialLabels = { Board_frame_preview: 'Board frame', Board_felt_preview: 'Felt insert' }
 
 function NumberControl({ label, value, min, max, step, onChange }) {
   return <label className="lookdev-control">
@@ -62,6 +65,31 @@ export default function LookdevPanel({ api }) {
   async function copy() {
     await navigator.clipboard.writeText(JSON.stringify(payload, null, 2)); flash('Parameters copied')
   }
+  function applyCheckpoint(next, label) {
+    if (next.version !== 1 || !next.parts || !next.materials || !next.lighting) throw new Error('Unsupported checkpoint')
+    const knownParts = new Set(api.parts.map(item => item.id))
+    const knownMaterials = new Set(api.materials.map(item => item.name))
+    const nextParts = Object.fromEntries(Object.entries(next.parts).filter(([id]) => knownParts.has(id)))
+    const nextMaterials = Object.fromEntries(Object.entries(next.materials).filter(([name]) => knownMaterials.has(name)))
+    const nextLighting = { ...api.lighting, ...next.lighting }
+    api.reset()
+    Object.entries(nextParts).forEach(([id, values]) => api.applyPart(id, { ...defaultTransform, ...values }))
+    Object.entries(nextMaterials).forEach(([name, values]) => api.applyMaterial(name, { ...materialDefaults[name], ...values }))
+    api.applyLighting(nextLighting)
+    setParts(nextParts); setMaterials(nextMaterials); setLighting(nextLighting)
+    localStorage.setItem(storageKey, JSON.stringify({ version: 1, parts: nextParts, materials: nextMaterials, lighting: nextLighting }))
+    flash(label)
+  }
+  async function importCheckpoint(event) {
+    const file = event.target.files?.[0]
+    if (!file) return
+    try {
+      const next = JSON.parse(await file.text())
+      applyCheckpoint(next, `Loaded ${file.name}`)
+    } catch {
+      flash('Checkpoint could not be loaded')
+    } finally { event.target.value = '' }
+  }
   function resetCurrent() {
     if (tab === 'structure' && partId === 'workstation') {
       api.reset(); localStorage.removeItem(storageKey); setParts({}); setMaterials({}); setLighting(api.lighting); flash('Restored whole workstation')
@@ -93,7 +121,7 @@ export default function LookdevPanel({ api }) {
   return <aside className={`lookdev-panel ${collapsed ? 'is-collapsed' : ''}`} aria-label="Workstation look development controls">
     <header className="lookdev-header">
       <div><span className="lookdev-kicker">WORKSTATION / LOOKDEV</span><strong>Material & proportion check</strong></div>
-      <button type="button" onClick={() => setCollapsed(value => !value)} aria-expanded={!collapsed} aria-label={collapsed ? 'Open look development controls' : 'Collapse look development controls'}>{collapsed ? '＋' : '—'}</button>
+      <button type="button" onClick={() => setCollapsed(value => !value)} aria-expanded={!collapsed} aria-label={collapsed ? 'Open look development controls' : 'Collapse look development controls'}>{collapsed ? '＋' : '-'}</button>
     </header>
     {!collapsed && <>
       <nav className="lookdev-tabs" aria-label="Control category">
@@ -101,6 +129,10 @@ export default function LookdevPanel({ api }) {
       </nav>
       <div className="lookdev-body">
         {tab === 'structure' && <>
+          <div className="lookdev-checkpoints">
+            <button onClick={() => applyCheckpoint(checkpoint01, 'Restored checkpoint 01')}>Checkpoint 01</button>
+            <button onClick={() => applyCheckpoint(round02, 'Applied round 02')}>Round 02</button>
+          </div>
           <label className="lookdev-select"><span>Part</span><select value={partId} onChange={event => setPartId(event.target.value)}>{api.parts.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label>
           <button className="lookdev-reset-current" onClick={resetCurrent}>{partId === 'workstation' ? 'Reset whole workstation' : 'Reset selected part'}</button>
           <label className="lookdev-lock"><input type="checkbox" checked={part.lockPosition} onChange={event => updatePart('lockPosition', event.target.checked)} /><span>Keep position fixed while resizing</span></label>
@@ -124,7 +156,7 @@ export default function LookdevPanel({ api }) {
           </fieldset>
         </>}
         {tab === 'surface' && material && <>
-          <label className="lookdev-select"><span>Material</span><select value={materialName} onChange={event => setMaterialName(event.target.value)}>{api.materials.map(item => <option key={item.name}>{item.name}</option>)}</select></label>
+          <label className="lookdev-select"><span>Material</span><select value={materialName} onChange={event => setMaterialName(event.target.value)}>{api.materials.map(item => <option key={item.name} value={item.name}>{materialLabels[item.name] || item.name.replaceAll('_', ' ')}</option>)}</select></label>
           <button className="lookdev-reset-current" onClick={resetCurrent}>Reset selected material</button>
           <div className="lookdev-presets"><button onClick={() => applySurfacePreset(.68, 0, 0)}>Soft matte</button><button onClick={() => applySurfacePreset(.46, material.metalness, .08)}>Satin</button><button onClick={() => applySurfacePreset(.25, material.metalness, .22)}>Polished</button></div>
           <label className="lookdev-color"><span>Base colour</span><input type="color" value={`#${material.color}`} onChange={event => updateMaterial('color', event.target.value.replace('#', ''))} /><code>#{material.color}</code></label>
@@ -142,7 +174,7 @@ export default function LookdevPanel({ api }) {
           <NumberControl label="Practical" value={lighting.practical} min={0} max={4} step={.05} onChange={value => updateLighting('practical', value)} />
         </>}
       </div>
-      <footer className="lookdev-footer"><span role="status">{message}</span><button onClick={copy}>Copy JSON</button><button className="lookdev-save" onClick={save}>Save</button></footer>
+      <footer className="lookdev-footer"><span role="status">{message}</span><label className="lookdev-import">Load JSON<input type="file" accept="application/json,.json" onChange={importCheckpoint} /></label><button onClick={copy}>Copy</button><button className="lookdev-save" onClick={save}>Save</button></footer>
     </>}
   </aside>
 }

@@ -62,6 +62,29 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
         }
         const texture = new THREE.DataTexture(grain, 128, 128)
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping; texture.repeat.set(12, 12); texture.needsUpdate = true
+        if (lookdev) {
+          const sourceBoard = model.getObjectByName('Pegboard_Perforated_21x14')
+          if (sourceBoard?.geometry && sourceBoard.parent) {
+            sourceBoard.geometry.computeBoundingBox()
+            const bounds = sourceBoard.geometry.boundingBox
+            const size = bounds.getSize(new THREE.Vector3()), center = bounds.getCenter(new THREE.Vector3())
+            const assembly = new THREE.Group()
+            assembly.name = 'Board_Assembly_Lookdev'
+            assembly.position.copy(sourceBoard.position); assembly.quaternion.copy(sourceBoard.quaternion); assembly.scale.copy(sourceBoard.scale)
+            const frameMaterial = new THREE.MeshPhysicalMaterial({ name:'Board_frame_preview', color:0xd8cfbb, roughness:.62, metalness:0, clearcoat:.06 })
+            const feltMaterial = new THREE.MeshPhysicalMaterial({ name:'Board_felt_preview', color:0x8fe85e, roughness:.9, metalness:0, clearcoat:0 })
+            const frame = new THREE.Mesh(new THREE.BoxGeometry(size.x, size.y, Math.max(size.z, .012)), frameMaterial)
+            frame.name = 'Board_Frame_Lookdev'; frame.position.copy(center)
+            const felt = new THREE.Mesh(new THREE.BoxGeometry(Math.max(.02, size.x - .044), Math.max(.02, size.y - .044), Math.max(size.z, .014)), feltMaterial)
+            felt.name = 'Board_Felt_Lookdev'; felt.position.copy(center); felt.position.z += .008
+            for (const node of [frame, felt]) { node.castShadow = true; node.receiveShadow = true }
+            assembly.add(frame, felt); sourceBoard.parent.add(assembly); sourceBoard.visible = false
+          }
+          for (const name of ['Pegboard_Headphones', 'HOTSPOT_badge', 'HOTSPOT_map', 'Badge_Hanger', 'Badge_Peg', 'CV_Rack', 'HOTSPOT_cv']) {
+            const deferredBoardObject = model.getObjectByName(name)
+            if (deferredBoardObject) deferredBoardObject.visible = false
+          }
+        }
         model.traverse(node => {
           if (!node.isMesh) return
           node.castShadow = true; node.receiveShadow = true
@@ -226,7 +249,9 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           ['rear-frame', 'Rear frame / overall', 'Rear_Tube_Frame_22mm', true],
           ['storage', 'Upper storage', 'UPPER_STORAGE'],
           ['chair', 'Chair', 'Office_Chair'],
-          ['board', 'Wall board', 'Pegboard_Perforated_21x14'],
+          ['board', 'Board assembly', lookdev ? 'Board_Assembly_Lookdev' : 'Pegboard_Perforated_21x14'],
+          ['board-frame', 'Board frame', 'Board_Frame_Lookdev'],
+          ['board-felt', 'Felt insert', 'Board_Felt_Lookdev'],
           ['left-speaker', 'Left speaker', 'Speaker_Left'],
           ['right-speaker', 'Right speaker', 'Speaker_Right'],
           ['audio', 'Audio module', 'Central_Audio_Module'],
@@ -360,7 +385,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
             if (['Camera_Film', 'Camera_Mirrorless'].includes(name)) return 'camera'
             if (name === 'HOTSPOT_guestbook') return latest.current.view === 'photo' ? 'guestbook' : 'photo-area'
             if (['PHOTOGRAPHY_ZONE', 'AUDIO_ZONE', 'Ceramic_Mug_Base'].includes(name) || name.startsWith('Guestbook_') || (name === 'Rear_Counter_28mm' && intersection.point.x > -.3) || name === 'Rear_Right_Backing') return 'photo-area'
-            if (['Pegboard_Perforated_21x14', 'Pegboard_Headphones'].includes(name)) return 'board'
+            if (['Pegboard_Perforated_21x14', 'Pegboard_Headphones', 'Board_Assembly_Lookdev', 'Board_Frame_Lookdev', 'Board_Felt_Lookdev'].includes(name)) return 'board'
             const actions = { HOTSPOT_monitor:'monitor', HOTSPOT_lamp:'lamp', HOTSPOT_cv:'cv', HOTSPOT_badge:'badge', HOTSPOT_map:'map' }
             if (actions[name]) return actions[name]
             node = node.parent
