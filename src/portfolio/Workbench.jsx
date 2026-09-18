@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { sceneViews, hotspotNodes } from './sceneViews'
 import { assetPath } from '../data/assetPath'
+import round02 from '../../docs/workstation-lookdev-round-02.json'
 
 export default function Workbench({ theme, toggleTheme, openCamera, onStatus, home, view, object, onView, onInspect, onBoard, resetKey, lookdev = false, onLookdevReady }) {
   const host = useRef(null), controller = useRef(null)
@@ -366,6 +367,15 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           materials: [...materialBaselines].map(([name, values]) => ({ name, ...values })),
           lighting: lightingBaseline,
           applyPart, applyMaterial, applyLighting, resetPart, resetMaterial, resetLighting, reset: resetLookdev,
+        }
+        // The accepted Round 02 light palette and proportions are the public
+        // workstation baseline. Lookdev mode keeps the untouched source as its
+        // comparison baseline and applies checkpoints explicitly in the panel.
+        if (!lookdev) {
+          Object.entries(round02.parts).forEach(([id, values]) => applyPart(id, values))
+          Object.entries(round02.materials).forEach(([name, values]) => applyMaterial(name, values))
+          applyLighting(round02.lighting)
+          model.updateMatrixWorld(true)
         }
         controller.current = { setTheme, compose, lookdev: lookdevApi }
         setTheme(latest.current.theme); fit()
