@@ -71,8 +71,8 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           const assembly = new THREE.Group()
           assembly.name = 'Board_Assembly_Lookdev'
           assembly.position.copy(sourceBoard.position); assembly.quaternion.copy(sourceBoard.quaternion); assembly.scale.copy(sourceBoard.scale)
-          const frameMaterial = new THREE.MeshPhysicalMaterial({ name:'Board_frame_preview', color:0xd8cfbb, roughness:.62, metalness:0, clearcoat:.06 })
-          const feltMaterial = new THREE.MeshPhysicalMaterial({ name:'Board_felt_preview', color:0x8fe85e, roughness:.9, metalness:0, clearcoat:0 })
+          const frameMaterial = new THREE.MeshPhysicalMaterial({ name:'Board_frame_preview', color:0x8fe85e, roughness:.62, metalness:0, clearcoat:.06 })
+          const feltMaterial = new THREE.MeshPhysicalMaterial({ name:'Board_felt_preview', color:0xd8cfbb, roughness:.9, metalness:0, clearcoat:0 })
           const frame = new THREE.Mesh(new THREE.BoxGeometry(size.x, size.y, Math.max(size.z, .012)), frameMaterial)
           frame.name = 'Board_Frame_Lookdev'; frame.position.copy(center)
           const felt = new THREE.Mesh(new THREE.BoxGeometry(Math.max(.02, size.x - .044), Math.max(.02, size.y - .044), Math.max(size.z, .014)), feltMaterial)
@@ -254,6 +254,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           ['left-speaker', 'Left speaker', 'Speaker_Left'],
           ['right-speaker', 'Right speaker', 'Speaker_Right'],
           ['audio', 'Audio module', 'Central_Audio_Module'],
+          ['computer-tower', 'Computer tower', 'Computer_Tower'],
           ['cameras', 'Camera equipment', 'Camera_Equipment'],
         ].map(([id, label, name, supportsThickness = false]) => ({ id, label, name, supportsThickness, node: model.getObjectByName(name) })).filter(part => part.node)
         function centerInParent(node) {
@@ -291,6 +292,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           roughness: material.roughness ?? .5,
           metalness: material.metalness ?? 0,
           clearcoat: material.clearcoat ?? 0,
+          opacity: material.opacity ?? 1,
           }]
         }))
         const lightingBaseline = { exposure: .98, ambient: .85, key: 3, fill: .65, practical: 0 }
@@ -333,6 +335,11 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
             if ('roughness' in material) material.roughness = values.roughness
             if ('metalness' in material) material.metalness = values.metalness
             if ('clearcoat' in material) material.clearcoat = values.clearcoat
+            if ('opacity' in material && values.opacity !== undefined) {
+              material.opacity = values.opacity
+              material.transparent = values.opacity < .999
+              material.depthWrite = values.opacity >= .999
+            }
             material.needsUpdate = true
           }
           render()

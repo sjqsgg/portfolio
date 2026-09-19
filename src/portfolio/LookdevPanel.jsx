@@ -1,10 +1,18 @@
 import { useEffect, useMemo, useState } from 'react'
 import checkpoint01 from '../../docs/workstation-lookdev-round-01.json'
 import round02 from '../../docs/workstation-lookdev-round-02.json'
+import round04 from '../../docs/workstation-lookdev-round-04.json'
 
 const storageKey = 'jiaqi-workstation-lookdev-v1'
 const defaultTransform = { scaleX: 1, scaleY: 1, scaleZ: 1, thickness: 1, positionX: 0, positionY: 0, positionZ: 0, rotationX: 0, rotationY: 0, rotationZ: 0, lockPosition: true }
-const materialLabels = { Board_frame_preview: 'Board frame', Board_felt_preview: 'Felt insert' }
+const materialLabels = {
+  Board_frame_preview: 'Board frame',
+  Board_felt_preview: 'Felt insert',
+  Computer_case_muted_internals: 'Computer internals',
+  Computer_case_warm_shell: 'Computer shell',
+  Computer_case_sage_accent: 'Computer accent',
+  Computer_case_smoked_glass: 'Computer side glass',
+}
 
 function NumberControl({ label, value, min, max, step, onChange }) {
   return <label className="lookdev-control">
@@ -15,7 +23,24 @@ function NumberControl({ label, value, min, max, step, onChange }) {
 }
 
 function readSaved() {
-  try { return JSON.parse(localStorage.getItem(storageKey)) || {} } catch { return {} }
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey)) || {}
+    const frame = saved.materials?.Board_frame_preview
+    const felt = saved.materials?.Board_felt_preview
+    // Preserve every saved adjustment while migrating the accepted board
+    // preview from a green insert/white frame to a white insert/green frame.
+    if (frame?.color?.toLowerCase() === 'd8cfbb' && felt?.color?.toLowerCase() === '8fe85e') {
+      return {
+        ...saved,
+        materials: {
+          ...saved.materials,
+          Board_frame_preview: { ...frame, color: '8fe85e' },
+          Board_felt_preview: { ...felt, color: 'd8cfbb' },
+        },
+      }
+    }
+    return saved
+  } catch { return {} }
 }
 
 export default function LookdevPanel({ api }) {
@@ -132,6 +157,7 @@ export default function LookdevPanel({ api }) {
           <div className="lookdev-checkpoints">
             <button onClick={() => applyCheckpoint(checkpoint01, 'Restored checkpoint 01')}>Checkpoint 01</button>
             <button onClick={() => applyCheckpoint(round02, 'Applied round 02')}>Round 02</button>
+            <button onClick={() => applyCheckpoint(round04, 'Applied round 04')}>Round 04</button>
           </div>
           <label className="lookdev-select"><span>Part</span><select value={partId} onChange={event => setPartId(event.target.value)}>{api.parts.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label>
           <button className="lookdev-reset-current" onClick={resetCurrent}>{partId === 'workstation' ? 'Reset whole workstation' : 'Reset selected part'}</button>
@@ -163,6 +189,7 @@ export default function LookdevPanel({ api }) {
           <NumberControl label="Roughness" value={material.roughness} min={0} max={1} step={.01} onChange={value => updateMaterial('roughness', value)} />
           <NumberControl label="Metalness" value={material.metalness} min={0} max={1} step={.01} onChange={value => updateMaterial('metalness', value)} />
           <NumberControl label="Clearcoat" value={material.clearcoat} min={0} max={1} step={.01} onChange={value => updateMaterial('clearcoat', value)} />
+          <NumberControl label="Opacity" value={material.opacity ?? 1} min={.05} max={1} step={.01} onChange={value => updateMaterial('opacity', value)} />
         </>}
         {tab === 'light' && <>
           <button className="lookdev-reset-current" onClick={resetCurrent}>Reset all lighting</button>

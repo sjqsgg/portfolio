@@ -2,7 +2,7 @@
 
 Prepared: 2026-09-18
 
-Status: Candidate B generated; awaiting visual decision
+Status: Candidate B geometry accepted; surface detail deferred
 
 Baseline: the accepted Round 02 checkpoint; checkpoint 01 speaker mass and spacing remain the starting envelope.
 
@@ -116,6 +116,14 @@ The front cross-section is an explicit six-sided prism, not a generic rounded bo
 - Transition-face readability: provisional. The facets are present and visible as narrow side reveals in the current oblique Overview, but should be judged by the user before Candidate B becomes the Round 03 baseline.
 - Chrome restraint and final colours: provisional by design; material tuning remains frozen for this geometry round.
 
-## Decision gate
+## Decision — 2026-09-18
 
-Candidate B is **provisional**, not yet accepted. Approval should answer only whether the speaker silhouette, paired transition faces, capsule shape and three-driver proportions are right. Colour and detailed surface response remain deferred to Round 05/07.
+Candidate B's speaker silhouette, paired transition faces and three-driver proportions are **accepted**. This closes the Round 03 shape decision without treating the current surfaces as final.
+
+Deferred speaker work is split by cause rather than bundled back into this round:
+
+- **Round 05 — shared geometry language:** add the broad grille relief that follows the speaker forms, including the shallow concave/convex transitions around the driver areas. This pass may change local depth but must preserve the accepted outer silhouette and driver layout.
+- **Round 06 — material identity:** build the perforated or woven grille response: fine holes/cloth structure, normal or bump scale, roughness and restrained shadowing. These details should read at close range without turning into noisy geometry in Overview.
+- **Round 08 — final palette:** settle the final grille, cabinet and driver colours only after lighting is stable.
+
+The central audio module remains frozen. Round 04 may now begin independently with the computer-tower conversion.

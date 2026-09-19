@@ -19,6 +19,8 @@ This index separates current sources of truth from historical implementation not
 - [Round 02 accepted decision](./workstation-lookdev-round-02.md)
 - [Round 02 accepted parameters](./workstation-lookdev-round-02.json)
 - [Queued Round 03 speaker geometry brief](./workstation-lookdev-round-03-speaker-brief.md)
+- [Round 04 accepted computer tower](./workstation-lookdev-round-04-computer-tower-brief.md)
+- [Round 04 accepted parameters](./workstation-lookdev-round-04.json)
 
 Checkpoints are immutable evidence. A later round creates new files instead of overwriting an earlier JSON or review.
 

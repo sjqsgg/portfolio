@@ -32,6 +32,12 @@ for (const b of [desk,counter]) {
  assert.ok(Math.abs(b.max[1]-.74)<.003,'Counter height must remain 0.74 m')
  assert.ok(Math.abs(b.max[1]-b.min[1]-.028)<.003,'Counter thickness must remain 28 mm')
 }
+const computerTower = bounds('Computer_Tower', true)
+const leftSpeaker = bounds('Speaker_Left', true)
+const towerSize = new Vector3(...computerTower.max).sub(new Vector3(...computerTower.min))
+assert.ok(towerSize.x >= .54 && towerSize.x <= .57, 'Approved source-derived tower must preserve its fitted side-on width')
+assert.ok(computerTower.max[0] <= leftSpeaker.min[0] - .035, 'Computer tower must preserve breathing room beside the left speaker')
+assert.equal(gltf.nodes.some(node => node.name === 'Corner_Undercounter_Door'), false, 'Old cupboard door must be removed')
 const names = ['HOTSPOT_monitor','HOTSPOT_camera_group','HOTSPOT_cv','HOTSPOT_badge','HOTSPOT_guestbook','HOTSPOT_lamp']
 const objects = Object.fromEntries(names.map(name=>[name,bounds(name,true)]))
 for (const name of ['CV_Rack','Badge_Peg','Guestbook_Stand_Foot']) {
@@ -40,6 +46,6 @@ for (const name of ['CV_Rack','Badge_Peg','Guestbook_Stand_Foot']) {
  assert.ok(!names.includes(gltf.nodes[parents.get(index)]?.name),`${name} must stay planted independently`)
 }
 const triangles = gltf.meshes.reduce((sum,mesh)=>sum+mesh.primitives.reduce((n,p)=>n+(p.indices!==undefined?gltf.accessors[p.indices].count:gltf.accessors[p.attributes.POSITION].count)/3,0),0)
-const report = {valid:true,bytes:bytes.length,triangles,meshCount:gltf.meshes.length,desk,counter,objects,checks:['GLB version/header','required independent interaction roots','0.74 m desk/counter height','28 mm tabletops','stationary rack, badge peg, and guestbook stand']}
+const report = {valid:true,bytes:bytes.length,triangles,meshCount:gltf.meshes.length,desk,counter,computerTower,leftSpeaker,objects,checks:['GLB version/header','required independent interaction roots','0.74 m desk/counter height','28 mm tabletops','Round 04 computer tower envelope and speaker clearance','stationary rack, badge peg, and guestbook stand']}
 await writeFile('assets/3d/workstation-v003/validation.json',JSON.stringify(report,null,2)+'\n')
 console.log(JSON.stringify(report,null,2))

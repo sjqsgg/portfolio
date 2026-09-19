@@ -98,11 +98,12 @@ Create, without overwriting earlier rounds:
 ## Planned round order
 
 1. **Round 02 — remaining large-form proportions:** desktop, storage, chair, board envelope and negative space. Candidate C closes the board/right-backing seam and scaffolds separate board assembly, frame and felt-insert controls without selecting a board type.
-2. **Round 03 — speaker geometry:** modify only the left and right speakers using the user's references. Preserve the broad front face, two slightly inset transition faces before the side walls, driver hierarchy and accepted speaker envelopes. The central audio module is frozen completely.
-3. **Round 04 — shared geometry language:** tabletop/frame thickness, bevels, edge softness and tube construction. Rebuild accepted non-uniform trials in Blender.
-4. **Round 05 — material identity:** wood, metal, cloth, enamel, felt and screen response under neutral light. Final felt treatment waits for a board-family decision.
-5. **Round 06 — lighting:** exposure, key/fill balance, practical lamp and shadow softness with materials frozen.
-6. **Round 07 — final palette:** balance pale yellow-green, cream, metal and the darker anchors; integrate Isabelle's yellow/white/pink without making her visually abrupt.
+2. **Round 03 — speaker geometry (accepted):** the left and right speaker silhouette, paired transition faces and driver hierarchy are approved. Broad grille relief is deferred to Round 05, fine perforated/cloth response to Round 06 and final speaker colours to Round 08. The central audio module remains frozen completely.
+3. **Round 04 — computer tower conversion (accepted):** the supplied case is fitted side-on with its glazed long side facing the opening camera, while the cabinet frame and speaker clearance remain intact. Its geometry is web-reduced and its photographic blue/RGB texture is converted to a muted warm-white, sage and pale-smoked treatment so it reads as a computer without becoming a focal point.
+4. **Round 05 — shared geometry language:** tabletop/frame thickness, bevels, edge softness and tube construction. Rebuild accepted non-uniform trials in Blender.
+5. **Round 06 — material identity:** wood, metal, cloth, enamel, felt and screen response under neutral light. Final felt treatment waits for a board-family decision.
+6. **Round 07 — lighting:** exposure, key/fill balance, practical lamp and shadow softness with materials frozen.
+7. **Round 08 — final palette:** balance pale yellow-green, cream, metal and the darker anchors; integrate Isabelle's yellow/white/pink without making her visually abrupt.
 
 Object-specific modeling that has not been discussed is not pulled into these rounds automatically. It receives its own brief when activated.
 
@@ -110,6 +111,7 @@ Object-specific modeling that has not been discussed is not pulled into these ro
 
 - The model is the workstation, not a surrounding room.
 - The board direction is felt, not a perforated pegboard; only the scratch card is committed content for the first detailed board pass.
+- The active board preview uses a warm-white felt insert with a pale-green frame. This reverses the earlier green-insert/white-frame test so the frame reads as the structural connection to the cabinet instead of making the insert appear to float in thumbnail views.
 - Other board objects remain deferred.
 - Isabelle keeps her original compact Animal Crossing proportions. She begins low in the chair, potentially showing only a small part of her head or ears.
 - The target rendering language is stylised commercial 3D: simplified large forms, broad controlled bevels, satin materials, restrained chrome and deliberate warm/cool light—not photorealism and not generic AI-room imagery.

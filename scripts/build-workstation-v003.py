@@ -36,6 +36,18 @@ sage=material('Sage_pegboard','A8B1A3',.56)
 ceramic=material('Glazed_ceramic','DEE0D1',.2,0,.3)
 ink=material('Ink','233B32',.9)
 screen=material('Screen','122820',.32)
+case_paint=material('Computer_case_paint','DCEAB0',.44,0,.10)
+case_dark=material('Computer_case_dark','343B38',.68,.12)
+case_glass=material('Computer_case_glass','B9C8C2',.15,.04,.22)
+case_glass.diffuse_color=(*linear('B9C8C2'),.16)
+case_glass.surface_render_method='BLENDED'
+case_glass.blend_method='BLEND'
+p=case_glass.node_tree.nodes.get('Principled BSDF')
+p.inputs['Alpha'].default_value=.16
+p.inputs['Transmission Weight'].default_value=.42
+case_internal=material('Computer_internal_silver','B7C1BD',.30,.48,.08)
+case_pcb=material('Computer_internal_board','36423F',.62,.08)
+case_cable=material('Computer_internal_cable','D9DDD2',.58,.04)
 p=screen.node_tree.nodes.get('Principled BSDF');p.inputs['Emission Color'].default_value=(*linear('557D68'),1);p.inputs['Emission Strength'].default_value=.13
 tex=SOURCE/'pale-ash-basecolor-1k.png'
 image=bpy.data.images.load(str(tex)); image.pack()
@@ -192,6 +204,26 @@ def cube(name,pos,size,m,parent=root):
     asset.objects.link(ob);ob.data.materials.append(m)
     b=ob.modifiers.new('Edge_radius','BEVEL');b.width=.001;b.segments=2
     return ob
+
+# Round 04 accepted source-derived case: its long glazed side faces the opening
+# camera. The source has been reduced and stylized in an isolated production
+# asset so this scene does not inherit the 1.875M-triangle Tripo source.
+for name in ('Corner_Undercounter_Cabinet','Corner_Undercounter_Door'):
+    ob=bpy.data.objects.get(name)
+    if ob:bpy.data.objects.remove(ob,do_unlink=True)
+before=set(bpy.data.objects)
+bpy.ops.import_scene.gltf(filepath=str(SOURCE/'computer-case-production.glb'))
+imported=[ob for ob in bpy.data.objects if ob not in before]
+imported_roots=[ob for ob in imported if ob.parent not in imported]
+for ob in imported:
+    world=ob.matrix_world.copy()
+    for collection in list(ob.users_collection):collection.objects.unlink(ob)
+    asset.objects.link(ob);ob.matrix_world=world
+for ob in imported_roots:
+    world=ob.matrix_world.copy();ob.parent=root;ob.matrix_world=world
+tower=bpy.data.objects.get('Computer_Tower')
+if tower:
+    tower['round']='04';tower['role']='noninteractive source-derived computer tower'
 # A distinct CV sheet in an independent rack; its pivot is at the sheet center.
 rack=cube('CV_Rack',(-.94,.886,1.072),(.148,.033,.025),chrome)
 cv=cube('HOTSPOT_cv',(-.94,.887,1.173),(.136,.003,.192),paper)
