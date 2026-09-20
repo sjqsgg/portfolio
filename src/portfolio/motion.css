@@ -52,8 +52,8 @@ html:has(.reference-contact) .canvas-nav a.active,html:has(.reference-contact) .
 ::view-transition-image-pair(root) { isolation:isolate; }
 ::view-transition-new(root) { animation:none;mix-blend-mode:normal; }
 html[data-route-motion="page"]::view-transition-image-pair(root) { background:transparent; }
-::view-transition-old(root) { z-index:2;mix-blend-mode:normal;will-change:clip-path,filter;clip-path:var(--route-mask-start);animation:route-curve-fallback 1.95s linear both,route-darken .5s linear both,route-finish .18s 1.97s both; }
-html[data-route-mask="shape"]::view-transition-old(root) { animation:route-curve-shape 1.95s linear both,route-darken .5s linear both,route-finish .18s 1.97s both; }
+::view-transition-old(root) { z-index:2;mix-blend-mode:normal;will-change:clip-path,filter;clip-path:var(--route-mask-start);animation:route-curve-fallback var(--route-curve-duration,.99s) var(--route-curve-delay,.56s) linear both,route-darken var(--route-darken-duration,.49s) linear both,route-finish var(--route-finish-duration,.19s) var(--route-finish-delay,1.57s) both; }
+html[data-route-mask="shape"]::view-transition-old(root) { animation:route-curve-shape var(--route-curve-duration,.99s) var(--route-curve-delay,.56s) linear both,route-darken var(--route-darken-duration,.49s) linear both,route-finish var(--route-finish-duration,.19s) var(--route-finish-delay,1.57s) both; }
 @keyframes route-darken {
  0% { filter:brightness(1) drop-shadow(0 -28px 64px rgb(7 7 7 / .18)); }
  10% { filter:brightness(.99728) drop-shadow(0 -28px 64px rgb(7 7 7 / .18)); }
@@ -125,6 +125,7 @@ html[data-route-motion="photo-close"]::view-transition-group(selected-photo) { a
 @keyframes photo-new { from { opacity:0; } to { opacity:1; } }
 /* Browsers without snapshot transitions retain an animated destination and usable navigation. */
 #root[data-transitioning="fallback"] main { animation:photo-new .92s ease both; }
+#root[data-transitioning] .canvas-nav,#root[data-transitioning] main { pointer-events:none; }
 @media (prefers-reduced-motion:reduce) {
  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*) { animation:none !important; }
 }

@@ -7,7 +7,7 @@ test('page darkens before the curve appears, then destination text enters line b
   const seek = time => page.evaluate(time => {
     document.getAnimations().forEach(a => { a.pause(); a.currentTime = time })
   }, time)
-  await seek(400)
+  await seek(500)
   const precurve = await page.evaluate(() => {
     const css = getComputedStyle(document.documentElement, '::view-transition-old(root)')
     const path = css.clipPath.match(/line to 100% ([-+\de.]+)px, curve to 0% [-+\de.]+px with 50% ([-+\de.]+)px/)
@@ -16,13 +16,13 @@ test('page darkens before the curve appears, then destination text enters line b
   })
   expect(precurve.edge).toBeGreaterThan(precurve.height)
   expect(precurve.control).toBeGreaterThan(precurve.height)
-  expect(precurve.brightness).toBeGreaterThan(.34)
-  expect(precurve.brightness).toBeLessThan(.4)
-  await page.screenshot({ path:'docs/qa/motion/dark-precurve-0400.png' })
-  await seek(900)
+  expect(precurve.brightness).toBeGreaterThan(.3)
+  expect(precurve.brightness).toBeLessThan(.34)
+  await page.screenshot({ path:'docs/qa/motion/dark-precurve-0500.png' })
+  await seek(950)
   const hiddenAtStart = await page.evaluate(() => getComputedStyle(document.documentElement,'::view-transition-new(route-text-0)').clipPath)
   expect(hiddenAtStart).toContain('0% 100%')
-  await seek(1050)
+  await seek(1100)
   const partial = await page.screenshot({ path:'docs/qa/motion/white-reveal-middle.png' })
   const pixels = async (screenshot, top = 0) => page.evaluate(async ({ url, top }) => {
     const image = new Image(); image.src = url; await image.decode()
@@ -34,14 +34,15 @@ test('page darkens before the curve appears, then destination text enters line b
     return nonWhite
   }, { url:`data:image/png;base64,${screenshot.toString('base64')}`, top })
   // Destination text is already entering line by line over the exposed white page.
-  expect(await pixels(partial, .55)).toBeGreaterThan(0)
+  expect(await pixels(partial, .35)).toBeGreaterThan(0)
   const timeline = await page.evaluate(() => document.getAnimations().filter(a => a.effect?.pseudoElement?.includes('view-transition')).map(a => ({name:a.animationName,end:a.effect.getComputedTiming().endTime})))
-  expect(timeline.find(item => item.name === 'route-curve-shape').end).toBeCloseTo(1950, 5)
+  const curve = timeline.find(item => item.name === 'route-curve-shape')
+  expect(curve.end).toBeCloseTo(1550, 5)
   const curveSamples = await page.evaluate(() => {
     const animations = document.getAnimations().filter(a => a.effect?.pseudoElement?.includes('view-transition'))
     const axis = Math.max(innerWidth, innerHeight)
     return Array.from({ length:31 }, (_, index) => {
-      animations.forEach(animation => { animation.currentTime = index * 65 })
+      animations.forEach(animation => { animation.currentTime = 560 + index * (990 / 30) })
       const clipPath = getComputedStyle(document.documentElement, '::view-transition-old(root)').clipPath
       const match = clipPath.match(/line to 100% ([-+\de.]+)px, curve to 0% [-+\de.]+px with 50% ([-+\de.]+)px/)
       return match ? { edge:100 * Number(match[1]) / axis, control:100 * Number(match[2]) / axis } : null
@@ -67,10 +68,10 @@ test('page darkens before the curve appears, then destination text enters line b
   expect(entry.lines[0]).toBeGreaterThan(entry.lines[1])
   expect(entry.lines[1]).toBeGreaterThan(entry.lines[2])
   expect(entry.lines[2]).toBeGreaterThan(0)
-  await seek(1700)
+  await seek(1450)
   const overlap = await page.screenshot({ path:'docs/qa/motion/page-arrival-overlap.png' })
   expect(await pixels(overlap, .55)).toBeGreaterThan(0)
-  await seek(1950)
+  await seek(1550)
   const complete = await page.screenshot({ path:'docs/qa/motion/white-sequence-contact.png' })
   expect(await pixels(complete)).toBeGreaterThan(0)
   expect(await page.evaluate(() => Number(getComputedStyle(document.documentElement,'::view-transition-new(root)').opacity))).toBe(1)
@@ -97,4 +98,19 @@ test('quick history navigation and skipped capture do not leave the destination 
   await expect(page.locator('.reference-contact')).toBeVisible()
   await expect(page.locator('#root')).not.toHaveAttribute('data-transitioning')
   await expect.poll(() => page.locator('.reference-contact h1 .reveal-line').evaluate(el => getComputedStyle(el).opacity)).toBe('1')
+})
+
+test('rapid navigation input cannot start a second dark snapshot', async ({ page }) => {
+  await page.goto('/about')
+  const nav = page.getByRole('navigation')
+  const projectBox = await nav.getByRole('link', { name:'Projects', exact:true }).boundingBox()
+  await nav.getByRole('link', { name:'Contact', exact:true }).click()
+  await expect(page.locator('#root')).toHaveAttribute('data-transitioning', 'true')
+  expect(await page.locator('#root').evaluate(el => el.inert)).toBe(true)
+  expect(await nav.evaluate(el => getComputedStyle(el).pointerEvents)).toBe('none')
+  await page.mouse.click(projectBox.x + projectBox.width / 2, projectBox.y + projectBox.height / 2)
+  await expect(page).toHaveURL(/\/contact$/)
+  await page.evaluate(() => document.getAnimations().filter(a => a.effect?.pseudoElement?.includes('view-transition')).forEach(a => a.finish()))
+  await expect(page.locator('#root')).not.toHaveAttribute('data-transitioning')
+  await expect(page.locator('.reference-contact')).toBeVisible()
 })

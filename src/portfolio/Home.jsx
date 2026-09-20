@@ -38,7 +38,7 @@ function DeskDocument({ kind, onClose }) {
   </dialog>
 }
 
-export default function Home({ theme, toggleTheme, openCamera, resetKey }) {
+export default function Home({ theme, toggleTheme, openCamera, resetKey, onInitialReady }) {
   const reduced = useReducedMotion()
   const [status, setStatus] = useState('loading')
   const [view, setView] = useState('overview')
@@ -50,6 +50,9 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey }) {
   const lastTrigger = useRef(null)
   const lookdev = import.meta.env.DEV && new URLSearchParams(window.location.search).get('lookdev') === '1'
   const useStatic = !lookdev && (reduced || navigator.connection?.saveData)
+  useEffect(() => {
+    if (useStatic || status === 'ready' || status === 'error') onInitialReady?.()
+  }, [onInitialReady, status, useStatic])
   useEffect(() => { setObject(null); setDocumentOpen(false); setBoardOpen(false); setView('overview') }, [resetKey])
   useEffect(() => {
     if (!object) { setDocumentOpen(false); return }

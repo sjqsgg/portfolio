@@ -1,9 +1,11 @@
-import { Component, Suspense, lazy, useEffect, useRef, useState } from 'react'
+import { Component, Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react'
 import { Link, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { useReducedMotion } from 'motion/react'
 import Home from './portfolio/Home'
 import BackHome from './portfolio/BackHome'
 import FollowCursor from './portfolio/FollowCursor'
+import SiteLoader from './portfolio/SiteLoader'
+import MotionDevPanel from './portfolio/MotionDevPanel'
 import useRouteMotion from './portfolio/useRouteMotion'
 import './App.css'
 import './portfolio/workspace.css'
@@ -29,16 +31,38 @@ class PageBoundary extends Component {
   }
 }
 export default function App() {
+  const incoming = useLocation()
   const [theme, setTheme] = useState('day')
   const [resetKey, setResetKey] = useState(0)
   const [flash, setFlash] = useState(null)
+  const [workbenchReady, setWorkbenchReady] = useState(incoming.pathname !== '/')
+  const [loaderPhase, setLoaderPhase] = useState(incoming.pathname === '/' ? 'loading' : 'done')
   const timers = useRef([])
+  const bootStarted = useRef(performance.now())
   const reduced = useReducedMotion()
-  const incoming = useLocation()
   const location = useRouteMotion(incoming, reduced)
   const navigate = useNavigate()
+  const motiondev = import.meta.env.DEV && new URLSearchParams(window.location.search).get('motiondev') === '1'
+  const markWorkbenchReady = useCallback(() => setWorkbenchReady(true), [])
   useEffect(() => { document.documentElement.dataset.theme = theme }, [theme])
   useEffect(() => () => timers.current.forEach(clearTimeout), [])
+  useEffect(() => {
+    if (loaderPhase === 'done') return
+    const safety = window.setTimeout(() => setWorkbenchReady(true), 5000)
+    return () => window.clearTimeout(safety)
+  }, [loaderPhase])
+  useEffect(() => {
+    if (!workbenchReady || loaderPhase !== 'loading') return
+    if (reduced) { setLoaderPhase('done'); return }
+    const elapsed = performance.now() - bootStarted.current
+    const exit = window.setTimeout(() => setLoaderPhase('exiting'), Math.max(0, 1050 - elapsed))
+    return () => window.clearTimeout(exit)
+  }, [workbenchReady, loaderPhase, reduced])
+  useEffect(() => {
+    if (loaderPhase !== 'exiting') return
+    const finish = window.setTimeout(() => setLoaderPhase('done'), 560)
+    return () => window.clearTimeout(finish)
+  }, [loaderPhase])
   useEffect(() => {
     const section = location.pathname.startsWith('/projects') ? 'Projects' : location.pathname.startsWith('/photography') ? 'Photography' : location.pathname === '/about' ? 'About' : location.pathname === '/contact' ? 'Contact' : 'Software engineer & photographer'
     document.title = `${section} | Jiaqi Shi`
@@ -76,7 +100,7 @@ export default function App() {
     <main id="main-content" tabIndex={-1}>
       <PageBoundary key={location.pathname}><Suspense fallback={<div className="page loading-page" role="status">Opening…</div>}>
         <Routes location={location}>
-          <Route path="/" element={<Home theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} resetKey={resetKey} />} />
+          <Route path="/" element={<Home theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} resetKey={resetKey} onInitialReady={markWorkbenchReady} />} />
           <Route path="/photography" element={<Photography />} />
           <Route path="/photography/:seriesId" element={<Series />} />
           <Route path="/projects" element={<Projects />} />
@@ -92,5 +116,7 @@ export default function App() {
     </main>
     <FollowCursor />
     {flash && <div className="camera-transition" aria-hidden="true" style={{ '--flash-x': `${flash.x}px`, '--flash-y': `${flash.y}px` }}><div className="flash-star" /><div className="flash-afterimage" /></div>}
+    {loaderPhase !== 'done' && <SiteLoader phase={loaderPhase} />}
+    {motiondev && <MotionDevPanel />}
   </>
 }

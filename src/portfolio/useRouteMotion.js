@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 
 const scrollPositions = new Map()
@@ -16,7 +16,7 @@ export default function useRouteMotion(incoming, reduced) {
   const [displayed, setDisplayed] = useState(incoming)
   const current = useRef(incoming)
   const active = useRef(null)
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (incoming.key === current.current.key) return
     active.current?.skipTransition?.()
     document.querySelectorAll('.reveal-line,.text-arrival,.gallery-photo').forEach(el => el.getAnimations().forEach(animation => animation.finish()))
@@ -72,7 +72,7 @@ export default function useRouteMotion(incoming, reduced) {
           const name = `route-text-${index}`
           el.style.viewTransitionName = name
           el.style.animation = 'none'
-          const delay = .84 + index * .075
+          const delay = `calc(var(--route-text-delay-base,.97s) + ${index * .075}s)`
           const rect = el.getBoundingClientRect()
           const axis = Math.max(innerWidth, innerHeight)
           const reveal = routeCurveSamples.map(([edge, control], frame) => {
@@ -84,7 +84,7 @@ export default function useRouteMotion(incoming, reduced) {
             const progress = (frame * 100 / (routeCurveSamples.length - 1)).toFixed(3)
             return `${progress}%{clip-path:polygon(0% ${boundary(0).toFixed(3)}%,50% ${boundary(.5).toFixed(3)}%,100% ${boundary(1).toFixed(3)}%,100% 100%,0% 100%)}`
           }).join('')
-          return `@keyframes route-text-reveal-${index}{${reveal}}::view-transition-group(${name}){animation:none;z-index:3}::view-transition-old(${name}){display:none}::view-transition-new(${name}){mix-blend-mode:normal;will-change:opacity,transform,clip-path;animation:route-text-snapshot 1.02s ${delay}s cubic-bezier(.22,1,.36,1) both,route-text-reveal-${index} 1.95s linear both}`
+          return `@keyframes route-text-reveal-${index}{${reveal}}::view-transition-group(${name}){animation:none;z-index:3}::view-transition-old(${name}){display:none}::view-transition-new(${name}){mix-blend-mode:normal;will-change:opacity,transform,clip-path;animation:route-text-snapshot 1.02s ${delay} cubic-bezier(.22,1,.36,1) both,route-text-reveal-${index} var(--route-curve-duration,.99s) var(--route-curve-delay,.56s) linear both}`
         }).join('')
         document.head.append(routeStyle)
       }
@@ -119,7 +119,10 @@ export default function useRouteMotion(incoming, reduced) {
     } else {
       update()
       root.dataset.transitioning = 'fallback'
-      fallbackTimer = setTimeout(finish, kind === 'page' ? 2150 : 920)
+      const css = getComputedStyle(document.documentElement)
+      const milliseconds = value => value.trim().endsWith('ms') ? Number.parseFloat(value) : Number.parseFloat(value) * 1000
+      const pageDuration = milliseconds(css.getPropertyValue('--route-finish-delay') || '1.57s') + milliseconds(css.getPropertyValue('--route-finish-duration') || '.19s')
+      fallbackTimer = setTimeout(finish, kind === 'page' ? pageDuration : 920)
     }
     return () => {
       cancelled = true

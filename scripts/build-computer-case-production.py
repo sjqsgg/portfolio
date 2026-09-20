@@ -6,7 +6,7 @@ from mathutils import Vector
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_GLB = ROOT / "assets/3d/workstation-v003/sources/computer-case-web-source.glb"
+SOURCE_GLB = ROOT / "assets/3d/workstation-v003/sources/computer-case-preview.glb"
 OUT_DIR = ROOT / "assets/3d/workstation-v003/sources"
 OUT_BLEND = ROOT / "assets/3d/workstation-v003/computer-case-production.blend"
 OUT_GLB = OUT_DIR / "computer-case-production.glb"
@@ -58,8 +58,12 @@ def stylize_basecolor(image):
     rgba = pixels.reshape((-1, 4))
     rgb = rgba[:, :3]
     luminance = rgb @ np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)
-    rgb[:] = luminance[:, None] + (rgb - luminance[:, None]) * 0.30
-    rgb[:] = rgb * 0.55 + np.array([0.70, 0.73, 0.70], dtype=np.float32) * 0.45
+    # Match the approved Blender preview: 45% saturation, a slight value lift,
+    # then only a 25% neutral tint. The previous production pass used a much
+    # stronger 45% tint and no longer represented the approved preview.
+    rgb[:] = luminance[:, None] + (rgb - luminance[:, None]) * 0.45
+    rgb[:] *= 0.92
+    rgb[:] = rgb * 0.75 + np.array([0.70, 0.73, 0.70], dtype=np.float32) * 0.25
     np.clip(rgb, 0.0, 1.0, out=rgb)
     image.pixels.foreach_set(rgba.reshape(-1))
     image.filepath_raw = str(OUT_BASECOLOR)
@@ -73,16 +77,9 @@ bpy.ops.import_scene.gltf(filepath=str(SOURCE_GLB))
 imported = list(bpy.context.scene.objects)
 mesh_objects = [obj for obj in imported if obj.type == "MESH"]
 
-# A second geometric pass brings the generated source into the same order of
-# magnitude as the existing web scene. The silhouette and broad internals remain.
-for obj in mesh_objects:
-    bpy.context.view_layer.objects.active = obj
-    obj.select_set(True)
-    decimate = obj.modifiers.new("Web triangle budget", "DECIMATE")
-    decimate.ratio = 0.42
-    decimate.use_collapse_triangulate = True
-    bpy.ops.object.modifier_apply(modifier=decimate.name)
-    obj.select_set(False)
+# The approved fit/stylization preview is already reduced to roughly 150k
+# triangles. Do not run a second collapse pass: it destroys the generated fan,
+# grille and cable openings and was the source of the ragged production result.
 
 case_root = bpy.data.objects.new("Computer_Tower", None)
 bpy.context.scene.collection.objects.link(case_root)
@@ -141,7 +138,7 @@ size = upper - lower
 center = (lower + upper) * 0.5
 shell = make_material("Computer_case_warm_shell", (0.82, 0.81, 0.74), 0.58, metallic=0.04)
 accent = make_material("Computer_case_sage_accent", (0.44, 0.56, 0.51), 0.64, metallic=0.02)
-glass = make_material("Computer_case_smoked_glass", (0.45, 0.53, 0.50), 0.36, alpha=0.18)
+glass = make_material("Computer_case_smoked_glass", (0.28, 0.34, 0.32), 0.32, alpha=0.18)
 
 front_y = lower.y - 0.006
 rail_depth = 0.014

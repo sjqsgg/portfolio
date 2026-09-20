@@ -224,6 +224,20 @@ for ob in imported_roots:
 tower=bpy.data.objects.get('Computer_Tower')
 if tower:
     tower['round']='04';tower['role']='noninteractive source-derived computer tower'
+    meshes=[ob for ob in tower.children_recursive if ob.type=='MESH']
+    points=[ob.matrix_world @ Vector(corner) for ob in meshes for corner in ob.bound_box]
+    lower=Vector((min(point.x for point in points),min(point.y for point in points),min(point.z for point in points)))
+    upper=Vector((max(point.x for point in points),max(point.y for point in points),max(point.z for point in points)))
+    # Preserve the open glazed face, but restore the two cabinet side boards as
+    # independent pieces. They sit immediately outside the case and mask its
+    # generated side/grille edges without bringing back the old front door.
+    panel_thickness=.022
+    panel_depth=.398
+    panel_height=.636
+    panel_y=.721
+    panel_z=.370
+    cube('Computer_Cabinet_Left_Side_Panel',(lower.x-panel_thickness/2,panel_y,panel_z),(panel_thickness,panel_depth,panel_height),wood)
+    cube('Computer_Cabinet_Right_Side_Panel',(upper.x+panel_thickness/2,panel_y,panel_z),(panel_thickness,panel_depth,panel_height),wood)
 # A distinct CV sheet in an independent rack; its pivot is at the sheet center.
 rack=cube('CV_Rack',(-.94,.886,1.072),(.148,.033,.025),chrome)
 cv=cube('HOTSPOT_cv',(-.94,.887,1.173),(.136,.003,.192),paper)

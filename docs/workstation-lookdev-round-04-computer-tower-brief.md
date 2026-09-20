@@ -2,7 +2,7 @@
 
 Prepared: 2026-09-18
 
-Status: Candidate D accepted and integrated
+Status: corrected production candidate prepared locally; awaiting final visual confirmation
 
 Baseline: the accepted Round 03 speaker checkpoint.
 
@@ -22,18 +22,21 @@ This image was the composition gate. It established that the supplied silhouette
 
 After the fitted composition was approved, a second isolated derivative reduced texture saturation and contrast, increased surface roughness, suppressed fine normal-map reflections, and added a separate warm shell, sage front rail and lightly smoked viewer-facing window. The interior remains readable at close range but no longer competes with the speakers or desktop objects in the overview. This visual-strength direction was accepted and used for the production conversion.
 
-## Accepted production conversion — 19 September 2026
+## Corrected production conversion — 20 September 2026
 
-The stylized derivative is now integrated into the production workstation. The supplied source remains untouched; a separate web asset was reduced from approximately 1.875 million to 32,598 triangles, while retaining the recognizable window, cooling and component silhouettes. The final complete workstation is approximately 8.4 MB and 120,323 triangles.
+The first production export mistakenly ran a second destructive reduction pass after the approved preview. That changed the approved approximately 149,900-triangle case into a 32,598-triangle asset, producing ragged grille openings and erasing fan/cable detail. The same export also omitted the cabinet side panels that had framed and concealed the raw case edges. That version is rejected.
+
+The corrected derivative now uses the approved preview geometry directly and does not perform the second collapse pass. The supplied source remains untouched. The production case is 149,930 triangles; the validated complete workstation is 13,175,308 bytes, 237,871 triangles and 191 meshes.
 
 - The long glazed side faces the default opening camera.
-- The original cabinet frame and both neighbouring speaker/storage structures remain present.
+- The original cabinet frame, both flanking cabinet side panels and the neighbouring speaker/storage structures remain present. The panels deliberately mask the irregular generated-case edges.
 - The photographic blue/RGB cast is replaced by muted cream, warm white, restrained sage and pale smoked glass.
 - Shell, accent, glass and muted internal assembly are independently exposed in the Surface editor.
 - The active board preview is also recorded as warm-white insert with pale-green frame, matching the accepted thumbnail correction.
+- The final local material pass reduces the fitted texture brightness by 8% and uses darker neutral smoked glass. Geometry and detail density remain unchanged.
 - Default-camera browser inspection confirms that the tower reads as a computer while remaining subordinate to the workstation and speakers.
 
-The reproducible browser checkpoint is [`workstation-lookdev-round-04.json`](./workstation-lookdev-round-04.json). This closes Round 04; grille relief and shared material refinement remain scheduled for later rounds.
+The reproducible browser checkpoint is [`workstation-lookdev-round-04.json`](./workstation-lookdev-round-04.json). This corrected candidate remains local and unpushed until visual confirmation; grille relief and shared material refinement remain scheduled for later rounds.
 
 ## Primary question
 
