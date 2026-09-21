@@ -2,28 +2,49 @@ import { useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 const storageKey = 'jiaqi-motion-tuning-v1'
-const defaults = { darken: 490, hold: 560, curve: 990, finish: 190 }
+// The last 15% of the archived curve is already a sub-4px strip at 1440px.
+// Treat that visual exit as the start of the truly white interval.
+const visualCurveEnd = 0.85
+const defaults = {
+  darken: 340,
+  hold: 80,
+  curve: 890,
+  whiteHold: 0,
+  revealDuration: 760,
+  revealOffset: 60,
+}
 const controls = [
-  ['darken', 'Darken time', 200, 900, 10],
-  ['hold', 'Dark hold', 0, 600, 10],
-  ['curve', 'Curve rise', 700, 2300, 10],
-  ['finish', 'Final fade', 80, 500, 10],
+  ['darken', 'Darken time', 200, 900, 10, 'ms'],
+  ['hold', 'Dark hold', 0, 1000, 10, 'ms'],
+  ['curve', 'Curve rise', 700, 2300, 10, 'ms'],
+  ['whiteHold', 'White screen hold', 0, 1000, 10, 'ms'],
+  ['revealDuration', 'Content reveal time', 200, 2000, 10, 'ms'],
+  ['revealOffset', 'Content start offset', 0, 80, 1, 'px'],
 ]
 
 function readSaved() {
-  try { return { ...defaults, ...JSON.parse(localStorage.getItem(storageKey)) } }
+  try {
+    const saved = { ...JSON.parse(localStorage.getItem(storageKey)) }
+    if (saved.whiteHold == null && saved.finish != null) saved.whiteHold = saved.finish
+    delete saved.finish
+    return { ...defaults, ...saved }
+  }
   catch { return defaults }
 }
 
 function apply(values) {
   const root = document.documentElement
-  const textDelay = values.hold + values.curve * .414
+  const curveDelay = values.darken + values.hold
+  const finishDelay = curveDelay + Math.round(values.curve * visualCurveEnd)
+  const textDelay = finishDelay + values.whiteHold
   root.style.setProperty('--route-darken-duration', `${values.darken}ms`)
-  root.style.setProperty('--route-curve-delay', `${values.hold}ms`)
+  root.style.setProperty('--route-curve-delay', `${curveDelay}ms`)
   root.style.setProperty('--route-curve-duration', `${values.curve}ms`)
-  root.style.setProperty('--route-finish-delay', `${values.hold + values.curve + 20}ms`)
-  root.style.setProperty('--route-finish-duration', `${values.finish}ms`)
-  root.style.setProperty('--route-text-delay-base', `${Math.round(textDelay)}ms`)
+  root.style.setProperty('--route-finish-delay', `${finishDelay}ms`)
+  root.style.setProperty('--route-finish-duration', '1ms')
+  root.style.setProperty('--route-text-delay-base', `${textDelay}ms`)
+  root.style.setProperty('--route-text-duration', `${values.revealDuration}ms`)
+  root.style.setProperty('--route-text-offset', `${values.revealOffset}px`)
 }
 
 export default function MotionDevPanel() {
@@ -32,7 +53,7 @@ export default function MotionDevPanel() {
   const [message, setMessage] = useState('')
   const location = useLocation()
   const navigate = useNavigate()
-  const total = useMemo(() => values.hold + values.curve + values.finish + 20, [values])
+  const total = useMemo(() => values.darken + values.hold + Math.round(values.curve * visualCurveEnd) + values.whiteHold, [values])
 
   useEffect(() => {
     apply(values)
@@ -57,13 +78,13 @@ export default function MotionDevPanel() {
     </header>
     {!collapsed && <>
       <div className="motion-dev-body">
-        {controls.map(([key, label, min, max, step]) => <label className="motion-dev-control" key={key}>
+        {controls.map(([key, label, min, max, step, unit]) => <label className="motion-dev-control" key={key}>
           <span>{label}</span>
-          <input aria-label={`${label} in milliseconds`} type="range" min={min} max={max} step={step} value={values[key]} onChange={event => update(key, Number(event.target.value))} />
+          <input aria-label={`${label} in ${unit === 'px' ? 'pixels' : 'milliseconds'}`} type="range" min={min} max={max} step={step} value={values[key]} onChange={event => update(key, Number(event.target.value))} />
           <input aria-label={`${label} value`} type="number" min={min} max={max} step={step} value={values[key]} onChange={event => update(key, Number(event.target.value))} />
-          <small>ms</small>
+          <small>{unit}</small>
         </label>)}
-        <div className="motion-dev-summary"><span>Estimated total</span><output>{total} ms</output></div>
+        <div className="motion-dev-summary"><span>Text starts after</span><output>{total} ms</output></div>
         <p>Changes apply to the next page transition and stay in this browser.</p>
       </div>
       <footer className="motion-dev-footer">

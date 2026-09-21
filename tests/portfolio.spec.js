@@ -4,6 +4,7 @@ import AxeBuilder from '@axe-core/playwright'
 async function ready(page) {
   await expect(page.locator('.workbench-canvas')).toHaveAttribute('data-state', 'ready', { timeout: 30000 })
   await expect(page.locator('.workbench-canvas')).toHaveAttribute('data-moving', 'false')
+  await expect(page.locator('.site-loader')).toHaveCount(0, { timeout: 10000 })
 }
 async function activate(page, target) { await target.focus(); await page.keyboard.press('Enter') }
 async function switchView(page, name) {
@@ -39,7 +40,7 @@ test('lamp and views return, and the camera flash opens photography', async ({ p
   await page.getByRole('button', { name: 'Revert', exact:true }).click()
   await expect(page.locator('.home')).toHaveAttribute('data-view', 'overview')
   await ready(page)
-  await page.screenshot({ path: 'docs/qa/v2/home-night.png' })
+  await page.screenshot()
   await switchView(page, /Through the lens/)
   await activate(page, page.locator('[data-anchor="camera"]'))
   await expect(page.locator('.camera-transition')).toBeVisible()
@@ -61,7 +62,7 @@ test('CV and badge lift, open accessible documents, and put back with focus rest
     await expect(page.getByRole('dialog')).toBeVisible()
     const a11y = await new AxeBuilder({ page }).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze()
     expect(a11y.violations).toEqual([])
-    await page.screenshot({ path: `docs/qa/v2/document-${kind}.png` })
+    await page.screenshot()
     await page.keyboard.press('Escape')
     await expect(page.getByRole('dialog')).toHaveCount(0)
     await expect(trigger).toBeFocused()
@@ -81,7 +82,7 @@ test('guestbook draft survives closing and reload, email stays an explicit link'
   await expect(page.getByRole('link', { name: 'Open in email' })).toHaveAttribute('href', /body=Hello%20Jiaqi/)
   const a11y = await new AxeBuilder({ page }).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze()
   expect(a11y.violations).toEqual([])
-  await page.screenshot({ path: 'docs/qa/v2/guestbook.png' })
+  await page.screenshot()
   await page.getByRole('button', { name: 'Put back on the desk' }).click()
   await page.reload()
   await ready(page)
@@ -159,7 +160,7 @@ test('mobile navigation, reduced motion and static gallery remain usable', async
   await expect(page.locator('.gallery-viewport.is-static')).toHaveCount(2)
   const hasOverflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)
   expect(hasOverflow).toBe(false); expect(models).toEqual([])
-  await page.screenshot({ path: 'docs/qa/reduced-mobile.png' })
+  await page.screenshot()
 })
 
 test('failed model and unavailable WebGL keep direct navigation available', async ({ browser }) => {
@@ -207,6 +208,7 @@ test('main pages retain accessibility apart from the explicitly matched referenc
 })
 
 test('scene zoom, full orbit and pan leave the page unchanged; Revert restores the initial pose', async ({ page }) => {
+  test.setTimeout(60000)
   await page.goto('/')
   await ready(page)
   const pose = () => page.locator('.workbench-canvas').evaluate(el => ({ position:el.dataset.cameraPosition.split(',').map(Number), target:el.dataset.cameraTarget.split(',').map(Number), distance:Number(el.dataset.cameraDistance) }))

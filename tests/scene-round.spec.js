@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
 
 const ready = page => expect(page.locator('.workbench-canvas')).toHaveAttribute('data-moving','false',{timeout:30000})
-async function start(page) { await page.goto('/'); await expect(page.locator('.workbench-canvas')).toHaveAttribute('data-state','ready',{timeout:30000}); await ready(page) }
+async function start(page) { await page.goto('/'); await expect(page.locator('.workbench-canvas')).toHaveAttribute('data-state','ready',{timeout:30000}); await ready(page); await expect(page.locator('.site-loader')).toHaveCount(0,{timeout:10000}) }
 async function point(page, id) { return page.locator(`[data-anchor="${id}"]`).evaluate(el => ({x:Number(el.dataset.meshX),y:Number(el.dataset.meshY)})) }
 async function clickObject(page,id) { const p=await point(page,id); await page.mouse.click(p.x,p.y) }
 
@@ -20,7 +20,7 @@ for (const scale of [1,2,3]) test(`page wipe covers the entire viewport at pixel
     return getComputedStyle(document.documentElement,'::view-transition-old(root)').clipPath
   })
   expect(clip).not.toContain('path(')
-  const screenshot=await page.screenshot({path:`docs/qa/scene-round/wipe-dpr-${scale}.png`})
+  const screenshot=await page.screenshot()
   const samples=await page.evaluate(async url=>{
     const image=new Image();image.src=url;await image.decode()
     const canvas=document.createElement('canvas');canvas.width=image.width;canvas.height=image.height
@@ -29,8 +29,10 @@ for (const scale of [1,2,3]) test(`page wipe covers the entire viewport at pixel
   },`data:image/png;base64,${screenshot.toString('base64')}`)
   for(const rgba of samples) expect(Math.max(...rgba.slice(0,3))).toBeLessThan(235)
   // At the bend, the lower edge must sit lower in the middle than at either side.
-  await page.evaluate(()=>document.getAnimations().filter(a=>a.effect?.pseudoElement?.includes('view-transition')).forEach(a=>{a.currentTime=650}))
-  await page.screenshot({path:`docs/qa/scene-round/concave-dpr-${scale}.png`})
+  // The current controller holds the dark screen until 420ms; sample the
+  // actual rising bend, not the earlier dark hold.
+  await page.evaluate(()=>document.getAnimations().filter(a=>a.effect?.pseudoElement?.includes('view-transition')).forEach(a=>{a.currentTime=800}))
+  await page.screenshot()
   const boundary=await page.evaluate(()=>{
     const clip=getComputedStyle(document.documentElement,'::view-transition-old(root)').clipPath
     const shape=clip.match(/line to 100% ([-+\de.]+)px, curve to 0% [-+\de.]+px with 50% ([-+\de.]+)px/)
@@ -61,7 +63,7 @@ test('all photography objects approach first, and both camera bodies open Photog
   const camera=await page.locator('.workbench-canvas').evaluate(el=>({p:el.dataset.cameraPosition.split(',').map(Number),t:el.dataset.cameraTarget.split(',').map(Number)}))
   expect(Math.atan2(camera.p[1]-camera.t[1],Math.hypot(camera.p[0]-camera.t[0],camera.p[2]-camera.t[2]))*180/Math.PI).toBeLessThan(15)
   await page.mouse.move(1500,800)
-  await page.screenshot({path:'docs/qa/scene-round/photo-final-desktop.png'})
+  await page.screenshot()
   await clickObject(page,'film')
   await expect(page).toHaveURL('/photography')
   await start(page);await clickObject(page,'camera');await ready(page);await clickObject(page,'camera')
@@ -84,7 +86,7 @@ test('board opens from its surface with margins and closes outside or with Escap
   await expect(dialog).toBeVisible()
   const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze()
   expect(audit.violations).toEqual([])
-  await page.screenshot({path:'docs/qa/scene-round/board-final-desktop.png'})
+  await page.screenshot()
   await page.mouse.click(10,400);await expect(dialog).toHaveCount(0)
   await page.locator('[data-anchor="board"]').focus();await page.keyboard.press('Enter')
   await expect(dialog).toBeVisible();await page.keyboard.press('Escape');await expect(dialog).toHaveCount(0)
@@ -100,14 +102,14 @@ test('board opens from its surface with margins and closes outside or with Escap
 test('mobile close view and board keep a usable frame without visible scene labels',async({page})=>{
   await page.setViewportSize({width:390,height:844})
   await start(page);await clickObject(page,'camera');await ready(page)
-  await page.screenshot({path:'docs/qa/scene-round/photo-final-mobile.png'})
+  await page.screenshot()
   await page.locator('[data-anchor="board"]').focus();await page.keyboard.press('Enter')
   const dialog=page.getByRole('dialog',{name:'Pegboard',exact:true})
   await expect(dialog).toBeVisible();await expect(page.locator('.pegboard-canvas')).toHaveAttribute('data-state','ready')
   await page.waitForTimeout(900)
   const box=await dialog.boundingBox()
   expect(box.x).toBeGreaterThan(12);expect(box.y).toBeGreaterThan(32);expect(box.width).toBeLessThan(390)
-  await page.screenshot({path:'docs/qa/scene-round/board-final-mobile.png'})
+  await page.screenshot()
   await page.mouse.click(5,422);await expect(dialog).toHaveCount(0)
   expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false)
 })

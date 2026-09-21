@@ -1,5 +1,6 @@
 /* Motion round: archive timing, with independent gallery and scene controls. */
-.canvas-identity.photography-navigation { position:absolute; }
+.canvas-identity.photography-navigation { position:fixed; }
+.canvas-identity { view-transition-name:site-navigation; }
 .close-cross { display:block;font-family:Arial,sans-serif;font-size:27px;font-weight:400;line-height:1;transform:translateY(-1px); }
 .photography-page { min-height:100svh; }
 .gallery-rows { justify-content:center;gap:24px; }
@@ -8,8 +9,11 @@
 
 .reveal-line { display:block; }
 @media (prefers-reduced-motion:no-preference) {
- .reveal-line,.text-arrival { animation:text-arrive 1.02s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(.14s + var(--line,0) * .075s); }
- html[data-route-entering] .reveal-line,html[data-route-entering] .text-arrival { animation-delay:calc(.84s + var(--route-order,var(--line,0)) * .075s); }
+ .reveal-line,.text-arrival { animation:text-arrive var(--route-text-duration,.76s) cubic-bezier(.22,1,.36,1) both;animation-delay:calc(.14s + var(--line,0) * .075s); }
+ /* A route captures its entire destination as one image; inner text and photos
+    must not start a second, independent animation after that capture. */
+ html[data-route-entering] .reveal-line,html[data-route-entering] .text-arrival,html[data-route-entering] .gallery-photo { animation:none; }
+ main[data-route-arrived] .reveal-line,main[data-route-arrived] .text-arrival,main[data-route-arrived] .gallery-photo { animation:none; }
  html[data-route-entering] .text-arrival .reveal-line { animation:none; }
  .gallery-photo { animation:photo-arrive 1.28s cubic-bezier(.16,1,.3,1) both; }
  .gallery-photo:nth-child(4n + 2) { animation-delay:.085s; }
@@ -18,7 +22,7 @@
  /* Do not move the destination underneath an image that is returning to its thumbnail. */
  .gallery-rows.is-returning .gallery-photo { animation:none; }
 }
-@keyframes text-arrive { from { opacity:0;transform:translateY(16px); } to { opacity:1;transform:translateY(0); } }
+@keyframes text-arrive { from { opacity:0;transform:translateY(var(--route-text-offset,60px)); } to { opacity:1;transform:translateY(0); } }
 @keyframes photo-arrive { from { translate:0 84px;scale:.985; } to { translate:0 0;scale:1; } }
 
 .follow-cursor { position:fixed;left:0;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 17px;min-width:78px;max-width:280px;height:34px;background:#0b0b0a;color:white;border-radius:999px;font-size:12px;line-height:1;pointer-events:none;opacity:0;scale:.6;rotate:-16deg;transition:opacity .18s,scale .48s cubic-bezier(.16,1,.3,1),rotate .36s cubic-bezier(.34,1.56,.64,1);view-transition-name:none; }
@@ -48,12 +52,20 @@ html:has(.reference-contact) .canvas-nav a.active,html:has(.reference-contact) .
 /* Hiroto's curve uses two continuous 1.3s motions: the edge rises first and
    the center control follows .65s later. They share one uninterrupted ease. */
 ::view-transition { pointer-events:none; }
+/* Cover any viewport area outside the root snapshot (notably WebGL Home on
+   some GPU / dynamic-viewport combinations) with the same curtain colour. */
+html[data-route-motion="page"]::view-transition { animation:route-backing-darken var(--route-darken-duration,.34s) linear forwards,route-backing-clear 1ms var(--route-curve-delay,.42s) steps(1,end) forwards; }
+::view-transition-group(site-navigation) { z-index:10;animation:none; }
+::view-transition-old(site-navigation) { display:none; }
+::view-transition-new(site-navigation) { animation:none; }
 ::view-transition-group(root) { animation:none; }
-::view-transition-image-pair(root) { isolation:isolate; }
+::view-transition-image-pair(root) { isolation:isolate;background:#fff; }
 ::view-transition-new(root) { animation:none;mix-blend-mode:normal; }
-html[data-route-motion="page"]::view-transition-image-pair(root) { background:transparent; }
-::view-transition-old(root) { z-index:2;mix-blend-mode:normal;will-change:clip-path,filter;clip-path:var(--route-mask-start);animation:route-curve-fallback var(--route-curve-duration,.99s) var(--route-curve-delay,.56s) linear both,route-darken var(--route-darken-duration,.49s) linear both,route-finish var(--route-finish-duration,.19s) var(--route-finish-delay,1.57s) both; }
-html[data-route-mask="shape"]::view-transition-old(root) { animation:route-curve-shape var(--route-curve-duration,.99s) var(--route-curve-delay,.56s) linear both,route-darken var(--route-darken-duration,.49s) linear both,route-finish var(--route-finish-duration,.19s) var(--route-finish-delay,1.57s) both; }
+html[data-route-motion="page"]::view-transition-image-pair(root) { animation:route-backing-darken var(--route-darken-duration,.34s) linear forwards,route-backing-clear 1ms var(--route-curve-delay,.42s) steps(1,end) forwards; }
+html[data-route-motion="page"]::view-transition-new(root) { animation:route-page-reveal var(--route-text-duration,.76s) var(--route-text-delay-base,1.177s) cubic-bezier(.22,1,.36,1) both; }
+::view-transition-old(root) { z-index:2;mix-blend-mode:normal;will-change:clip-path,filter;clip-path:var(--route-mask-start);animation:route-curve-fallback var(--route-curve-duration,.89s) var(--route-curve-delay,.42s) linear both,route-darken var(--route-darken-duration,.34s) linear both,route-finish var(--route-finish-duration,1ms) var(--route-finish-delay,1.177s) both; }
+html[data-route-mask="shape"]::view-transition-old(root) { animation:route-curve-shape var(--route-curve-duration,.89s) var(--route-curve-delay,.42s) linear both,route-darken var(--route-darken-duration,.34s) linear both,route-finish var(--route-finish-duration,1ms) var(--route-finish-delay,1.177s) both; }
+html[data-route-mask="portrait"]::view-transition-old(root) { animation:route-curve-portrait var(--route-curve-duration,.89s) var(--route-curve-delay,.42s) linear both,route-darken var(--route-darken-duration,.34s) linear both,route-finish var(--route-finish-duration,1ms) var(--route-finish-delay,1.177s) both; }
 @keyframes route-darken {
  0% { filter:brightness(1) drop-shadow(0 -28px 64px rgb(7 7 7 / .18)); }
  10% { filter:brightness(.99728) drop-shadow(0 -28px 64px rgb(7 7 7 / .18)); }
@@ -67,9 +79,25 @@ html[data-route-mask="shape"]::view-transition-old(root) { animation:route-curve
  90% { filter:brightness(.32272) drop-shadow(0 -28px 64px rgb(7 7 7 / .18)); }
  100% { filter:brightness(.32) drop-shadow(0 -28px 64px rgb(7 7 7 / .18)); }
 }
+@keyframes route-backing-darken {
+ 0% { background-color:#fff; }
+ 10% { background-color:rgb(254 254 254); }
+ 20% { background-color:rgb(249 249 249); }
+ 30% { background-color:rgb(236 236 236); }
+ 40% { background-color:rgb(211 211 211); }
+ 50% { background-color:rgb(168 168 168); }
+ 60% { background-color:rgb(126 126 126); }
+ 70% { background-color:rgb(100 100 100); }
+ 80% { background-color:rgb(87 87 87); }
+ 90% { background-color:rgb(82 82 82); }
+ 100% { background-color:rgb(82 82 82); }
+}
+@keyframes route-backing-clear { from { background-color:rgb(82 82 82); } to { background-color:#fff; } }
 @keyframes route-finish { to { opacity:0; } }
+@keyframes route-new-root { from { opacity:0; } to { opacity:1; } }
+@keyframes route-page-reveal { from { opacity:0;transform:translateY(var(--route-text-offset,60px)); } to { opacity:1;transform:translateY(0); } }
 @keyframes route-text-snapshot {
- from { opacity:0;transform:translateY(16px); }
+ from { opacity:0;transform:translateY(var(--route-text-offset,16px)); }
  to { opacity:1;transform:translateY(0); }
 }
 @keyframes route-curve-fallback {

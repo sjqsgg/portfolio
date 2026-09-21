@@ -33,13 +33,16 @@ export default function useRouteMotion(incoming, reduced) {
     const shared = outgoingImage && visible(outgoingImage)
     if (shared) outgoingImage.style.viewTransitionName = 'selected-photo'
     const style = document.documentElement.style
-    // Hiroto's archived desktop path is square (1512x1512) inside a 1512x820
-    // viewport, so vmax preserves the offscreen pre-roll instead of revealing
-    // white from the first frame.
-    const mask = (edge, control) => {
+    // Desktop keeps the archived square path. Portrait screens use a taller
+    // offscreen axis so the curtain starts below the viewport instead of
+    // appearing halfway up the page.
+    const portrait = innerHeight > innerWidth
+    const maskAxis = portrait ? innerHeight * 1.45 : Math.max(innerWidth, innerHeight)
+    const mask = (edge, control, unit = 'vmax') => {
       const curve = Array.from({ length:65 }, (_, i) => {
         const t = i / 64
-        return `${100 * (1 - t)}% ${edge + 2 * t * (1 - t) * (control - edge)}vmax`
+        const y = edge + 2 * t * (1 - t) * (control - edge)
+        return `${100 * (1 - t)}% ${unit === 'px' ? y * maskAxis / 100 : y}${unit}`
       })
       return `polygon(0% 0%,100% 0%,${curve.join(',')})`
     }
@@ -51,43 +54,23 @@ export default function useRouteMotion(incoming, reduced) {
     style.setProperty('--route-mask-1205', mask(3.172123, 5.435398))
     style.setProperty('--route-mask-1702', mask(.083869, .143691))
     style.setProperty('--route-mask-end', mask(0, 0))
+    let geometryStyle
+    if (portrait) {
+      geometryStyle = document.createElement('style')
+      geometryStyle.dataset.routeGeometry = ''
+      geometryStyle.textContent = `@keyframes route-curve-portrait{${routeCurveSamples.map(([edge, control], frame) => `${(frame * 100 / (routeCurveSamples.length - 1)).toFixed(3)}%{clip-path:${mask(edge, control, 'px')}}`).join('')}}`
+      document.head.append(geometryStyle)
+    }
     document.documentElement.dataset.routeMotion = kind
-    document.documentElement.dataset.routeMask = supportsShape ? 'shape' : 'polygon'
+    document.documentElement.dataset.routeMask = portrait ? 'portrait' : supportsShape ? 'shape' : 'polygon'
     document.documentElement.dataset.routeEntering = 'true'
     const root = document.getElementById('root')
     let cancelled = false
-    let routeStyle
-    let routeArrivals = []
     const update = () => {
       if (cancelled) return
       flushSync(() => setDisplayed(incoming))
+      document.getElementById('main-content')?.setAttribute('data-route-arrived', '')
       window.scrollTo({ top: closing ? scrollPositions.get('/photography') || 0 : 0, behavior: 'instant' })
-      const arrivals = [...document.querySelectorAll('.reveal-line,.text-arrival')].filter(el => !el.parentElement?.closest('.text-arrival'))
-      arrivals.forEach((el, index) => el.style.setProperty('--route-order', index))
-      if (kind === 'page' && !reduced && document.startViewTransition) {
-        routeArrivals = arrivals
-        routeStyle = document.createElement('style')
-        routeStyle.dataset.routeTextSnapshots = ''
-        routeStyle.textContent = arrivals.map((el, index) => {
-          const name = `route-text-${index}`
-          el.style.viewTransitionName = name
-          el.style.animation = 'none'
-          const delay = `calc(var(--route-text-delay-base,.97s) + ${index * .075}s)`
-          const rect = el.getBoundingClientRect()
-          const axis = Math.max(innerWidth, innerHeight)
-          const reveal = routeCurveSamples.map(([edge, control], frame) => {
-            const boundary = localX => {
-              const x = Math.max(0, Math.min(1, (rect.left + rect.width * localX) / innerWidth))
-              const y = (edge + 2 * x * (1 - x) * (control - edge)) * axis / 100
-              return Math.max(0, Math.min(100, 100 * (y - rect.top) / Math.max(rect.height, 1)))
-            }
-            const progress = (frame * 100 / (routeCurveSamples.length - 1)).toFixed(3)
-            return `${progress}%{clip-path:polygon(0% ${boundary(0).toFixed(3)}%,50% ${boundary(.5).toFixed(3)}%,100% ${boundary(1).toFixed(3)}%,100% 100%,0% 100%)}`
-          }).join('')
-          return `@keyframes route-text-reveal-${index}{${reveal}}::view-transition-group(${name}){animation:none;z-index:3}::view-transition-old(${name}){display:none}::view-transition-new(${name}){mix-blend-mode:normal;will-change:opacity,transform,clip-path;animation:route-text-snapshot 1.02s ${delay} cubic-bezier(.22,1,.36,1) both,route-text-reveal-${index} var(--route-curve-duration,.99s) var(--route-curve-delay,.56s) linear both}`
-        }).join('')
-        document.head.append(routeStyle)
-      }
       if (shared) {
         const target = opening ? document.querySelector('.series-selected img') : [...document.querySelectorAll(`[data-photo-id="${CSS.escape(imageId || outgoingImage.dataset.photoId || '')}"] img`)].find(visible)
         if (target) target.style.viewTransitionName = 'selected-photo'
@@ -95,14 +78,14 @@ export default function useRouteMotion(incoming, reduced) {
     }
     const finish = () => {
       if (cancelled) return
-      document.querySelectorAll('[style*="--route-order"]').forEach(el => el.style.removeProperty('--route-order'))
-      routeStyle?.remove()
+      geometryStyle?.remove()
       delete document.documentElement.dataset.routeMotion
       delete document.documentElement.dataset.routeMask
       delete document.documentElement.dataset.routeEntering
       delete root.dataset.transitioning
       root.inert = false
-      document.querySelectorAll('[style*="view-transition-name"]').forEach(el => el.style.removeProperty('view-transition-name'))
+      outgoingImage?.style.removeProperty('view-transition-name')
+      document.querySelector('.series-selected img')?.style.removeProperty('view-transition-name')
       document.getElementById('main-content')?.focus({ preventScroll: true })
       active.current = null
     }
@@ -121,7 +104,9 @@ export default function useRouteMotion(incoming, reduced) {
       root.dataset.transitioning = 'fallback'
       const css = getComputedStyle(document.documentElement)
       const milliseconds = value => value.trim().endsWith('ms') ? Number.parseFloat(value) : Number.parseFloat(value) * 1000
-      const pageDuration = milliseconds(css.getPropertyValue('--route-finish-delay') || '1.57s') + milliseconds(css.getPropertyValue('--route-finish-duration') || '.19s')
+      const textDelay = milliseconds(css.getPropertyValue('--route-text-delay-base') || '1.177s')
+      const textDuration = milliseconds(css.getPropertyValue('--route-text-duration') || '.76s')
+      const pageDuration = textDelay + textDuration
       fallbackTimer = setTimeout(finish, kind === 'page' ? pageDuration : 920)
     }
     return () => {
@@ -133,10 +118,8 @@ export default function useRouteMotion(incoming, reduced) {
       delete document.documentElement.dataset.routeMotion
       delete document.documentElement.dataset.routeMask
       delete document.documentElement.dataset.routeEntering
-      document.querySelectorAll('[style*="--route-order"]').forEach(el => el.style.removeProperty('--route-order'))
-      routeStyle?.remove()
-      routeArrivals.forEach(el => el.style.removeProperty('view-transition-name'))
-      document.querySelectorAll('[style*="view-transition-name"]').forEach(el => el.style.removeProperty('view-transition-name'))
+      geometryStyle?.remove()
+      outgoingImage?.style.removeProperty('view-transition-name')
     }
   }, [incoming, reduced])
   return displayed

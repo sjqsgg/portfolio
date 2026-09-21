@@ -87,7 +87,7 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey, onIniti
   return <section ref={home} className={`home immersive-home view-${view}`} aria-label="Jiaqi Shi’s workbench" data-view={view} data-object={object || 'none'}>
     <h1 className="sr-only">Jiaqi Shi, software engineer & photographer</h1>
     <div className="workbench-stage">
-      {(useStatic || status !== 'ready') && <picture className="workbench-poster"><source media="(max-width: 767px)" srcSet={assetPath(`/images/workstation/${view}-mobile.webp`)} /><img src={assetPath(`/images/workstation/${view}-day.webp`)} width="1440" height="1000" fetchPriority="high" alt="An L-shaped workstation with a monitor, cameras, a green desk lamp, shelves and speakers." /></picture>}
+      {useStatic && <picture className="workbench-poster"><source media="(max-width: 767px)" srcSet={assetPath(`/images/workstation/${view}-mobile.webp`)} /><img src={assetPath(`/images/workstation/${view}-day.webp`)} width="1440" height="1000" fetchPriority="high" alt="An L-shaped workstation with a monitor, cameras, a green desk lamp, shelves and speakers." /></picture>}
       {!useStatic && <Suspense fallback={null}><Workbench theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} onStatus={setStatus} home={home} view={view} object={object} onView={selectView} onInspect={inspect} onBoard={lookdev ? () => {} : showBoard} resetKey={resetKey} lookdev={lookdev} onLookdevReady={setLookdevApi} /></Suspense>}
     </div>
     <div className={`scene-hotspots ${useStatic || status !== 'ready' ? 'fallback-labels' : ''}`} aria-label="Objects on the desk">
