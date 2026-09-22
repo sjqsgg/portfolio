@@ -94,15 +94,15 @@ main>.page,main>section.page { padding-top:228px;padding-bottom:130px; }
 .lookdev-header strong { font:500 12px/1.3 "Helvetica Neue",Arial,sans-serif;letter-spacing:.01em; }
 .lookdev-kicker { color:#9ca69e;font-size:9px;letter-spacing:.08em; }
 .lookdev-header>button { width:36px;height:36px;border:1px solid #59615b;background:transparent; }
-.lookdev-tabs { display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid #414842; }
+.lookdev-tabs { display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid #414842; }
 .lookdev-tabs button { min-height:36px;text-transform:uppercase;font-size:9px;letter-spacing:.06em;color:#929b94;border-right:1px solid #414842; }
 .lookdev-tabs button:last-child { border:0; }
 .lookdev-tabs button[aria-pressed="true"] { color:#f2d755;background:#262c27; }
 .lookdev-body { min-height:0;padding:14px 13px 18px;overflow:auto; }
-.lookdev-checkpoints { display:grid;grid-template-columns:1fr 1fr;gap:5px;margin:0 0 13px; }
-.lookdev-checkpoints button { min-height:34px;border:1px solid #d4bb43;background:#302c18;color:#f2d755;padding:0 8px;text-align:left;white-space:nowrap; }
+.lookdev-baseline { margin:0 0 13px;padding:8px 10px;border:1px solid #59615b;color:#c8d0ca;background:#1b1f1c; }
 .lookdev-select { display:grid;grid-template-columns:70px 1fr;align-items:center;gap:10px;margin-bottom:13px;color:#aeb7b0; }
 .lookdev-select select { width:100%;height:34px;padding:0 8px;background:#202521;border:1px solid #59615b;border-radius:0; }
+.lookdev-board-profile { grid-template-columns:78px 1fr;margin-bottom:8px; }
 .lookdev-reset-current { width:100%;min-height:34px;margin:-3px 0 13px;border:1px solid #747d76;background:#252b26;text-align:left;padding:0 10px; }
 .lookdev-reset-current:hover { border-color:#e3c946;color:#f2d755; }
 .lookdev-lock { min-height:34px;margin:0 0 12px;display:flex;align-items:center;gap:9px;color:#c3cac4; }

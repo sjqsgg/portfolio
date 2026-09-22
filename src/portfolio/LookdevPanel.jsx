@@ -1,13 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
-import checkpoint01 from '../../docs/workstation-lookdev-round-01.json'
-import round02 from '../../docs/workstation-lookdev-round-02.json'
-import round04 from '../../docs/workstation-lookdev-round-04.json'
 
-const storageKey = 'jiaqi-workstation-lookdev-v1'
+const storageKey = 'jiaqi-workstation-lookdev-draft'
+const legacyStorageKeys = ['jiaqi-workstation-lookdev-v2', 'jiaqi-workstation-lookdev-v1']
 const defaultTransform = { scaleX: 1, scaleY: 1, scaleZ: 1, thickness: 1, positionX: 0, positionY: 0, positionZ: 0, rotationX: 0, rotationY: 0, rotationZ: 0, lockPosition: true }
 const materialLabels = {
-  Board_frame_preview: 'Board frame',
-  Board_felt_preview: 'Felt insert',
+  Felt_board_walnut: 'Felt board frame',
+  Felt_board_fabric: 'Felt board insert',
+  Felt_board_groove: 'Felt board groove',
   Computer_case_muted_internals: 'Computer internals',
   Computer_case_warm_shell: 'Computer shell',
   Computer_case_sage_accent: 'Computer accent',
@@ -24,23 +23,12 @@ function NumberControl({ label, value, min, max, step, onChange }) {
 
 function readSaved() {
   try {
-    const saved = JSON.parse(localStorage.getItem(storageKey)) || {}
-    const frame = saved.materials?.Board_frame_preview
-    const felt = saved.materials?.Board_felt_preview
-    // Preserve every saved adjustment while migrating the accepted board
-    // preview from a green insert/white frame to a white insert/green frame.
-    if (frame?.color?.toLowerCase() === 'd8cfbb' && felt?.color?.toLowerCase() === '8fe85e') {
-      return {
-        ...saved,
-        materials: {
-          ...saved.materials,
-          Board_frame_preview: { ...frame, color: '8fe85e' },
-          Board_felt_preview: { ...felt, color: 'd8cfbb' },
-        },
-      }
+    const active = localStorage.getItem(storageKey)
+    return {
+      value: active ? JSON.parse(active) : {},
+      hasLegacy: legacyStorageKeys.some(key => Boolean(localStorage.getItem(key))),
     }
-    return saved
-  } catch { return {} }
+  } catch { return { value: {}, hasLegacy: false } }
 }
 
 export default function LookdevPanel({ api }) {
@@ -50,29 +38,38 @@ export default function LookdevPanel({ api }) {
   const [materialName, setMaterialName] = useState('Pale_ash')
   const [parts, setParts] = useState({})
   const [materials, setMaterials] = useState({})
+  const [board, setBoard] = useState({})
   const [lighting, setLighting] = useState({ exposure: .98, ambient: .85, key: 3, fill: .65, practical: 0 })
   const [message, setMessage] = useState('')
 
   const materialDefaults = useMemo(() => Object.fromEntries((api?.materials || []).map(({ name, ...values }) => [name, values])), [api])
   useEffect(() => {
     if (!api) return
-    const saved = readSaved()
-    const nextParts = saved.parts || {}
-    const nextMaterials = saved.materials || {}
-    const nextLighting = { ...api.lighting, ...saved.lighting }
-    setParts(nextParts); setMaterials(nextMaterials); setLighting(nextLighting)
+    const { value: saved, hasLegacy } = readSaved()
+    const knownParts = new Set(api.parts.map(item => item.id))
+    const knownMaterials = new Set(api.materials.map(item => item.name))
+    const savedParts = Object.fromEntries(Object.entries(saved.parts || {}).filter(([id]) => knownParts.has(id)))
+    const savedMaterials = Object.fromEntries(Object.entries(saved.materials || {}).filter(([name]) => knownMaterials.has(name)))
+    const nextParts = { ...api.current.parts, ...savedParts }
+    const nextMaterials = { ...api.current.materials, ...savedMaterials }
+    const nextBoard = { ...api.current.board, ...saved.board }
+    const nextLighting = { ...api.current.lighting, ...saved.lighting }
+    setParts(nextParts); setMaterials(nextMaterials); setBoard(nextBoard); setLighting(nextLighting)
     setPartId(current => api.parts.some(part => part.id === current) ? current : api.parts[0]?.id || '')
     setMaterialName(current => api.materials.some(material => material.name === current) ? current : api.materials[0]?.name || '')
     Object.entries(nextParts).forEach(([id, values]) => api.applyPart(id, { ...defaultTransform, ...values }))
     Object.entries(nextMaterials).forEach(([name, values]) => api.applyMaterial(name, { ...materialDefaults[name], ...values }))
+    api.applyBoard(nextBoard)
     api.applyLighting(nextLighting)
+    if (hasLegacy && !Object.keys(saved).length) setMessage('Production baseline loaded; old drafts kept')
   }, [api, materialDefaults])
 
   if (!api) return <aside className="lookdev-panel is-loading" aria-label="Workstation look development controls"><span>LOOKDEV</span><span>Loading model…</span></aside>
   const part = { ...defaultTransform, ...parts[partId] }
   const partSpec = api.parts.find(item => item.id === partId)
   const material = { ...materialDefaults[materialName], ...materials[materialName] }
-  const payload = { version: 1, parts, materials, lighting }
+  const boardValues = { ...api.board, ...board }
+  const payload = { version: 1, checkpoint: 'browser-draft', basedOn: api.current.checkpoint, parts, materials, board: boardValues, lighting }
   function updatePart(key, value) {
     const next = { ...part, [key]: value }
     setParts(current => ({ ...current, [partId]: next })); api.applyPart(partId, next)
@@ -85,24 +82,30 @@ export default function LookdevPanel({ api }) {
     const next = { ...lighting, [key]: value }
     setLighting(next); api.applyLighting(next)
   }
+  function updateBoard(key, value) {
+    const next = { ...boardValues, [key]: value }
+    setBoard(next); api.applyBoard(next)
+  }
   function flash(value) { setMessage(value); window.setTimeout(() => setMessage(''), 1800) }
-  function save() { localStorage.setItem(storageKey, JSON.stringify(payload)); flash('Saved on this device') }
+  function save() { localStorage.setItem(storageKey, JSON.stringify(payload)); flash('Draft saved on this device') }
   async function copy() {
     await navigator.clipboard.writeText(JSON.stringify(payload, null, 2)); flash('Parameters copied')
   }
-  function applyCheckpoint(next, label) {
+  function applyDraft(next, label) {
     if (next.version !== 1 || !next.parts || !next.materials || !next.lighting) throw new Error('Unsupported checkpoint')
     const knownParts = new Set(api.parts.map(item => item.id))
     const knownMaterials = new Set(api.materials.map(item => item.name))
     const nextParts = Object.fromEntries(Object.entries(next.parts).filter(([id]) => knownParts.has(id)))
     const nextMaterials = Object.fromEntries(Object.entries(next.materials).filter(([name]) => knownMaterials.has(name)))
     const nextLighting = { ...api.lighting, ...next.lighting }
+    const nextBoard = { ...api.board, ...next.board }
     api.reset()
     Object.entries(nextParts).forEach(([id, values]) => api.applyPart(id, { ...defaultTransform, ...values }))
     Object.entries(nextMaterials).forEach(([name, values]) => api.applyMaterial(name, { ...materialDefaults[name], ...values }))
     api.applyLighting(nextLighting)
-    setParts(nextParts); setMaterials(nextMaterials); setLighting(nextLighting)
-    localStorage.setItem(storageKey, JSON.stringify({ version: 1, parts: nextParts, materials: nextMaterials, lighting: nextLighting }))
+    api.applyBoard(nextBoard)
+    setParts(nextParts); setMaterials(nextMaterials); setBoard(nextBoard); setLighting(nextLighting)
+    localStorage.setItem(storageKey, JSON.stringify({ version: 1, parts: nextParts, materials: nextMaterials, board: nextBoard, lighting: nextLighting }))
     flash(label)
   }
   async function importCheckpoint(event) {
@@ -110,29 +113,33 @@ export default function LookdevPanel({ api }) {
     if (!file) return
     try {
       const next = JSON.parse(await file.text())
-      applyCheckpoint(next, `Loaded ${file.name}`)
+      applyDraft(next, `Loaded ${file.name}`)
     } catch {
       flash('Checkpoint could not be loaded')
     } finally { event.target.value = '' }
   }
   function resetCurrent() {
     if (tab === 'structure' && partId === 'workstation') {
-      api.reset(); localStorage.removeItem(storageKey); setParts({}); setMaterials({}); setLighting(api.lighting); flash('Restored whole workstation')
+      api.reset(); localStorage.removeItem(storageKey); setParts(api.current.parts); setMaterials(api.current.materials); setBoard(api.current.board); setLighting(api.current.lighting); flash('Restored live production baseline')
       return
     }
     if (tab === 'structure') {
       api.resetPart(partId)
-      setParts(current => { const next = { ...current }; delete next[partId]; return next })
+      setParts(current => ({ ...current, [partId]: api.current.parts[partId] || defaultTransform }))
       flash('Restored current part')
       return
     }
     if (tab === 'surface') {
       api.resetMaterial(materialName)
-      setMaterials(current => { const next = { ...current }; delete next[materialName]; return next })
+      setMaterials(current => ({ ...current, [materialName]: materialDefaults[materialName] }))
       flash('Restored current material')
       return
     }
-    api.resetLighting(); setLighting(api.lighting); flash('Restored lighting')
+    if (tab === 'board') {
+      api.resetBoard(); setBoard(api.current.board); flash('Restored felt board baseline')
+      return
+    }
+    api.resetLighting(); setLighting(api.current.lighting); flash('Restored lighting')
   }
   function applyStructurePreset(scaleX, scaleY, scaleZ) {
     const next = { ...part, scaleX, scaleY, scaleZ }
@@ -150,15 +157,11 @@ export default function LookdevPanel({ api }) {
     </header>
     {!collapsed && <>
       <nav className="lookdev-tabs" aria-label="Control category">
-        {['structure', 'surface', 'light'].map(value => <button type="button" key={value} aria-pressed={tab === value} onClick={() => setTab(value)}>{value}</button>)}
+        {['structure', 'board', 'surface', 'light'].map(value => <button type="button" key={value} aria-pressed={tab === value} onClick={() => setTab(value)}>{value}</button>)}
       </nav>
       <div className="lookdev-body">
         {tab === 'structure' && <>
-          <div className="lookdev-checkpoints">
-            <button onClick={() => applyCheckpoint(checkpoint01, 'Restored checkpoint 01')}>Checkpoint 01</button>
-            <button onClick={() => applyCheckpoint(round02, 'Applied round 02')}>Round 02</button>
-            <button onClick={() => applyCheckpoint(round04, 'Applied round 04')}>Round 04</button>
-          </div>
+          <p className="lookdev-baseline">Base: current production</p>
           <label className="lookdev-select"><span>Part</span><select value={partId} onChange={event => setPartId(event.target.value)}>{api.parts.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label>
           <button className="lookdev-reset-current" onClick={resetCurrent}>{partId === 'workstation' ? 'Reset whole workstation' : 'Reset selected part'}</button>
           <label className="lookdev-lock"><input type="checkbox" checked={part.lockPosition} onChange={event => updatePart('lockPosition', event.target.checked)} /><span>Keep position fixed while resizing</span></label>
@@ -181,6 +184,28 @@ export default function LookdevPanel({ api }) {
             <NumberControl label="Roll Z" value={part.rotationZ} min={-180} max={180} step={1} onChange={value => updatePart('rotationZ', value)} />
           </fieldset>
         </>}
+        {tab === 'board' && <>
+          <button className="lookdev-reset-current" onClick={resetCurrent}>Reset felt board</button>
+          <p className="lookdev-note">Controls affect the board in this workbench. The same defaults build the enlarged view, and the lower rail stays intentionally heavier than the other three sides.</p>
+          <fieldset><legend>Colours</legend>
+            <label className="lookdev-color"><span>Frame</span><input type="color" value={`#${boardValues.frameColor}`} onChange={event => updateBoard('frameColor', event.target.value.replace('#', ''))} /><code>#{boardValues.frameColor}</code></label>
+            <label className="lookdev-color"><span>Felt</span><input type="color" value={`#${boardValues.feltColor}`} onChange={event => updateBoard('feltColor', event.target.value.replace('#', ''))} /><code>#{boardValues.feltColor}</code></label>
+          </fieldset>
+          <fieldset><legend>Shape</legend>
+            <label className="lookdev-select lookdev-board-profile"><span>Corners</span><select value={boardValues.profile} onChange={event => updateBoard('profile', event.target.value)}><option value="square">Square</option><option value="soft">Soft</option><option value="rounded">Rounded</option></select></label>
+            <NumberControl label="Corner radius" value={boardValues.cornerRadius} min={0} max={.08} step={.002} onChange={value => updateBoard('cornerRadius', value)} />
+            <NumberControl label="Side border" value={boardValues.sideBorder} min={.012} max={.12} step={.002} onChange={value => updateBoard('sideBorder', value)} />
+            <NumberControl label="Top border" value={boardValues.topBorder} min={.012} max={.12} step={.002} onChange={value => updateBoard('topBorder', value)} />
+            <NumberControl label="Bottom rail" value={boardValues.bottomBorder} min={.03} max={.2} step={.002} onChange={value => updateBoard('bottomBorder', value)} />
+          </fieldset>
+          <fieldset><legend>Depth / metres</legend>
+            <NumberControl label="Frame depth" value={boardValues.frameDepth} min={.008} max={.08} step={.002} onChange={value => updateBoard('frameDepth', value)} />
+            <NumberControl label="Felt depth" value={boardValues.feltDepth} min={.004} max={.04} step={.002} onChange={value => updateBoard('feltDepth', value)} />
+            <NumberControl label="Felt recess" value={boardValues.feltInset} min={0} max={.02} step={.001} onChange={value => updateBoard('feltInset', value)} />
+            <NumberControl label="Tray projection" value={boardValues.trayProjection} min={.002} max={.05} step={.002} onChange={value => updateBoard('trayProjection', value)} />
+            <NumberControl label="Groove lip" value={boardValues.trayLip} min={.002} max={.025} step={.001} onChange={value => updateBoard('trayLip', value)} />
+          </fieldset>
+        </>}
         {tab === 'surface' && material && <>
           <label className="lookdev-select"><span>Material</span><select value={materialName} onChange={event => setMaterialName(event.target.value)}>{api.materials.map(item => <option key={item.name} value={item.name}>{materialLabels[item.name] || item.name.replaceAll('_', ' ')}</option>)}</select></label>
           <button className="lookdev-reset-current" onClick={resetCurrent}>Reset selected material</button>
@@ -201,7 +226,7 @@ export default function LookdevPanel({ api }) {
           <NumberControl label="Practical" value={lighting.practical} min={0} max={4} step={.05} onChange={value => updateLighting('practical', value)} />
         </>}
       </div>
-      <footer className="lookdev-footer"><span role="status">{message}</span><label className="lookdev-import">Load JSON<input type="file" accept="application/json,.json" onChange={importCheckpoint} /></label><button onClick={copy}>Copy</button><button className="lookdev-save" onClick={save}>Save</button></footer>
+      <footer className="lookdev-footer"><span role="status">{message}</span><label className="lookdev-import">Import draft<input type="file" accept="application/json,.json" onChange={importCheckpoint} /></label><button onClick={copy}>Copy</button><button className="lookdev-save" onClick={save}>Save draft</button></footer>
     </>}
   </aside>
 }

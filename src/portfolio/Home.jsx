@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useReducedMotion } from 'motion/react'
 import CVLightbox from './CVLightbox'
-import PegboardLightbox from './PegboardLightbox'
+import FeltBoardLightbox from './FeltBoardLightbox'
 import LookdevPanel from './LookdevPanel'
 import { assetPath } from '../data/assetPath'
 
@@ -20,7 +20,7 @@ function DeskDocument({ kind, onClose }) {
   return <dialog ref={dialog} className={`desk-document document-${kind}`} aria-labelledby="document-title" onCancel={event => { event.preventDefault(); onClose() }} onClick={event => { if (event.target === event.currentTarget) onClose() }}>
     <div className="document-sheet">
       <button autoFocus className="document-close" onClick={onClose} aria-label="Put back on the desk">Close ×</button>
-      <p className="meta muted">{kind === 'cv' ? 'FROM THE PAPER RACK / 01' : kind === 'badge' ? 'FROM THE PEGBOARD / 02' : 'FROM THE PHOTOGRAPHY DESK / 03'}</p>
+      <p className="meta muted">{kind === 'cv' ? 'FROM THE PAPER RACK / 01' : kind === 'badge' ? 'FROM THE FELT BOARD / 02' : 'FROM THE PHOTOGRAPHY DESK / 03'}</p>
       <h2 id="document-title">{kind === 'guestbook' ? 'Leave a little note.' : 'Jiaqi Shi'}</h2>
       {kind === 'guestbook' ? <form onSubmit={saveDraft}>
         <p>A thought, a hello, a place worth photographing.</p>
@@ -96,7 +96,7 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey, onIniti
         : <button key={id} className="scene-hotspot" data-anchor={id} aria-label={label} onClick={action}><span className="sr-only">{label}</span></button>)}
     </div>
     {status === 'loading' && !useStatic && <p className="sr-only" role="status">Opening the workbench…</p>}
-    {boardOpen && <PegboardLightbox onClose={() => setBoardOpen(false)} />}
+    {boardOpen && <FeltBoardLightbox onClose={() => setBoardOpen(false)} />}
     {documentOpen && object && (object === 'cv' ? <CVLightbox onClose={putBack} /> : <DeskDocument kind={object} onClose={putBack} />)}
     {lookdev && <LookdevPanel api={lookdevApi} />}
   </section>

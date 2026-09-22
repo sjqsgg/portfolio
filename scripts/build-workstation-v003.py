@@ -195,6 +195,19 @@ for ob in list(asset.objects):
         b.use_clamp_overlap=True;b.harden_normals=True
         normals=ob.modifiers.new('Surface_normals','WEIGHTED_NORMAL');normals.keep_sharp=True
 
+# Replace the old perforated source mesh with a plain placement envelope. The
+# browser builds the visible felt board from this envelope, so future exports
+# cannot accidentally bring the legacy holes back into the rendered scene.
+legacy_board=bpy.data.objects.get('Pegboard_Perforated_21x14')
+if legacy_board and legacy_board.type=='MESH':
+    lower=Vector((min(v[0] for v in legacy_board.bound_box),min(v[1] for v in legacy_board.bound_box),min(v[2] for v in legacy_board.bound_box)))
+    upper=Vector((max(v[0] for v in legacy_board.bound_box),max(v[1] for v in legacy_board.bound_box),max(v[2] for v in legacy_board.bound_box)))
+    verts=[(x,y,z) for z in (lower.z,upper.z) for y in (lower.y,upper.y) for x in (lower.x,upper.x)]
+    faces=[(0,1,3,2),(4,6,7,5),(0,4,5,1),(2,3,7,6),(0,2,6,4),(1,5,7,3)]
+    mesh=bpy.data.meshes.new('Felt_Board_Source_Envelope_Mesh');mesh.from_pydata(verts,[],faces);mesh.update()
+    old_mesh=legacy_board.data;legacy_board.data=mesh;legacy_board.name='Felt_Board_Source_Envelope'
+    if old_mesh.users==0:bpy.data.meshes.remove(old_mesh)
+
 def cube(name,pos,size,m,parent=root):
     bpy.ops.mesh.primitive_cube_add(size=1,location=pos)
     ob=bpy.context.view_layer.objects.active;ob.name=name;ob.dimensions=size

@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { sceneViews, hotspotNodes } from './sceneViews'
 import { assetPath } from '../data/assetPath'
-import round02 from '../../docs/workstation-lookdev-round-02.json'
+import workstationCurrent from '../../docs/workstation-current.json'
+import { createFeltBoard, feltBoardDefaults, FELT_BOARD_NAMES, findFeltBoardEnvelope } from './feltBoard'
 
 export default function Workbench({ theme, toggleTheme, openCamera, onStatus, home, view, object, onView, onInspect, onBoard, resetKey, lookdev = false, onLookdevReady }) {
   const host = useRef(null), controller = useRef(null)
@@ -63,22 +64,21 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
         }
         const texture = new THREE.DataTexture(grain, 128, 128)
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping; texture.repeat.set(12, 12); texture.needsUpdate = true
-        const sourceBoard = model.getObjectByName('Pegboard_Perforated_21x14')
+        const sourceBoard = findFeltBoardEnvelope(model)
+        let feltBoard
         if (sourceBoard?.geometry && sourceBoard.parent) {
           sourceBoard.geometry.computeBoundingBox()
           const bounds = sourceBoard.geometry.boundingBox
           const size = bounds.getSize(new THREE.Vector3()), center = bounds.getCenter(new THREE.Vector3())
-          const assembly = new THREE.Group()
-          assembly.name = 'Board_Assembly_Lookdev'
-          assembly.position.copy(sourceBoard.position); assembly.quaternion.copy(sourceBoard.quaternion); assembly.scale.copy(sourceBoard.scale)
-          const frameMaterial = new THREE.MeshPhysicalMaterial({ name:'Board_frame_preview', color:0x8fe85e, roughness:.62, metalness:0, clearcoat:.06 })
-          const feltMaterial = new THREE.MeshPhysicalMaterial({ name:'Board_felt_preview', color:0xd8cfbb, roughness:.9, metalness:0, clearcoat:0 })
-          const frame = new THREE.Mesh(new THREE.BoxGeometry(size.x, size.y, Math.max(size.z, .012)), frameMaterial)
-          frame.name = 'Board_Frame_Lookdev'; frame.position.copy(center)
-          const felt = new THREE.Mesh(new THREE.BoxGeometry(Math.max(.02, size.x - .044), Math.max(.02, size.y - .044), Math.max(size.z, .014)), feltMaterial)
-          felt.name = 'Board_Felt_Lookdev'; felt.position.copy(center); felt.position.z += .008
-          for (const node of [frame, felt]) { node.castShadow = true; node.receiveShadow = true }
-          assembly.add(frame, felt); sourceBoard.parent.add(assembly); sourceBoard.visible = false
+          feltBoard = createFeltBoard(THREE, size, feltBoardDefaults)
+          feltBoard.assembly.position.copy(sourceBoard.position)
+          feltBoard.assembly.quaternion.copy(sourceBoard.quaternion)
+          feltBoard.assembly.scale.copy(sourceBoard.scale)
+          feltBoard.frame.position.copy(center)
+          feltBoard.felt.position.copy(center)
+          sourceBoard.parent.add(feltBoard.assembly)
+          sourceBoard.parent.remove(sourceBoard)
+          sourceBoard.geometry.dispose()
         }
         for (const name of ['Pegboard_Headphones', 'HOTSPOT_badge', 'HOTSPOT_map', 'Badge_Hanger', 'Badge_Peg', 'CV_Rack', 'HOTSPOT_cv']) {
           const deferredBoardObject = model.getObjectByName(name)
@@ -248,9 +248,9 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           ['rear-frame', 'Rear frame / overall', 'Rear_Tube_Frame_22mm', true],
           ['storage', 'Upper storage', 'UPPER_STORAGE'],
           ['chair', 'Chair', 'Office_Chair'],
-          ['board', 'Board assembly', 'Board_Assembly_Lookdev'],
-          ['board-frame', 'Board frame', 'Board_Frame_Lookdev'],
-          ['board-felt', 'Felt insert', 'Board_Felt_Lookdev'],
+          ['board', 'Felt board assembly', FELT_BOARD_NAMES.assembly],
+          ['board-frame', 'Walnut frame', FELT_BOARD_NAMES.frame],
+          ['board-felt', 'Felt insert', FELT_BOARD_NAMES.felt],
           ['left-speaker', 'Left speaker', 'Speaker_Left'],
           ['right-speaker', 'Right speaker', 'Speaker_Right'],
           ['audio', 'Audio module', 'Central_Audio_Module'],
@@ -295,7 +295,6 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           opacity: material.opacity ?? 1,
           }]
         }))
-        const lightingBaseline = { exposure: .98, ambient: .85, key: 3, fill: .65, practical: 0 }
         function applyPart(id, values) {
           const part = lookdevParts.find(item => item.id === id), baseline = partBaselines.get(id)
           if (!part || !baseline) return
@@ -351,6 +350,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           render()
         }
         function resetPart(id) {
+          if (workstationCurrent.parts[id]) { applyPart(id, workstationCurrent.parts[id]); return }
           const part = lookdevParts.find(item => item.id === id), baseline = partBaselines.get(id)
           if (!part || !baseline) return
           part.node.position.copy(baseline.position); part.node.scale.copy(baseline.scale); part.node.quaternion.copy(baseline.quaternion)
@@ -358,30 +358,41 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           part.node.updateMatrixWorld(true); render()
         }
         function resetMaterial(name) {
+          if (workstationCurrent.materials[name]) { applyMaterial(name, workstationCurrent.materials[name]); return }
           const baseline = materialBaselines.get(name)
           if (baseline) applyMaterial(name, baseline)
         }
-        function resetLighting() { applyLighting(lightingBaseline) }
+        function resetLighting() { applyLighting(workstationCurrent.lighting) }
+        function applyBoard(values) {
+          if (!feltBoard) return
+          const next = { ...feltBoardDefaults, ...values }
+          feltBoard.update(next)
+          element.dataset.boardModel = 'felt'
+          element.dataset.boardProfile = next.profile
+          model.updateMatrixWorld(true); render()
+        }
+        function resetBoard() { applyBoard(workstationCurrent.board) }
         function resetLookdev() {
           for (const part of lookdevParts) resetPart(part.id)
           for (const name of materialBaselines.keys()) resetMaterial(name)
-          resetLighting(); model.updateMatrixWorld(true); render()
+          resetBoard(); resetLighting(); model.updateMatrixWorld(true); render()
         }
         const lookdevApi = {
           parts: lookdevParts.map(({ id, label, supportsThickness }) => ({ id, label, supportsThickness })),
-          materials: [...materialBaselines].map(([name, values]) => ({ name, ...values })),
-          lighting: lightingBaseline,
-          applyPart, applyMaterial, applyLighting, resetPart, resetMaterial, resetLighting, reset: resetLookdev,
+          materials: [...materialBaselines].map(([name, values]) => ({ name, ...values, ...workstationCurrent.materials[name] })),
+          lighting: workstationCurrent.lighting,
+          board: workstationCurrent.board,
+          current: workstationCurrent,
+          applyPart, applyMaterial, applyLighting, applyBoard, resetPart, resetMaterial, resetLighting, resetBoard, reset: resetLookdev,
         }
-        // The accepted Round 02 light palette and proportions are the public
-        // workstation baseline. Lookdev mode keeps the untouched source as its
-        // comparison baseline and applies checkpoints explicitly in the panel.
-        if (!lookdev) {
-          Object.entries(round02.parts).forEach(([id, values]) => applyPart(id, values))
-          Object.entries(round02.materials).forEach(([name, values]) => applyMaterial(name, values))
-          applyLighting(round02.lighting)
-          model.updateMatrixWorld(true)
-        }
+        // Public, Lookdev and automated tests all start from the same accepted
+        // production checkpoint. Lookdev may then overlay a browser-only draft.
+        Object.entries(workstationCurrent.parts).forEach(([id, values]) => applyPart(id, values))
+        Object.entries(workstationCurrent.materials).forEach(([name, values]) => applyMaterial(name, values))
+        applyBoard(workstationCurrent.board)
+        applyLighting(workstationCurrent.lighting)
+        element.dataset.workstationBaseline = workstationCurrent.checkpoint
+        model.updateMatrixWorld(true)
         controller.current = { setTheme, compose, lookdev: lookdevApi }
         setTheme(latest.current.theme); fit()
         await renderer.compileAsync(scene, camera)
@@ -400,7 +411,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
             if (['Camera_Film', 'Camera_Mirrorless'].includes(name)) return 'camera'
             if (name === 'HOTSPOT_guestbook') return latest.current.view === 'photo' ? 'guestbook' : 'photo-area'
             if (['PHOTOGRAPHY_ZONE', 'AUDIO_ZONE', 'Ceramic_Mug_Base'].includes(name) || name.startsWith('Guestbook_') || (name === 'Rear_Counter_28mm' && intersection.point.x > -.3) || name === 'Rear_Right_Backing') return 'photo-area'
-            if (['Pegboard_Perforated_21x14', 'Pegboard_Headphones', 'Board_Assembly_Lookdev', 'Board_Frame_Lookdev', 'Board_Felt_Lookdev'].includes(name)) return 'board'
+            if ([FELT_BOARD_NAMES.assembly, FELT_BOARD_NAMES.frame, FELT_BOARD_NAMES.felt, FELT_BOARD_NAMES.tray, 'Felt_Board_Walnut_Back', 'Felt_Board_Fabric_Surface', 'Felt_Board_Groove_Shadow'].includes(name)) return 'board'
             const actions = { HOTSPOT_monitor:'monitor', HOTSPOT_lamp:'lamp', HOTSPOT_cv:'cv', HOTSPOT_badge:'badge', HOTSPOT_map:'map' }
             if (actions[name]) return actions[name]
             node = node.parent

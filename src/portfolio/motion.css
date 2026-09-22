@@ -163,14 +163,14 @@ html[data-route-motion="photo-close"]::view-transition-group(selected-photo) { a
 .scene-hotspot { position:absolute;left:var(--anchor-x,50%);top:var(--anchor-y,50%);width:var(--anchor-width,60px);height:var(--anchor-height,60px);transform:translate(-50%,-50%);border:0;background:none;pointer-events:none; }
 .scene-hotspot:focus-visible { outline:2px solid var(--accent);outline-offset:4px;border-radius:3px; }
 .fallback-labels .scene-hotspot { pointer-events:auto; }
-.pegboard-lightbox { border:0;padding:0;overflow:visible;margin:auto;width:min(1280px,90vw);height:min(840px,84svh);max-width:none;max-height:none;background:transparent;color:#0b0b0a; }
-.pegboard-lightbox::backdrop { background:rgb(0 0 0 / .62);backdrop-filter:blur(3px); }
-.pegboard-panel { width:100%;height:100%;position:relative;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible; }
-.pegboard-canvas { width:100%;height:100%; }
-.pegboard-canvas canvas { display:block;width:100%;height:100%; }
-.pegboard-close { position:absolute;right:14px;top:14px;z-index:1; }
-.pegboard-error { padding:80px 32px;text-align:center;color:white; }
-.pegboard-error button { text-decoration:underline; }
-@media (prefers-reduced-motion:no-preference) { .pegboard-lightbox[open] { animation:board-arrive .8s cubic-bezier(.22,1,.36,1) both; } }
+.felt-board-lightbox { border:0;padding:0;overflow:visible;margin:auto;width:min(1280px,90vw);height:min(840px,84svh);max-width:none;max-height:none;background:transparent;color:#0b0b0a; }
+.felt-board-lightbox::backdrop { background:rgb(0 0 0 / .62);backdrop-filter:blur(3px); }
+.felt-board-panel { width:100%;height:100%;position:relative;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible; }
+.felt-board-canvas { width:100%;height:100%; }
+.felt-board-canvas canvas { display:block;width:100%;height:100%; }
+.felt-board-close { position:absolute;right:14px;top:14px;z-index:1; }
+.felt-board-error { padding:80px 32px;text-align:center;color:white; }
+.felt-board-error button { text-decoration:underline; }
+@media (prefers-reduced-motion:no-preference) { .felt-board-lightbox[open] { animation:board-arrive .8s cubic-bezier(.22,1,.36,1) both; } }
 @keyframes board-arrive { from { opacity:0;transform:translateY(24px) scale(.95); } to { opacity:1;transform:none; } }
-@media (max-width:620px) { .pegboard-lightbox { width:92vw;height:min(560px,70svh,calc(92vw * .78)); }.pegboard-close { right:10px;top:10px; } }
+@media (max-width:620px) { .felt-board-lightbox { width:92vw;height:min(560px,70svh,calc(92vw * .78)); }.felt-board-close { right:10px;top:10px; } }

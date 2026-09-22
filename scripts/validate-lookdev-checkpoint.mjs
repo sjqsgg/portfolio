@@ -23,6 +23,15 @@ if (!data.parts || typeof data.parts !== 'object' || Array.isArray(data.parts)) 
 if (!data.materials || typeof data.materials !== 'object' || Array.isArray(data.materials)) fail('materials must be an object')
 if (!data.lighting || typeof data.lighting !== 'object' || Array.isArray(data.lighting)) fail('lighting must be an object')
 
+if (data.board !== undefined) {
+  if (!data.board || typeof data.board !== 'object' || Array.isArray(data.board)) fail('board must be an object')
+  else {
+    if (!['square', 'soft', 'rounded'].includes(data.board.profile)) fail('board.profile must be square, soft or rounded')
+    for (const property of ['sideBorder', 'topBorder', 'bottomBorder', 'frameDepth', 'feltDepth', 'feltInset', 'cornerRadius', 'trayProjection', 'trayLip']) finite(data.board[property], `board.${property}`)
+    for (const property of ['frameColor', 'feltColor']) if (typeof data.board[property] !== 'string' || !/^[0-9a-f]{6}$/i.test(data.board[property])) fail(`board.${property} must be a six-digit hex value without #`)
+  }
+}
+
 for (const [name, part] of Object.entries(data.parts || {})) {
   for (const axis of ['X', 'Y', 'Z']) range(part[`scale${axis}`], .5, 1.5, `parts.${name}.scale${axis}`)
   range(part.thickness, .5, 2, `parts.${name}.thickness`)
