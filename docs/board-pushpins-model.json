@@ -1,0 +1,57 @@
+{
+  "source": "assets/3d/push pins 3d model.glb",
+  "output": "public/models/board-pushpins.glb",
+  "removedSourceParts": [
+    "tripo_part_4 (front sticker)"
+  ],
+  "sourceTriangles": 1938242,
+  "webTriangles": 39198,
+  "sourceBytes": 46551512,
+  "webBytes": 725988,
+  "parts": [
+    {
+      "name": "Pushpin_box",
+      "triangles": 13999
+    },
+    {
+      "name": "Pushpin_lid",
+      "triangles": 9000
+    },
+    {
+      "name": "Pushpin_cluster_02",
+      "triangles": 1800
+    },
+    {
+      "name": "Pushpin_cluster_03",
+      "triangles": 1800
+    },
+    {
+      "name": "Pushpin_cluster_05",
+      "triangles": 1800
+    },
+    {
+      "name": "Pushpin_cluster_06",
+      "triangles": 1800
+    },
+    {
+      "name": "Pushpin_cluster_07",
+      "triangles": 1800
+    },
+    {
+      "name": "Pushpin_cluster_08",
+      "triangles": 1800
+    },
+    {
+      "name": "Pushpin_cluster_09",
+      "triangles": 1800
+    },
+    {
+      "name": "Pushpin_cluster_10",
+      "triangles": 1800
+    },
+    {
+      "name": "Pushpin_cluster_11",
+      "triangles": 1799
+    }
+  ]
+}

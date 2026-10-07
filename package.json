@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test:e2e": "npm run build && playwright test",
-    "test": "node --test tests/data.test.mjs"
+    "test": "node --test tests/data.test.mjs tests/board-objects.test.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

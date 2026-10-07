@@ -4,6 +4,9 @@ import { sceneViews, hotspotNodes } from './sceneViews'
 import { assetPath } from '../data/assetPath'
 import workstationCurrent from '../../docs/workstation-current.json'
 import { createFeltBoard, feltBoardDefaults, FELT_BOARD_NAMES, findFeltBoardEnvelope } from './feltBoard'
+import { createBoardObjects } from './boardObjects'
+import { getBoardObjects, subscribeBoardObjects } from './boardObjectsStore'
+import { loadBoardPinModel } from './boardPinModel'
 
 export default function Workbench({ theme, toggleTheme, openCamera, onStatus, home, view, object, onView, onInspect, onBoard, resetKey, lookdev = false, onLookdevReady }) {
   const host = useRef(null), controller = useRef(null)
@@ -45,7 +48,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
         const contextLost = event => { event.preventDefault(); fail() }
         renderer.domElement.addEventListener('webglcontextlost', contextLost)
         cleanups.push(() => renderer.domElement.removeEventListener('webglcontextlost', contextLost))
-        const response = await fetch(assetPath('/models/workstation-v003.glb'), { signal: abort.signal })
+        const [response,pinModel] = await Promise.all([fetch(assetPath('/models/workstation-v003.glb'), { signal: abort.signal }),loadBoardPinModel()])
         if (!response.ok) throw new Error('Model unavailable')
         const gltf = await new GLTFLoader().parseAsync(await response.arrayBuffer(), '')
         model = gltf.scene
@@ -65,7 +68,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
         const texture = new THREE.DataTexture(grain, 128, 128)
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping; texture.repeat.set(12, 12); texture.needsUpdate = true
         const sourceBoard = findFeltBoardEnvelope(model)
-        let feltBoard
+        let feltBoard, boardObjects
         if (sourceBoard?.geometry && sourceBoard.parent) {
           sourceBoard.geometry.computeBoundingBox()
           const bounds = sourceBoard.geometry.boundingBox
@@ -76,6 +79,8 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           feltBoard.assembly.scale.copy(sourceBoard.scale)
           feltBoard.frame.position.copy(center)
           feltBoard.felt.position.copy(center)
+          boardObjects=createBoardObjects(THREE,size,pinModel)
+          boardObjects.group.position.copy(center)
           sourceBoard.parent.add(feltBoard.assembly)
           sourceBoard.parent.remove(sourceBoard)
           sourceBoard.geometry.dispose()
@@ -391,6 +396,11 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
         Object.entries(workstationCurrent.materials).forEach(([name, values]) => applyMaterial(name, values))
         applyBoard(workstationCurrent.board)
         applyLighting(workstationCurrent.lighting)
+        if(boardObjects){
+          feltBoard.assembly.add(boardObjects.group)
+          const updateObjects=()=>{boardObjects.setItems(getBoardObjects());render()}
+          updateObjects();cleanups.push(subscribeBoardObjects(updateObjects))
+        }
         element.dataset.workstationBaseline = workstationCurrent.checkpoint
         model.updateMatrixWorld(true)
         controller.current = { setTheme, compose, lookdev: lookdevApi }

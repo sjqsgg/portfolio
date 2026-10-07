@@ -43,17 +43,18 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey, onIniti
   const [status, setStatus] = useState('loading')
   const [view, setView] = useState('overview')
   const [object, setObject] = useState(null)
-  const [boardOpen, setBoardOpen] = useState(false)
+  const [boardOpen, setBoardOpen] = useState(() => import.meta.env.DEV && new URLSearchParams(window.location.search).get('boardedit')==='1')
   const [documentOpen, setDocumentOpen] = useState(false)
   const [lookdevApi, setLookdevApi] = useState(null)
   const home = useRef(null)
   const lastTrigger = useRef(null)
+  const previousReset = useRef(resetKey)
   const lookdev = import.meta.env.DEV && new URLSearchParams(window.location.search).get('lookdev') === '1'
   const useStatic = !lookdev && (reduced || navigator.connection?.saveData)
   useEffect(() => {
     if (useStatic || status === 'ready' || status === 'error') onInitialReady?.()
   }, [onInitialReady, status, useStatic])
-  useEffect(() => { setObject(null); setDocumentOpen(false); setBoardOpen(false); setView('overview') }, [resetKey])
+  useEffect(() => { if(previousReset.current===resetKey)return;previousReset.current=resetKey;setObject(null); setDocumentOpen(false); setBoardOpen(false); setView('overview') }, [resetKey])
   useEffect(() => {
     if (!object) { setDocumentOpen(false); return }
     const timer = setTimeout(() => setDocumentOpen(true), useStatic || status === 'error' ? 0 : 1900)
@@ -80,7 +81,7 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey, onIniti
     ['mug', 'Photography desk', () => selectView('photo')],
     ['audio', 'Photography shelves', () => selectView('photo')],
     ['guestbook', view === 'photo' ? 'Leave a note' : 'Photography book', event => inspect('guestbook', event)],
-    ...(!lookdev ? [['board', 'Open felt board', showBoard]] : []),
+    ['board', 'Open felt board', showBoard],
     ['lamp', `Desk lamp: switch to ${theme === 'day' ? 'night' : 'day'} mode`, toggleTheme],
     ...(view === 'work' && !lookdev ? [['cv', 'Curriculum vitae', event => inspect('cv', event)], ['badge', 'About me', event => inspect('badge', event)]] : []),
   ]
@@ -88,7 +89,7 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey, onIniti
     <h1 className="sr-only">Jiaqi Shi, software engineer & photographer</h1>
     <div className="workbench-stage">
       {useStatic && <picture className="workbench-poster"><source media="(max-width: 767px)" srcSet={assetPath(`/images/workstation/${view}-mobile.webp`)} /><img src={assetPath(`/images/workstation/${view}-day.webp`)} width="1440" height="1000" fetchPriority="high" alt="An L-shaped workstation with a monitor, cameras, a green desk lamp, shelves and speakers." /></picture>}
-      {!useStatic && <Suspense fallback={null}><Workbench theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} onStatus={setStatus} home={home} view={view} object={object} onView={selectView} onInspect={inspect} onBoard={lookdev ? () => {} : showBoard} resetKey={resetKey} lookdev={lookdev} onLookdevReady={setLookdevApi} /></Suspense>}
+      {!useStatic && <Suspense fallback={null}><Workbench theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} onStatus={setStatus} home={home} view={view} object={object} onView={selectView} onInspect={inspect} onBoard={showBoard} resetKey={resetKey} lookdev={lookdev} onLookdevReady={setLookdevApi} /></Suspense>}
     </div>
     <div className={`scene-hotspots ${useStatic || status !== 'ready' ? 'fallback-labels' : ''}`} aria-label="Objects on the desk">
       {hotspots.map(([id, label, action]) => typeof action === 'string'

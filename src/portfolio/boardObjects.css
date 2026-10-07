@@ -1,0 +1,39 @@
+.felt-board-lightbox.board-objects-dialog { width:min(1480px,96vw);height:90svh; }
+.board-objects-dialog .felt-board-panel { display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:20px;align-items:center; }
+.board-objects-dialog .felt-board-canvas { position:relative;min-width:0;height:100%;touch-action:none; }
+.board-objects-dialog .felt-board-canvas[data-state=loading]::before { content:'Preparing your board…';position:absolute;inset:20% 5%;display:grid;place-items:center;border:16px solid #a5bb72;background:#e0d3c2;color:#414d34;font:13px monospace; }
+.board-objects-dialog .felt-board-close { right:auto;left:12px;top:12px; }
+.board-tools { max-height:100%;overflow:auto;background:#f5f2e9;color:#30352d;padding:20px;border-radius:4px;font:12px/1.5 'IBM Plex Mono',monospace;box-shadow:0 8px 40px #0002; }
+.board-tools header { margin-bottom:20px; }
+.board-tools header strong { display:block;font:23px/1.2 Georgia,serif;margin-bottom:10px; }
+.board-tools header span,.board-hint { color:#626656; }
+.board-tools button,.board-import { background:#e4e5d9;border:1px solid #bfc4b3;border-radius:3px;padding:7px 9px;cursor:pointer;font:inherit; }
+.board-tools button:hover { background:#d5debf; }
+.board-tools button[aria-pressed=true] { background:#414d34;color:white; }
+.board-actions { display:flex;flex-wrap:wrap;gap:6px;margin:10px 0; }
+.board-tools label { display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:5px;margin:8px 0; }
+.board-tools select,.board-tools textarea,.board-tools input:not([type=checkbox]):not([type=color]) { border:1px solid #bfc4b3;border-radius:2px;padding:5px;min-width:0;background:#fffdf6;color:#30352d;font:inherit; }
+.board-tools select,.board-tools textarea { width:100%; }
+.board-tools textarea { min-height:90px; }
+.board-inspector { border-top:1px solid #cdd0bf;padding-top:12px;margin-top:12px; }
+.board-inspector summary { cursor:pointer;font-weight:600; }
+.board-inspector input[type=number] { width:86px; }
+.board-inspector input[type=color] { border:0;width:42px;height:28px;background:none; }
+.board-import input { width:100%;max-width:200px; }
+.board-tools :focus-visible { outline:2px solid #526c33;outline-offset:3px; }
+.board-tools [role=status] { min-height:18px; }
+.board-selection { position:absolute;z-index:2;box-sizing:border-box;border:1px solid #526b3b;pointer-events:none; }
+.board-selection[hidden] { display:none; }
+.board-resize-handle { position:absolute;width:16px;height:16px;border:2px solid #526b3b;border-radius:2px;background:#f9faf1;pointer-events:auto;touch-action:none;padding:0; }
+.board-resize-handle.top-left { left:-8px;top:-8px;cursor:nwse-resize; }
+.board-resize-handle.top-right { right:-8px;top:-8px;cursor:nesw-resize; }
+.board-resize-handle.bottom-left { left:-8px;bottom:-8px;cursor:nesw-resize; }
+.board-resize-handle.bottom-right { right:-8px;bottom:-8px;cursor:nwse-resize; }
+.board-resize-handle:focus-visible { outline:3px solid #c6df91;outline-offset:3px; }
+@media(max-width:760px){
+ .felt-board-lightbox.board-objects-dialog { height:92svh;width:96vw; }
+ .board-objects-dialog .felt-board-panel { grid-template-columns:1fr;grid-template-rows:minmax(200px,48%) minmax(0,1fr);gap:8px; }
+ .board-tools { height:100%;box-sizing:border-box;padding:14px; }
+ .board-tools header { margin-bottom:8px; }
+ .board-tools header strong { font-size:20px; }
+}
