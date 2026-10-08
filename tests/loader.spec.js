@@ -75,7 +75,17 @@ for (const width of [1440, 390]) test(`domino loop stays usable at ${width}px du
       return Math.atan2(matrix.b, matrix.a) * 180 / Math.PI
     })
     expect(fallen).toBeCloseTo(58, 1)
-    await expect(page.locator('.site-loader-word')).toHaveAttribute('data-phase', 'resting')
+    await page.waitForFunction(() => {
+      const letters = document.querySelectorAll('.site-loader-letter')
+      const angle = node => {
+        const matrix = new DOMMatrix(getComputedStyle(node).transform)
+        return Math.atan2(matrix.b, matrix.a) * 180 / Math.PI
+      }
+      return angle(letters[0]) < -1 && angle(letters[letters.length - 1]) > 50
+    })
+    await page.screenshot({ path:testInfo.outputPath('domino-rebound.png') })
+    // Observe every frame: assertion backoff can skip the short 250ms rest.
+    await page.waitForFunction(() => document.querySelector('.site-loader-word')?.dataset.phase === 'resting')
     await page.screenshot({ path:testInfo.outputPath('domino-upright.png') })
     await expect(page.locator('.site-loader-word')).toHaveAttribute('data-phase', 'falling', { timeout:2000 })
     release()

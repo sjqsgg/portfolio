@@ -63,3 +63,23 @@ test('another fall follows the upright rest within half a second', () => {
   motion.advance(0.3)
   assert.equal(motion.phase, 'falling')
 })
+
+test('each letter rebounds separately and the full return matches the fall duration', () => {
+  const motion = createDominoMotion(10)
+  const phases = {}, crossings = [], minima = Array(10).fill(0)
+  for (let step = 0; step < 2400 && motion.phase !== 'resting'; step++) {
+    motion.advance(1 / 240)
+    const time = (step + 1) / 240
+    phases[motion.phase] ??= time
+    motion.letters.forEach((letter, index) => {
+      if (letter.angle < 0) crossings[index] ??= time
+      minima[index] = Math.min(minima[index], letter.angle * 180 / Math.PI)
+    })
+  }
+  const fall = phases.holding - phases.falling
+  const rise = phases.resting - phases.rising
+  assert.ok(Math.abs(fall - rise) < 0.05, `fall ${fall}s, rise ${rise}s`)
+  assert.equal(crossings.length, 10)
+  crossings.slice(1).forEach((time, index) => assert.ok(time - crossings[index] > 0.1))
+  minima.forEach(angle => assert.ok(angle < -2 && angle > -5, `rebound ${angle} degrees`))
+})

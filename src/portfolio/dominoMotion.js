@@ -2,7 +2,7 @@
 const radians = degrees => degrees * Math.PI / 180
 export const dominoSettings = Object.freeze({
   delay: 0.2, stagger: 0.03, gravity: 1, fallSpeed: 1.6, lean: 58,
-  stiffness: 1, damping: 0.55, hold: 1.2, push: 1,
+  riseStagger: 0.1125, stiffness: 1, damping: 0.65, hold: 1.2, push: 1,
   toppleAt: 30, shade: 0.6, loopDelay: 0.25,
 })
 
@@ -36,7 +36,8 @@ export function createDominoMotion(count) {
         const damping = 2 * Math.sqrt(stiffness) * settings.damping
         letter.velocity += (-stiffness * letter.angle - damping * letter.velocity) * dt
         letter.angle += letter.velocity * dt
-        if (Math.abs(letter.angle) < 0.0005 && Math.abs(letter.velocity) < 0.005) {
+        // End the imperceptible tail below 0.2 degrees, after the visible rebound.
+        if (Math.abs(letter.angle) < 0.0035 && Math.abs(letter.velocity) < 0.05) {
           letter.angle = 0; letter.velocity = 0; letter.phase = 'upright'
         }
       }
@@ -45,7 +46,7 @@ export function createDominoMotion(count) {
       phase = 'holding'; deadline = time + settings.hold
     } else if (phase === 'holding' && time >= deadline) {
       phase = 'rising'
-      letters.forEach((letter, index) => { letter.phase = 'rising'; letter.startAt = time + index * settings.stagger })
+      letters.forEach((letter, index) => { letter.phase = 'rising'; letter.startAt = time + index * settings.riseStagger })
     } else if (phase === 'rising' && letters.every(letter => letter.phase === 'upright')) {
       phase = finishRequested ? 'finished' : 'resting'; deadline = time + settings.loopDelay
     } else if (phase === 'resting' && time >= deadline) {

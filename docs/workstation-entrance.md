@@ -12,7 +12,10 @@ library is installed.
 - `loading`: live text fades in over 240ms. After a 200ms delay, the first
   letter receives an impulse. Crossing 30° triggers its neighbor after roughly 19ms;
   each letter falls to 58°. After all letters fall, a 1.2s hold precedes the
-  spring return (stiffness scale 1, damping ratio 0.55), staggered by 30ms.
+  spring return (stiffness scale 1, damping ratio 0.65), staggered by 112.5ms.
+  Each letter rebounds roughly
+  3.6° past upright. Both the full fall and return take about 1.60s; the return
+  drops the imperceptible tail below 0.2° and 0.05 rad/s.
   Falling runs at 1.6× the initial version. Upright letters rest for 0.25s
   before repeating. Gravity and push scales are 1; shade strength is 0.6.
   These reference parameter values guide our own equations; they do not
