@@ -38,9 +38,11 @@ export default function App() {
   const [resetKey, setResetKey] = useState(0)
   const [flash, setFlash] = useState(null)
   const [workbenchReady, setWorkbenchReady] = useState(false)
+  const [entranceReady, setEntranceReady] = useState(false)
+  const markEntranceReady = useCallback(() => setEntranceReady(true), [])
   const timers = useRef([])
   const reduced = useReducedMotion()
-  const loaderPhase = useEntranceMotion(incoming.pathname, workbenchReady, reduced)
+  const loaderPhase = useEntranceMotion(incoming.pathname, entranceReady, reduced)
   const location = useRouteMotion(incoming, reduced)
   const navigate = useNavigate()
   const motiondev = import.meta.env.DEV && new URLSearchParams(window.location.search).get('motiondev') === '1'
@@ -100,7 +102,7 @@ export default function App() {
     </main>
     <FollowCursor />
     {flash && <div className="camera-transition" aria-hidden="true" style={{ '--flash-x': `${flash.x}px`, '--flash-y': `${flash.y}px` }}><div className="flash-star" /><div className="flash-afterimage" /></div>}
-    {loaderPhase === 'loading' && <SiteLoader />}
+    {loaderPhase === 'loading' && <SiteLoader ready={workbenchReady} onComplete={markEntranceReady} />}
     {motiondev && <MotionDevPanel />}
   </>
 }

@@ -14,8 +14,9 @@ notes document earlier experiments, not the expected result for new changes.
   hold, curve, white hold, reveal duration, and starting offset.
 - First Home loading shows black `Loading...` letters on the page's white
   background, with identity, navigation, corner details and cursor hidden.
-  Letters topple and rebuild in a staggered loop. The first real rendered
-  frame starts the same curved page transition to the normal overview.
+  Letters topple and rebuild in a staggered loop. After the first real rendered
+  frame is ready, the current letter cycle must settle upright before the
+  same curved page transition starts. Unready scenes repeat after a 250ms rest.
   Both entry points share mask geometry, timing variables and keyframes.
   No timer reports success, and there is no forced minimum wait. Reduced-motion and
   save-data users receive current static views; errors use the same fallback.
