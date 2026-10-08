@@ -5,7 +5,7 @@ import Home from './portfolio/Home'
 import BackHome from './portfolio/BackHome'
 import FollowCursor from './portfolio/FollowCursor'
 import SiteLoader from './portfolio/SiteLoader'
-import { workbenchEntrance } from './portfolio/workbenchEntrance'
+import useEntranceMotion from './portfolio/useEntranceMotion'
 import MotionDevPanel from './portfolio/MotionDevPanel'
 import useRouteMotion from './portfolio/useRouteMotion'
 import './App.css'
@@ -37,36 +37,16 @@ export default function App() {
   const [theme, setTheme] = useState('day')
   const [resetKey, setResetKey] = useState(0)
   const [flash, setFlash] = useState(null)
-  const [workbenchReady, setWorkbenchReady] = useState(null)
-  const [loaderPhase, setLoaderPhase] = useState(incoming.pathname === '/' ? 'loading' : 'done')
+  const [workbenchReady, setWorkbenchReady] = useState(false)
   const timers = useRef([])
-  const previewTimer = useRef(null)
   const reduced = useReducedMotion()
+  const loaderPhase = useEntranceMotion(incoming.pathname, workbenchReady, reduced)
   const location = useRouteMotion(incoming, reduced)
   const navigate = useNavigate()
   const motiondev = import.meta.env.DEV && new URLSearchParams(window.location.search).get('motiondev') === '1'
-  const markWorkbenchReady = useCallback(kind => {
-    window.clearTimeout(previewTimer.current)
-    // This local preview gives the owner time to judge the breathing cycle.
-    // Public visits always continue as soon as their actual scene is ready.
-    const preview = import.meta.env.DEV && new URLSearchParams(window.location.search).get('intro-preview') === '1'
-    if (preview && kind === 'ready') previewTimer.current = window.setTimeout(() => setWorkbenchReady(kind), 4000)
-    else setWorkbenchReady(kind)
-  }, [])
+  const markWorkbenchReady = useCallback(() => setWorkbenchReady(true), [])
   useEffect(() => { document.documentElement.dataset.theme = theme }, [theme])
   useEffect(() => () => timers.current.forEach(clearTimeout), [])
-  useEffect(() => () => window.clearTimeout(previewTimer.current), [])
-  useEffect(() => {
-    if (incoming.pathname !== '/' || reduced) { setLoaderPhase('done'); return }
-    if (!workbenchReady || loaderPhase !== 'loading') return
-    setLoaderPhase(workbenchReady === 'ready' ? 'revealing' : 'fallback')
-  }, [incoming.pathname, workbenchReady, loaderPhase, reduced])
-  useEffect(() => {
-    if (!['revealing', 'entering', 'fallback'].includes(loaderPhase)) return
-    const next = loaderPhase === 'revealing' ? 'entering' : 'done'
-    const finish = window.setTimeout(() => setLoaderPhase(next), loaderPhase === 'entering' ? workbenchEntrance.enterMs : workbenchEntrance.revealMs)
-    return () => window.clearTimeout(finish)
-  }, [loaderPhase])
   useEffect(() => {
     const section = location.pathname.startsWith('/projects') ? 'Projects' : location.pathname.startsWith('/photography') ? 'Photography' : location.pathname === '/about' ? 'About' : location.pathname === '/contact' ? 'Contact' : 'Software engineer & photographer'
     document.title = `${section} | Jiaqi Shi`
@@ -90,7 +70,7 @@ export default function App() {
     timers.current = [setTimeout(() => navigate('/photography'), 460), setTimeout(() => setFlash(null), 1000)]
   }
   return <>
-    <a className="skip-link" href="#main-content">Skip to content</a>
+    <a className="skip-link" data-entrance={loaderPhase} href="#main-content">Skip to content</a>
     <header data-entrance={loaderPhase} inert={loaderPhase !== 'done'} className={`canvas-identity ${location.pathname.startsWith('/photography') ? 'photography-navigation' : ''}`}>
       {location.pathname === '/' ? <Link to="/" className="identity-link" aria-label="Jiaqi Shi, home"><span className="meta muted">SOFTWARE ENGINEER & PHOTOGRAPHER</span><span className="identity-name">JIAQI SHI</span></Link> : location.pathname.startsWith('/photography/') ? <Link to="/photography" className="back-circle-control" aria-label="Back to gallery" data-cursor="Gallery"><span className="close-cross" aria-hidden="true">×</span></Link> : <BackHome />}
       <nav id="primary-nav" className="canvas-nav" aria-label="Main navigation">
@@ -120,7 +100,7 @@ export default function App() {
     </main>
     <FollowCursor />
     {flash && <div className="camera-transition" aria-hidden="true" style={{ '--flash-x': `${flash.x}px`, '--flash-y': `${flash.y}px` }}><div className="flash-star" /><div className="flash-afterimage" /></div>}
-    {loaderPhase !== 'done' && <SiteLoader phase={loaderPhase} />}
+    {loaderPhase === 'loading' && <SiteLoader />}
     {motiondev && <MotionDevPanel />}
   </>
 }

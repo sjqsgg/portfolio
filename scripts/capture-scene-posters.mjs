@@ -38,10 +38,8 @@ try {
   for (const mobile of [false, true]) {
     const page = await browser.newPage({ viewport: mobile ? { width: 390, height: 844 } : { width: 1440, height: 1000 }, reducedMotion: 'no-preference' })
     const variant = mobile ? 'mobile' : 'day'
-    await page.goto('http://127.0.0.1:5192/?intro-preview=1')
+    await page.goto('http://127.0.0.1:5192/')
     await sceneReady(page)
-    await expect(page.locator('.site-loader')).toHaveClass(/is-loading/)
-    await capture(page, `intro-${variant}`)
     await settled(page)
     if (mobile) css += '@media (max-width:767px) {\n'
     for (const view of ['overview', 'work', 'photo']) {
@@ -83,7 +81,7 @@ try {
   const manifest = { version: 1, checkpoint: baseline.checkpoint, generatedAt: new Date().toISOString(), sources: before, outputs: Object.fromEntries([...outputs].map(([file, bytes]) => [file, { bytes: bytes.length, sha256: digest(bytes) }])) }
   for (const [file, bytes] of outputs) await writeFile(file, bytes)
   await writeFile('docs/workstation-posters.json', `${JSON.stringify(manifest, null, 2)}\n`)
-  console.log('Published nine current WebP images, matching hotspots and source fingerprints.')
+  console.log('Published seven current WebP images, matching hotspots and source fingerprints.')
 } finally {
   await browser?.close()
   await server.close()

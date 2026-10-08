@@ -7,16 +7,14 @@ import { createFeltBoard, feltBoardDefaults, FELT_BOARD_NAMES, findFeltBoardEnve
 import { createBoardObjects } from './boardObjects'
 import { getBoardObjects, subscribeBoardObjects } from './boardObjectsStore'
 import { loadBoardPinModel } from './boardPinModel'
-import { workbenchEntrance } from './workbenchEntrance'
 
-export default function Workbench({ theme, toggleTheme, openCamera, onStatus, home, view, object, onView, onInspect, onBoard, resetKey, lookdev = false, onLookdevReady, entrancePhase = 'done' }) {
+export default function Workbench({ theme, toggleTheme, openCamera, onStatus, home, view, object, onView, onInspect, onBoard, resetKey, lookdev = false, onLookdevReady }) {
   const host = useRef(null), controller = useRef(null)
   const navigate = useNavigate()
   const latest = useRef({})
-  latest.current = { theme, view, object, toggleTheme, openCamera, onView, onInspect, onBoard, onLookdevReady, entrancePhase }
+  latest.current = { theme, view, object, toggleTheme, openCamera, onView, onInspect, onBoard, onLookdevReady }
   useEffect(() => { controller.current?.setTheme(theme) }, [theme])
   useEffect(() => { controller.current?.compose(view, object) }, [view, object, resetKey])
-  useEffect(() => { controller.current?.setEntrance(entrancePhase) }, [entrancePhase])
   useEffect(() => {
     const element = host.current, homeElement = home.current, abort = new AbortController()
     let disposed = false, renderer, scene, model, observer, controls, environment, frame = 0, prepared = false, announcedReady = false
@@ -144,16 +142,16 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           const node = model.getObjectByName(hotspotNodes[id])
           return { id, node, position: node.position.clone(), quaternion: node.quaternion.clone() }
         })
-        let transition = null, entranceActive = latest.current.entrancePhase !== 'done'
+        let transition = null
         const ease = t => t < .5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2
         function enableOrbit() {
           controls.minAzimuthAngle = -Infinity; controls.maxAzimuthAngle = Infinity
           controls.minPolarAngle = 0; controls.maxPolarAngle = Math.PI
-          controls.enabled = !latest.current.object && latest.current.entrancePhase === 'done'
+          controls.enabled = !latest.current.object
         }
         enableOrbit()
         function fovFor(id) { return homeElement.clientWidth < 768 ? sceneViews[id].mobileFov : sceneViews[id].fov }
-        function compose(id, selected, entrance = false) {
+        function compose(id, selected) {
           const spec = sceneViews[id], mobile = homeElement.clientWidth < 768
           const position = mobile && spec.mobilePosition ? spec.mobilePosition : spec.position
           const target = mobile && spec.mobileTarget ? spec.mobileTarget : spec.target
@@ -161,7 +159,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           controls.minAzimuthAngle = -Infinity; controls.maxAzimuthAngle = Infinity
           controls.minPolarAngle = 0; controls.maxPolarAngle = Math.PI
           transition = {
-            start: performance.now(), duration: entrance ? workbenchEntrance.enterMs : selected ? 1800 : 2150, entrance,
+            start: performance.now(), duration: selected ? 1800 : 2150,
             from: camera.position.clone(), to: new THREE.Vector3(...position),
             fromTarget: controls.target.clone(), toTarget: new THREE.Vector3(...target),
             fromFov: camera.fov, toFov: fovFor(id),
@@ -179,19 +177,6 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
             }),
           }
           element.dataset.moving = 'true'; fit(); render()
-        }
-        function setEntrance(phase) {
-          if (!entranceActive) return
-          if (phase === 'entering') compose(latest.current.view, null, true)
-          if (phase === 'done') {
-            // Also settle exactly when a background tab resumes after the UI timer.
-            if (transition?.entrance) {
-              camera.position.copy(transition.to); controls.target.copy(transition.toTarget)
-              camera.fov = transition.toFov; camera.clearViewOffset(); camera.updateProjectionMatrix()
-              transition = null; element.dataset.moving = 'false'
-            }
-            entranceActive = false; controls.update(); enableOrbit(); render()
-          }
         }
         function projectLabels() {
           const canvasBox = element.getBoundingClientRect(), box = homeElement.getBoundingClientRect()
@@ -220,7 +205,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           if (disposed || !prepared) return
           if (transition) {
             const t = Math.min(1, (now-transition.start)/transition.duration)
-            const e = transition.entrance ? 1 - Math.pow(1 - t, 3) : ease(t)
+            const e = ease(t)
             camera.position.lerpVectors(transition.from, transition.to, e)
             controls.target.lerpVectors(transition.fromTarget, transition.toTarget, e)
             camera.fov = THREE.MathUtils.lerp(transition.fromFov, transition.toFov, e)
@@ -249,13 +234,6 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           const width = element.clientWidth, height = element.clientHeight
           if (!width || !height) return
           renderer.setSize(width, height, false); camera.aspect = width/height
-          if (entranceActive && !transition) {
-            const spec = sceneViews[latest.current.view], mobile = homeElement.clientWidth < 768
-            controls.target.fromArray(mobile && spec.mobileTarget ? spec.mobileTarget : spec.target)
-            camera.position.fromArray(mobile && spec.mobilePosition ? spec.mobilePosition : spec.position)
-            camera.position.sub(controls.target).multiplyScalar(mobile ? workbenchEntrance.mobileDistanceMultiplier : workbenchEntrance.distanceMultiplier).add(controls.target)
-            controls.update()
-          }
           camera.fov = fovFor(latest.current.view); if (!transition) {
             if (homeElement.clientWidth >= 768) camera.clearViewOffset()
             else camera.clearViewOffset()
@@ -431,7 +409,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
         }
         element.dataset.workstationBaseline = workstationCurrent.checkpoint
         model.updateMatrixWorld(true)
-        controller.current = { setTheme, compose, setEntrance, lookdev: lookdevApi }
+        controller.current = { setTheme, compose, lookdev: lookdevApi }
         setTheme(latest.current.theme); fit()
         await renderer.compileAsync(scene, camera)
         if (disposed || abort.signal.aborted) return

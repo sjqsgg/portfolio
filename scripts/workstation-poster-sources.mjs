@@ -7,7 +7,6 @@ export const posterSourceFiles = [
   'public/models/board-pushpins.glb',
   'src/portfolio/Workbench.jsx',
   'src/portfolio/sceneViews.js',
-  'src/portfolio/workbenchEntrance.js',
   'src/portfolio/feltBoard.js',
   'src/portfolio/boardObjects.js',
   'src/portfolio/boardObjectsStore.js',

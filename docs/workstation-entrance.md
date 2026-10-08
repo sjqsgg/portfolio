@@ -1,31 +1,40 @@
 # Workstation opening and image synchronization
 
-Confirmed on 2026-10-08: replace all active old workstation images, then open
-with a small workbench, a gentle brightness breath during real loading, and a
-smooth approach to the existing normal overview. Preserve the accepted scene
-geometry, material baseline and saved board layout behavior.
+## Current design
 
-## Opening sequence
+The owner selected black `Loading...` lettering on the same white background
+as Home, replacing the miniature workstation entrance. The shared Helvetica
+font stack, generous whitespace and restrained domino motion preserve the
+portfolio's typography. The current letter motion remains a native CSS
+interpretation of the Domino Lettering reference. The owner confirmed they
+do not currently have React Bits Pro access and requested that only the
+loading layout and transition be changed for now; importing the original
+component is deferred. No Pro source or license has been installed.
 
-- `loading`: the current scene's small preview fades in over 550ms; a 2.6s
-  opacity cycle varies from 1 to .76. No artificial progress percentage.
-- `revealing`: the first successfully rendered WebGL frame is ready at the
-  same miniature camera pose; the picture/backdrop fade away over 240ms.
-- `entering`: the real camera approaches the ordinary overview over 950ms,
-  with cubic deceleration. Navigation and the corner text fade in during it.
-- `done`: all scene interactions are enabled; the normal camera preset is
-  unchanged. Returning Home does not replay the first-visit entrance.
-- `fallback`: model/WebGL failure reveals the current static view and releases
-  navigation. The renderer's actual 25s load timeout reports failure; there
-  is no five-second timer reporting false readiness.
+- `loading`: live text fades in over 240ms. Each letter tips right, rests,
+  rises with one small rebound, and settles. The 3s loop staggers letters by
+  70ms; it runs only while the actual scene is preparing. The name, navigation,
+  corner details, skip link and custom cursor are hidden in this phase.
+- `revealing`: the first successfully rendered WebGL frame, or a decoded
+  fallback image, starts the existing curved page transition. The browser
+  captures the loading page, removes it, then runs the same darkening, curved
+  curtain and content arrival used by route changes. No wait for the letter
+  loop to finish. Reduced motion skips the transition, and unsupported
+  browsers use the existing route fade fallback.
+- `done`: the ordinary overview and scene interactions are available.
+  Returning Home does not replay the first-visit entrance.
 
-The header identity stays in place. Reduced motion skips the loader and WebGL.
-Data saving uses the static views. Desktop and mobile use separate miniature
-captures, with the same camera settings used by the live renderer.
+The loader uses real text, with no image, additional font download or WebGL
+renderer of its own. The real scene starts at its normal camera preset.
+`routeTransition.js` shares the original desktop/portrait mask setup and
+CSS timing with `useRouteMotion` and `useEntranceMotion`. The latter keeps
+the page inert until the transition finishes and releases its resources
+when interrupted by navigation.
 
-`/?intro-preview=1` in Vite development mode delays the handoff by four seconds
-after the scene becomes ready so the brightness cycle can be judged. The
-production build ignores this switch.
+The previous four-second `intro-preview` hold and miniature camera approach
+are removed. Reduced motion skips the loader and WebGL. Data saving and
+model/WebGL failure retain current static views. Screen readers receive one
+stable loading status; decorative letter spans are hidden from them.
 
 ## Active image sources
 
@@ -37,38 +46,24 @@ It captures the scene after `workstation-current.json` and current board
 defaults have been applied, then encodes the browser frames as WebP:
 
 - `overview`, `work`, `photo`, each with `day` and `mobile` variants.
-- `intro-day` and `intro-mobile` at the opening camera distances.
 - `cover-day`, showing the full current workbench for Projects and its detail.
 - `posterAnchors.css`, projected alongside the current images. Image sizes
-  and horizontal hotspot positions both follow viewport height, like the
+  and horizontal hotspot positions follow viewport height, like the
   perspective camera, so changing aspect ratio keeps them aligned.
 
-The portfolio's Materials chapter uses the current work view. The old
-`workstation-1584.webp` and `material-study.png` are no longer referenced by
-the running site; archival assets and historical QA evidence remain available.
+The Materials chapter uses the current work view. Historical concept images
+and the previous `intro-day` / `intro-mobile` images have no active runtime
+references. They remain archived alongside historical QA evidence.
 
-The generated `workstation-posters.json` records source and output hashes.
+`workstation-posters.json` records source and output hashes.
 `npm run posters:check` runs before builds and rejects missing, modified or
 stale derivatives. Regenerate after changing the baseline, camera, model,
 renderer, board construction/defaults, or relevant scene layout styles.
+Loader-only styling does not invalidate scene images.
 
 ## Verification
 
-Use the loader browser tests for the real camera handoff, slow model requests,
-failed downloads, unavailable WebGL and reduced motion. Check the actual
-desktop/mobile frames as well as the data tests and source manifest. The
-manifest proves which inputs generated a file; visual comparison verifies
-the capture itself is correct.
-
-Verified on 2026-10-08:
-
-- Production build and current-asset validation pass; 11 data/board tests and
-  24 loader, portfolio and route-transition browser tests pass.
-- Lint has no errors; the existing `CVLightbox.jsx` Fast Refresh warning remains.
-- Desktop (1600×900) and mobile (390×844) recordings have no page errors.
-  The miniature poster/live-frame comparison has mean RGB channel differences
-  of 3.74 and 2.16 out of 255 on visible scene pixels, respectively.
-- An isolated fixture confirms that the build guard accepts current images
-  and rejects both changed camera sources and a missing preview image.
-- Geometry, camera presets, the formal baseline JSON and board defaults have
-  no changes. The preview is local; this work has not been deployed.
+The loader browser tests cover the normal-size handoff through the existing
+curved transition, loading-only content, no preview requests, desktop/mobile
+domino motion, background matching, slow requests, failed downloads, missing
+WebGL, reduced motion, data saving and the no-View-Transitions fallback. Verify letter rhythm visually alongside these behavioral checks.

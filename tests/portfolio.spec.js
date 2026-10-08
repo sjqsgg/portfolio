@@ -5,6 +5,7 @@ async function ready(page) {
   await expect(page.locator('.workbench-canvas')).toHaveAttribute('data-state', 'ready', { timeout: 30000 })
   await expect(page.locator('.workbench-canvas')).toHaveAttribute('data-moving', 'false')
   await expect(page.locator('.site-loader')).toHaveCount(0, { timeout: 10000 })
+  await expect(page.locator('.home')).toHaveAttribute('data-entrance', 'done')
 }
 async function activate(page, target) { await target.focus(); await page.keyboard.press('Enter') }
 async function switchView(page, name) {

@@ -52,7 +52,7 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey, onIniti
   const lookdev = import.meta.env.DEV && new URLSearchParams(window.location.search).get('lookdev') === '1'
   const useStatic = !lookdev && (reduced || navigator.connection?.saveData)
   useEffect(() => {
-    if (!useStatic && status === 'ready') onInitialReady?.('ready')
+    if (!useStatic && status === 'ready') onInitialReady?.()
   }, [onInitialReady, status, useStatic])
   useEffect(() => {
     if (!useStatic && status !== 'error') return
@@ -94,8 +94,8 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey, onIniti
   return <section ref={home} inert={entrancePhase !== 'done'} className={`home immersive-home view-${view}`} aria-label="Jiaqi Shi’s workbench" data-entrance={entrancePhase} data-view={view} data-object={object || 'none'}>
     <h1 className="sr-only">Jiaqi Shi, software engineer & photographer</h1>
     <div className="workbench-stage">
-      {(useStatic || status === 'error') && <picture className="workbench-poster"><source media="(max-width: 767px)" srcSet={assetPath(`/images/workstation/${view}-mobile.webp`)} /><img src={assetPath(`/images/workstation/${view}-day.webp`)} width="1440" height="1000" fetchPriority="high" onLoad={() => onInitialReady?.('static')} onError={() => onInitialReady?.('static')} alt="A pale wood workstation with lime-green cabinets, a yellow desk lamp, a felt board, cameras and speakers." /></picture>}
-      {!useStatic && <Suspense fallback={null}><Workbench theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} onStatus={setStatus} home={home} view={view} object={object} onView={selectView} onInspect={inspect} onBoard={showBoard} resetKey={resetKey} lookdev={lookdev} onLookdevReady={setLookdevApi} entrancePhase={entrancePhase} /></Suspense>}
+      {(useStatic || status === 'error') && <picture className="workbench-poster"><source media="(max-width: 767px)" srcSet={assetPath(`/images/workstation/${view}-mobile.webp`)} /><img src={assetPath(`/images/workstation/${view}-day.webp`)} width="1440" height="1000" fetchPriority="high" onLoad={() => onInitialReady?.()} onError={() => onInitialReady?.()} alt="A pale wood workstation with lime-green cabinets, a yellow desk lamp, a felt board, cameras and speakers." /></picture>}
+      {!useStatic && <Suspense fallback={null}><Workbench theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} onStatus={setStatus} home={home} view={view} object={object} onView={selectView} onInspect={inspect} onBoard={showBoard} resetKey={resetKey} lookdev={lookdev} onLookdevReady={setLookdevApi} /></Suspense>}
     </div>
     <div className={`scene-hotspots ${useStatic || status !== 'ready' ? 'fallback-labels' : ''}`} aria-label="Objects on the desk">
       {hotspots.map(([id, label, action]) => typeof action === 'string'

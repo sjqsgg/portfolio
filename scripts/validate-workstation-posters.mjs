@@ -6,7 +6,7 @@ try {
   const sources = await posterSources()
   const changed = Object.keys(sources).filter(file => sources[file] !== manifest.sources[file])
   if (changed.length) throw new Error(`Scene inputs changed: ${changed.join(', ')}`)
-  const expected = ['overview-day', 'overview-mobile', 'work-day', 'work-mobile', 'photo-day', 'photo-mobile', 'intro-day', 'intro-mobile', 'cover-day'].map(name => `public/images/workstation/${name}.webp`)
+  const expected = ['overview-day', 'overview-mobile', 'work-day', 'work-mobile', 'photo-day', 'photo-mobile', 'cover-day'].map(name => `public/images/workstation/${name}.webp`)
   expected.push('src/portfolio/posterAnchors.css')
   for (const file of expected) {
     if (!manifest.outputs[file] || digest(await readFile(file)) !== manifest.outputs[file].sha256) throw new Error(`Missing or changed generated asset: ${file}`)

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
 
 const ready = page => expect(page.locator('.workbench-canvas')).toHaveAttribute('data-moving','false',{timeout:30000})
-async function start(page) { await page.goto('/'); await expect(page.locator('.workbench-canvas')).toHaveAttribute('data-state','ready',{timeout:30000}); await ready(page); await expect(page.locator('.site-loader')).toHaveCount(0,{timeout:10000}) }
+async function start(page) { await page.goto('/'); await expect(page.locator('.workbench-canvas')).toHaveAttribute('data-state','ready',{timeout:30000}); await ready(page); await expect(page.locator('.site-loader')).toHaveCount(0,{timeout:10000}); await expect(page.locator('.home')).toHaveAttribute('data-entrance','done') }
 async function point(page, id) { return page.locator(`[data-anchor="${id}"]`).evaluate(el => ({x:Number(el.dataset.meshX),y:Number(el.dataset.meshY)})) }
 async function clickObject(page,id) { const p=await point(page,id); await page.mouse.click(p.x,p.y) }
 

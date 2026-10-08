@@ -12,9 +12,11 @@ notes document earlier experiments, not the expected result for new changes.
 - The visual white hold starts when the curve has effectively left the screen
   (85% of its nominal duration). The development controller sets the darken,
   hold, curve, white hold, reveal duration, and starting offset.
-- First Home loading shows a miniature captured from the current formal scene,
-  with a restrained brightness breath. A real rendered frame starts a 240ms
-  handoff, then the live camera approaches the ordinary overview in 950ms.
+- First Home loading shows black `Loading...` letters on the page's white
+  background, with identity, navigation, corner details and cursor hidden.
+  Letters topple and rebuild in a staggered loop. The first real rendered
+  frame starts the same curved page transition to the normal overview.
+  Both entry points share mask geometry, timing variables and keyframes.
   No timer reports success, and there is no forced minimum wait. Reduced-motion and
   save-data users receive current static views; errors use the same fallback.
   Returning Home within the app does not replay the entrance.
