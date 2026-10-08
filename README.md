@@ -69,7 +69,7 @@ Original photos remain in `public/photos`. The existing optimized derivatives ar
 
 ## Workstation asset
 
-The current scene is a complete, independent v003 Blender derivative. It keeps the physical 90° L, 740 mm work surface and 28 mm tops, with fewer cameras, a photography-side guestbook, a separate CV rack, badge/guestbook pivots, smoothed equipment, wood texture, green enamel and distinct paper/metal/leather/cloth materials. The original v001 model remains available and untouched.
+The current scene combines the v003 Blender geometry with `docs/workstation-current.json` and the current default board objects. The browser applies the accepted pale wood, lime-green cabinets, yellow lamp and felt board after loading the model. Raw Blender/GLB materials and archived renders are not the final website appearance. The original v001 model remains available and untouched.
 
 Regenerate using Blender 4.1+ from this repository (all source inputs are included):
 
@@ -79,6 +79,17 @@ node scripts/validate-workstation.mjs
 ```
 
 `sceneViews.js` defines the three preset camera compositions. Free orbit, pan and model-only zoom remain available. The renderer animates camera position, target, field of view and projection offset together. The workstation model is only requested on the home route; reduced motion/data saving and failed WebGL use matching responsive scene renders. The board model is loaded on demand only when its close view is explicitly opened. No still-view toggle is exposed.
+
+Refresh all active workstation images after changing the scene:
+
+```sh
+npm run posters:generate
+npm run posters:check
+```
+
+The generator starts its own current-source preview on port 5192 and a fresh Playwright Chromium context. It writes six static views, two miniature opening images, the project cover and matching responsive hotspots together. `docs/workstation-posters.json` records their source and output hashes; `npm run build` rejects stale images. Playwright Chromium must already be installed for regeneration; normal builds do not launch a browser. Old concept assets remain archived but have no runtime references.
+
+The first Home visit fades in a miniature, breathes while the real scene prepares, then approaches the unchanged overview camera in 950ms. A real rendered frame starts that handoff; a timeout cannot pretend the model is ready. Reduced motion skips the entrance. To inspect the breathing locally, run `npm run dev` and open `/?intro-preview=1`; this development-only preview holds for four seconds after readiness. See `docs/workstation-entrance.md`.
 
 Guestbook notes are local drafts. “Open in email” prepares a mailto link; the site does not send or publish notes.
 

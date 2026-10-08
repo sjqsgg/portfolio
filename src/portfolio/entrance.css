@@ -1,0 +1,21 @@
+/* The opening uses the same frame and camera composition as the live scene. */
+.site-loader { position:fixed;inset:0;z-index:40;overflow:hidden;color:var(--text);pointer-events:auto; }
+.site-loader-backdrop { position:absolute;inset:0;background:var(--canvas);transition:opacity var(--loader-reveal) ease; }
+.site-loader-picture { position:absolute;inset:0;height:100svh;opacity:1;transition:opacity var(--loader-reveal) ease; }
+.site-loader-arrival { display:block;position:absolute;inset:0;animation:workbench-arrive .55s ease-out both; }
+.site-loader-workbench { position:absolute;left:50%;height:100%;width:auto;max-width:none;transform:translateX(-50%);animation:workbench-breathe 2.6s .55s ease-in-out infinite; }
+.site-loader-label { position:absolute;left:var(--gutter);bottom:var(--edge-y);font:400 11px/1.55 "IBM Plex Mono",monospace;letter-spacing:.04em;color:var(--muted);transition:opacity var(--loader-reveal) ease; }
+.site-loader:not(.is-loading) .site-loader-backdrop,
+.site-loader:not(.is-loading) .site-loader-picture,
+.site-loader:not(.is-loading) .site-loader-label { opacity:0; }
+.canvas-identity[data-entrance]:not([data-entrance="done"]) { z-index:41; }
+[data-entrance="loading"] .canvas-nav,[data-entrance="revealing"] .canvas-nav,[data-entrance="fallback"] .canvas-nav,
+.canvas-base[data-entrance="loading"],.canvas-base[data-entrance="revealing"],.canvas-base[data-entrance="fallback"],
+.canvas-revert[data-entrance="loading"],.canvas-revert[data-entrance="revealing"],.canvas-revert[data-entrance="fallback"] { opacity:0; }
+[data-entrance="entering"] .canvas-nav,.canvas-base[data-entrance="entering"],.canvas-revert[data-entrance="entering"] { animation:workbench-navigation .45s .3s ease-out both; }
+.immersive-home[data-entrance]:not([data-entrance="done"]) .workbench-canvas canvas { transition:none; }
+.immersive-home[data-entrance]:not([data-entrance="done"]) .scene-hotspots { visibility:hidden; }
+@keyframes workbench-arrive { from { opacity:0;transform:translateY(8px); } to { opacity:1;transform:translateY(0); } }
+@keyframes workbench-breathe { 0%,100% { opacity:1; } 50% { opacity:.76; } }
+@keyframes workbench-navigation { from { opacity:0; } to { opacity:1; } }
+@media (prefers-reduced-motion:reduce) { .site-loader { display:none; } }

@@ -26,6 +26,8 @@ async function bottomPixels(page) {
 
 for (const viewport of [{width:1440,height:1000},{width:390,height:844}]) {
   test(`Home outgoing curtain covers every bottom edge at ${viewport.width}px`, async ({ page }) => {
+    // Four round trips plus a real WebGL startup exceed the default 30s budget.
+    test.setTimeout(60000)
     await page.setViewportSize(viewport)
     await page.goto('/')
     await expect(page.locator('.site-loader')).toHaveCount(0, { timeout:30000 })

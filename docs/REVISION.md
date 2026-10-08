@@ -26,7 +26,7 @@ The guestbook stores a draft on the current device. The email link prepares the 
 - Edge radii and corrected surface normals, pale ash texture, chrome, green enamel, dark camera leather/metal/glass, speaker wood/cloth and paper variations are included. Runtime lighting adds softened shadows, a studio reflection environment and a warm practical lamp at night.
 - Original v001 assets and all sibling worktrees remain unchanged. The v002 pale-ash texture is reused; the cropped v002 scene is not substituted for the complete workstation.
 
-Reduced motion, data-saving, failed model loading and missing WebGL use matching responsive renders of these same cameras. Labels use projected positions captured alongside the posters. Rebuild them using a preview on port 4176 and `node scripts/capture-scene-posters.mjs`, then convert the generated PNGs to WebP at the corresponding public paths. The scene canvas remains hidden from assistive technology; equivalent HTML controls expose all primary interactions.
+Reduced motion, data-saving, failed model loading and missing WebGL use matching responsive renders of these same cameras. Labels use projected positions captured alongside the posters. Updated 2026-10-08: run `npm run posters:generate` to start an isolated current-source preview and generate the WebP images, responsive hotspots and source manifest in one step. The previous manual PNG-to-WebP procedure is superseded. The scene canvas remains hidden from assistive technology; equivalent HTML controls expose all primary interactions.
 
 ## Validation
 

@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "checkpoint": "production-current-with-felt-board",
+  "generatedAt": "2026-10-07T22:31:21.936Z",
+  "sources": {
+    "docs/workstation-current.json": "2e14a130f8e7b3611ed062703252fc619d71144844d539cd303e62ce45e0c57e",
+    "public/models/workstation-v003.glb": "b6abe280a15f658e3c146467057294856e1e97b3ade9d6b5fc9e93641e0c5544",
+    "public/models/board-pushpins.glb": "fd8eb595730171e84d0feabb59667c8696704c141d40c3015a66d511635cd15c",
+    "src/portfolio/Workbench.jsx": "c9e706cad65583c0bd0458a299d468fba1c55ece7766915a62c4cee58a7c95d6",
+    "src/portfolio/sceneViews.js": "a90844e5477ea3eeab0a227833d24d08671648e9ac7049bd250cfc5ac7ae7fa5",
+    "src/portfolio/workbenchEntrance.js": "fd58ab9eaee337324e1162d28481af7b45f81c0536cf45258846419c4b228c6c",
+    "src/portfolio/feltBoard.js": "4d99e0d8b01c06e61dcc0e4346a7129d31af8e6a4f0af9b5a1478d6644a3c46c",
+    "src/portfolio/boardObjects.js": "eedc21ca58da92793bec709ad5ddd152dd4fad353a249e73559cf8eaa407580d",
+    "src/portfolio/boardObjectsStore.js": "93455872037092067aa6a0eafe1e38a36d79ec2985e49203b3e1fca1225742dc",
+    "src/portfolio/boardObjectTransforms.js": "fc7fc0ccb6257eadb497b1cef304009be6911b6d8c76378e730baaf84281343f",
+    "src/portfolio/boardPinModel.js": "1c52721fd3dc2b2418e0d56c5b6a4d98baf29a1c15deb042ee97cd5ed5352870",
+    "src/portfolio/workspace.css": "46195e1af34f600455da9857fa86dc593b12dcdac4bc9c8eeb150a7a3a7c34f8",
+    "src/portfolio/reference-layout.css": "1af6c9a9a20e5a21c8666ff95cead0b5985350b5ee40659816f7c6310cb6729e",
+    "src/index.css": "add870f53d19a222460ad4d54c271e04763dc8ce3d42de93059ce47622348554"
+  },
+  "outputs": {
+    "public/images/workstation/intro-day.webp": {
+      "bytes": 19344,
+      "sha256": "675c7414f291715098dc21d781320204d3bd38fb36291223cdc39aa9d0de0aaf"
+    },
+    "public/images/workstation/overview-day.webp": {
+      "bytes": 88612,
+      "sha256": "c67e5a3ac2903c287ec5b303d01b7ab3d04163df02a9164fcf2116202130f1f6"
+    },
+    "public/images/workstation/work-day.webp": {
+      "bytes": 93198,
+      "sha256": "71bbb10ed6b5f137885ee5fef42bab119fd965d4a8ee285143deda006295eb3e"
+    },
+    "public/images/workstation/photo-day.webp": {
+      "bytes": 56040,
+      "sha256": "78be38b8963e8b19176169f29b408b2e4794fcfc48970c6413b1c6a656f14624"
+    },
+    "public/images/workstation/cover-day.webp": {
+      "bytes": 49438,
+      "sha256": "5437c1f6fc79bac06de769f7c76db44dc596fce576fdf25eea10f8808ed7b046"
+    },
+    "public/images/workstation/intro-mobile.webp": {
+      "bytes": 10054,
+      "sha256": "8772378b3643fb643ff7e4cc88292e8c2b5d5aa9990665a23db95ea311c2db69"
+    },
+    "public/images/workstation/overview-mobile.webp": {
+      "bytes": 27308,
+      "sha256": "0e7c2fc960abceb897e74621230f5be21f021d6318ca583bd72d4eb488b07c32"
+    },
+    "public/images/workstation/work-mobile.webp": {
+      "bytes": 26876,
+      "sha256": "79292ff03284e679e7e602ab070ba313f07fc7303eab3fb4de7593832a450c05"
+    },
+    "public/images/workstation/photo-mobile.webp": {
+      "bytes": 20060,
+      "sha256": "ca1e979caedcc88bf80dc540073266e49a73d3eca8bf5c820c09d14dca918ddc"
+    },
+    "src/portfolio/posterAnchors.css": {
+      "bytes": 10501,
+      "sha256": "a45e043acf7cc98d19cbdcbb88b05eb70a29b9e3ae0f1c821bcaf7ccc65a8ea7"
+    }
+  }
+}

@@ -5,6 +5,7 @@ import Home from './portfolio/Home'
 import BackHome from './portfolio/BackHome'
 import FollowCursor from './portfolio/FollowCursor'
 import SiteLoader from './portfolio/SiteLoader'
+import { workbenchEntrance } from './portfolio/workbenchEntrance'
 import MotionDevPanel from './portfolio/MotionDevPanel'
 import useRouteMotion from './portfolio/useRouteMotion'
 import './App.css'
@@ -12,6 +13,7 @@ import './portfolio/workspace.css'
 import './portfolio/posterAnchors.css'
 import './portfolio/reference-layout.css'
 import './portfolio/motion.css'
+import './portfolio/entrance.css'
 
 import Photography from './portfolio/Photography'
 import Series from './portfolio/Series'
@@ -35,32 +37,34 @@ export default function App() {
   const [theme, setTheme] = useState('day')
   const [resetKey, setResetKey] = useState(0)
   const [flash, setFlash] = useState(null)
-  const [workbenchReady, setWorkbenchReady] = useState(incoming.pathname !== '/')
+  const [workbenchReady, setWorkbenchReady] = useState(null)
   const [loaderPhase, setLoaderPhase] = useState(incoming.pathname === '/' ? 'loading' : 'done')
   const timers = useRef([])
-  const bootStarted = useRef(performance.now())
+  const previewTimer = useRef(null)
   const reduced = useReducedMotion()
   const location = useRouteMotion(incoming, reduced)
   const navigate = useNavigate()
   const motiondev = import.meta.env.DEV && new URLSearchParams(window.location.search).get('motiondev') === '1'
-  const markWorkbenchReady = useCallback(() => setWorkbenchReady(true), [])
+  const markWorkbenchReady = useCallback(kind => {
+    window.clearTimeout(previewTimer.current)
+    // This local preview gives the owner time to judge the breathing cycle.
+    // Public visits always continue as soon as their actual scene is ready.
+    const preview = import.meta.env.DEV && new URLSearchParams(window.location.search).get('intro-preview') === '1'
+    if (preview && kind === 'ready') previewTimer.current = window.setTimeout(() => setWorkbenchReady(kind), 4000)
+    else setWorkbenchReady(kind)
+  }, [])
   useEffect(() => { document.documentElement.dataset.theme = theme }, [theme])
   useEffect(() => () => timers.current.forEach(clearTimeout), [])
+  useEffect(() => () => window.clearTimeout(previewTimer.current), [])
   useEffect(() => {
-    if (loaderPhase === 'done') return
-    const safety = window.setTimeout(() => setWorkbenchReady(true), 5000)
-    return () => window.clearTimeout(safety)
-  }, [loaderPhase])
-  useEffect(() => {
+    if (incoming.pathname !== '/' || reduced) { setLoaderPhase('done'); return }
     if (!workbenchReady || loaderPhase !== 'loading') return
-    if (reduced) { setLoaderPhase('done'); return }
-    const elapsed = performance.now() - bootStarted.current
-    const exit = window.setTimeout(() => setLoaderPhase('exiting'), Math.max(0, 1050 - elapsed))
-    return () => window.clearTimeout(exit)
-  }, [workbenchReady, loaderPhase, reduced])
+    setLoaderPhase(workbenchReady === 'ready' ? 'revealing' : 'fallback')
+  }, [incoming.pathname, workbenchReady, loaderPhase, reduced])
   useEffect(() => {
-    if (loaderPhase !== 'exiting') return
-    const finish = window.setTimeout(() => setLoaderPhase('done'), 560)
+    if (!['revealing', 'entering', 'fallback'].includes(loaderPhase)) return
+    const next = loaderPhase === 'revealing' ? 'entering' : 'done'
+    const finish = window.setTimeout(() => setLoaderPhase(next), loaderPhase === 'entering' ? workbenchEntrance.enterMs : workbenchEntrance.revealMs)
     return () => window.clearTimeout(finish)
   }, [loaderPhase])
   useEffect(() => {
@@ -87,7 +91,7 @@ export default function App() {
   }
   return <>
     <a className="skip-link" href="#main-content">Skip to content</a>
-    <header className={`canvas-identity ${location.pathname.startsWith('/photography') ? 'photography-navigation' : ''}`}>
+    <header data-entrance={loaderPhase} inert={loaderPhase !== 'done'} className={`canvas-identity ${location.pathname.startsWith('/photography') ? 'photography-navigation' : ''}`}>
       {location.pathname === '/' ? <Link to="/" className="identity-link" aria-label="Jiaqi Shi, home"><span className="meta muted">SOFTWARE ENGINEER & PHOTOGRAPHER</span><span className="identity-name">JIAQI SHI</span></Link> : location.pathname.startsWith('/photography/') ? <Link to="/photography" className="back-circle-control" aria-label="Back to gallery" data-cursor="Gallery"><span className="close-cross" aria-hidden="true">×</span></Link> : <BackHome />}
       <nav id="primary-nav" className="canvas-nav" aria-label="Main navigation">
         {[['/', 'Home'], ['/projects', 'Projects'], ['/photography', 'Photography'], ['/about', 'About'], ['/contact', 'Contact']].map(([path, label]) => {
@@ -96,11 +100,11 @@ export default function App() {
         })}
       </nav>
     </header>
-    {location.pathname === '/' && <><aside className="canvas-base"><span className="meta muted">BASE</span><span>THE NETHERLANDS</span></aside><button className="canvas-revert" onClick={revertHome}>Revert</button></>}
+    {location.pathname === '/' && <><aside className="canvas-base" data-entrance={loaderPhase}><span className="meta muted">BASE</span><span>THE NETHERLANDS</span></aside><button className="canvas-revert" data-entrance={loaderPhase} inert={loaderPhase !== 'done'} onClick={revertHome}>Revert</button></>}
     <main id="main-content" tabIndex={-1}>
       <PageBoundary key={location.pathname}><Suspense fallback={<div className="page loading-page" role="status">Opening…</div>}>
         <Routes location={location}>
-          <Route path="/" element={<Home theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} resetKey={resetKey} onInitialReady={markWorkbenchReady} />} />
+          <Route path="/" element={<Home theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} resetKey={resetKey} onInitialReady={markWorkbenchReady} entrancePhase={loaderPhase} />} />
           <Route path="/photography" element={<Photography />} />
           <Route path="/photography/:seriesId" element={<Series />} />
           <Route path="/projects" element={<Projects />} />

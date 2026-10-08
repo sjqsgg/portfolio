@@ -12,9 +12,12 @@ notes document earlier experiments, not the expected result for new changes.
 - The visual white hold starts when the curve has effectively left the screen
   (85% of its nominal duration). The development controller sets the darken,
   hold, curve, white hold, reveal duration, and starting offset.
-- Ordinary Home loading does not show the old workstation poster; its colour
-  and scale differ from the 3D model. Reduced-motion and save-data users still
-  receive the static fallback instead of WebGL.
+- First Home loading shows a miniature captured from the current formal scene,
+  with a restrained brightness breath. A real rendered frame starts a 240ms
+  handoff, then the live camera approaches the ordinary overview in 950ms.
+  No timer reports success, and there is no forced minimum wait. Reduced-motion and
+  save-data users receive current static views; errors use the same fallback.
+  Returning Home within the app does not replay the entrance.
 - A second navigation during an active transition cannot start another dark
   snapshot. History, photo expansion/return, reduced motion, and browsers
   without View Transitions must still land on a visible, operable page.

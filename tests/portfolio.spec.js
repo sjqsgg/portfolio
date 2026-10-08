@@ -14,6 +14,7 @@ async function switchView(page, name) {
 }
 
 test('actual monitor and camera meshes move to their views, then open their destinations', async ({ page }) => {
+  test.setTimeout(60000) // Two complete WebGL initializations, including their first rendered frames.
   for (const [anchor, view, destination] of [['monitor', 'work', '/projects'], ['camera', 'photo', '/photography']]) {
     await page.goto('/')
     await ready(page)
@@ -71,6 +72,7 @@ test('CV and badge lift, open accessible documents, and put back with focus rest
 })
 
 test('guestbook draft survives closing and reload, email stays an explicit link', async ({ page }) => {
+  test.setTimeout(60000) // Reload intentionally initializes and renders the full scene a second time.
   await page.goto('/')
   await ready(page)
   await switchView(page, /Through the lens/)
@@ -129,9 +131,9 @@ test('project chapters, project notes, contact links and unknown routes work', a
   await page.getByRole('link', { name: /A shared workbench/ }).click()
   await expect(page.locator('h1')).toHaveText('A shared workbench')
   await page.getByRole('button', { name: 'Next image' }).click()
-  await expect(page.locator('.project-viewer figure img')).toHaveAttribute('src', /material-study/)
+  await expect(page.locator('.project-viewer figure img')).toHaveAttribute('src', /\/images\/workstation\/work-day\.webp$/)
   await page.locator('.project-viewer').focus(); await page.keyboard.press('ArrowLeft')
-  await expect(page.locator('.project-viewer figure img')).toHaveAttribute('src', /workstation/)
+  await expect(page.locator('.project-viewer figure img')).toHaveAttribute('src', /\/images\/workstation\/cover-day\.webp$/)
   await page.getByText('Project notes', { exact: false }).click()
   await expect(page.locator('details')).toHaveAttribute('open', '')
   await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Contact', exact: true }).click()

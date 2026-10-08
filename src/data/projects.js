@@ -42,10 +42,10 @@ export const projects = [
   {
     id: 'portfolio', title: 'A shared workbench', type: 'Personal project', category: 'Interactive website', role: 'Design & development', year: '2026', status: 'In development',
     summary: 'One home for software and photography. A working space becomes an invitation to explore both practices.',
-    image: '/images/workstation/workstation-1584.webp', imageAlt: 'L-shaped workstation with a monitor, cameras and a green lamp.', href: '/',
+    image: '/images/workstation/cover-day.webp', imageAlt: 'The current pale wood workstation with lime-green cabinets, a felt board and a yellow lamp.', href: '/',
     chapters: [
-      { label: 'Workbench', image: '/images/workstation/workstation-1584.webp', alt: 'Complete workstation concept with software and photography equipment.', caption: 'A shared space for two ways of making.' },
-      { label: 'Material study', image: '/images/projects/material-study.png', alt: 'Pale worktop, chrome hardware and deep green lamp in the shared corner.', caption: 'A closer look at the shared corner. Material study in progress.' },
+      { label: 'Workbench', image: '/images/workstation/cover-day.webp', alt: 'The current interactive workstation with software and photography equipment.', caption: 'A shared space for two ways of making.' },
+      { label: 'Materials', image: '/images/workstation/work-day.webp', alt: 'Pale wood, a yellow desk lamp and the current felt board in the working corner.', caption: 'Pale wood, chrome and a little yellow light.' },
     ],
     notes: 'The original photography archive lives alongside software work in a single React application. A Three.js workstation connects the two, with direct navigation, a static alternative, and a shared day and night palette.',
   },

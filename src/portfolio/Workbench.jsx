@@ -7,17 +7,19 @@ import { createFeltBoard, feltBoardDefaults, FELT_BOARD_NAMES, findFeltBoardEnve
 import { createBoardObjects } from './boardObjects'
 import { getBoardObjects, subscribeBoardObjects } from './boardObjectsStore'
 import { loadBoardPinModel } from './boardPinModel'
+import { workbenchEntrance } from './workbenchEntrance'
 
-export default function Workbench({ theme, toggleTheme, openCamera, onStatus, home, view, object, onView, onInspect, onBoard, resetKey, lookdev = false, onLookdevReady }) {
+export default function Workbench({ theme, toggleTheme, openCamera, onStatus, home, view, object, onView, onInspect, onBoard, resetKey, lookdev = false, onLookdevReady, entrancePhase = 'done' }) {
   const host = useRef(null), controller = useRef(null)
   const navigate = useNavigate()
   const latest = useRef({})
-  latest.current = { theme, view, object, toggleTheme, openCamera, onView, onInspect, onBoard, onLookdevReady }
+  latest.current = { theme, view, object, toggleTheme, openCamera, onView, onInspect, onBoard, onLookdevReady, entrancePhase }
   useEffect(() => { controller.current?.setTheme(theme) }, [theme])
   useEffect(() => { controller.current?.compose(view, object) }, [view, object, resetKey])
+  useEffect(() => { controller.current?.setEntrance(entrancePhase) }, [entrancePhase])
   useEffect(() => {
     const element = host.current, homeElement = home.current, abort = new AbortController()
-    let disposed = false, renderer, scene, model, observer, controls, environment, frame = 0, prepared = false
+    let disposed = false, renderer, scene, model, observer, controls, environment, frame = 0, prepared = false, announcedReady = false
     const cleanups = []
     function disposeObject(root) {
       const geometries = new Set(), materials = new Set(), textures = new Set()
@@ -30,7 +32,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
       })
       textures.forEach(x => x.dispose()); materials.forEach(x => x.dispose()); geometries.forEach(x => x.dispose())
     }
-    const fail = () => { if (!disposed) { element.dataset.state = 'error'; onStatus('error') } }
+    const fail = () => { if (!disposed) { prepared = false; cancelAnimationFrame(frame); frame = 0; element.dataset.state = 'error'; onStatus('error') } }
     const timer = setTimeout(() => { abort.abort(); fail() }, 25000)
     onStatus('loading')
     async function start() {
@@ -111,9 +113,10 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
         floor.rotation.x = -Math.PI/2; floor.position.y = -.004; floor.receiveShadow = true; scene.add(floor)
         const camera = new THREE.PerspectiveCamera(29, 1, .03, 30)
         const initial = sceneViews[latest.current.view]
-        camera.position.fromArray(initial.position)
+        const initialMobile = homeElement.clientWidth < 768
+        camera.position.fromArray(initialMobile && initial.mobilePosition ? initial.mobilePosition : initial.position)
         controls = new OrbitControls(camera, renderer.domElement)
-        controls.target.fromArray(initial.target); controls.enableZoom = true; controls.enablePan = true
+        controls.target.fromArray(initialMobile && initial.mobileTarget ? initial.mobileTarget : initial.target); controls.enableZoom = true; controls.enablePan = true
         controls.minDistance = .2; controls.maxDistance = 20
         controls.enableDamping = false; controls.rotateSpeed = .65; controls.update()
         renderer.domElement.style.touchAction = 'none'
@@ -141,16 +144,16 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           const node = model.getObjectByName(hotspotNodes[id])
           return { id, node, position: node.position.clone(), quaternion: node.quaternion.clone() }
         })
-        let transition = null
+        let transition = null, entranceActive = latest.current.entrancePhase !== 'done'
         const ease = t => t < .5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2
         function enableOrbit() {
           controls.minAzimuthAngle = -Infinity; controls.maxAzimuthAngle = Infinity
           controls.minPolarAngle = 0; controls.maxPolarAngle = Math.PI
-          controls.enabled = !latest.current.object
+          controls.enabled = !latest.current.object && latest.current.entrancePhase === 'done'
         }
         enableOrbit()
         function fovFor(id) { return homeElement.clientWidth < 768 ? sceneViews[id].mobileFov : sceneViews[id].fov }
-        function compose(id, selected) {
+        function compose(id, selected, entrance = false) {
           const spec = sceneViews[id], mobile = homeElement.clientWidth < 768
           const position = mobile && spec.mobilePosition ? spec.mobilePosition : spec.position
           const target = mobile && spec.mobileTarget ? spec.mobileTarget : spec.target
@@ -158,7 +161,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           controls.minAzimuthAngle = -Infinity; controls.maxAzimuthAngle = Infinity
           controls.minPolarAngle = 0; controls.maxPolarAngle = Math.PI
           transition = {
-            start: performance.now(), duration: selected ? 1800 : 2150,
+            start: performance.now(), duration: entrance ? workbenchEntrance.enterMs : selected ? 1800 : 2150, entrance,
             from: camera.position.clone(), to: new THREE.Vector3(...position),
             fromTarget: controls.target.clone(), toTarget: new THREE.Vector3(...target),
             fromFov: camera.fov, toFov: fovFor(id),
@@ -176,6 +179,19 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
             }),
           }
           element.dataset.moving = 'true'; fit(); render()
+        }
+        function setEntrance(phase) {
+          if (!entranceActive) return
+          if (phase === 'entering') compose(latest.current.view, null, true)
+          if (phase === 'done') {
+            // Also settle exactly when a background tab resumes after the UI timer.
+            if (transition?.entrance) {
+              camera.position.copy(transition.to); controls.target.copy(transition.toTarget)
+              camera.fov = transition.toFov; camera.clearViewOffset(); camera.updateProjectionMatrix()
+              transition = null; element.dataset.moving = 'false'
+            }
+            entranceActive = false; controls.update(); enableOrbit(); render()
+          }
         }
         function projectLabels() {
           const canvasBox = element.getBoundingClientRect(), box = homeElement.getBoundingClientRect()
@@ -203,7 +219,8 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           frame = 0
           if (disposed || !prepared) return
           if (transition) {
-            const t = Math.min(1, (now-transition.start)/transition.duration), e = ease(t)
+            const t = Math.min(1, (now-transition.start)/transition.duration)
+            const e = transition.entrance ? 1 - Math.pow(1 - t, 3) : ease(t)
             camera.position.lerpVectors(transition.from, transition.to, e)
             controls.target.lerpVectors(transition.fromTarget, transition.toTarget, e)
             camera.fov = THREE.MathUtils.lerp(transition.fromFov, transition.toFov, e)
@@ -221,6 +238,10 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           element.dataset.cameraTarget = controls.target.toArray().join(',')
           element.dataset.cameraDistance = String(camera.position.distanceTo(controls.target))
           model.updateMatrixWorld(true); renderer.render(scene, camera); projectLabels()
+          if (!announcedReady) {
+            announcedReady = true; clearTimeout(timer)
+            element.dataset.state = 'ready'; onStatus('ready')
+          }
           if (transition) render()
         }
         function render() { if (!disposed && prepared && !frame && !document.hidden) frame = requestAnimationFrame(tick) }
@@ -228,6 +249,13 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           const width = element.clientWidth, height = element.clientHeight
           if (!width || !height) return
           renderer.setSize(width, height, false); camera.aspect = width/height
+          if (entranceActive && !transition) {
+            const spec = sceneViews[latest.current.view], mobile = homeElement.clientWidth < 768
+            controls.target.fromArray(mobile && spec.mobileTarget ? spec.mobileTarget : spec.target)
+            camera.position.fromArray(mobile && spec.mobilePosition ? spec.mobilePosition : spec.position)
+            camera.position.sub(controls.target).multiplyScalar(mobile ? workbenchEntrance.mobileDistanceMultiplier : workbenchEntrance.distanceMultiplier).add(controls.target)
+            controls.update()
+          }
           camera.fov = fovFor(latest.current.view); if (!transition) {
             if (homeElement.clientWidth >= 768) camera.clearViewOffset()
             else camera.clearViewOffset()
@@ -403,7 +431,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
         }
         element.dataset.workstationBaseline = workstationCurrent.checkpoint
         model.updateMatrixWorld(true)
-        controller.current = { setTheme, compose, lookdev: lookdevApi }
+        controller.current = { setTheme, compose, setEntrance, lookdev: lookdevApi }
         setTheme(latest.current.theme); fit()
         await renderer.compileAsync(scene, camera)
         if (disposed || abort.signal.aborted) return
@@ -458,8 +486,8 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
         }
         document.addEventListener('visibilitychange', render); cleanups.push(() => document.removeEventListener('visibilitychange', render))
         observer = new ResizeObserver(fit); observer.observe(element)
-        clearTimeout(timer); element.dataset.state = 'ready'; element.dataset.moving = 'false'; onStatus('ready')
-        compose(latest.current.view, latest.current.object)
+        element.dataset.moving = 'false'
+        render()
       } catch (error) { clearTimeout(timer); element.dataset.error = error.message; fail() }
     }
     start()
