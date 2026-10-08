@@ -27,7 +27,9 @@ library is installed.
   fallback image, requests completion of the current domino cycle. Once every letter is upright,
   the existing curved page transition starts. The browser
   captures the loading page, removes it, then runs the same darkening, curved
-  curtain and content arrival used by route changes. The loader never starts another cycle once readiness is received. Reduced motion skips the transition, and unsupported
+  curtain and content arrival used by route changes. Only for this initial
+  entrance, identity and navigation are part of the incoming page snapshot,
+  so they appear with the white reveal instead of above the gray curtain. The loader never starts another cycle once readiness is received. Reduced motion skips the transition, and unsupported
   browsers use the existing route fade fallback.
 - `done`: the ordinary overview and scene interactions are available.
   Returning Home does not replay the first-visit entrance.

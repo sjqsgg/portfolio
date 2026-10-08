@@ -18,7 +18,8 @@
 }
 .canvas-identity[data-entrance="loading"],.canvas-base[data-entrance="loading"],
 .canvas-revert[data-entrance="loading"],.skip-link[data-entrance="loading"] { visibility:hidden; }
-.canvas-identity[data-entrance="loading"] { view-transition-name:none; }
+/* During the first entrance, reveal identity with the page beneath the curtain. */
+.canvas-identity[data-entrance]:not([data-entrance="done"]) { view-transition-name:none; }
 html:has(.site-loader) .follow-cursor { visibility:hidden; }
 .immersive-home[data-entrance]:not([data-entrance="done"]) .workbench-canvas canvas { transition:none; }
 .immersive-home[data-entrance]:not([data-entrance="done"]) .scene-hotspots { visibility:hidden; }
