@@ -13,7 +13,7 @@
   animation:loader-type-arrive .24s ease-out both;
 }
 .site-loader-letter {
-  display:inline-block;transform-origin:100% 82%;
+  display:inline-block;transform-origin:var(--letter-right,100%) var(--letter-baseline,82%);
   will-change:transform,opacity;
 }
 .canvas-identity[data-entrance="loading"],.canvas-base[data-entrance="loading"],

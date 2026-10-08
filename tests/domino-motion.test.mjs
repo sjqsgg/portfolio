@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { createDominoMotion, dominoSettings } from '../src/portfolio/dominoMotion.js'
+import { createDominoMotion, dominoSettings, dominoDisplayAngle } from '../src/portfolio/dominoMotion.js'
 
 test('contact propagates in order, holds, springs past upright and repeats', () => {
   const motion = createDominoMotion(10)
@@ -82,4 +82,13 @@ test('each letter rebounds separately and the full return matches the fall durat
   assert.equal(crossings.length, 10)
   crossings.slice(1).forEach((time, index) => assert.ok(time - crossings[index] > 0.1))
   minima.forEach(angle => assert.ok(angle < -2 && angle > -5, `rebound ${angle} degrees`))
+})
+
+
+test('display gain enlarges only the rebound without altering the simulated movement', () => {
+  for (const angle of [0, 0.1, 0.5, 1]) assert.equal(dominoDisplayAngle(angle), angle)
+  const rebound = -3.621975 * Math.PI / 180
+  assert.ok(Math.abs(dominoDisplayAngle(rebound) * 180 / Math.PI + 10) < 0.001)
+  // Smoothly join the unchanged incoming movement at upright.
+  assert.ok(Math.abs(dominoDisplayAngle(-1e-6) / -1e-6 - 1) < 1e-6)
 })

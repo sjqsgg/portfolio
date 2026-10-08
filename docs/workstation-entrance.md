@@ -14,7 +14,12 @@ library is installed.
   each letter falls to 58°. After all letters fall, a 1.2s hold precedes the
   spring return (stiffness scale 1, damping ratio 0.65), staggered by 112.5ms.
   Each letter rebounds roughly
-  3.6° past upright. Both the full fall and return take about 1.60s; the return
+  10° past upright visually (approximately 2.76× gain applied only to negative angles,
+  smoothly blended near upright). At zero angle, support switches from the
+  visible right bottom corner to the left bottom corner, lifting the right foot
+  during rebound instead of pushing the left foot below the baseline. Subsequent
+  small rocks transfer support at each zero crossing. Glyph corners are measured
+  from font metrics and refreshed on resize. The underlying spring remains unchanged. Both the full fall and return take about 1.60s; the return
   drops the imperceptible tail below 0.2° and 0.05 rad/s.
   Falling runs at 1.6× the initial version. Upright letters rest for 0.25s
   before repeating. Gravity and push scales are 1; shade strength is 0.6.

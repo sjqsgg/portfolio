@@ -3,8 +3,16 @@ const radians = degrees => degrees * Math.PI / 180
 export const dominoSettings = Object.freeze({
   delay: 0.2, stagger: 0.03, gravity: 1, fallSpeed: 1.6, lean: 58,
   riseStagger: 0.1125, stiffness: 1, damping: 0.65, hold: 1.2, push: 1,
-  toppleAt: 30, shade: 0.6, loopDelay: 0.25,
+  reboundGain: 10 / 3.621975, toppleAt: 30, shade: 0.6, loopDelay: 0.25,
 })
+
+// Enlarge only the visible overshoot; leave the simulation clock and settling intact.
+export function dominoDisplayAngle(angle) {
+  if (angle >= 0) return angle
+  const progress = Math.min(1, -angle / radians(1))
+  const blend = progress * progress * (3 - 2 * progress)
+  return angle * (1 + (dominoSettings.reboundGain - 1) * blend)
+}
 
 export function createDominoMotion(count) {
   const settings = dominoSettings

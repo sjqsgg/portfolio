@@ -83,6 +83,23 @@ for (const width of [1440, 390]) test(`domino loop stays usable at ${width}px du
       }
       return angle(letters[0]) < -1 && angle(letters[letters.length - 1]) > 50
     })
+    const supports = await page.locator('.site-loader-letter').evaluateAll(nodes => nodes.map(node => {
+      const style = getComputedStyle(node)
+      const matrix = new DOMMatrix(style.transform)
+      const [originX, originY] = style.transformOrigin.split(' ').map(Number.parseFloat)
+      const baseline = Number.parseFloat(style.getPropertyValue('--letter-baseline'))
+      const left = Number.parseFloat(style.getPropertyValue('--letter-left'))
+      const right = Number.parseFloat(style.getPropertyValue('--letter-right'))
+      const footY = x => matrix.b * (x - originX) + matrix.d * (baseline - originY) + originY
+      return { angle:Math.atan2(matrix.b, matrix.a), left:footY(left), right:footY(right), baseline }
+    }))
+    expect(supports[0].angle).toBeLessThan(0)
+    expect(supports[0].left).toBeCloseTo(supports[0].baseline, 2)
+    expect(supports[0].right).toBeLessThan(supports[0].baseline)
+    for (const support of supports) {
+      expect(support.left).toBeLessThanOrEqual(support.baseline + 0.02)
+      expect(support.right).toBeLessThanOrEqual(support.baseline + 0.02)
+    }
     await page.screenshot({ path:testInfo.outputPath('domino-rebound.png') })
     // Observe every frame: assertion backoff can skip the short 250ms rest.
     await page.waitForFunction(() => document.querySelector('.site-loader-word')?.dataset.phase === 'resting')
