@@ -94,7 +94,7 @@ main>.page,main>section.page { padding-top:228px;padding-bottom:130px; }
 .lookdev-header strong { font:500 12px/1.3 "Helvetica Neue",Arial,sans-serif;letter-spacing:.01em; }
 .lookdev-kicker { color:#9ca69e;font-size:9px;letter-spacing:.08em; }
 .lookdev-header>button { width:36px;height:36px;border:1px solid #59615b;background:transparent; }
-.lookdev-tabs { display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid #414842; }
+.lookdev-tabs { display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid #414842; }
 .lookdev-tabs button { min-height:36px;text-transform:uppercase;font-size:9px;letter-spacing:.06em;color:#929b94;border-right:1px solid #414842; }
 .lookdev-tabs button:last-child { border:0; }
 .lookdev-tabs button[aria-pressed="true"] { color:#f2d755;background:#262c27; }
@@ -126,3 +126,13 @@ main>.page,main>section.page { padding-top:228px;padding-bottom:130px; }
 .lookdev-import input { position:absolute;inline-size:1px;block-size:1px;opacity:0; }
 .lookdev-footer .lookdev-save { background:#e6ca49;color:#121513;border-color:#e6ca49;font-weight:600; }
 @media (max-width:767px) { .lookdev-panel { top:auto;bottom:72px;right:12px;max-height:min(60dvh,520px);width:min(326px,calc(100vw - 24px)); }.lookdev-panel.is-collapsed { bottom:72px;width:250px; } }
+/* Case inspector uses the established Lookdev palette and compact controls. */
+.case-view-actions { display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px; }
+.case-view-actions button,.case-action { min-height:34px;padding:6px 8px;border:1px solid #59615b;background:#202521;color:#dce3da; }
+.case-view-actions button:hover,.case-action:hover { border-color:#e6ca49;color:#f2d755; }
+.case-section { padding:0 0 12px;margin:0 0 14px;border-bottom:1px solid #414842; }
+.case-section summary { padding:8px 0 12px;color:#edf0e9;font-weight:600;cursor:pointer; }
+.case-colour-row { display:grid;grid-template-columns:1fr 34px 78px;align-items:center;gap:8px;min-height:38px; }
+.case-colour-row input[type="color"] { width:32px;height:26px;padding:0;border:1px solid #59615b;background:none; }
+.case-colour-row .case-hex { width:78px;height:27px;padding:3px 5px;border:1px solid #505751;background:#202521;color:#d1d9d0; }
+.case-action { width:100%;text-align:left;margin:8px 0 14px; }

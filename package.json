@@ -13,7 +13,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test:e2e": "npm run build && playwright test",
-    "test": "node --test tests/data.test.mjs tests/board-objects.test.mjs tests/domino-motion.test.mjs"
+    "test": "node --test tests/data.test.mjs tests/board-objects.test.mjs tests/domino-motion.test.mjs tests/computer-case-controls.test.mjs",
+    "test:lookdev": "playwright test --config playwright.lookdev.config.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

@@ -43,6 +43,18 @@ for (const [name, part] of Object.entries(data.parts || {})) {
 for (const [name, material] of Object.entries(data.materials || {})) {
   if (typeof material.color !== 'string' || !/^[0-9a-f]{6}$/i.test(material.color)) fail(`materials.${name}.color must be a six-digit hex value without #`)
   for (const property of ['roughness', 'metalness', 'clearcoat']) range(material[property], 0, 1, `materials.${name}.${property}`)
+  if (material.opacity !== undefined) range(material.opacity, 0, 1, `materials.${name}.opacity`)
+}
+
+if (data.computer !== undefined) {
+  if (data.computer.version !== 1 || !data.computer.parts || typeof data.computer.parts !== 'object' || Array.isArray(data.computer.parts)) fail('computer must contain version 1 and a parts object')
+  else for (const [id, values] of Object.entries(data.computer.parts)) {
+    if (!values || typeof values !== 'object' || Array.isArray(values)) { fail(`computer.parts.${id} must be an object`); continue }
+    for (const [key, value] of Object.entries(values)) {
+      finite(value, `computer.parts.${id}.${key}`)
+      if (['widthMm', 'heightMm', 'depthMm', 'diameterMm'].includes(key) && value <= 0) fail(`computer.parts.${id}.${key} must be positive`)
+    }
+  }
 }
 
 if (data.lighting) {

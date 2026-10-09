@@ -7,6 +7,7 @@ import { createFeltBoard, feltBoardDefaults, FELT_BOARD_NAMES, findFeltBoardEnve
 import { createBoardObjects } from './boardObjects'
 import { getBoardObjects, subscribeBoardObjects } from './boardObjectsStore'
 import { loadBoardPinModel } from './boardPinModel'
+import { createComputerCaseControls } from './computerCaseControls'
 
 export default function Workbench({ theme, toggleTheme, openCamera, onStatus, home, view, object, onView, onInspect, onBoard, resetKey, lookdev = false, onLookdevReady }) {
   const host = useRef(null), controller = useRef(null)
@@ -150,8 +151,13 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           controls.enabled = !latest.current.object
         }
         enableOrbit()
-        function fovFor(id) { return homeElement.clientWidth < 768 ? sceneViews[id].mobileFov : sceneViews[id].fov }
+        let computerFocused = false
+        function fovFor(id) {
+          if (computerFocused) return homeElement.clientWidth < 768 ? 38 : 29
+          return homeElement.clientWidth < 768 ? sceneViews[id].mobileFov : sceneViews[id].fov
+        }
         function compose(id, selected) {
+          computerFocused = false
           const spec = sceneViews[id], mobile = homeElement.clientWidth < 768
           const position = mobile && spec.mobilePosition ? spec.mobilePosition : spec.position
           const target = mobile && spec.mobileTarget ? spec.mobileTarget : spec.target
@@ -235,7 +241,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           if (!width || !height) return
           renderer.setSize(width, height, false); camera.aspect = width/height
           camera.fov = fovFor(latest.current.view); if (!transition) {
-            if (homeElement.clientWidth >= 768) camera.clearViewOffset()
+            if (computerFocused) camera.setViewOffset(width, height, width >= 768 ? width * .14 : 0, width < 768 ? height * .2 : 0, width, height)
             else camera.clearViewOffset()
           } else transition.toOffset = [0, 0]
           camera.updateProjectionMatrix()
@@ -248,6 +254,19 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           practical.intensity = night ? 2.2 : 0; scene.environmentIntensity = night ? .32 : .75
           floor.material.opacity = night ? .35 : .16
           render()
+        }
+        const computerControls = createComputerCaseControls(THREE, model, render)
+        if (computerControls) cleanups.push(() => computerControls.dispose())
+        function focusComputer() {
+          const tower = model.getObjectByName('Computer_Tower')
+          if (!tower) return
+          computerFocused = true; transition = null; enableOrbit()
+          const center = new THREE.Box3().setFromObject(tower).getCenter(new THREE.Vector3())
+          controls.target.copy(center)
+          const mobile = homeElement.clientWidth < 768
+          const offset = new THREE.Vector3(mobile ? .12 : .55, .12, 1.5).multiplyScalar(mobile ? 1.35 : 1)
+          camera.position.copy(center).add(offset); controls.update()
+          element.dataset.moving = 'false'; fit(); render()
         }
         const lookdevParts = [
           ['workstation', 'Whole workstation', 'WORKSTATION_ROOT'],
@@ -335,6 +354,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
             part.node.position.add(desiredCenter.sub(centerInParent(part.node)))
             part.node.updateMatrixWorld(true)
           }
+          computerControls?.updateAttachments()
           render()
         }
         function applyMaterial(name, values) {
@@ -366,6 +386,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           if (!part || !baseline) return
           part.node.position.copy(baseline.position); part.node.scale.copy(baseline.scale); part.node.quaternion.copy(baseline.quaternion)
           for (const rod of tubeBaselines.get(id) || []) rod.node.scale.copy(rod.scale)
+          computerControls?.updateAttachments()
           part.node.updateMatrixWorld(true); render()
         }
         function resetMaterial(name) {
@@ -386,6 +407,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
         function resetLookdev() {
           for (const part of lookdevParts) resetPart(part.id)
           for (const name of materialBaselines.keys()) resetMaterial(name)
+          computerControls?.applyState(workstationCurrent.computer)
           resetBoard(); resetLighting(); model.updateMatrixWorld(true); render()
         }
         const lookdevApi = {
@@ -394,12 +416,15 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           lighting: workstationCurrent.lighting,
           board: workstationCurrent.board,
           current: workstationCurrent,
+          computer: computerControls,
+          focusComputer, restoreView: () => compose(latest.current.view, null),
           applyPart, applyMaterial, applyLighting, applyBoard, resetPart, resetMaterial, resetLighting, resetBoard, reset: resetLookdev,
         }
         // Public, Lookdev and automated tests all start from the same accepted
         // production checkpoint. Lookdev may then overlay a browser-only draft.
         Object.entries(workstationCurrent.parts).forEach(([id, values]) => applyPart(id, values))
         Object.entries(workstationCurrent.materials).forEach(([name, values]) => applyMaterial(name, values))
+        if (workstationCurrent.computer) computerControls?.applyState(workstationCurrent.computer)
         applyBoard(workstationCurrent.board)
         applyLighting(workstationCurrent.lighting)
         if(boardObjects){

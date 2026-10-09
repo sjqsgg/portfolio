@@ -4,6 +4,7 @@ import process from 'node:process'
 export default defineConfig({
   testDir: './tests',
   testMatch: '**/*.spec.js',
+  testIgnore: '**/computer-case.spec.js',
   fullyParallel: false,
   workers: 1,
   timeout: 30000,

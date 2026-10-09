@@ -1,9 +1,8 @@
 {
   "version": 1,
-  "checkpoint": "production-current-with-felt-board",
-  "recordedAt": "2026-09-22",
-  "status": "current",
-  "source": "jiaqii7.com production baseline",
+  "checkpoint": "browser-draft",
+  "basedOn": "production-current-with-felt-board",
+  "baselineRevision": "computer-case-2026-10-09-02",
   "parts": {
     "rear-frame": {
       "scaleX": 1,
@@ -435,6 +434,5 @@
         "bendZmm": 16
       }
     }
-  },
-  "revision": "computer-case-2026-10-09-03"
+  }
 }

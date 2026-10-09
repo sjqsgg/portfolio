@@ -1,9 +1,7 @@
 {
   "version": 1,
-  "checkpoint": "production-current-with-felt-board",
-  "recordedAt": "2026-09-22",
-  "status": "current",
-  "source": "jiaqii7.com production baseline",
+  "checkpoint": "browser-draft",
+  "basedOn": "production-current-with-felt-board",
   "parts": {
     "rear-frame": {
       "scaleX": 1,
@@ -24,7 +22,7 @@
       "scaleZ": 0.87,
       "thickness": 1,
       "positionX": 0,
-      "positionY": -0.01,
+      "positionY": 0,
       "positionZ": 0,
       "rotationX": 0,
       "rotationY": 0,
@@ -37,7 +35,7 @@
       "scaleZ": 1.07,
       "thickness": 1,
       "positionX": 0,
-      "positionY": -0.04,
+      "positionY": 0,
       "positionZ": 0,
       "rotationX": 0,
       "rotationY": 0,
@@ -50,7 +48,7 @@
       "scaleZ": 1.07,
       "thickness": 1,
       "positionX": 0,
-      "positionY": -0.04,
+      "positionY": 0,
       "positionZ": 0,
       "rotationX": 0,
       "rotationY": 0,
@@ -134,7 +132,7 @@
       "opacity": 1
     },
     "Computer_internal_warm_white": {
-      "color": "bbd095",
+      "color": "a7b18c",
       "roughness": 0.5699999928474426,
       "metalness": 0.029999999329447746,
       "clearcoat": 0,
@@ -145,7 +143,7 @@
       "roughness": 0.66,
       "metalness": 0,
       "clearcoat": 0,
-      "opacity": 0
+      "opacity": 0.05
     },
     "Computer_case_smoked_glass": {
       "color": "f0f0f0",
@@ -159,7 +157,7 @@
       "roughness": 0.6399999856948853,
       "metalness": 0.019999999552965164,
       "clearcoat": 0,
-      "opacity": 0
+      "opacity": 0.05
     },
     "Computer_internal_sage_board": {
       "color": "b8c59b",
@@ -176,7 +174,7 @@
       "opacity": 1
     },
     "Computer_internal_ivory_tube": {
-      "color": "d5ddc6",
+      "color": "f8f2f2",
       "roughness": 0.6000000238418579,
       "metalness": 0.009999999776482582,
       "clearcoat": 0,
@@ -207,101 +205,13 @@
   "computer": {
     "version": 1,
     "parts": {
-      "shell": {
-        "widthMm": 553.9878965468749,
-        "heightMm": 620.0000449094936,
-        "depthMm": 14.000001338546175,
-        "xMm": 0,
-        "yMm": 0,
-        "zMm": 0,
-        "rotationX": 0,
-        "rotationY": 0,
-        "rotationZ": 0
-      },
-      "accent": {
-        "widthMm": 28.00000267709224,
-        "heightMm": 620.0000449094936,
-        "depthMm": 14.000001338546175,
-        "xMm": 0,
-        "yMm": 0,
-        "zMm": 0,
-        "rotationX": 0,
-        "rotationY": 0,
-        "rotationZ": 0
-      },
-      "glass": {
-        "widthMm": 543.2,
-        "heightMm": 496.4,
-        "depthMm": 8.6,
-        "xMm": 0,
-        "yMm": 0,
-        "zMm": -56,
-        "rotationX": 0,
-        "rotationY": 0,
-        "rotationZ": 0
-      },
-      "back-panel": {
-        "widthMm": 546.0000391647819,
-        "heightMm": 612.000028179079,
-        "depthMm": 10.000000423920019,
-        "xMm": 0,
-        "yMm": 0,
-        "zMm": 0,
-        "rotationX": 0,
-        "rotationY": 0,
-        "rotationZ": 0
-      },
-      "bottom-plate": {
-        "widthMm": 546.0000391647819,
-        "heightMm": 8.000000897929592,
-        "depthMm": 284.00002768554856,
-        "xMm": 0,
-        "yMm": 0,
-        "zMm": 0,
-        "rotationX": 0,
-        "rotationY": 0,
-        "rotationZ": 0
-      },
-      "top-panel": {
-        "widthMm": 546.0000391647819,
-        "heightMm": 12.000000881233097,
-        "depthMm": 284.00002768554856,
-        "xMm": 0,
-        "yMm": 0,
-        "zMm": 0,
-        "rotationX": 0,
-        "rotationY": 0,
-        "rotationZ": 0
-      },
-      "rear-spine": {
-        "widthMm": 12.000000881233097,
-        "heightMm": 612.000028179079,
-        "depthMm": 282.00002350294494,
-        "xMm": 0,
-        "yMm": 0,
-        "zMm": 0,
-        "rotationX": 0,
-        "rotationY": 0,
-        "rotationZ": 0
-      },
-      "front-intake": {
-        "widthMm": 14.200016611402521,
-        "heightMm": 612.000028179079,
-        "depthMm": 282.00002350294494,
-        "xMm": 0,
-        "yMm": 0,
-        "zMm": 0,
-        "rotationX": 0,
-        "rotationY": 0,
-        "rotationZ": 0
-      },
       "gpu": {
         "widthMm": 520.2,
         "heightMm": 59.500018261676615,
         "depthMm": 177.9999992570047,
         "xMm": 14,
         "yMm": 0,
-        "zMm": -124,
+        "zMm": 0,
         "rotationX": 0,
         "rotationY": 0,
         "rotationZ": 0
@@ -432,9 +342,8 @@
         "diameterMm": 15,
         "bendXmm": 0,
         "bendYmm": 0,
-        "bendZmm": 16
+        "bendZmm": 0
       }
     }
-  },
-  "revision": "computer-case-2026-10-09-03"
+  }
 }

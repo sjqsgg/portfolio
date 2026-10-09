@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
+import ComputerCasePanel from './ComputerCasePanel'
+import { computerMaterialLabels } from './computerCaseControls'
 
 const storageKey = 'jiaqi-workstation-lookdev-draft'
 const legacyStorageKeys = ['jiaqi-workstation-lookdev-v2', 'jiaqi-workstation-lookdev-v1']
@@ -8,6 +10,11 @@ const materialLabels = {
   Felt_board_fabric: 'Felt board insert',
   Felt_board_groove: 'Felt board groove',
   Computer_case_muted_internals: 'Computer internals',
+  Computer_internal_warm_white: 'Computer internal panels',
+  Computer_internal_satin_silver: 'Computer internal metal',
+  Computer_internal_sage_board: 'Computer motherboard',
+  Computer_internal_soft_recess: 'Computer internal recesses',
+  Computer_internal_ivory_tube: 'Computer tubing and cables',
   Computer_case_warm_shell: 'Computer shell',
   Computer_case_sage_accent: 'Computer accent',
   Computer_case_smoked_glass: 'Computer side glass',
@@ -33,19 +40,21 @@ function readSaved() {
 
 export default function LookdevPanel({ api }) {
   const [collapsed, setCollapsed] = useState(false)
-  const [tab, setTab] = useState('structure')
+  const [tab, setTab] = useState(() => new URLSearchParams(window.location.search).get('panel') === 'computer' ? 'computer' : 'structure')
   const [partId, setPartId] = useState('workstation')
   const [materialName, setMaterialName] = useState('Pale_ash')
   const [parts, setParts] = useState({})
   const [materials, setMaterials] = useState({})
   const [board, setBoard] = useState({})
   const [lighting, setLighting] = useState({ exposure: .98, ambient: .85, key: 3, fill: .65, practical: 0 })
+  const [computer, setComputer] = useState(null)
   const [message, setMessage] = useState('')
 
   const materialDefaults = useMemo(() => Object.fromEntries((api?.materials || []).map(({ name, ...values }) => [name, values])), [api])
   useEffect(() => {
     if (!api) return
-    const { value: saved, hasLegacy } = readSaved()
+    const { value: stored, hasLegacy } = readSaved()
+    const saved = !api.current.revision || stored.baselineRevision === api.current.revision ? stored : {}
     const knownParts = new Set(api.parts.map(item => item.id))
     const knownMaterials = new Set(api.materials.map(item => item.name))
     const savedParts = Object.fromEntries(Object.entries(saved.parts || {}).filter(([id]) => knownParts.has(id)))
@@ -61,6 +70,8 @@ export default function LookdevPanel({ api }) {
     Object.entries(nextMaterials).forEach(([name, values]) => api.applyMaterial(name, { ...materialDefaults[name], ...values }))
     api.applyBoard(nextBoard)
     api.applyLighting(nextLighting)
+    if (api.computer) setComputer(api.computer.applyState(saved.computer || api.current.computer))
+    if (Object.keys(stored).length && !Object.keys(saved).length) setMessage('已载入最新确认版本；原浏览器草稿仍保留')
     if (hasLegacy && !Object.keys(saved).length) setMessage('Production baseline loaded; old drafts kept')
   }, [api, materialDefaults])
 
@@ -69,7 +80,7 @@ export default function LookdevPanel({ api }) {
   const partSpec = api.parts.find(item => item.id === partId)
   const material = { ...materialDefaults[materialName], ...materials[materialName] }
   const boardValues = { ...api.board, ...board }
-  const payload = { version: 1, checkpoint: 'browser-draft', basedOn: api.current.checkpoint, parts, materials, board: boardValues, lighting }
+  const payload = { version: 1, checkpoint: 'browser-draft', basedOn: api.current.checkpoint, baselineRevision: api.current.revision, parts, materials, board: boardValues, lighting, ...(computer && { computer }) }
   function updatePart(key, value) {
     const next = { ...part, [key]: value }
     setParts(current => ({ ...current, [partId]: next })); api.applyPart(partId, next)
@@ -77,6 +88,30 @@ export default function LookdevPanel({ api }) {
   function updateMaterial(key, value) {
     const next = { ...material, [key]: value }
     setMaterials(current => ({ ...current, [materialName]: next })); api.applyMaterial(materialName, next)
+  }
+  function updateCaseMaterial(name, key, value) {
+    const next = { ...materialDefaults[name], ...materials[name], [key]: value }
+    setMaterials(current => ({ ...current, [name]: next })); api.applyMaterial(name, next)
+  }
+  function updateComputer(id, values) {
+    api.computer.apply(id, values); setComputer(api.computer.getState())
+  }
+  function resetCaseColours() {
+    for (const name of Object.keys(computerMaterialLabels)) api.resetMaterial(name)
+    setMaterials(current => ({ ...current, ...Object.fromEntries(Object.keys(computerMaterialLabels).map(name => [name, materialDefaults[name]])) }))
+  }
+  function resetComputer(id) {
+    if (id) api.computer.apply(id, api.current.computer?.parts[id] || api.computer.defaults.parts[id])
+    else {
+      api.resetPart('computer-tower'); api.computer.applyState(api.current.computer); resetCaseColours()
+      setParts(current => ({ ...current, 'computer-tower': api.current.parts['computer-tower'] || defaultTransform }))
+    }
+    setComputer(api.computer.getState())
+  }
+  function exportDraft() {
+    const url = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' }))
+    const link = document.createElement('a'); link.href = url; link.download = 'workstation-draft.json'
+    link.click(); URL.revokeObjectURL(url); flash('参数已导出')
   }
   function updateLighting(key, value) {
     const next = { ...lighting, [key]: value }
@@ -104,8 +139,10 @@ export default function LookdevPanel({ api }) {
     Object.entries(nextMaterials).forEach(([name, values]) => api.applyMaterial(name, { ...materialDefaults[name], ...values }))
     api.applyLighting(nextLighting)
     api.applyBoard(nextBoard)
+    const nextComputer = api.computer?.applyState(next.computer || api.current.computer)
+    if (nextComputer) setComputer(nextComputer)
     setParts(nextParts); setMaterials(nextMaterials); setBoard(nextBoard); setLighting(nextLighting)
-    localStorage.setItem(storageKey, JSON.stringify({ version: 1, parts: nextParts, materials: nextMaterials, board: nextBoard, lighting: nextLighting }))
+    localStorage.setItem(storageKey, JSON.stringify({ version: 1, baselineRevision: api.current.revision, parts: nextParts, materials: nextMaterials, board: nextBoard, lighting: nextLighting, ...(nextComputer && { computer: nextComputer }) }))
     flash(label)
   }
   async function importCheckpoint(event) {
@@ -121,6 +158,7 @@ export default function LookdevPanel({ api }) {
   function resetCurrent() {
     if (tab === 'structure' && partId === 'workstation') {
       api.reset(); localStorage.removeItem(storageKey); setParts(api.current.parts); setMaterials(api.current.materials); setBoard(api.current.board); setLighting(api.current.lighting); flash('Restored live production baseline')
+      if (api.computer) setComputer(api.computer.getState())
       return
     }
     if (tab === 'structure') {
@@ -157,9 +195,10 @@ export default function LookdevPanel({ api }) {
     </header>
     {!collapsed && <>
       <nav className="lookdev-tabs" aria-label="Control category">
-        {['structure', 'board', 'surface', 'light'].map(value => <button type="button" key={value} aria-pressed={tab === value} onClick={() => setTab(value)}>{value}</button>)}
+        {['structure', 'board', 'surface', 'light', 'computer'].map(value => <button type="button" key={value} aria-pressed={tab === value} onClick={() => setTab(value)}>{value === 'computer' ? '机箱' : value}</button>)}
       </nav>
       <div className="lookdev-body">
+        {tab === 'computer' && <ComputerCasePanel api={api} computer={computer} materials={materials} materialDefaults={materialDefaults} onChange={updateComputer} onMaterial={updateCaseMaterial} onResetColours={resetCaseColours} onReset={resetComputer} onExport={exportDraft} Control={NumberControl} />}
         {tab === 'structure' && <>
           <p className="lookdev-baseline">Base: current production</p>
           <label className="lookdev-select"><span>Part</span><select value={partId} onChange={event => setPartId(event.target.value)}>{api.parts.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label>
@@ -214,7 +253,7 @@ export default function LookdevPanel({ api }) {
           <NumberControl label="Roughness" value={material.roughness} min={0} max={1} step={.01} onChange={value => updateMaterial('roughness', value)} />
           <NumberControl label="Metalness" value={material.metalness} min={0} max={1} step={.01} onChange={value => updateMaterial('metalness', value)} />
           <NumberControl label="Clearcoat" value={material.clearcoat} min={0} max={1} step={.01} onChange={value => updateMaterial('clearcoat', value)} />
-          <NumberControl label="Opacity" value={material.opacity ?? 1} min={.05} max={1} step={.01} onChange={value => updateMaterial('opacity', value)} />
+          <NumberControl label="Opacity" value={material.opacity ?? 1} min={0} max={1} step={.01} onChange={value => updateMaterial('opacity', value)} />
         </>}
         {tab === 'light' && <>
           <button className="lookdev-reset-current" onClick={resetCurrent}>Reset all lighting</button>

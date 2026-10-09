@@ -8,10 +8,13 @@ Run `npm run lookdev`. The controls only load in the Vite development build and 
 2. **Board:** adjust the felt insert and frame colours, border weight, lower rail, depth, shallow groove and corner profile. The source perforated mesh is used only as a placement envelope and is removed before rendering.
 3. **Surface:** select a material to compare colour, roughness, metalness, clearcoat and opacity. A material edit affects every mesh using that material, which is useful for checking palette coherence.
 4. **Light:** judge materials under Neutral first. Use Soft product to inspect form and Warm / cool to test the intended portfolio mood. Do not use lighting to hide a weak material.
+5. **机箱:** edit eight colours and select a material's corresponding component to change its millimetre dimensions, position or rotation. This includes shell, accent, glass and internal panels as well as the GPU, CPU pump and fans. Shared materials list their corresponding assemblies individually. Tube endpoints follow their connected parts. Per-component and whole-case resets return to the latest accepted checkpoint.
 
 Each tab has a reset button directly below its selector. A selected part resets all of its scale, position and rotation values; Surface resets every property of the selected material; Light resets all lighting values. The whole model is only reset when Whole workstation is selected.
 
 Import draft applies a user-exported draft to the current production baseline. Save draft stores the current setup in this browser under a stable key. Earlier `v1` and `v2` values are kept for recovery but are not applied automatically. Copy produces the hand-off record used to update `workstation-current.json` after approval.
+
+Accepted checkpoint revisions also keep earlier browser drafts from overwriting newly confirmed defaults automatically. Explicit import still accepts those drafts. The latest computer-case hand-off is archived in [computer-case-approved-2026-10-09.json](./checkpoints/computer-case-approved-2026-10-09.json).
 
 ## Archived checkpoints
 

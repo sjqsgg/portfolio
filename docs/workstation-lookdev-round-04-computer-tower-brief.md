@@ -38,6 +38,18 @@ The corrected derivative now uses the approved preview geometry directly and doe
 
 The reproducible browser checkpoint is [`workstation-lookdev-round-04.json`](./workstation-lookdev-round-04.json). This corrected candidate remains local and unpushed until visual confirmation; grille relief and shared material refinement remain scheduled for later rounds.
 
+## Computer bay panel placement correction — 9 October 2026
+
+The user clarified that the two pale wooden panels belong to the computer bay, rather than the computer enclosure. They now touch the inner faces of that bay's metal uprights, centred at X = -1.014 m and -0.294 m. With 11 mm tube radii and 22 mm panels, the panel centres are X = -0.992 m and -0.316 m. Panel dimensions, materials and all computer geometry remain unchanged. This supersedes the earlier placement against the generated case edges. The Blender scene, production GLB and scene-generation script use the corrected placement.
+
+Temporary material probes recording the diagnosis before the approved simplification are saved in [`qa/computer-case-discussion-2026-10-09`](./qa/computer-case-discussion-2026-10-09/). They use one fixed camera, studio environment and lighting, without workstation shadows, and change one material input at a time. Removing the normal map leaves most streaks and patches; removing the base-colour map removes most mottling. Removing both maps and the glass still exposes irregular component edges and surface relief. These are diagnostic images, not replacement candidates or changes to production materials.
+
+## Approved internal simplification — 9 October 2026
+
+After reviewing the pushed bay-panel correction, the user authorized the proposed simplification. The case now uses independently shaded, regular components for the graphics card, motherboard, CPU pump, RAM, radiator fans, rear fan and power-supply shroud, with two coolant tubes and three neatly routed power cables. Dense board detail and the imported photographic/normal textures are removed. The original front rails and glass geometry are preserved; the fitted source envelope, placement, side-on orientation and corrected bay panels remain fixed. Subsequent user-approved material and component transforms are applied from the current checkpoint.
+
+The scene replacement verifies that all 207 non-computer scene nodes retain their transforms, geometry, material values and image payloads. The complete GLB is approximately 5.50 MB and 107,955 triangles, compared with 13.18 MB and 237,871 triangles before the internal reconstruction. Original reference assets are preserved. [Review images and reproduction notes](./qa/computer-case-refinement-2026-10-09/README.md) document the initial refinement; [console verification](./qa/computer-case-console-2026-10-09/README.md) documents the latest accepted palette and layout. The user approved pushing the combined change after reviewing the latest checkpoint.
+
 ## Primary question
 
 Can the pale-green under-desk cabinet immediately beside the left speaker become a clearly readable computer tower while preserving the calm lower-cabinet composition and the breathing room gained in earlier rounds?

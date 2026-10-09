@@ -1,54 +1,55 @@
 {
   "version": 1,
   "checkpoint": "production-current-with-felt-board",
-  "generatedAt": "2026-10-09T09:24:51.275Z",
+  "generatedAt": "2026-10-09T12:45:49.923Z",
   "sources": {
-    "docs/workstation-current.json": "2e14a130f8e7b3611ed062703252fc619d71144844d539cd303e62ce45e0c57e",
-    "public/models/workstation-v003.glb": "5b729f8b4ac1328ad5fe1b4800f511c0864b90d9e87bc07385b59d27c405ef39",
+    "docs/workstation-current.json": "69054a60fddf2c4101729bd5e20325056383a1c3677cbb6f2d77465bd4186dcf",
+    "public/models/workstation-v003.glb": "8b126a0313daa5d01c47da94df88a84e8b9ef1711a0518744fec22b9faff39a1",
     "public/models/board-pushpins.glb": "fd8eb595730171e84d0feabb59667c8696704c141d40c3015a66d511635cd15c",
-    "src/portfolio/Workbench.jsx": "27ab458216c22898b86d9c02cfb35853cf209ccca628182a22f879e9d18a361d",
+    "src/portfolio/Workbench.jsx": "08a17438444c4e95b65275018bc2c86d19cb8acac7c46fca04fde2d2342b1fe1",
+    "src/portfolio/computerCaseControls.js": "9f016c46e688abc35682e066e91721c14363e10ba5d383c1652cc6a23aa183bf",
     "src/portfolio/sceneViews.js": "a90844e5477ea3eeab0a227833d24d08671648e9ac7049bd250cfc5ac7ae7fa5",
     "src/portfolio/feltBoard.js": "4d99e0d8b01c06e61dcc0e4346a7129d31af8e6a4f0af9b5a1478d6644a3c46c",
     "src/portfolio/boardObjects.js": "eedc21ca58da92793bec709ad5ddd152dd4fad353a249e73559cf8eaa407580d",
     "src/portfolio/boardObjectsStore.js": "93455872037092067aa6a0eafe1e38a36d79ec2985e49203b3e1fca1225742dc",
     "src/portfolio/boardObjectTransforms.js": "fc7fc0ccb6257eadb497b1cef304009be6911b6d8c76378e730baaf84281343f",
     "src/portfolio/boardPinModel.js": "1c52721fd3dc2b2418e0d56c5b6a4d98baf29a1c15deb042ee97cd5ed5352870",
-    "src/portfolio/workspace.css": "46195e1af34f600455da9857fa86dc593b12dcdac4bc9c8eeb150a7a3a7c34f8",
+    "src/portfolio/workspace.css": "21ae3949cea1e4ab4784c32049d668ba0e75fe3525149cb3e854781cc4bfa655",
     "src/portfolio/reference-layout.css": "1af6c9a9a20e5a21c8666ff95cead0b5985350b5ee40659816f7c6310cb6729e",
     "src/index.css": "add870f53d19a222460ad4d54c271e04763dc8ce3d42de93059ce47622348554"
   },
   "outputs": {
     "public/images/workstation/overview-day.webp": {
-      "bytes": 88780,
-      "sha256": "76d3725c6792bbda07bce55c9ad5e3693349834c0632a5d4e4f80d6e439c79f6"
+      "bytes": 85706,
+      "sha256": "1a3dfa7459a053bf4d272ab7301c0785b86102bc7f3a30e173788596b6e9c61a"
     },
     "public/images/workstation/work-day.webp": {
-      "bytes": 93532,
-      "sha256": "571c200f9d91e91c38488590d7cf4a16645aeabf2308f6be235997293635ca05"
+      "bytes": 90822,
+      "sha256": "c9cf7529ae3dec63f53118e816a966a372927ac377a183accc676929b86e085f"
     },
     "public/images/workstation/photo-day.webp": {
-      "bytes": 56138,
-      "sha256": "e4075ce921884aa1176e5e5734b752c59123ef99b913f410dde0c4e40f9c4ba0"
+      "bytes": 54718,
+      "sha256": "3e5d428e39d33686ab9ef5ab6ab221fa5e4ce7247dd8a0c2370a94c40822a45f"
     },
     "public/images/workstation/cover-day.webp": {
-      "bytes": 49396,
-      "sha256": "88cad950b0e6e357a5bfbffa7082230df2d75a98fceb04166ec0a25a3bf712ac"
+      "bytes": 48624,
+      "sha256": "c808308e8474944431c2039ff4c7a641b1dc8c7d7ae5c6fd66b28f3b36076408"
     },
     "public/images/workstation/overview-mobile.webp": {
-      "bytes": 27372,
-      "sha256": "d644e11799eb57d2f8b34175b127c0b4494d964d9c8ab0dc967160439dba522d"
+      "bytes": 26458,
+      "sha256": "1fd0a691437be4c6a45f0034deff38da0a048118b7bb9354b2a3e52046eb7b92"
     },
     "public/images/workstation/work-mobile.webp": {
-      "bytes": 27080,
-      "sha256": "63fc0c344654a113b32d882a89bf86338ec8a9384d790f540767508f537f013f"
+      "bytes": 25918,
+      "sha256": "69a6729bc825f681c34ec3f2645dbac1e67ffddf73dbc742a300b266d7a21fa6"
     },
     "public/images/workstation/photo-mobile.webp": {
-      "bytes": 20060,
-      "sha256": "ca1e979caedcc88bf80dc540073266e49a73d3eca8bf5c820c09d14dca918ddc"
+      "bytes": 18752,
+      "sha256": "f609dcf1e840dc992040b1aca70cf607921ce368f34a20c2fec44ee6c53d6cac"
     },
     "src/portfolio/posterAnchors.css": {
       "bytes": 10501,
-      "sha256": "a45e043acf7cc98d19cbdcbb88b05eb70a29b9e3ae0f1c821bcaf7ccc65a8ea7"
+      "sha256": "017d0262274dc309a62fe1db6c90918264e16421eb1b580d695bc5fa4e2b97fb"
     }
   }
 }

@@ -4,7 +4,7 @@
 .view-overview .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + 21.635svh);--anchor-y:59.629%;--anchor-width:max(32px,6.609svh);--anchor-height:max(32px,5.612svh); }
 .view-overview .fallback-labels [data-anchor="lens"] { --anchor-x:calc(50% + 20.150svh);--anchor-y:55.640%;--anchor-width:max(32px,3.966svh);--anchor-height:max(32px,6.736svh); }
 .view-overview .fallback-labels [data-anchor="mug"] { --anchor-x:calc(50% + 7.779svh);--anchor-y:56.801%;--anchor-width:max(32px,5.480svh);--anchor-height:max(32px,5.084svh); }
-.view-overview .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 29.002svh);--anchor-y:78.128%;--anchor-width:max(32px,20.981svh);--anchor-height:max(32px,27.717svh); }
+.view-overview .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 28.987svh);--anchor-y:78.508%;--anchor-width:max(32px,20.970svh);--anchor-height:max(32px,27.726svh); }
 .view-overview .fallback-labels [data-anchor="guestbook"] { --anchor-x:calc(50% + 40.092svh);--anchor-y:59.361%;--anchor-width:max(32px,13.214svh);--anchor-height:max(32px,11.784svh); }
 .view-overview .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + 3.439svh);--anchor-y:42.175%;--anchor-width:max(32px,32.964svh);--anchor-height:max(32px,29.493svh); }
 .view-overview .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -13.306svh);--anchor-y:40.492%;--anchor-width:max(32px,6.619svh);--anchor-height:max(32px,5.894svh); }
@@ -13,7 +13,7 @@
 .view-work .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + 52.025svh);--anchor-y:71.238%;--anchor-width:max(32px,10.581svh);--anchor-height:max(32px,9.182svh); }
 .view-work .fallback-labels [data-anchor="lens"] { --anchor-x:calc(50% + 46.491svh);--anchor-y:64.097%;--anchor-width:max(32px,5.996svh);--anchor-height:max(32px,9.896svh); }
 .view-work .fallback-labels [data-anchor="mug"] { --anchor-x:calc(50% + 28.716svh);--anchor-y:65.836%;--anchor-width:max(32px,8.112svh);--anchor-height:max(32px,7.764svh); }
-.view-work .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 60.780svh);--anchor-y:97.274%;--anchor-width:max(32px,31.519svh);--anchor-height:max(32px,44.574svh); }
+.view-work .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 60.709svh);--anchor-y:97.791%;--anchor-width:max(32px,31.481svh);--anchor-height:max(32px,44.591svh); }
 .view-work .fallback-labels [data-anchor="guestbook"] { --anchor-x:calc(50% + 85.252svh);--anchor-y:72.337%;--anchor-width:max(32px,24.282svh);--anchor-height:max(32px,20.105svh); }
 .view-work .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + 20.012svh);--anchor-y:44.646%;--anchor-width:max(32px,48.962svh);--anchor-height:max(32px,40.264svh); }
 .view-work .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -2.259svh);--anchor-y:42.500%;--anchor-width:max(32px,9.088svh);--anchor-height:max(32px,8.256svh); }
@@ -24,7 +24,7 @@
 .view-photo .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + -9.462svh);--anchor-y:56.702%;--anchor-width:max(32px,16.096svh);--anchor-height:max(32px,12.537svh); }
 .view-photo .fallback-labels [data-anchor="lens"] { --anchor-x:calc(50% + -23.826svh);--anchor-y:50.058%;--anchor-width:max(32px,8.495svh);--anchor-height:max(32px,15.918svh); }
 .view-photo .fallback-labels [data-anchor="mug"] { --anchor-x:calc(50% + -55.407svh);--anchor-y:57.150%;--anchor-width:max(32px,16.441svh);--anchor-height:max(32px,12.259svh); }
-.view-photo .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 8.169svh);--anchor-y:101.466%;--anchor-width:max(32px,42.853svh);--anchor-height:max(32px,67.075svh); }
+.view-photo .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 8.160svh);--anchor-y:102.412%;--anchor-width:max(32px,42.798svh);--anchor-height:max(32px,67.156svh); }
 .view-photo .fallback-labels [data-anchor="guestbook"] { --anchor-x:calc(50% + 40.674svh);--anchor-y:46.871%;--anchor-width:max(32px,33.884svh);--anchor-height:max(32px,24.228svh); }
 .view-photo .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + -79.928svh);--anchor-y:24.532%;--anchor-width:max(32px,107.167svh);--anchor-height:max(32px,66.356svh); }
 .view-photo .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -138.097svh);--anchor-y:15.924%;--anchor-width:max(32px,30.195svh);--anchor-height:max(32px,15.741svh); }
@@ -34,7 +34,7 @@
 .view-overview .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + 12.828svh);--anchor-y:55.709%;--anchor-width:max(32px,3.919svh);--anchor-height:max(32px,3.791svh); }
 .view-overview .fallback-labels [data-anchor="lens"] { --anchor-x:calc(50% + 11.948svh);--anchor-y:53.344%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,3.994svh); }
 .view-overview .fallback-labels [data-anchor="mug"] { --anchor-x:calc(50% + 4.613svh);--anchor-y:54.033%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,3.791svh); }
-.view-overview .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 17.197svh);--anchor-y:66.678%;--anchor-width:max(32px,12.440svh);--anchor-height:max(32px,16.435svh); }
+.view-overview .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 17.188svh);--anchor-y:66.904%;--anchor-width:max(32px,12.434svh);--anchor-height:max(32px,16.440svh); }
 .view-overview .fallback-labels [data-anchor="guestbook"] { --anchor-x:calc(50% + 23.772svh);--anchor-y:55.551%;--anchor-width:max(32px,7.835svh);--anchor-height:max(32px,6.987svh); }
 .view-overview .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + 2.039svh);--anchor-y:45.360%;--anchor-width:max(32px,19.546svh);--anchor-height:max(32px,17.488svh); }
 .view-overview .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -7.890svh);--anchor-y:44.362%;--anchor-width:max(32px,3.925svh);--anchor-height:max(32px,3.791svh); }
@@ -43,7 +43,7 @@
 .view-work .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + 34.914svh);--anchor-y:64.253%;--anchor-width:max(32px,7.101svh);--anchor-height:max(32px,6.162svh); }
 .view-work .fallback-labels [data-anchor="lens"] { --anchor-x:calc(50% + 31.200svh);--anchor-y:59.460%;--anchor-width:max(32px,4.024svh);--anchor-height:max(32px,6.641svh); }
 .view-work .fallback-labels [data-anchor="mug"] { --anchor-x:calc(50% + 19.271svh);--anchor-y:60.627%;--anchor-width:max(32px,5.444svh);--anchor-height:max(32px,5.210svh); }
-.view-work .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 40.789svh);--anchor-y:81.725%;--anchor-width:max(32px,21.152svh);--anchor-height:max(32px,29.913svh); }
+.view-work .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 40.742svh);--anchor-y:82.072%;--anchor-width:max(32px,21.127svh);--anchor-height:max(32px,29.925svh); }
 .view-work .fallback-labels [data-anchor="guestbook"] { --anchor-x:calc(50% + 57.212svh);--anchor-y:64.990%;--anchor-width:max(32px,16.296svh);--anchor-height:max(32px,13.492svh); }
 .view-work .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + 13.430svh);--anchor-y:46.407%;--anchor-width:max(32px,32.858svh);--anchor-height:max(32px,27.021svh); }
 .view-work .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -1.516svh);--anchor-y:44.967%;--anchor-width:max(32px,6.099svh);--anchor-height:max(32px,5.541svh); }
@@ -54,7 +54,7 @@
 .view-photo .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + 7.586svh);--anchor-y:54.496%;--anchor-width:max(32px,10.879svh);--anchor-height:max(32px,8.411svh); }
 .view-photo .fallback-labels [data-anchor="lens"] { --anchor-x:calc(50% + -3.583svh);--anchor-y:50.039%;--anchor-width:max(32px,4.969svh);--anchor-height:max(32px,10.679svh); }
 .view-photo .fallback-labels [data-anchor="mug"] { --anchor-x:calc(50% + -23.290svh);--anchor-y:54.797%;--anchor-width:max(32px,10.140svh);--anchor-height:max(32px,8.224svh); }
-.view-photo .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 17.810svh);--anchor-y:84.527%;--anchor-width:max(32px,30.295svh);--anchor-height:max(32px,44.998svh); }
+.view-photo .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 17.791svh);--anchor-y:85.162%;--anchor-width:max(32px,30.254svh);--anchor-height:max(32px,45.053svh); }
 .view-photo .fallback-labels [data-anchor="guestbook"] { --anchor-x:calc(50% + 40.744svh);--anchor-y:47.901%;--anchor-width:max(32px,24.038svh);--anchor-height:max(32px,16.254svh); }
 .view-photo .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + -41.556svh);--anchor-y:32.915%;--anchor-width:max(32px,70.275svh);--anchor-height:max(32px,44.516svh); }
 .view-photo .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -77.204svh);--anchor-y:27.139%;--anchor-width:max(32px,18.589svh);--anchor-height:max(32px,10.560svh); }

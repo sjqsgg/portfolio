@@ -1,6 +1,7 @@
 import { chromium, expect } from '@playwright/test'
 import { createServer } from 'vite'
 import { readFile, writeFile } from 'node:fs/promises'
+import process from 'node:process'
 import { posterSources, digest } from './workstation-poster-sources.mjs'
 
 // Own the preview server and a fresh context: no stale build or saved layout
@@ -13,7 +14,7 @@ let browser
 const outputs = new Map()
 let css = '/* Generated together with the current scene posters. Run npm run posters:generate. */\n'
 try {
-  browser = await chromium.launch({ headless: true })
+  browser = await chromium.launch({ headless: true, channel: process.env.PLAYWRIGHT_CHANNEL || undefined })
   async function sceneReady(page) {
     await expect(page.locator('.workbench-canvas')).toHaveAttribute('data-state', 'ready', { timeout: 30000 })
     await expect(page.locator('.workbench-canvas')).toHaveAttribute('data-workstation-baseline', baseline.checkpoint)

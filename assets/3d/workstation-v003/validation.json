@@ -1,8 +1,8 @@
 {
   "valid": true,
-  "bytes": 13175276,
-  "triangles": 237871,
-  "meshCount": 191,
+  "bytes": 5498344,
+  "triangles": 107955,
+  "meshCount": 240,
   "desk": {
     "min": [
       -1.0250000953674316,
@@ -29,14 +29,14 @@
   },
   "computerTower": {
     "min": [
-      -0.9079939836169917,
-      0.059999906050929364,
-      -0.8311208976462012
+      -0.9079939418354374,
+      0.0599999528110946,
+      -0.830999970584784
     ],
     "max": [
-      -0.35400592746315934,
-      0.6800000444807535,
-      -0.51487900221379
+      -0.35400600499452956,
+      0.6800000673213531,
+      -0.5148790780859286
     ]
   },
   "leftSpeaker": {
@@ -131,6 +131,8 @@
     "0.74 m desk/counter height",
     "28 mm tabletops",
     "Round 04 computer tower envelope and speaker clearance",
+    "clean independently shaded computer components without photographic or normal maps",
+    "computer bay panels aligned to uprights",
     "stationary rack, badge peg, and guestbook stand"
   ]
 }

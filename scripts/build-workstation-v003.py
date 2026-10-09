@@ -218,9 +218,9 @@ def cube(name,pos,size,m,parent=root):
     b=ob.modifiers.new('Edge_radius','BEVEL');b.width=.001;b.segments=2
     return ob
 
-# Round 04 accepted source-derived case: its long glazed side faces the opening
-# camera. The source has been reduced and stylized in an isolated production
-# asset so this scene does not inherit the 1.875M-triangle Tripo source.
+# The accepted case envelope and long glazed side remain fixed. Its production
+# asset now contains clean, separately shaded internals built by
+# build-computer-case-production.py, without the generated photographic mesh.
 for name in ('Corner_Undercounter_Cabinet','Corner_Undercounter_Door'):
     ob=bpy.data.objects.get(name)
     if ob:bpy.data.objects.remove(ob,do_unlink=True)
@@ -236,7 +236,7 @@ for ob in imported_roots:
     world=ob.matrix_world.copy();ob.parent=root;ob.matrix_world=world
 tower=bpy.data.objects.get('Computer_Tower')
 if tower:
-    tower['round']='04';tower['role']='noninteractive source-derived computer tower'
+    tower['round']='04';tower['role']='noninteractive computer tower with simplified hard-surface internals'
     # These are the computer bay's side boards, attached to the inner faces of
     # its two 22 mm uprights. Their placement is independent of the case width.
     panel_thickness=.022
