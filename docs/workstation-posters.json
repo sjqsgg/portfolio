@@ -1,10 +1,10 @@
 {
   "version": 1,
   "checkpoint": "production-current-with-felt-board",
-  "generatedAt": "2026-10-08T20:42:45.447Z",
+  "generatedAt": "2026-10-09T09:24:51.275Z",
   "sources": {
     "docs/workstation-current.json": "2e14a130f8e7b3611ed062703252fc619d71144844d539cd303e62ce45e0c57e",
-    "public/models/workstation-v003.glb": "b6abe280a15f658e3c146467057294856e1e97b3ade9d6b5fc9e93641e0c5544",
+    "public/models/workstation-v003.glb": "5b729f8b4ac1328ad5fe1b4800f511c0864b90d9e87bc07385b59d27c405ef39",
     "public/models/board-pushpins.glb": "fd8eb595730171e84d0feabb59667c8696704c141d40c3015a66d511635cd15c",
     "src/portfolio/Workbench.jsx": "27ab458216c22898b86d9c02cfb35853cf209ccca628182a22f879e9d18a361d",
     "src/portfolio/sceneViews.js": "a90844e5477ea3eeab0a227833d24d08671648e9ac7049bd250cfc5ac7ae7fa5",
@@ -19,28 +19,28 @@
   },
   "outputs": {
     "public/images/workstation/overview-day.webp": {
-      "bytes": 88612,
-      "sha256": "c67e5a3ac2903c287ec5b303d01b7ab3d04163df02a9164fcf2116202130f1f6"
+      "bytes": 88780,
+      "sha256": "76d3725c6792bbda07bce55c9ad5e3693349834c0632a5d4e4f80d6e439c79f6"
     },
     "public/images/workstation/work-day.webp": {
-      "bytes": 93198,
-      "sha256": "71bbb10ed6b5f137885ee5fef42bab119fd965d4a8ee285143deda006295eb3e"
+      "bytes": 93532,
+      "sha256": "571c200f9d91e91c38488590d7cf4a16645aeabf2308f6be235997293635ca05"
     },
     "public/images/workstation/photo-day.webp": {
-      "bytes": 56040,
-      "sha256": "78be38b8963e8b19176169f29b408b2e4794fcfc48970c6413b1c6a656f14624"
+      "bytes": 56138,
+      "sha256": "e4075ce921884aa1176e5e5734b752c59123ef99b913f410dde0c4e40f9c4ba0"
     },
     "public/images/workstation/cover-day.webp": {
-      "bytes": 49438,
-      "sha256": "5437c1f6fc79bac06de769f7c76db44dc596fce576fdf25eea10f8808ed7b046"
+      "bytes": 49396,
+      "sha256": "88cad950b0e6e357a5bfbffa7082230df2d75a98fceb04166ec0a25a3bf712ac"
     },
     "public/images/workstation/overview-mobile.webp": {
-      "bytes": 27308,
-      "sha256": "0e7c2fc960abceb897e74621230f5be21f021d6318ca583bd72d4eb488b07c32"
+      "bytes": 27372,
+      "sha256": "d644e11799eb57d2f8b34175b127c0b4494d964d9c8ab0dc967160439dba522d"
     },
     "public/images/workstation/work-mobile.webp": {
-      "bytes": 26876,
-      "sha256": "79292ff03284e679e7e602ab070ba313f07fc7303eab3fb4de7593832a450c05"
+      "bytes": 27080,
+      "sha256": "63fc0c344654a113b32d882a89bf86338ec8a9384d790f540767508f537f013f"
     },
     "public/images/workstation/photo-mobile.webp": {
       "bytes": 20060,
