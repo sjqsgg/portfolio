@@ -10,11 +10,11 @@ import { loadBoardPinModel } from './boardPinModel'
 import { createComputerCaseControls } from './computerCaseControls'
 import { createLampIntro } from './lampIntro'
 
-export default function Workbench({ theme, toggleTheme, openCamera, onStatus, home, view, object, onView, onInspect, onBoard, resetKey, lookdev = false, onLookdevReady, entrancePhase = 'done', introKey = 0 }) {
+export default function Workbench({ theme, toggleTheme, openCamera, onStatus, home, view, object, onView, onInspect, resetKey, lookdev = false, onLookdevReady, entrancePhase = 'done', introKey = 0 }) {
   const host = useRef(null), controller = useRef(null)
   const navigate = useNavigate()
   const latest = useRef({})
-  latest.current = { theme, view, object, toggleTheme, openCamera, onView, onInspect, onBoard, onLookdevReady, entrancePhase }
+  latest.current = { theme, view, object, toggleTheme, openCamera, onView, onInspect, onLookdevReady, entrancePhase }
   useEffect(() => { controller.current?.setTheme(theme) }, [theme])
   useEffect(() => { controller.current?.compose(view, object) }, [view, object, resetKey])
   useEffect(() => { controller.current?.wake() }, [entrancePhase])
@@ -482,13 +482,19 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           pointer.set((event.clientX-rect.left)/rect.width*2-1, -(event.clientY-rect.top)/rect.height*2+1)
           raycaster.setFromCamera(pointer, camera)
           const intersection = raycaster.intersectObject(model, true)[0]
+          // The unfinished board and everything pinned to it are display-only.
+          let boardPart = intersection?.object
+          while (boardPart) {
+            if (boardPart === feltBoard?.assembly) return null
+            boardPart = boardPart.parent
+          }
           let node = intersection?.object
           while (node) {
             const name = node.name
             if (['Camera_Film', 'Camera_Mirrorless'].includes(name)) return 'camera'
             if (name === 'HOTSPOT_guestbook') return latest.current.view === 'photo' ? 'guestbook' : 'photo-area'
             if (['PHOTOGRAPHY_ZONE', 'AUDIO_ZONE', 'Ceramic_Mug_Base'].includes(name) || name.startsWith('Guestbook_') || (name === 'Rear_Counter_28mm' && intersection.point.x > -.3) || name === 'Rear_Right_Backing') return 'photo-area'
-            if ([FELT_BOARD_NAMES.assembly, FELT_BOARD_NAMES.frame, FELT_BOARD_NAMES.felt, FELT_BOARD_NAMES.tray, 'Felt_Board_Walnut_Back', 'Felt_Board_Fabric_Surface', 'Felt_Board_Groove_Shadow'].includes(name)) return 'board'
+            if ([FELT_BOARD_NAMES.assembly, FELT_BOARD_NAMES.frame, FELT_BOARD_NAMES.felt, FELT_BOARD_NAMES.tray, 'Felt_Board_Walnut_Back', 'Felt_Board_Fabric_Surface', 'Felt_Board_Groove_Shadow'].includes(name)) return null
             const actions = { HOTSPOT_monitor:'monitor', HOTSPOT_lamp:'lamp', HOTSPOT_cv:'cv', HOTSPOT_badge:'badge', HOTSPOT_map:'map' }
             if (actions[name]) return actions[name]
             node = node.parent
@@ -505,7 +511,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
         }
         renderer.domElement.onpointermove = event => {
           const hit = !transition && !latest.current.object && !event.buttons ? pick(event) : null
-          const labels = { monitor: latest.current.view === 'work' ? 'Projects' : 'Work & ideas', camera: 'Photography', lamp: 'Light', cv: 'View CV', badge: 'About me', guestbook: 'Leave a note', map: 'Explore map', board: 'Felt board', 'photo-area': latest.current.view === 'photo' ? '' : 'Photography' }
+          const labels = { monitor: latest.current.view === 'work' ? 'Projects' : 'Work & ideas', camera: 'Photography', lamp: 'Light', cv: 'View CV', badge: 'About me', guestbook: 'Leave a note', map: 'Explore map', 'photo-area': latest.current.view === 'photo' ? '' : 'Photography' }
           renderer.domElement.dataset.cursor = labels[hit] || ''
           renderer.domElement.style.cursor = labels[hit] ? 'pointer' : 'grab'
         }
@@ -518,7 +524,6 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           if (destination === 'monitor') { if (state.view !== 'work') state.onView('work'); else navigate('/projects') }
           else if (destination === 'camera') { if (state.view !== 'photo') state.onView('photo'); else state.openCamera(event) }
           else if (destination === 'photo-area') { if (state.view !== 'photo') state.onView('photo') }
-          else if (destination === 'board') state.onBoard()
           else if (destination === 'lamp') state.toggleTheme()
           else if (['cv', 'badge', 'guestbook'].includes(destination)) state.onInspect(destination)
           else if (destination === 'map') navigate('/projects/shanxi-map')

@@ -95,6 +95,8 @@ The live overview then plays a short lamp opening: the desk starts dim, the lamp
 
 Guestbook notes are local drafts. “Open in email” prepares a mailto link; the site does not send or publish notes.
 
+The unfinished felt board is currently display-only: clicking, tapping or keyboard navigation does not open it. The development-only `/?boardedit=1` route remains available for continuing its editor.
+
 ## Remaining editorial inputs
 
 The 19 existing photographs are divided into two replaceable editorial groups. Final series selection, titles, dates and captions are still editorial work; no camera settings or precise shoot dates have been invented. Shanxi Map uses the actual Figma concept visual, explicitly labeled as a concept study. No unverified live URL, GitHub URL or project outcome is published. The supplied CV is available in a preview lightbox with an original-PDF download; About downloads it directly.

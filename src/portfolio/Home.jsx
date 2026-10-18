@@ -73,7 +73,6 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey, onIniti
     return () => cancelAnimationFrame(frame)
   }, [documentOpen, boardOpen])
   function selectView(value) { setObject(null); setDocumentOpen(false); setView(value) }
-  function showBoard(event) { lastTrigger.current = event?.currentTarget || document.activeElement; setBoardOpen(true) }
   function inspect(value, event) {
     lastTrigger.current = event?.currentTarget || document.activeElement
     if (value === 'guestbook' && view !== 'photo') { selectView('photo'); return }
@@ -88,7 +87,6 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey, onIniti
     ['mug', 'Photography desk', () => selectView('photo')],
     ['audio', 'Photography shelves', () => selectView('photo')],
     ['guestbook', view === 'photo' ? 'Leave a note' : 'Photography book', event => inspect('guestbook', event)],
-    ['board', 'Open felt board', showBoard],
     ['lamp', `Desk lamp: switch to ${theme === 'day' ? 'night' : 'day'} mode`, toggleTheme],
     ...(view === 'work' && !lookdev ? [['cv', 'Curriculum vitae', event => inspect('cv', event)], ['badge', 'About me', event => inspect('badge', event)]] : []),
   ]
@@ -96,7 +94,7 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey, onIniti
     <h1 className="sr-only">Jiaqi Shi, software engineer & photographer</h1>
     <div className="workbench-stage">
       {(useStatic || status === 'error') && <picture className="workbench-poster"><source media="(max-width: 767px)" srcSet={assetPath(`/images/workstation/${view}-mobile.webp`)} /><img src={assetPath(`/images/workstation/${view}-day.webp`)} width="1440" height="1000" fetchPriority="high" onLoad={() => onInitialReady?.()} onError={() => onInitialReady?.()} alt="A pale wood workstation with lime-green cabinets, a yellow desk lamp, a felt board, cameras and speakers." /></picture>}
-      {!useStatic && <Suspense fallback={null}><Workbench theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} onStatus={setStatus} home={home} view={view} object={object} onView={selectView} onInspect={inspect} onBoard={showBoard} resetKey={resetKey} lookdev={lookdev} onLookdevReady={setLookdevApi} entrancePhase={entrancePhase} introKey={introKey} /></Suspense>}
+      {!useStatic && <Suspense fallback={null}><Workbench theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} onStatus={setStatus} home={home} view={view} object={object} onView={selectView} onInspect={inspect} resetKey={resetKey} lookdev={lookdev} onLookdevReady={setLookdevApi} entrancePhase={entrancePhase} introKey={introKey} /></Suspense>}
     </div>
     {!useStatic && <div className="lamp-intro-labels" aria-hidden="true">
       <span className="lamp-intro-label" data-intro-anchor="monitor">Projects <span>↗</span></span>
@@ -104,6 +102,8 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey, onIniti
     </div>}
     {!useStatic && status === 'ready' && new URLSearchParams(window.location.search).get('lampintro') === '1' && <button className="lamp-intro-replay" onClick={() => { setView('overview'); setIntroKey(value => value + 1) }}>Replay opening ↻</button>}
     <div className={`scene-hotspots ${useStatic || status !== 'ready' ? 'fallback-labels' : ''}`} aria-label="Objects on the desk">
+      {/* Keep its projection marker, but no public control while the board is unfinished. */}
+      <span className="scene-hotspot" data-anchor="board" aria-hidden="true" style={{ pointerEvents: 'none' }} />
       {hotspots.map(([id, label, action]) => typeof action === 'string'
         ? <Link key={id} className="scene-hotspot" data-anchor={id} aria-label={label} to={action}><span className="sr-only">{label}</span></Link>
         : <button key={id} className="scene-hotspot" data-anchor={id} aria-label={label} onClick={action}><span className="sr-only">{label}</span></button>)}

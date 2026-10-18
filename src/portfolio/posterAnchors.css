@@ -1,4 +1,5 @@
 /* Generated together with the current scene posters. Run npm run posters:generate. */
+.view-overview .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + 3.439svh);--anchor-y:42.175%;--anchor-width:max(32px,32.964svh);--anchor-height:max(32px,29.493svh); }
 .view-overview .fallback-labels [data-anchor="monitor"] { --anchor-x:calc(50% + -31.485svh);--anchor-y:53.966%;--anchor-width:max(32px,25.541svh);--anchor-height:max(32px,24.908svh); }
 .view-overview .fallback-labels [data-anchor="camera"] { --anchor-x:calc(50% + 13.291svh);--anchor-y:57.545%;--anchor-width:max(32px,7.139svh);--anchor-height:max(32px,6.561svh); }
 .view-overview .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + 21.635svh);--anchor-y:59.629%;--anchor-width:max(32px,6.609svh);--anchor-height:max(32px,5.612svh); }
@@ -6,8 +7,8 @@
 .view-overview .fallback-labels [data-anchor="mug"] { --anchor-x:calc(50% + 7.779svh);--anchor-y:56.801%;--anchor-width:max(32px,5.480svh);--anchor-height:max(32px,5.084svh); }
 .view-overview .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 28.987svh);--anchor-y:78.508%;--anchor-width:max(32px,20.970svh);--anchor-height:max(32px,27.726svh); }
 .view-overview .fallback-labels [data-anchor="guestbook"] { --anchor-x:calc(50% + 40.092svh);--anchor-y:59.361%;--anchor-width:max(32px,13.214svh);--anchor-height:max(32px,11.784svh); }
-.view-overview .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + 3.439svh);--anchor-y:42.175%;--anchor-width:max(32px,32.964svh);--anchor-height:max(32px,29.493svh); }
 .view-overview .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -13.306svh);--anchor-y:40.492%;--anchor-width:max(32px,6.619svh);--anchor-height:max(32px,5.894svh); }
+.view-work .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + 20.012svh);--anchor-y:44.646%;--anchor-width:max(32px,48.962svh);--anchor-height:max(32px,40.264svh); }
 .view-work .fallback-labels [data-anchor="monitor"] { --anchor-x:calc(50% + -28.466svh);--anchor-y:63.878%;--anchor-width:max(32px,41.094svh);--anchor-height:max(32px,41.872svh); }
 .view-work .fallback-labels [data-anchor="camera"] { --anchor-x:calc(50% + 37.906svh);--anchor-y:67.451%;--anchor-width:max(32px,10.794svh);--anchor-height:max(32px,10.321svh); }
 .view-work .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + 52.025svh);--anchor-y:71.238%;--anchor-width:max(32px,10.581svh);--anchor-height:max(32px,9.182svh); }
@@ -15,10 +16,10 @@
 .view-work .fallback-labels [data-anchor="mug"] { --anchor-x:calc(50% + 28.716svh);--anchor-y:65.836%;--anchor-width:max(32px,8.112svh);--anchor-height:max(32px,7.764svh); }
 .view-work .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 60.709svh);--anchor-y:97.791%;--anchor-width:max(32px,31.481svh);--anchor-height:max(32px,44.591svh); }
 .view-work .fallback-labels [data-anchor="guestbook"] { --anchor-x:calc(50% + 85.252svh);--anchor-y:72.337%;--anchor-width:max(32px,24.282svh);--anchor-height:max(32px,20.105svh); }
-.view-work .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + 20.012svh);--anchor-y:44.646%;--anchor-width:max(32px,48.962svh);--anchor-height:max(32px,40.264svh); }
 .view-work .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -2.259svh);--anchor-y:42.500%;--anchor-width:max(32px,9.088svh);--anchor-height:max(32px,8.256svh); }
 .view-work .fallback-labels [data-anchor="cv"] { --anchor-x:calc(50% + 2.295svh);--anchor-y:36.332%;--anchor-width:max(32px,5.628svh);--anchor-height:max(32px,9.898svh); }
 .view-work .fallback-labels [data-anchor="badge"] { --anchor-x:calc(50% + 15.022svh);--anchor-y:39.828%;--anchor-width:max(32px,3.795svh);--anchor-height:max(32px,5.587svh); }
+.view-photo .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + -79.928svh);--anchor-y:24.532%;--anchor-width:max(32px,107.167svh);--anchor-height:max(32px,66.356svh); }
 .view-photo .fallback-labels [data-anchor="monitor"] { --anchor-x:calc(50% + -281.200svh);--anchor-y:59.964%;--anchor-width:max(32px,427.319svh);--anchor-height:max(32px,176.959svh); }
 .view-photo .fallback-labels [data-anchor="camera"] { --anchor-x:calc(50% + -36.340svh);--anchor-y:55.688%;--anchor-width:max(32px,19.290svh);--anchor-height:max(32px,15.579svh); }
 .view-photo .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + -9.462svh);--anchor-y:56.702%;--anchor-width:max(32px,16.096svh);--anchor-height:max(32px,12.537svh); }
@@ -26,9 +27,9 @@
 .view-photo .fallback-labels [data-anchor="mug"] { --anchor-x:calc(50% + -55.407svh);--anchor-y:57.150%;--anchor-width:max(32px,16.441svh);--anchor-height:max(32px,12.259svh); }
 .view-photo .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 8.160svh);--anchor-y:102.412%;--anchor-width:max(32px,42.798svh);--anchor-height:max(32px,67.156svh); }
 .view-photo .fallback-labels [data-anchor="guestbook"] { --anchor-x:calc(50% + 40.674svh);--anchor-y:46.871%;--anchor-width:max(32px,33.884svh);--anchor-height:max(32px,24.228svh); }
-.view-photo .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + -79.928svh);--anchor-y:24.532%;--anchor-width:max(32px,107.167svh);--anchor-height:max(32px,66.356svh); }
 .view-photo .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -138.097svh);--anchor-y:15.924%;--anchor-width:max(32px,30.195svh);--anchor-height:max(32px,15.741svh); }
 @media (max-width:767px) {
+.view-overview .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + 1.673svh);--anchor-y:46.194%;--anchor-width:max(32px,16.036svh);--anchor-height:max(32px,14.347svh); }
 .view-overview .fallback-labels [data-anchor="monitor"] { --anchor-x:calc(50% + -15.316svh);--anchor-y:51.929%;--anchor-width:max(32px,12.425svh);--anchor-height:max(32px,12.117svh); }
 .view-overview .fallback-labels [data-anchor="camera"] { --anchor-x:calc(50% + 6.466svh);--anchor-y:53.670%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,3.791svh); }
 .view-overview .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + 10.525svh);--anchor-y:54.684%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,3.791svh); }
@@ -36,8 +37,8 @@
 .view-overview .fallback-labels [data-anchor="mug"] { --anchor-x:calc(50% + 3.784svh);--anchor-y:53.309%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,3.791svh); }
 .view-overview .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 14.101svh);--anchor-y:63.868%;--anchor-width:max(32px,10.201svh);--anchor-height:max(32px,13.488svh); }
 .view-overview .fallback-labels [data-anchor="guestbook"] { --anchor-x:calc(50% + 19.503svh);--anchor-y:54.554%;--anchor-width:max(32px,6.428svh);--anchor-height:max(32px,5.732svh); }
-.view-overview .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + 1.673svh);--anchor-y:46.194%;--anchor-width:max(32px,16.036svh);--anchor-height:max(32px,14.347svh); }
 .view-overview .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -6.473svh);--anchor-y:45.375%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,3.791svh); }
+.view-work .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + 13.430svh);--anchor-y:46.407%;--anchor-width:max(32px,32.858svh);--anchor-height:max(32px,27.021svh); }
 .view-work .fallback-labels [data-anchor="monitor"] { --anchor-x:calc(50% + -19.104svh);--anchor-y:59.314%;--anchor-width:max(32px,27.578svh);--anchor-height:max(32px,28.100svh); }
 .view-work .fallback-labels [data-anchor="camera"] { --anchor-x:calc(50% + 25.439svh);--anchor-y:61.711%;--anchor-width:max(32px,7.244svh);--anchor-height:max(32px,6.926svh); }
 .view-work .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + 34.914svh);--anchor-y:64.253%;--anchor-width:max(32px,7.101svh);--anchor-height:max(32px,6.162svh); }
@@ -45,10 +46,10 @@
 .view-work .fallback-labels [data-anchor="mug"] { --anchor-x:calc(50% + 19.271svh);--anchor-y:60.627%;--anchor-width:max(32px,5.444svh);--anchor-height:max(32px,5.210svh); }
 .view-work .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 40.742svh);--anchor-y:82.072%;--anchor-width:max(32px,21.127svh);--anchor-height:max(32px,29.925svh); }
 .view-work .fallback-labels [data-anchor="guestbook"] { --anchor-x:calc(50% + 57.212svh);--anchor-y:64.990%;--anchor-width:max(32px,16.296svh);--anchor-height:max(32px,13.492svh); }
-.view-work .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + 13.430svh);--anchor-y:46.407%;--anchor-width:max(32px,32.858svh);--anchor-height:max(32px,27.021svh); }
 .view-work .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -1.516svh);--anchor-y:44.967%;--anchor-width:max(32px,6.099svh);--anchor-height:max(32px,5.541svh); }
 .view-work .fallback-labels [data-anchor="cv"] { --anchor-x:calc(50% + 1.540svh);--anchor-y:40.828%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,6.642svh); }
 .view-work .fallback-labels [data-anchor="badge"] { --anchor-x:calc(50% + 10.081svh);--anchor-y:43.173%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,3.791svh); }
+.view-photo .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + -41.556svh);--anchor-y:32.915%;--anchor-width:max(32px,70.275svh);--anchor-height:max(32px,44.516svh); }
 .view-photo .fallback-labels [data-anchor="monitor"] { --anchor-x:calc(50% + -156.613svh);--anchor-y:56.684%;--anchor-width:max(32px,250.550svh);--anchor-height:max(32px,118.715svh); }
 .view-photo .fallback-labels [data-anchor="camera"] { --anchor-x:calc(50% + -10.359svh);--anchor-y:53.816%;--anchor-width:max(32px,11.737svh);--anchor-height:max(32px,10.451svh); }
 .view-photo .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + 7.586svh);--anchor-y:54.496%;--anchor-width:max(32px,10.879svh);--anchor-height:max(32px,8.411svh); }
@@ -56,6 +57,5 @@
 .view-photo .fallback-labels [data-anchor="mug"] { --anchor-x:calc(50% + -23.290svh);--anchor-y:54.797%;--anchor-width:max(32px,10.140svh);--anchor-height:max(32px,8.224svh); }
 .view-photo .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 17.791svh);--anchor-y:85.162%;--anchor-width:max(32px,30.254svh);--anchor-height:max(32px,45.053svh); }
 .view-photo .fallback-labels [data-anchor="guestbook"] { --anchor-x:calc(50% + 40.744svh);--anchor-y:47.901%;--anchor-width:max(32px,24.038svh);--anchor-height:max(32px,16.254svh); }
-.view-photo .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + -41.556svh);--anchor-y:32.915%;--anchor-width:max(32px,70.275svh);--anchor-height:max(32px,44.516svh); }
 .view-photo .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -77.204svh);--anchor-y:27.139%;--anchor-width:max(32px,18.589svh);--anchor-height:max(32px,10.560svh); }
 }

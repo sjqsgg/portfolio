@@ -1,12 +1,12 @@
 {
   "version": 1,
   "checkpoint": "production-current-with-felt-board",
-  "generatedAt": "2026-10-18T20:38:15.617Z",
+  "generatedAt": "2026-10-18T20:45:16.734Z",
   "sources": {
     "docs/workstation-current.json": "69054a60fddf2c4101729bd5e20325056383a1c3677cbb6f2d77465bd4186dcf",
     "public/models/workstation-v003.glb": "8b126a0313daa5d01c47da94df88a84e8b9ef1711a0518744fec22b9faff39a1",
     "public/models/board-pushpins.glb": "fd8eb595730171e84d0feabb59667c8696704c141d40c3015a66d511635cd15c",
-    "src/portfolio/Workbench.jsx": "66aefb914f74e81298c6bd1ba7abee060e39d9e333d90447e028b39ef51df4fe",
+    "src/portfolio/Workbench.jsx": "b5c27d46a34d9d97a1e87a56b526bd003732ad1a7575be68d98000bdbba94774",
     "src/portfolio/lampIntro.js": "bdf8720542a3741684ae37d0f254ddca406ad92d8877d69445a75b3970ca9f23",
     "src/portfolio/computerCaseControls.js": "9f016c46e688abc35682e066e91721c14363e10ba5d383c1652cc6a23aa183bf",
     "src/portfolio/sceneViews.js": "3bfa1dc2cf703f7abd801d90b6648d14be861b0cec6d274a60384d83bcbbefd6",
@@ -50,7 +50,7 @@
     },
     "src/portfolio/posterAnchors.css": {
       "bytes": 10500,
-      "sha256": "4f4b7784bc967ea9f46792c0fb01f3b9296af8824b381dd799f380574d26bf91"
+      "sha256": "4d4e92adbde98ff100ccb56112a2f33b155afebcdc8add997fa9a1277151e487"
     }
   }
 }
