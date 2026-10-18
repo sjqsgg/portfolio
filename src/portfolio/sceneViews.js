@@ -1,6 +1,6 @@
 // Preset compositions in glTF coordinates (meters, Y up). Free orbit remains available.
 export const sceneViews = {
-  overview: { position: [2.75, 2.5, 3.85], target: [-.04, 1.12, -.05], fov: 25, mobileFov: 41 },
+  overview: { position: [2.75, 2.5, 3.85], target: [-.04, 1.12, -.05], fov: 25, mobileFov: 49 },
   work: { position: [.75, 1.8, 1.65], target: [-.58, 1.09, -.28], fov: 37, mobileFov: 53 },
   photo: { position: [.28, 1.10, .78], target: [.28, .84, -.66], mobilePosition: [.10, 1.10, .78], mobileTarget: [.10, .84, -.66], fov: 34, mobileFov: 49 },
 }

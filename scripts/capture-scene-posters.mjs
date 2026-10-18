@@ -21,6 +21,7 @@ try {
   }
   async function settled(page) {
     await expect(page.locator('.site-loader')).toHaveCount(0, { timeout: 30000 })
+    await expect(page.locator('.workbench-canvas')).toHaveAttribute('data-lamp-intro', 'done', { timeout: 20000 })
     await expect(page.locator('.workbench-canvas')).toHaveAttribute('data-moving', 'false', { timeout: 10000 })
   }
   async function capture(page, name) {
@@ -39,7 +40,7 @@ try {
   for (const mobile of [false, true]) {
     const page = await browser.newPage({ viewport: mobile ? { width: 390, height: 844 } : { width: 1440, height: 1000 }, reducedMotion: 'no-preference' })
     const variant = mobile ? 'mobile' : 'day'
-    await page.goto('http://127.0.0.1:5192/')
+    await page.goto('http://127.0.0.1:5192/?lampintro=0')
     await sceneReady(page)
     await settled(page)
     if (mobile) css += '@media (max-width:767px) {\n'

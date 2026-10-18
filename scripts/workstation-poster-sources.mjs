@@ -6,6 +6,7 @@ export const posterSourceFiles = [
   'public/models/workstation-v003.glb',
   'public/models/board-pushpins.glb',
   'src/portfolio/Workbench.jsx',
+  'src/portfolio/lampIntro.js',
   'src/portfolio/computerCaseControls.js',
   'src/portfolio/sceneViews.js',
   'src/portfolio/feltBoard.js',

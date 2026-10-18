@@ -14,6 +14,7 @@ import './portfolio/posterAnchors.css'
 import './portfolio/reference-layout.css'
 import './portfolio/motion.css'
 import './portfolio/entrance.css'
+import './portfolio/lamp-intro.css'
 
 import Photography from './portfolio/Photography'
 import Series from './portfolio/Series'

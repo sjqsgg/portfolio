@@ -29,15 +29,15 @@
 .view-photo .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + -79.928svh);--anchor-y:24.532%;--anchor-width:max(32px,107.167svh);--anchor-height:max(32px,66.356svh); }
 .view-photo .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -138.097svh);--anchor-y:15.924%;--anchor-width:max(32px,30.195svh);--anchor-height:max(32px,15.741svh); }
 @media (max-width:767px) {
-.view-overview .fallback-labels [data-anchor="monitor"] { --anchor-x:calc(50% + -18.669svh);--anchor-y:52.352%;--anchor-width:max(32px,15.145svh);--anchor-height:max(32px,14.769svh); }
-.view-overview .fallback-labels [data-anchor="camera"] { --anchor-x:calc(50% + 7.881svh);--anchor-y:54.474%;--anchor-width:max(32px,4.233svh);--anchor-height:max(32px,3.890svh); }
-.view-overview .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + 12.828svh);--anchor-y:55.709%;--anchor-width:max(32px,3.919svh);--anchor-height:max(32px,3.791svh); }
-.view-overview .fallback-labels [data-anchor="lens"] { --anchor-x:calc(50% + 11.948svh);--anchor-y:53.344%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,3.994svh); }
-.view-overview .fallback-labels [data-anchor="mug"] { --anchor-x:calc(50% + 4.613svh);--anchor-y:54.033%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,3.791svh); }
-.view-overview .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 17.188svh);--anchor-y:66.904%;--anchor-width:max(32px,12.434svh);--anchor-height:max(32px,16.440svh); }
-.view-overview .fallback-labels [data-anchor="guestbook"] { --anchor-x:calc(50% + 23.772svh);--anchor-y:55.551%;--anchor-width:max(32px,7.835svh);--anchor-height:max(32px,6.987svh); }
-.view-overview .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + 2.039svh);--anchor-y:45.360%;--anchor-width:max(32px,19.546svh);--anchor-height:max(32px,17.488svh); }
-.view-overview .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -7.890svh);--anchor-y:44.362%;--anchor-width:max(32px,3.925svh);--anchor-height:max(32px,3.791svh); }
+.view-overview .fallback-labels [data-anchor="monitor"] { --anchor-x:calc(50% + -15.316svh);--anchor-y:51.929%;--anchor-width:max(32px,12.425svh);--anchor-height:max(32px,12.117svh); }
+.view-overview .fallback-labels [data-anchor="camera"] { --anchor-x:calc(50% + 6.466svh);--anchor-y:53.670%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,3.791svh); }
+.view-overview .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + 10.525svh);--anchor-y:54.684%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,3.791svh); }
+.view-overview .fallback-labels [data-anchor="lens"] { --anchor-x:calc(50% + 9.802svh);--anchor-y:52.744%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,3.791svh); }
+.view-overview .fallback-labels [data-anchor="mug"] { --anchor-x:calc(50% + 3.784svh);--anchor-y:53.309%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,3.791svh); }
+.view-overview .fallback-labels [data-anchor="audio"] { --anchor-x:calc(50% + 14.101svh);--anchor-y:63.868%;--anchor-width:max(32px,10.201svh);--anchor-height:max(32px,13.488svh); }
+.view-overview .fallback-labels [data-anchor="guestbook"] { --anchor-x:calc(50% + 19.503svh);--anchor-y:54.554%;--anchor-width:max(32px,6.428svh);--anchor-height:max(32px,5.732svh); }
+.view-overview .fallback-labels [data-anchor="board"] { --anchor-x:calc(50% + 1.673svh);--anchor-y:46.194%;--anchor-width:max(32px,16.036svh);--anchor-height:max(32px,14.347svh); }
+.view-overview .fallback-labels [data-anchor="lamp"] { --anchor-x:calc(50% + -6.473svh);--anchor-y:45.375%;--anchor-width:max(32px,3.791svh);--anchor-height:max(32px,3.791svh); }
 .view-work .fallback-labels [data-anchor="monitor"] { --anchor-x:calc(50% + -19.104svh);--anchor-y:59.314%;--anchor-width:max(32px,27.578svh);--anchor-height:max(32px,28.100svh); }
 .view-work .fallback-labels [data-anchor="camera"] { --anchor-x:calc(50% + 25.439svh);--anchor-y:61.711%;--anchor-width:max(32px,7.244svh);--anchor-height:max(32px,6.926svh); }
 .view-work .fallback-labels [data-anchor="film"] { --anchor-x:calc(50% + 34.914svh);--anchor-y:64.253%;--anchor-width:max(32px,7.101svh);--anchor-height:max(32px,6.162svh); }

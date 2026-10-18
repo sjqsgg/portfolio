@@ -91,6 +91,8 @@ The generator starts its own current-source preview on port 5192 and a fresh Pla
 
 The first Home visit displays black `Loading...` lettering on the same white canvas. Letters trigger one another at a contact angle, then rebuild with a damped angular spring while the real scene prepares. Only the loading text is visible while preparing. After the first rendered frame is ready, the current letter cycle finishes upright before starting the same curved transition used between pages, revealing the normal overview without a camera zoom. The former `intro-preview` delay is removed. Reduced motion skips the entrance. See `docs/workstation-entrance.md`.
 
+The live overview then plays a short lamp opening: the desk starts dim, the lamp turns toward the monitor and cameras in turn, and the room lights come up. Touch or keyboard interaction skips it. Preview with `/?lampintro=1` to expose a replay button. See `docs/lamp-intro.md` for timing, mobile framing and fallback behavior.
+
 Guestbook notes are local drafts. “Open in email” prepares a mailto link; the site does not send or publish notes.
 
 ## Remaining editorial inputs

@@ -41,6 +41,7 @@ function DeskDocument({ kind, onClose }) {
 export default function Home({ theme, toggleTheme, openCamera, resetKey, onInitialReady, entrancePhase = 'done' }) {
   const reduced = useReducedMotion()
   const [status, setStatus] = useState('loading')
+  const [introKey, setIntroKey] = useState(0)
   const [view, setView] = useState('overview')
   const [object, setObject] = useState(null)
   const [boardOpen, setBoardOpen] = useState(() => import.meta.env.DEV && new URLSearchParams(window.location.search).get('boardedit')==='1')
@@ -95,8 +96,13 @@ export default function Home({ theme, toggleTheme, openCamera, resetKey, onIniti
     <h1 className="sr-only">Jiaqi Shi, software engineer & photographer</h1>
     <div className="workbench-stage">
       {(useStatic || status === 'error') && <picture className="workbench-poster"><source media="(max-width: 767px)" srcSet={assetPath(`/images/workstation/${view}-mobile.webp`)} /><img src={assetPath(`/images/workstation/${view}-day.webp`)} width="1440" height="1000" fetchPriority="high" onLoad={() => onInitialReady?.()} onError={() => onInitialReady?.()} alt="A pale wood workstation with lime-green cabinets, a yellow desk lamp, a felt board, cameras and speakers." /></picture>}
-      {!useStatic && <Suspense fallback={null}><Workbench theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} onStatus={setStatus} home={home} view={view} object={object} onView={selectView} onInspect={inspect} onBoard={showBoard} resetKey={resetKey} lookdev={lookdev} onLookdevReady={setLookdevApi} /></Suspense>}
+      {!useStatic && <Suspense fallback={null}><Workbench theme={theme} toggleTheme={toggleTheme} openCamera={openCamera} onStatus={setStatus} home={home} view={view} object={object} onView={selectView} onInspect={inspect} onBoard={showBoard} resetKey={resetKey} lookdev={lookdev} onLookdevReady={setLookdevApi} entrancePhase={entrancePhase} introKey={introKey} /></Suspense>}
     </div>
+    {!useStatic && <div className="lamp-intro-labels" aria-hidden="true">
+      <span className="lamp-intro-label" data-intro-anchor="monitor">Projects <span>↗</span></span>
+      <span className="lamp-intro-label" data-intro-anchor="camera">Photography <span>↗</span></span>
+    </div>}
+    {!useStatic && status === 'ready' && new URLSearchParams(window.location.search).get('lampintro') === '1' && <button className="lamp-intro-replay" onClick={() => { setView('overview'); setIntroKey(value => value + 1) }}>Replay opening ↻</button>}
     <div className={`scene-hotspots ${useStatic || status !== 'ready' ? 'fallback-labels' : ''}`} aria-label="Objects on the desk">
       {hotspots.map(([id, label, action]) => typeof action === 'string'
         ? <Link key={id} className="scene-hotspot" data-anchor={id} aria-label={label} to={action}><span className="sr-only">{label}</span></Link>

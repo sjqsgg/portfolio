@@ -8,17 +8,20 @@ import { createBoardObjects } from './boardObjects'
 import { getBoardObjects, subscribeBoardObjects } from './boardObjectsStore'
 import { loadBoardPinModel } from './boardPinModel'
 import { createComputerCaseControls } from './computerCaseControls'
+import { createLampIntro } from './lampIntro'
 
-export default function Workbench({ theme, toggleTheme, openCamera, onStatus, home, view, object, onView, onInspect, onBoard, resetKey, lookdev = false, onLookdevReady }) {
+export default function Workbench({ theme, toggleTheme, openCamera, onStatus, home, view, object, onView, onInspect, onBoard, resetKey, lookdev = false, onLookdevReady, entrancePhase = 'done', introKey = 0 }) {
   const host = useRef(null), controller = useRef(null)
   const navigate = useNavigate()
   const latest = useRef({})
-  latest.current = { theme, view, object, toggleTheme, openCamera, onView, onInspect, onBoard, onLookdevReady }
+  latest.current = { theme, view, object, toggleTheme, openCamera, onView, onInspect, onBoard, onLookdevReady, entrancePhase }
   useEffect(() => { controller.current?.setTheme(theme) }, [theme])
   useEffect(() => { controller.current?.compose(view, object) }, [view, object, resetKey])
+  useEffect(() => { controller.current?.wake() }, [entrancePhase])
+  useEffect(() => { if (introKey) controller.current?.replayIntro() }, [introKey])
   useEffect(() => {
     const element = host.current, homeElement = home.current, abort = new AbortController()
-    let disposed = false, renderer, scene, model, observer, controls, environment, frame = 0, prepared = false, announcedReady = false
+    let disposed = false, renderer, scene, model, observer, controls, environment, frame = 0, prepared = false, announcedReady = false, lampIntro
     const cleanups = []
     function disposeObject(root) {
       const geometries = new Set(), materials = new Set(), textures = new Set()
@@ -31,7 +34,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
       })
       textures.forEach(x => x.dispose()); materials.forEach(x => x.dispose()); geometries.forEach(x => x.dispose())
     }
-    const fail = () => { if (!disposed) { prepared = false; cancelAnimationFrame(frame); frame = 0; element.dataset.state = 'error'; onStatus('error') } }
+    const fail = () => { if (!disposed) { lampIntro?.finish(); prepared = false; cancelAnimationFrame(frame); frame = 0; element.dataset.state = 'error'; onStatus('error') } }
     const timer = setTimeout(() => { abort.abort(); fail() }, 25000)
     onStatus('loading')
     async function start() {
@@ -157,6 +160,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           return homeElement.clientWidth < 768 ? sceneViews[id].mobileFov : sceneViews[id].fov
         }
         function compose(id, selected) {
+          lampIntro?.finish()
           computerFocused = false
           const spec = sceneViews[id], mobile = homeElement.clientWidth < 768
           const position = mobile && spec.mobilePosition ? spec.mobilePosition : spec.position
@@ -204,11 +208,20 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
             label.style.visibility = point.z > 1 ? 'hidden' : ''
             label.style.opacity = transition || latest.current.object ? '0' : ''
           })
+          homeElement.querySelectorAll('[data-intro-anchor]').forEach(label => {
+            const anchor = homeElement.querySelector(`[data-anchor="${label.dataset.introAnchor}"]`)
+            if (!anchor) return
+            const x = Number.parseFloat(anchor.style.getPropertyValue('--anchor-x'))
+            const y = Number.parseFloat(anchor.style.getPropertyValue('--anchor-y'))
+            label.style.left = `${Math.max(90, Math.min(box.width - 90, x))}px`
+            label.style.top = `${Math.max(200, Math.min(box.height - 150, y + 55))}px`
+          })
         }
 
         function tick(now) {
           frame = 0
           if (disposed || !prepared) return
+          const introPlaying = lampIntro?.tick(now, latest.current.entrancePhase === 'done')
           if (transition) {
             const t = Math.min(1, (now-transition.start)/transition.duration)
             const e = ease(t)
@@ -233,7 +246,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
             announcedReady = true; clearTimeout(timer)
             element.dataset.state = 'ready'; onStatus('ready')
           }
-          if (transition) render()
+          if (transition || introPlaying) render()
         }
         function render() { if (!disposed && prepared && !frame && !document.hidden) frame = requestAnimationFrame(tick) }
         function fit() {
@@ -249,6 +262,7 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           render()
         }
         function setTheme(value) {
+          lampIntro?.finish()
           const night = value === 'night'
           ambient.intensity = night ? .3 : .85; key.intensity = night ? .5 : 3; fill.intensity = night ? .3 : .65
           practical.intensity = night ? 2.2 : 0; scene.environmentIntensity = night ? .32 : .75
@@ -434,8 +448,30 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
         }
         element.dataset.workstationBaseline = workstationCurrent.checkpoint
         model.updateMatrixWorld(true)
-        controller.current = { setTheme, compose, lookdev: lookdevApi }
+        controller.current = { setTheme, compose, lookdev: lookdevApi, wake: render, replayIntro: () => { lampIntro?.replay(); render() } }
         setTheme(latest.current.theme); fit()
+        if (!lookdev && latest.current.view === 'overview') {
+          lampIntro = createLampIntro(THREE, {
+            model, scene, home: homeElement, element, lighting: { ambient, key, fill, practical },
+            restore: () => setTheme(latest.current.theme),
+            replay: new URLSearchParams(window.location.search).get('lampintro') === '1',
+            skip: import.meta.env.DEV && new URLSearchParams(window.location.search).get('lampintro') === '0',
+          })
+          lampIntro?.arm()
+          const interruptIntro = event => {
+            if (event.type === 'keydown' && !['Tab', 'Enter', ' ', 'Escape'].includes(event.key)) return
+            lampIntro?.finish(); render()
+          }
+          homeElement.addEventListener('pointerdown', interruptIntro, { capture: true })
+          homeElement.addEventListener('keydown', interruptIntro, { capture: true })
+          homeElement.addEventListener('wheel', interruptIntro, { passive: true, capture: true })
+          cleanups.push(() => {
+            homeElement.removeEventListener('pointerdown', interruptIntro, { capture: true })
+            homeElement.removeEventListener('keydown', interruptIntro, { capture: true })
+            homeElement.removeEventListener('wheel', interruptIntro, { capture: true })
+            lampIntro?.dispose()
+          })
+        }
         await renderer.compileAsync(scene, camera)
         if (disposed || abort.signal.aborted) return
         prepared = true; controls.addEventListener('change', render)
@@ -487,7 +523,8 @@ export default function Workbench({ theme, toggleTheme, openCamera, onStatus, ho
           else if (['cv', 'badge', 'guestbook'].includes(destination)) state.onInspect(destination)
           else if (destination === 'map') navigate('/projects/shanxi-map')
         }
-        document.addEventListener('visibilitychange', render); cleanups.push(() => document.removeEventListener('visibilitychange', render))
+        const visibilityChanged = () => { if (document.hidden) lampIntro?.pause(); else render() }
+        document.addEventListener('visibilitychange', visibilityChanged); cleanups.push(() => document.removeEventListener('visibilitychange', visibilityChanged))
         observer = new ResizeObserver(fit); observer.observe(element)
         element.dataset.moving = 'false'
         render()

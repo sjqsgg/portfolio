@@ -1,0 +1,42 @@
+/* The canvas stays transparent: this dims its surrounding space with the scene. */
+.immersive-home[data-lamp-intro] {
+  background:color-mix(in srgb, #050709 calc(var(--lamp-darkness, 0) * 100%), var(--canvas));
+}
+html:has(.home[data-lamp-intro]:not([data-lamp-intro="done"])) .canvas-identity,
+html:has(.home[data-lamp-intro]:not([data-lamp-intro="done"])) .canvas-base,
+html:has(.home[data-lamp-intro]:not([data-lamp-intro="done"])) .canvas-revert {
+  color:color-mix(in srgb, #eef1f2 calc(var(--lamp-ui-darkness, 0) * 100%), var(--text));
+}
+html:has(.home[data-lamp-intro]:not([data-lamp-intro="done"])) .canvas-nav,
+html:has(.home[data-lamp-intro]:not([data-lamp-intro="done"])) .canvas-base { background:transparent; }
+html:has(.home[data-lamp-intro]:not([data-lamp-intro="done"])) .canvas-nav a,
+html:has(.home[data-lamp-intro]:not([data-lamp-intro="done"])) .identity-link>.meta,
+html:has(.home[data-lamp-intro]:not([data-lamp-intro="done"])) .canvas-base>.meta { color:color-mix(in srgb, #b7bdbd calc(var(--lamp-ui-darkness, 0) * 100%), var(--text)); }
+html:has(.home[data-lamp-intro]:not([data-lamp-intro="done"])) .canvas-nav a.active { color:color-mix(in srgb, #f7f9f9 calc(var(--lamp-ui-darkness, 0) * 100%), var(--text)); }
+.lamp-intro-labels { position:absolute;inset:0;pointer-events:none;z-index:3; }
+.lamp-intro-label {
+  position:absolute;transform:translate(-50%, 6px);opacity:0;
+  font:500 14px/1.3 "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color:#f2f5f5;white-space:nowrap;padding:10px 14px;
+  background:#10161bb3;border:1px solid #dce7e750;border-radius:3px;
+  transition:opacity .3s,transform .3s;
+}
+.lamp-intro-label::before {
+  content:"";position:absolute;left:50%;bottom:100%;height:25px;
+  width:1px;background:linear-gradient(transparent,#dce7e7a0);
+}
+.lamp-intro-label>span { margin-left:12px;color:#d5e0e0; }
+.home[data-lamp-intro="projects"] [data-intro-anchor="monitor"],
+.home[data-lamp-intro="photography"] [data-intro-anchor="camera"] { opacity:1;transform:translate(-50%,0); }
+.lamp-intro-replay {
+  position:absolute;z-index:4;bottom:30px;left:50%;transform:translateX(-50%);
+  min-height:44px;padding:0 16px;font-size:12px;color:var(--text);
+  background:var(--canvas);border:1px solid var(--line);border-radius:3px;
+}
+@media (max-width:767px) {
+  .lamp-intro-label { font-size:13px;padding:9px 12px; }
+  .lamp-intro-replay { bottom:75px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .lamp-intro-labels,.lamp-intro-replay { display:none; }
+}

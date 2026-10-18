@@ -1,14 +1,15 @@
 {
   "version": 1,
   "checkpoint": "production-current-with-felt-board",
-  "generatedAt": "2026-10-09T12:45:49.923Z",
+  "generatedAt": "2026-10-18T20:38:15.617Z",
   "sources": {
     "docs/workstation-current.json": "69054a60fddf2c4101729bd5e20325056383a1c3677cbb6f2d77465bd4186dcf",
     "public/models/workstation-v003.glb": "8b126a0313daa5d01c47da94df88a84e8b9ef1711a0518744fec22b9faff39a1",
     "public/models/board-pushpins.glb": "fd8eb595730171e84d0feabb59667c8696704c141d40c3015a66d511635cd15c",
-    "src/portfolio/Workbench.jsx": "08a17438444c4e95b65275018bc2c86d19cb8acac7c46fca04fde2d2342b1fe1",
+    "src/portfolio/Workbench.jsx": "66aefb914f74e81298c6bd1ba7abee060e39d9e333d90447e028b39ef51df4fe",
+    "src/portfolio/lampIntro.js": "bdf8720542a3741684ae37d0f254ddca406ad92d8877d69445a75b3970ca9f23",
     "src/portfolio/computerCaseControls.js": "9f016c46e688abc35682e066e91721c14363e10ba5d383c1652cc6a23aa183bf",
-    "src/portfolio/sceneViews.js": "a90844e5477ea3eeab0a227833d24d08671648e9ac7049bd250cfc5ac7ae7fa5",
+    "src/portfolio/sceneViews.js": "3bfa1dc2cf703f7abd801d90b6648d14be861b0cec6d274a60384d83bcbbefd6",
     "src/portfolio/feltBoard.js": "4d99e0d8b01c06e61dcc0e4346a7129d31af8e6a4f0af9b5a1478d6644a3c46c",
     "src/portfolio/boardObjects.js": "eedc21ca58da92793bec709ad5ddd152dd4fad353a249e73559cf8eaa407580d",
     "src/portfolio/boardObjectsStore.js": "93455872037092067aa6a0eafe1e38a36d79ec2985e49203b3e1fca1225742dc",
@@ -36,8 +37,8 @@
       "sha256": "c808308e8474944431c2039ff4c7a641b1dc8c7d7ae5c6fd66b28f3b36076408"
     },
     "public/images/workstation/overview-mobile.webp": {
-      "bytes": 26458,
-      "sha256": "1fd0a691437be4c6a45f0034deff38da0a048118b7bb9354b2a3e52046eb7b92"
+      "bytes": 23364,
+      "sha256": "6049215310e097393ea70a7d311e399b8f575a66b8de157893974d1e042a3b0f"
     },
     "public/images/workstation/work-mobile.webp": {
       "bytes": 25918,
@@ -48,8 +49,8 @@
       "sha256": "f609dcf1e840dc992040b1aca70cf607921ce368f34a20c2fec44ee6c53d6cac"
     },
     "src/portfolio/posterAnchors.css": {
-      "bytes": 10501,
-      "sha256": "017d0262274dc309a62fe1db6c90918264e16421eb1b580d695bc5fa4e2b97fb"
+      "bytes": 10500,
+      "sha256": "4f4b7784bc967ea9f46792c0fb01f3b9296af8824b381dd799f380574d26bf91"
     }
   }
 }
